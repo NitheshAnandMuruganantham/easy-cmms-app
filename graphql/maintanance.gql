@@ -1,0 +1,65 @@
+query Maintenance($where: MaintenanceWhereInput, $orderBy: String, $offset: Int, $limit: Int) {
+  maintenances(where: $where,orderBy: $orderBy,offset: $offset,limit: $limit) {
+     id
+     assignee {
+        id
+        name
+     }
+     from
+     to
+     elapsed
+     description
+     resolved
+    name
+    machine {
+      id
+      label
+    }
+  }
+}
+
+
+query getMaintanance($maintenanceId: Int!) {
+  maintenance(id: $maintenanceId) {
+    created_at
+    updated_at
+    description
+    name
+    id
+    from
+    to
+    elapsed
+    resolved
+    un_planned
+    ticket {
+      id
+      name
+      created_at
+    }
+    assignee {
+      id
+      name
+      email
+    }
+    machine {
+    id
+   label
+   priority
+   block {
+     id
+     name
+   }
+   section {
+     id
+     name
+   }
+}
+  }
+}
+
+
+mutation updateMaintanance($updateMaintananceId: Int!, $updateMaintananceInput: MaintenanceUpdateInput!) {
+  updateMaintanance(id: $updateMaintananceId, updateMaintananceInput: $updateMaintananceInput) {
+    id
+  }
+}

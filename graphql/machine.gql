@@ -1,0 +1,6 @@
+query getAllMachinesDropdown{
+    machines {
+        value:id
+        label
+    }
+}
