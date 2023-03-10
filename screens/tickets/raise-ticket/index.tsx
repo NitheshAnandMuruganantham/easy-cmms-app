@@ -48,7 +48,10 @@ const RaiseTicket: FunctionComponent<Props> = (props) => {
         }}
         onSubmit={async (values) => {
           let farmData = new FormData();
-          const image = await cameraRef.current?.takePictureAsync();
+          const image = await cameraRef.current?.takePictureAsync({
+            quality: 0,
+            scale: 0.1,
+          });
 
           const x: any = {
             uri: image?.uri,

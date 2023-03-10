@@ -39,7 +39,10 @@ const TakePic: FunctionComponent<Props> = (props) => {
         initialValues={{}}
         onSubmit={async () => {
           let farmData = new FormData();
-          const image = await cameraRef.current?.takePictureAsync();
+          const image = await cameraRef.current?.takePictureAsync({
+            quality: 0,
+            scale: 0.1,
+          });
 
           const x: any = {
             uri: image?.uri,
@@ -49,7 +52,6 @@ const TakePic: FunctionComponent<Props> = (props) => {
 
           farmData.append("file", x);
           const d = await axios.post("/upload", farmData);
-          //   photos: d.data,
           props.submit(d.data);
           props.setIsVisible(false);
         }}

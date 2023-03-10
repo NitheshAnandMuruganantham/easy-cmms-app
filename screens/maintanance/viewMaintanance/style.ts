@@ -29,7 +29,7 @@ const style = StyleSheet.create({
     fontSize: 15,
     textAlign: "center",
   },
-  table: {},
+  
   tableText: {
     paddingBottom: 10,
     paddingTop: 10,

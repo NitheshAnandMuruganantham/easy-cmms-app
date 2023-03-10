@@ -1,24 +1,32 @@
-import React, { FunctionComponent, useContext } from "react";
+import React, { FunctionComponent, useContext, useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Card } from "@rneui/base";
-import { useRoute } from "@react-navigation/native";
-import UserContext from "../../context/userContext";
 import axios from "../../utils/axios";
+import Spinner from "react-native-loading-spinner-overlay/lib";
+import RefetchContext from "../../context/refetchContext";
 const Home = (props) => {
   const [data, SetData] = React.useState<any>({});
-  const userData = useContext(UserContext);
-
-  React.useEffect(() => {
+  const [loading, SetLoading] = useState(true);
+  const [refetchApi, setRefetchApi] = React.useContext(RefetchContext);
+  const refetch = () => {
+    SetLoading(true);
     axios
       .get("/dashboard/mobileDashboard")
       .then((resp) => {
-        console.log(resp);
         SetData(resp.data);
+        SetLoading(false);
+        setRefetchApi(false);
       })
       .catch(() => {
+        SetLoading(false);
+        setRefetchApi(false);
         alert("something went wrong !");
       });
-  }, []);
+  };
+
+  React.useEffect(() => {
+    refetch();
+  }, [refetchApi]);
 
   return (
     <View
@@ -27,6 +35,14 @@ const Home = (props) => {
         marginBottom: "auto",
       }}
     >
+      <Spinner
+        visible={loading}
+        textContent={"Loading..."}
+        textStyle={{
+          fontFamily: "Poppins-Regular",
+          color: "#FFF",
+        }}
+      />
       <DisplayCard
         textColor="white"
         bgColor="red"

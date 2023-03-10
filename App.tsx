@@ -2,11 +2,11 @@ import { checkProfileStatus } from "./utils/auth";
 import { StatusBar } from "expo-status-bar";
 import axios from "axios";
 import React, { useEffect } from "react";
-import { SafeAreaProvider } from "react-native-safe-area-context";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import SuperTokens from "supertokens-react-native";
 import { RootSiblingParent } from "react-native-root-siblings";
 
-import { Text, ThemeProvider } from "@rneui/themed";
+import { Image, Text, ThemeProvider } from "@rneui/themed";
 
 import network from "./constants/network";
 import Theme from "./constants/theme";
@@ -17,6 +17,7 @@ import { ApolloProvider } from "@apollo/client";
 import client from "./utils/apollo";
 import { View } from "react-native";
 import UserContext from "./context/userContext";
+import RefetchContext from "./context/refetchContext";
 
 SuperTokens.addAxiosInterceptors(axios);
 
@@ -59,12 +60,19 @@ export default function App() {
   }, []);
 
   const isLoadingComplete = useCachedResources();
-
+  const [refetch, setRefetch] = React.useState(false);
   if (!isLoadingComplete || authStatus === "LOADING") {
     return (
-      <View>
-        <Text>loading......</Text>
-      </View>
+      <SafeAreaView>
+        <Image
+          style={{
+            width: "100%",
+            height: "100%",
+            aspectRatio: 1,
+          }}
+          source={require("./assets/images/splash.png")}
+        />
+      </SafeAreaView>
     );
   } else {
     return (
@@ -73,10 +81,12 @@ export default function App() {
           <RootSiblingParent>
             <AuthContext.Provider value={authStatus}>
               <UserContext.Provider value={userData}>
-                <SafeAreaProvider>
-                  <Navigation />
-                  <StatusBar />
-                </SafeAreaProvider>
+                <RefetchContext.Provider value={[refetch, setRefetch]}>
+                  <SafeAreaProvider>
+                    <Navigation />
+                    <StatusBar />
+                  </SafeAreaProvider>
+                </RefetchContext.Provider>
               </UserContext.Provider>
             </AuthContext.Provider>
           </RootSiblingParent>

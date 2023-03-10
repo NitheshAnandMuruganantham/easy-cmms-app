@@ -14,12 +14,14 @@ import RaiseTicket from "../../../screens/tickets/raise-ticket";
 import client from "../../../utils/apollo";
 import UserContext from "../../../context/userContext";
 import Supertokens from "supertokens-react-native";
+import RefetchContext from "../../../context/refetchContext";
 
 interface HomeHeaderProps {}
 
 const HomeHeader: FunctionComponent<HomeHeaderProps> = () => {
   const [isVisible, setIsVisible] = useState(false);
   const userdata = useContext(UserContext);
+  const [refetch, SetRefetch] = useContext(RefetchContext);
   return (
     <View
       style={{
@@ -70,9 +72,18 @@ const HomeHeader: FunctionComponent<HomeHeaderProps> = () => {
         <Button
           type="solid"
           onPress={() => {
-            client.refetchQueries({
-              include: ["Tickets", "Maintenance"],
-            });
+            client
+              .refetchQueries({
+                include: ["Maintenance"],
+              })
+              .catch(() => null);
+
+            client
+              .refetchQueries({
+                include: ["Maintenance"],
+              })
+              .catch(() => null);
+            SetRefetch(true);
           }}
           buttonStyle={{ borderRadius: 50 }}
         >

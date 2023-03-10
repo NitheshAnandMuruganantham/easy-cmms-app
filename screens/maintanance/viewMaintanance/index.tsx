@@ -64,9 +64,24 @@ const ViewTicket: FunctionComponent<Props> = (props) => {
       />
       <Text style={style.description}>{data?.maintenance.description}</Text>
       <View style={{ width: "80%", marginLeft: "10%", marginTop: "5%" }}>
-        <Table borderStyle={{ borderWidth: 2, borderColor: "#c8e1ff" }}>
+        <Table
+          borderStyle={{
+            borderBottomWidth: 3,
+            borderColor: "black",
+          }}
+        >
           <Rows
-            style={style.table}
+            textStyle={{
+              fontSize: 18,
+              paddingBottom: 5,
+              fontWeight: "500",
+            }}
+            style={{
+              padding: 10,
+              borderWidth: 1,
+              borderBottomColor: "black",
+              borderBottomWidth: 1,
+            }}
             data={[
               [
                 "from",
@@ -110,7 +125,7 @@ const ViewTicket: FunctionComponent<Props> = (props) => {
           buttonStyle={{
             backgroundColor: "green",
             paddingHorizontal: 10,
-            marginTop: 10,
+            marginTop: 20,
             borderRadius: 5,
           }}
           style={{ marginTop: "5%" }}
