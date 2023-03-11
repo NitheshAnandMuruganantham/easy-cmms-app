@@ -4,10 +4,12 @@ import { Card } from "@rneui/base";
 import axios from "../../utils/axios";
 import Spinner from "react-native-loading-spinner-overlay/lib";
 import RefetchContext from "../../context/refetchContext";
+import { useInterval } from "../../utils/interval";
 const Home = (props) => {
   const [data, SetData] = React.useState<any>({});
   const [loading, SetLoading] = useState(true);
   const [refetchApi, setRefetchApi] = React.useContext(RefetchContext);
+
   const refetch = () => {
     SetLoading(true);
     axios
@@ -24,6 +26,16 @@ const Home = (props) => {
       });
   };
 
+  // useInterval(() => {
+  //   axios
+  //     .get("/dashboard/mobileDashboard")
+  //     .then((resp) => {
+  //       SetData(resp.data);
+  //       setRefetchApi(false);
+  //     })
+  //     .catch(() => {});
+  // }, 10000);
+
   React.useEffect(() => {
     refetch();
   }, [refetchApi]);
@@ -35,14 +47,7 @@ const Home = (props) => {
         marginBottom: "auto",
       }}
     >
-      <Spinner
-        visible={loading}
-        textContent={"Loading..."}
-        textStyle={{
-          fontFamily: "Poppins-Regular",
-          color: "#FFF",
-        }}
-      />
+      <Spinner visible={loading} textContent={"Loading..."} />
       <DisplayCard
         textColor="white"
         bgColor="red"

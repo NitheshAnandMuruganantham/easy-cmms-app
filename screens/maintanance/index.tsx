@@ -20,7 +20,13 @@ const Maintenance: FunctionComponent<VenueProps> = () => {
         }}
         component={MaintenanceHome}
       />
-      <Stack.Screen name="ViewMaintenance" component={ViewMaintenance} />
+      <Stack.Screen
+        options={{
+          title: "View Maintenance",
+        }}
+        name="ViewMaintenance"
+        component={ViewMaintenance}
+      />
     </Stack.Navigator>
   );
 };

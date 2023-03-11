@@ -22,6 +22,21 @@ const HomeHeader: FunctionComponent<HomeHeaderProps> = () => {
   const [isVisible, setIsVisible] = useState(false);
   const userdata = useContext(UserContext);
   const [refetch, SetRefetch] = useContext(RefetchContext);
+  const refetchData = () => {
+    client
+      .refetchQueries({
+        include: ["Maintenance"],
+      })
+      .catch(() => null);
+
+    client
+      .refetchQueries({
+        include: ["Maintenance"],
+      })
+      .catch(() => null);
+    SetRefetch(true);
+  };
+
   return (
     <View
       style={{
@@ -72,18 +87,7 @@ const HomeHeader: FunctionComponent<HomeHeaderProps> = () => {
         <Button
           type="solid"
           onPress={() => {
-            client
-              .refetchQueries({
-                include: ["Maintenance"],
-              })
-              .catch(() => null);
-
-            client
-              .refetchQueries({
-                include: ["Maintenance"],
-              })
-              .catch(() => null);
-            SetRefetch(true);
+            refetchData();
           }}
           buttonStyle={{ borderRadius: 50 }}
         >

@@ -11,6 +11,7 @@ import axios from "../../../utils/axios";
 import style from "./style";
 import Toast from "react-native-root-toast";
 import SuperTokens from "supertokens-react-native";
+import Spinner from "react-native-loading-spinner-overlay/lib";
 
 interface OtpInputProps {
   navigation: StackNavigationProp<any, any>;
@@ -21,6 +22,7 @@ const OtpInput: React.FunctionComponent<OtpInputProps> = ({
   navigation,
   route,
 }) => {
+  const [loading, setLoading] = React.useState(false);
   return (
     <View style={style.container}>
       <Text style={style.primaryText}>Enter The Otp</Text>
@@ -29,6 +31,7 @@ const OtpInput: React.FunctionComponent<OtpInputProps> = ({
         <OTPInputView
           onCodeFilled={async (otp) => {
             try {
+              setLoading(true);
               const authResponse = await axios.post(
                 `/auth/signinup/code/consume`,
                 {
@@ -52,9 +55,11 @@ const OtpInput: React.FunctionComponent<OtpInputProps> = ({
                 SuperTokens.signOut();
               }
               console.info("successfully fetched profile status");
+              setLoading(false);
             } catch (e) {
+              setLoading(false);
               console.error(e);
-              Toast.show("Some thing went wrong try again", {
+              Toast.show("Invalid OTP", {
                 position: Toast.positions.TOP,
                 duration: Toast.durations.SHORT,
               });
@@ -65,9 +70,7 @@ const OtpInput: React.FunctionComponent<OtpInputProps> = ({
           codeInputFieldStyle={style.input}
         />
       </View>
-      {/* <TouchableOpacity>
-        <Text style={style.resend}>resend</Text>
-      </TouchableOpacity> */}
+      <Spinner visible={loading} textContent="authenticating....." />
     </View>
   );
 };

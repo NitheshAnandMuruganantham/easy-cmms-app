@@ -10,13 +10,15 @@ import {
   useGetMaintananceQuery,
   useUpdateMaintananceMutation,
 } from "../../../generated/generated";
+
 import toast from "react-native-root-toast";
-import { Button, Image } from "@rneui/themed";
+import { Button } from "@rneui/themed";
 import { Table, Row, Rows } from "react-native-table-component";
 import style from "./style";
 import client from "../../../utils/apollo";
-import TakePic from "./takePic";
+import CompleteMaintenance from "./completeMaintenance";
 import Spinner from "react-native-loading-spinner-overlay/lib";
+import RefetchContext from "../../../context/RefetchContext";
 interface Props {
   navigation: any;
 }
@@ -31,12 +33,13 @@ const ViewTicket: FunctionComponent<Props> = (props) => {
   });
 
   const [updateMaintanance] = useUpdateMaintananceMutation();
+  const [refresh, setRefresh] = useContext(RefetchContext);
 
   return (
     <ScrollView>
       <Spinner visible={loading} textContent={"Loading..."} />
       <Text style={style.title}>{data?.maintenance.name}</Text>
-      <TakePic
+      <CompleteMaintenance
         setIsVisible={SetShowSubmit}
         isVisible={ShowSubmit}
         submit={async (uri: string) => {
@@ -52,11 +55,19 @@ const ViewTicket: FunctionComponent<Props> = (props) => {
                 },
               },
             },
+          }).catch((err) => {
+            toast.show("Something went wrong", {
+              position: toast.positions.TOP + 50,
+            });
           });
-          client.refetchQueries({
-            include: ["getMaintanance"],
-          });
-          await toast.show("Task completed", {
+
+          client
+            .refetchQueries({
+              include: ["getMaintanance"],
+            })
+            .catch(() => {});
+          setRefresh(true);
+          toast.show("Task completed", {
             position: toast.positions.TOP + 50,
           });
           props.navigation.goBack();
@@ -126,6 +137,7 @@ const ViewTicket: FunctionComponent<Props> = (props) => {
             backgroundColor: "green",
             paddingHorizontal: 10,
             marginTop: 20,
+            marginBottom: 50,
             borderRadius: 5,
           }}
           style={{ marginTop: "5%" }}

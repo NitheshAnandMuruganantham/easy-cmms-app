@@ -12,15 +12,23 @@ interface MaintanceHomeProps {
 }
 
 const MaintanceHome: React.FunctionComponent<MaintanceHomeProps> = (props) => {
-  const { data, loading, error } = useMaintenanceQuery({
-    variables: {
-      where: {
-        resolved: {
-          equals: false,
+  const { data, loading, error, startPolling, stopPolling } =
+    useMaintenanceQuery({
+      variables: {
+        where: {
+          resolved: {
+            equals: false,
+          },
         },
       },
-    },
-  });
+    });
+
+  React.useEffect(() => {
+    startPolling(10000);
+    return () => {
+      stopPolling();
+    };
+  }, []);
 
   return (
     <ScrollView style={style.container}>

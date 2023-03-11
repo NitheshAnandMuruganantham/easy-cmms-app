@@ -5172,6 +5172,11 @@ expo-asset@~8.7.0:
     path-browserify "^1.0.0"
     url-parse "^1.5.9"
 
+expo-cached-image@^47.1.6:
+  version "47.1.6"
+  resolved "https://registry.yarnpkg.com/expo-cached-image/-/expo-cached-image-47.1.6.tgz#7685b28ca10d34e45f79fcdd533c1507206fe10f"
+  integrity sha512-EYWdPlOOeDCHR9mx7cZbA7K20qCv+t0YnkBQelfYuV5s6GTI0lAnpjLd/WxzdFqva82Oex7Q9VAbyFRbtD8Yqg==
+
 expo-camera@~13.1.0:
   version "13.1.0"
   resolved "https://registry.yarnpkg.com/expo-camera/-/expo-camera-13.1.0.tgz#e706a8efc78d1891d848ff729730d9d75468d36d"

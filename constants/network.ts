@@ -1,4 +1,4 @@
 const network = {
-  server: "http://172.20.10.2:8000",
+  server: "http://192.168.0.109:8000",
 };
 export default network;

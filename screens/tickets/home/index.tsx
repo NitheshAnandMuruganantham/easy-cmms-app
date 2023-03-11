@@ -11,13 +11,20 @@ interface TicketHomeProps {
 }
 
 const TicketHome: React.FunctionComponent<TicketHomeProps> = (props) => {
-  const { data, loading, error } = useTicketsQuery({
+  const { data, loading, error, startPolling, stopPolling } = useTicketsQuery({
     variables: {
       orderBy: {
         created_at: SortOrder.Desc,
       },
     },
   });
+
+  React.useEffect(() => {
+    startPolling(50000);
+    return () => {
+      stopPolling();
+    };
+  }, []);
 
   return (
     <ScrollView style={style.container}>

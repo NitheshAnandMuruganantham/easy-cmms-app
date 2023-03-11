@@ -1,4 +1,4 @@
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, ActivityIndicator } from "react-native";
 import React, { FunctionComponent, useContext, useEffect } from "react";
 import { useRoute } from "@react-navigation/native";
 import { useGetTicketQuery } from "../../../generated/generated";
@@ -24,19 +24,48 @@ const ViewTicket: FunctionComponent<Props> = (props) => {
       <Spinner visible={loading} textContent={"Loading..."} />
       <Text style={style.title}>{data?.ticket.name}</Text>
       <Image
-        source={{ uri: data?.ticket.photos }}
-        containerStyle={style.image}
+        style={style.image}
+        PlaceholderContent={
+          <ActivityIndicator
+            color={"#000"}
+            size="large"
+            style={{
+              flex: 1,
+              justifyContent: "center",
+            }}
+          />
+        }
+        source={{
+          uri: data?.ticket.photos,
+          cache: "default",
+        }}
       />
       <Text style={style.time}>
-        {new Date(data?.ticket.created_at).toLocaleTimeString()}
-      </Text>
-      <Text style={style.date}>
-        {new Date(data?.ticket.created_at).toLocaleDateString()}
+        {new Date(data?.ticket.created_at).toLocaleString()}
       </Text>
       <Text style={style.description}>{data?.ticket.description}</Text>
       <View style={{ width: "80%", marginLeft: "10%", marginTop: "5%" }}>
-        <Table borderStyle={{ borderWidth: 2, borderColor: "#c8e1ff" }}>
+        <Table
+          borderStyle={{
+            borderBottomWidth: 3,
+            borderColor: "black",
+          }}
+          style={{
+            marginBottom: 50,
+          }}
+        >
           <Rows
+            textStyle={{
+              fontSize: 18,
+              paddingBottom: 5,
+              fontWeight: "500",
+            }}
+            style={{
+              padding: 10,
+              borderWidth: 1,
+              borderBottomColor: "black",
+              borderBottomWidth: 1,
+            }}
             data={[
               [
                 "machine",

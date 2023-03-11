@@ -22,11 +22,8 @@ const style = StyleSheet.create({
   },
   time: {
     marginTop: 10,
-    fontSize: 15,
-    textAlign: "center",
-  },
-  date: {
-    fontSize: 15,
+    fontSize: 20,
+    fontWeight: "bold",
     textAlign: "center",
   },
 });

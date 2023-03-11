@@ -6,8 +6,7 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import SuperTokens from "supertokens-react-native";
 import { RootSiblingParent } from "react-native-root-siblings";
 
-import { Image, Text, ThemeProvider } from "@rneui/themed";
-
+import { Text, Image, ThemeProvider } from "@rneui/themed";
 import network from "./constants/network";
 import Theme from "./constants/theme";
 import AuthContext from "./context/authContext";

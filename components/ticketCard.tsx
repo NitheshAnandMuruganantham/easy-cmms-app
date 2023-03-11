@@ -1,7 +1,7 @@
-import { StyleSheet } from "react-native";
+import { ActivityIndicator, StyleSheet } from "react-native";
 import { RneFunctionComponent, Text } from "@rneui/base";
 import { Ticket } from "../generated/generated";
-import { Button, Card, Icon } from "@rneui/themed";
+import { Button, Card, Icon, Image } from "@rneui/themed";
 import React from "react";
 
 interface TicketCardProps {
@@ -14,10 +14,17 @@ const TicketCard: RneFunctionComponent<TicketCardProps> = (props) => {
     <Card>
       <Card.Title>{props.data.name}</Card.Title>
       <Card.Divider />
-      <Card.Image
-        style={{ padding: 0 }}
+      <Image
+        style={{
+          padding: 0,
+          width: "100%",
+          aspectRatio: 1,
+          resizeMode: "contain",
+        }}
+        PlaceholderContent={<ActivityIndicator color={"#000"} size="large" />}
         source={{
           uri: props.data.photos,
+          cache: "default",
         }}
       />
       <Text style={{ marginBottom: 10 }}>{props.data.description}</Text>

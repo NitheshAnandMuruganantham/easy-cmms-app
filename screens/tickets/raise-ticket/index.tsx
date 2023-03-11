@@ -1,11 +1,18 @@
-import React, { FunctionComponent, useEffect, useRef, useState } from "react";
-import { Text, View } from "react-native";
+import React, {
+  FunctionComponent,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import { Image, Text, View } from "react-native";
 import { BottomSheet, Button, Input, ListItem } from "@rneui/themed";
 import { Camera, CameraType } from "expo-camera";
 import { Formik } from "formik";
 import Picker from "react-native-picker-select";
 import axios from "../../../utils/axios";
 import client from "../../../utils/apollo";
+import toast from "react-native-root-toast";
 import {
   Ticket_Status,
   useCreateTicketsMutation,
@@ -13,6 +20,10 @@ import {
 } from "../../../generated/generated";
 import Logger from "../../../utils/logger";
 import Spinner from "react-native-loading-spinner-overlay/lib";
+import Toast from "react-native-root-toast";
+import Capture from "../../../components/capture";
+import RefetchContext from "../../../context/RefetchContext";
+
 interface Props {
   isVisible: boolean;
   setIsVisible: (isVisible: boolean) => void;
@@ -21,20 +32,11 @@ interface Props {
 const log = new Logger("RaiseTicket");
 
 const RaiseTicket: FunctionComponent<Props> = (props) => {
-  const [type, setType] = useState(CameraType.back);
   const { data: machines, loading } = useGetAllMachinesDropdownQuery();
-  const [permission, requestPermission] = Camera.useCameraPermissions();
-  const cameraRef = useRef<Camera>(null);
-
-  const [
-    createTicket,
-    { data: createTicketData, error, loading: CreateTicketsLoading },
-  ] = useCreateTicketsMutation();
-
-  useEffect(() => {
-    requestPermission();
-  }, []);
-
+  const [image, setImage] = useState<any>();
+  const [createTicket, { loading: CreateTicketsLoading }] =
+    useCreateTicketsMutation();
+  const [refresh, setRefresh] = useContext(RefetchContext);
   return (
     <BottomSheet
       onBackdropPress={() => props.setIsVisible(false)}
@@ -47,20 +49,6 @@ const RaiseTicket: FunctionComponent<Props> = (props) => {
           description: "",
         }}
         onSubmit={async (values) => {
-          let farmData = new FormData();
-          const image = await cameraRef.current?.takePictureAsync({
-            quality: 0,
-            scale: 0.1,
-          });
-
-          const x: any = {
-            uri: image?.uri,
-            name: "picture.jpg",
-            type: "image/jpg",
-          };
-
-          farmData.append("file", x);
-          const d = await axios.post("/upload", farmData);
           await createTicket({
             variables: {
               createTicketInput: {
@@ -71,15 +59,26 @@ const RaiseTicket: FunctionComponent<Props> = (props) => {
                 },
                 name: values.title,
                 description: values.description,
-                photos: d.data,
+                photos: image,
                 status: Ticket_Status.Open,
               },
             },
+          }).catch((e) => {
+            toast.show("Something went wrong", {
+              position: toast.positions.TOP + 50,
+            });
           });
-          client.refetchQueries({
-            include: ["Tickets"],
-          });
+          client
+            .refetchQueries({
+              include: ["Tickets"],
+            })
+            .catch((e) => {});
+          setRefresh(true);
           props.setIsVisible(false);
+          Toast.show("Ticket raised successfully", {
+            position: Toast.positions.TOP + 50,
+            duration: Toast.durations.SHORT,
+          });
         }}
       >
         {({
@@ -87,6 +86,7 @@ const RaiseTicket: FunctionComponent<Props> = (props) => {
           handleBlur,
           isSubmitting,
           submitForm,
+          isValid,
           values,
           errors,
           setFieldValue,
@@ -160,23 +160,18 @@ const RaiseTicket: FunctionComponent<Props> = (props) => {
               onValueChange={(itemValue) => setFieldValue("machine", itemValue)}
               items={machines?.machines || []}
             />
-            {props.isVisible && (
-              <Camera
-                ratio={"1:1"}
-                ref={cameraRef}
-                style={{
-                  marginTop: 50,
-                  height: 250,
-                  marginLeft: "auto",
-                  marginRight: "auto",
-                  borderRadius: 20,
-                  overflow: "hidden",
-                  aspectRatio: 1,
-                }}
-                type={type}
-              />
-            )}
+            <Capture
+              startCamera={props.isVisible}
+              image={image}
+              initilizeCamera={() => {
+                setImage(null);
+              }}
+              captureImage={(image) => {
+                setImage(image);
+              }}
+            />
             <Button
+              disabled={isSubmitting || !image || !isValid}
               onPress={() => submitForm()}
               buttonStyle={{
                 backgroundColor: "black",
