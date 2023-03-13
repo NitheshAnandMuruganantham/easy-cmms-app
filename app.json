@@ -1,12 +1,12 @@
 {
   "expo": {
     "name": "easy cmms",
-    "slug": "easy cmms",
+    "slug": "easy-cmms",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
-        "plugins": [
+    "plugins": [
       [
         "expo-camera",
         {
@@ -23,7 +23,9 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -33,10 +35,19 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "5c371563-ba3e-4f78-b928-bf12b5d17188"
+      }
     }
   }
 }

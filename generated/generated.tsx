@@ -1,16 +1,10 @@
-import { gql } from "@apollo/client";
-import * as Apollo from "@apollo/client";
+import { gql } from '@apollo/client';
+import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = {
-  [K in keyof T]: T[K];
-};
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]?: Maybe<T[SubKey]>;
-};
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]: Maybe<T[SubKey]>;
-};
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -25,56 +19,57 @@ export type Scalars = {
 };
 
 export type BigIntFieldUpdateOperationsInput = {
-  decrement?: InputMaybe<Scalars["BigInt"]>;
-  divide?: InputMaybe<Scalars["BigInt"]>;
-  increment?: InputMaybe<Scalars["BigInt"]>;
-  multiply?: InputMaybe<Scalars["BigInt"]>;
-  set?: InputMaybe<Scalars["BigInt"]>;
+  decrement?: InputMaybe<Scalars['BigInt']>;
+  divide?: InputMaybe<Scalars['BigInt']>;
+  increment?: InputMaybe<Scalars['BigInt']>;
+  multiply?: InputMaybe<Scalars['BigInt']>;
+  set?: InputMaybe<Scalars['BigInt']>;
 };
 
 export type BigIntFilter = {
-  equals?: InputMaybe<Scalars["BigInt"]>;
-  gt?: InputMaybe<Scalars["BigInt"]>;
-  gte?: InputMaybe<Scalars["BigInt"]>;
-  in?: InputMaybe<Array<Scalars["BigInt"]>>;
-  lt?: InputMaybe<Scalars["BigInt"]>;
-  lte?: InputMaybe<Scalars["BigInt"]>;
+  equals?: InputMaybe<Scalars['BigInt']>;
+  gt?: InputMaybe<Scalars['BigInt']>;
+  gte?: InputMaybe<Scalars['BigInt']>;
+  in?: InputMaybe<Array<Scalars['BigInt']>>;
+  lt?: InputMaybe<Scalars['BigInt']>;
+  lte?: InputMaybe<Scalars['BigInt']>;
   not?: InputMaybe<NestedBigIntFilter>;
-  notIn?: InputMaybe<Array<Scalars["BigInt"]>>;
+  notIn?: InputMaybe<Array<Scalars['BigInt']>>;
 };
 
 export type BigIntNullableFilter = {
-  equals?: InputMaybe<Scalars["BigInt"]>;
-  gt?: InputMaybe<Scalars["BigInt"]>;
-  gte?: InputMaybe<Scalars["BigInt"]>;
-  in?: InputMaybe<Array<Scalars["BigInt"]>>;
-  lt?: InputMaybe<Scalars["BigInt"]>;
-  lte?: InputMaybe<Scalars["BigInt"]>;
+  equals?: InputMaybe<Scalars['BigInt']>;
+  gt?: InputMaybe<Scalars['BigInt']>;
+  gte?: InputMaybe<Scalars['BigInt']>;
+  in?: InputMaybe<Array<Scalars['BigInt']>>;
+  lt?: InputMaybe<Scalars['BigInt']>;
+  lte?: InputMaybe<Scalars['BigInt']>;
   not?: InputMaybe<NestedBigIntNullableFilter>;
-  notIn?: InputMaybe<Array<Scalars["BigInt"]>>;
+  notIn?: InputMaybe<Array<Scalars['BigInt']>>;
 };
 
 export type Block = {
-  __typename?: "Block";
+  __typename?: 'Block';
   _count: BlockCount;
-  created_at: Scalars["DateTime"];
-  id: Scalars["BigInt"];
-  location: Scalars["String"];
+  created_at: Scalars['DateTime'];
+  id: Scalars['BigInt'];
+  location: Scalars['String'];
   machines?: Maybe<Array<Machines>>;
-  name: Scalars["String"];
-  updated_at: Scalars["DateTime"];
+  name: Scalars['String'];
+  updated_at: Scalars['DateTime'];
 };
 
+
 export type BlockMachinesArgs = {
-  limit?: InputMaybe<Scalars["Int"]>;
-  offset?: InputMaybe<Scalars["Int"]>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<MachinesOrderByWithAggregationInput>;
   where?: InputMaybe<MachinesWhereInput>;
 };
 
 export type BlockAvgAggregate = {
-  __typename?: "BlockAvgAggregate";
-  id?: Maybe<Scalars["Float"]>;
+  __typename?: 'BlockAvgAggregate';
+  id?: Maybe<Scalars['Float']>;
 };
 
 export type BlockAvgOrderByAggregateInput = {
@@ -82,18 +77,18 @@ export type BlockAvgOrderByAggregateInput = {
 };
 
 export type BlockCount = {
-  __typename?: "BlockCount";
-  machines: Scalars["Int"];
+  __typename?: 'BlockCount';
+  machines: Scalars['Int'];
 };
 
 export type BlockCountAggregate = {
-  __typename?: "BlockCountAggregate";
-  _all: Scalars["Int"];
-  created_at: Scalars["Int"];
-  id: Scalars["Int"];
-  location: Scalars["Int"];
-  name: Scalars["Int"];
-  updated_at: Scalars["Int"];
+  __typename?: 'BlockCountAggregate';
+  _all: Scalars['Int'];
+  created_at: Scalars['Int'];
+  id: Scalars['Int'];
+  location: Scalars['Int'];
+  name: Scalars['Int'];
+  updated_at: Scalars['Int'];
 };
 
 export type BlockCountOrderByAggregateInput = {
@@ -105,12 +100,12 @@ export type BlockCountOrderByAggregateInput = {
 };
 
 export type BlockCreateInput = {
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  id?: InputMaybe<Scalars["BigInt"]>;
-  location: Scalars["String"];
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['BigInt']>;
+  location: Scalars['String'];
   machines?: InputMaybe<MachinesCreateNestedManyWithoutBlockInput>;
-  name: Scalars["String"];
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  name: Scalars['String'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type BlockCreateNestedOneWithoutMachinesInput = {
@@ -125,20 +120,20 @@ export type BlockCreateOrConnectWithoutMachinesInput = {
 };
 
 export type BlockCreateWithoutMachinesInput = {
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  id?: InputMaybe<Scalars["BigInt"]>;
-  location: Scalars["String"];
-  name: Scalars["String"];
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['BigInt']>;
+  location: Scalars['String'];
+  name: Scalars['String'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type BlockMaxAggregate = {
-  __typename?: "BlockMaxAggregate";
-  created_at?: Maybe<Scalars["DateTime"]>;
-  id?: Maybe<Scalars["BigInt"]>;
-  location?: Maybe<Scalars["String"]>;
-  name?: Maybe<Scalars["String"]>;
-  updated_at?: Maybe<Scalars["DateTime"]>;
+  __typename?: 'BlockMaxAggregate';
+  created_at?: Maybe<Scalars['DateTime']>;
+  id?: Maybe<Scalars['BigInt']>;
+  location?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['DateTime']>;
 };
 
 export type BlockMaxOrderByAggregateInput = {
@@ -150,12 +145,12 @@ export type BlockMaxOrderByAggregateInput = {
 };
 
 export type BlockMinAggregate = {
-  __typename?: "BlockMinAggregate";
-  created_at?: Maybe<Scalars["DateTime"]>;
-  id?: Maybe<Scalars["BigInt"]>;
-  location?: Maybe<Scalars["String"]>;
-  name?: Maybe<Scalars["String"]>;
-  updated_at?: Maybe<Scalars["DateTime"]>;
+  __typename?: 'BlockMinAggregate';
+  created_at?: Maybe<Scalars['DateTime']>;
+  id?: Maybe<Scalars['BigInt']>;
+  location?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['DateTime']>;
 };
 
 export type BlockMinOrderByAggregateInput = {
@@ -194,8 +189,8 @@ export type BlockRelationFilter = {
 };
 
 export type BlockSumAggregate = {
-  __typename?: "BlockSumAggregate";
-  id?: Maybe<Scalars["BigInt"]>;
+  __typename?: 'BlockSumAggregate';
+  id?: Maybe<Scalars['BigInt']>;
 };
 
 export type BlockSumOrderByAggregateInput = {
@@ -245,51 +240,51 @@ export type BlockWhereInput = {
 };
 
 export type BlockWhereUniqueInput = {
-  id?: InputMaybe<Scalars["BigInt"]>;
+  id?: InputMaybe<Scalars['BigInt']>;
 };
 
 export type BoolFieldUpdateOperationsInput = {
-  set?: InputMaybe<Scalars["Boolean"]>;
+  set?: InputMaybe<Scalars['Boolean']>;
 };
 
 export type BoolFilter = {
-  equals?: InputMaybe<Scalars["Boolean"]>;
+  equals?: InputMaybe<Scalars['Boolean']>;
   not?: InputMaybe<NestedBoolFilter>;
 };
 
 export type CatagoryAvgAggregate = {
-  __typename?: "CatagoryAvgAggregate";
-  id?: Maybe<Scalars["Float"]>;
+  __typename?: 'CatagoryAvgAggregate';
+  id?: Maybe<Scalars['Float']>;
 };
 
 export type CatagoryCount = {
-  __typename?: "CatagoryCount";
-  items: Scalars["Int"];
+  __typename?: 'CatagoryCount';
+  items: Scalars['Int'];
 };
 
 export type CatagoryCountAggregate = {
-  __typename?: "CatagoryCountAggregate";
-  _all: Scalars["Int"];
-  created_at: Scalars["Int"];
-  id: Scalars["Int"];
-  name: Scalars["Int"];
-  updated_at: Scalars["Int"];
+  __typename?: 'CatagoryCountAggregate';
+  _all: Scalars['Int'];
+  created_at: Scalars['Int'];
+  id: Scalars['Int'];
+  name: Scalars['Int'];
+  updated_at: Scalars['Int'];
 };
 
 export type CatagoryMaxAggregate = {
-  __typename?: "CatagoryMaxAggregate";
-  created_at?: Maybe<Scalars["DateTime"]>;
-  id?: Maybe<Scalars["BigInt"]>;
-  name?: Maybe<Scalars["String"]>;
-  updated_at?: Maybe<Scalars["DateTime"]>;
+  __typename?: 'CatagoryMaxAggregate';
+  created_at?: Maybe<Scalars['DateTime']>;
+  id?: Maybe<Scalars['BigInt']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['DateTime']>;
 };
 
 export type CatagoryMinAggregate = {
-  __typename?: "CatagoryMinAggregate";
-  created_at?: Maybe<Scalars["DateTime"]>;
-  id?: Maybe<Scalars["BigInt"]>;
-  name?: Maybe<Scalars["String"]>;
-  updated_at?: Maybe<Scalars["DateTime"]>;
+  __typename?: 'CatagoryMinAggregate';
+  created_at?: Maybe<Scalars['DateTime']>;
+  id?: Maybe<Scalars['BigInt']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['DateTime']>;
 };
 
 export type CatagoryRelationFilter = {
@@ -298,34 +293,34 @@ export type CatagoryRelationFilter = {
 };
 
 export type CatagorySumAggregate = {
-  __typename?: "CatagorySumAggregate";
-  id?: Maybe<Scalars["BigInt"]>;
+  __typename?: 'CatagorySumAggregate';
+  id?: Maybe<Scalars['BigInt']>;
 };
 
 export type DateTimeFieldUpdateOperationsInput = {
-  set?: InputMaybe<Scalars["DateTime"]>;
+  set?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type DateTimeFilter = {
-  equals?: InputMaybe<Scalars["DateTime"]>;
-  gt?: InputMaybe<Scalars["DateTime"]>;
-  gte?: InputMaybe<Scalars["DateTime"]>;
-  in?: InputMaybe<Array<Scalars["DateTime"]>>;
-  lt?: InputMaybe<Scalars["DateTime"]>;
-  lte?: InputMaybe<Scalars["DateTime"]>;
+  equals?: InputMaybe<Scalars['DateTime']>;
+  gt?: InputMaybe<Scalars['DateTime']>;
+  gte?: InputMaybe<Scalars['DateTime']>;
+  in?: InputMaybe<Array<Scalars['DateTime']>>;
+  lt?: InputMaybe<Scalars['DateTime']>;
+  lte?: InputMaybe<Scalars['DateTime']>;
   not?: InputMaybe<NestedDateTimeFilter>;
-  notIn?: InputMaybe<Array<Scalars["DateTime"]>>;
+  notIn?: InputMaybe<Array<Scalars['DateTime']>>;
 };
 
 export type DateTimeNullableFilter = {
-  equals?: InputMaybe<Scalars["DateTime"]>;
-  gt?: InputMaybe<Scalars["DateTime"]>;
-  gte?: InputMaybe<Scalars["DateTime"]>;
-  in?: InputMaybe<Array<Scalars["DateTime"]>>;
-  lt?: InputMaybe<Scalars["DateTime"]>;
-  lte?: InputMaybe<Scalars["DateTime"]>;
+  equals?: InputMaybe<Scalars['DateTime']>;
+  gt?: InputMaybe<Scalars['DateTime']>;
+  gte?: InputMaybe<Scalars['DateTime']>;
+  in?: InputMaybe<Array<Scalars['DateTime']>>;
+  lt?: InputMaybe<Scalars['DateTime']>;
+  lte?: InputMaybe<Scalars['DateTime']>;
   not?: InputMaybe<NestedDateTimeNullableFilter>;
-  notIn?: InputMaybe<Array<Scalars["DateTime"]>>;
+  notIn?: InputMaybe<Array<Scalars['DateTime']>>;
 };
 
 export type EnumRoleFieldUpdateOperationsInput = {
@@ -351,64 +346,65 @@ export type Enumticket_StatusFilter = {
 };
 
 export type FloatFieldUpdateOperationsInput = {
-  decrement?: InputMaybe<Scalars["Float"]>;
-  divide?: InputMaybe<Scalars["Float"]>;
-  increment?: InputMaybe<Scalars["Float"]>;
-  multiply?: InputMaybe<Scalars["Float"]>;
-  set?: InputMaybe<Scalars["Float"]>;
+  decrement?: InputMaybe<Scalars['Float']>;
+  divide?: InputMaybe<Scalars['Float']>;
+  increment?: InputMaybe<Scalars['Float']>;
+  multiply?: InputMaybe<Scalars['Float']>;
+  set?: InputMaybe<Scalars['Float']>;
 };
 
 export type FloatFilter = {
-  equals?: InputMaybe<Scalars["Float"]>;
-  gt?: InputMaybe<Scalars["Float"]>;
-  gte?: InputMaybe<Scalars["Float"]>;
-  in?: InputMaybe<Array<Scalars["Float"]>>;
-  lt?: InputMaybe<Scalars["Float"]>;
-  lte?: InputMaybe<Scalars["Float"]>;
+  equals?: InputMaybe<Scalars['Float']>;
+  gt?: InputMaybe<Scalars['Float']>;
+  gte?: InputMaybe<Scalars['Float']>;
+  in?: InputMaybe<Array<Scalars['Float']>>;
+  lt?: InputMaybe<Scalars['Float']>;
+  lte?: InputMaybe<Scalars['Float']>;
   not?: InputMaybe<NestedFloatFilter>;
-  notIn?: InputMaybe<Array<Scalars["Float"]>>;
+  notIn?: InputMaybe<Array<Scalars['Float']>>;
 };
 
 export type IntFieldUpdateOperationsInput = {
-  decrement?: InputMaybe<Scalars["Int"]>;
-  divide?: InputMaybe<Scalars["Int"]>;
-  increment?: InputMaybe<Scalars["Int"]>;
-  multiply?: InputMaybe<Scalars["Int"]>;
-  set?: InputMaybe<Scalars["Int"]>;
+  decrement?: InputMaybe<Scalars['Int']>;
+  divide?: InputMaybe<Scalars['Int']>;
+  increment?: InputMaybe<Scalars['Int']>;
+  multiply?: InputMaybe<Scalars['Int']>;
+  set?: InputMaybe<Scalars['Int']>;
 };
 
 export type IntFilter = {
-  equals?: InputMaybe<Scalars["Int"]>;
-  gt?: InputMaybe<Scalars["Int"]>;
-  gte?: InputMaybe<Scalars["Int"]>;
-  in?: InputMaybe<Array<Scalars["Int"]>>;
-  lt?: InputMaybe<Scalars["Int"]>;
-  lte?: InputMaybe<Scalars["Int"]>;
+  equals?: InputMaybe<Scalars['Int']>;
+  gt?: InputMaybe<Scalars['Int']>;
+  gte?: InputMaybe<Scalars['Int']>;
+  in?: InputMaybe<Array<Scalars['Int']>>;
+  lt?: InputMaybe<Scalars['Int']>;
+  lte?: InputMaybe<Scalars['Int']>;
   not?: InputMaybe<NestedIntFilter>;
-  notIn?: InputMaybe<Array<Scalars["Int"]>>;
+  notIn?: InputMaybe<Array<Scalars['Int']>>;
 };
 
 export type ItemCatagory = {
-  __typename?: "ItemCatagory";
+  __typename?: 'ItemCatagory';
   _count: ItemCatagoryCount;
   countItems: CatagoryCount;
-  created_at: Scalars["DateTime"];
-  id: Scalars["ID"];
+  created_at: Scalars['DateTime'];
+  id: Scalars['ID'];
   items?: Maybe<Array<Items>>;
-  name: Scalars["String"];
-  updated_at: Scalars["DateTime"];
+  name: Scalars['String'];
+  updated_at: Scalars['DateTime'];
 };
 
+
 export type ItemCatagoryItemsArgs = {
-  limit?: InputMaybe<Scalars["Int"]>;
-  offset?: InputMaybe<Scalars["Int"]>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<ItemsOrderByWithAggregationInput>;
   where?: InputMaybe<ItemsWhereInput>;
 };
 
 export type ItemCatagoryAvgAggregate = {
-  __typename?: "ItemCatagoryAvgAggregate";
-  id?: Maybe<Scalars["Float"]>;
+  __typename?: 'ItemCatagoryAvgAggregate';
+  id?: Maybe<Scalars['Float']>;
 };
 
 export type ItemCatagoryAvgOrderByAggregateInput = {
@@ -416,17 +412,17 @@ export type ItemCatagoryAvgOrderByAggregateInput = {
 };
 
 export type ItemCatagoryCount = {
-  __typename?: "ItemCatagoryCount";
-  items: Scalars["Int"];
+  __typename?: 'ItemCatagoryCount';
+  items: Scalars['Int'];
 };
 
 export type ItemCatagoryCountAggregate = {
-  __typename?: "ItemCatagoryCountAggregate";
-  _all: Scalars["Int"];
-  created_at: Scalars["Int"];
-  id: Scalars["Int"];
-  name: Scalars["Int"];
-  updated_at: Scalars["Int"];
+  __typename?: 'ItemCatagoryCountAggregate';
+  _all: Scalars['Int'];
+  created_at: Scalars['Int'];
+  id: Scalars['Int'];
+  name: Scalars['Int'];
+  updated_at: Scalars['Int'];
 };
 
 export type ItemCatagoryCountOrderByAggregateInput = {
@@ -437,19 +433,19 @@ export type ItemCatagoryCountOrderByAggregateInput = {
 };
 
 export type ItemCatagoryCreateInput = {
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  id?: InputMaybe<Scalars["String"]>;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['String']>;
   items?: InputMaybe<ItemsCreateNestedManyWithoutItemCatagoryInput>;
-  name: Scalars["String"];
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  name: Scalars['String'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type ItemCatagoryMaxAggregate = {
-  __typename?: "ItemCatagoryMaxAggregate";
-  created_at?: Maybe<Scalars["DateTime"]>;
-  id?: Maybe<Scalars["String"]>;
-  name?: Maybe<Scalars["String"]>;
-  updated_at?: Maybe<Scalars["DateTime"]>;
+  __typename?: 'ItemCatagoryMaxAggregate';
+  created_at?: Maybe<Scalars['DateTime']>;
+  id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['DateTime']>;
 };
 
 export type ItemCatagoryMaxOrderByAggregateInput = {
@@ -460,11 +456,11 @@ export type ItemCatagoryMaxOrderByAggregateInput = {
 };
 
 export type ItemCatagoryMinAggregate = {
-  __typename?: "ItemCatagoryMinAggregate";
-  created_at?: Maybe<Scalars["DateTime"]>;
-  id?: Maybe<Scalars["String"]>;
-  name?: Maybe<Scalars["String"]>;
-  updated_at?: Maybe<Scalars["DateTime"]>;
+  __typename?: 'ItemCatagoryMinAggregate';
+  created_at?: Maybe<Scalars['DateTime']>;
+  id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['DateTime']>;
 };
 
 export type ItemCatagoryMinOrderByAggregateInput = {
@@ -487,8 +483,8 @@ export type ItemCatagoryOrderByWithAggregationInput = {
 };
 
 export type ItemCatagorySumAggregate = {
-  __typename?: "ItemCatagorySumAggregate";
-  id?: Maybe<Scalars["String"]>;
+  __typename?: 'ItemCatagorySumAggregate';
+  id?: Maybe<Scalars['String']>;
 };
 
 export type ItemCatagorySumOrderByAggregateInput = {
@@ -515,33 +511,34 @@ export type ItemCatagoryWhereInput = {
 };
 
 export type Items = {
-  __typename?: "Items";
+  __typename?: 'Items';
   _count: ItemsCount;
   catagory: Catagory;
-  catagory_id: Scalars["BigInt"];
-  code: Scalars["String"];
-  created_at: Scalars["DateTime"];
-  id: Scalars["BigInt"];
-  name: Scalars["String"];
-  quantity: Scalars["Int"];
+  catagory_id: Scalars['BigInt'];
+  code: Scalars['String'];
+  created_at: Scalars['DateTime'];
+  id: Scalars['BigInt'];
+  name: Scalars['String'];
+  quantity: Scalars['Int'];
   replacements?: Maybe<Array<Replacements>>;
-  unit_price: Scalars["Float"];
-  updated_at: Scalars["DateTime"];
+  unit_price: Scalars['Float'];
+  updated_at: Scalars['DateTime'];
 };
 
+
 export type ItemsReplacementsArgs = {
-  limit?: InputMaybe<Scalars["Int"]>;
-  offset?: InputMaybe<Scalars["Int"]>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<ReplacementsOrderByWithRelationInput>;
   where?: InputMaybe<ReplacementsWhereInput>;
 };
 
 export type ItemsAvgAggregate = {
-  __typename?: "ItemsAvgAggregate";
-  catagory_id?: Maybe<Scalars["Float"]>;
-  id?: Maybe<Scalars["Float"]>;
-  quantity?: Maybe<Scalars["Float"]>;
-  unit_price?: Maybe<Scalars["Float"]>;
+  __typename?: 'ItemsAvgAggregate';
+  catagory_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  unit_price?: Maybe<Scalars['Float']>;
 };
 
 export type ItemsAvgOrderByAggregateInput = {
@@ -552,21 +549,21 @@ export type ItemsAvgOrderByAggregateInput = {
 };
 
 export type ItemsCount = {
-  __typename?: "ItemsCount";
-  replacements: Scalars["Int"];
+  __typename?: 'ItemsCount';
+  replacements: Scalars['Int'];
 };
 
 export type ItemsCountAggregate = {
-  __typename?: "ItemsCountAggregate";
-  _all: Scalars["Int"];
-  catagory_id: Scalars["Int"];
-  code: Scalars["Int"];
-  created_at: Scalars["Int"];
-  id: Scalars["Int"];
-  name: Scalars["Int"];
-  quantity: Scalars["Int"];
-  unit_price: Scalars["Int"];
-  updated_at: Scalars["Int"];
+  __typename?: 'ItemsCountAggregate';
+  _all: Scalars['Int'];
+  catagory_id: Scalars['Int'];
+  code: Scalars['Int'];
+  created_at: Scalars['Int'];
+  id: Scalars['Int'];
+  name: Scalars['Int'];
+  quantity: Scalars['Int'];
+  unit_price: Scalars['Int'];
+  updated_at: Scalars['Int'];
 };
 
 export type ItemsCountOrderByAggregateInput = {
@@ -582,36 +579,34 @@ export type ItemsCountOrderByAggregateInput = {
 
 export type ItemsCreateInput = {
   catagory: CatagoryCreateNestedOneWithoutItemsInput;
-  code: Scalars["String"];
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  id?: InputMaybe<Scalars["BigInt"]>;
-  name: Scalars["String"];
-  quantity: Scalars["Int"];
+  code: Scalars['String'];
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['BigInt']>;
+  name: Scalars['String'];
+  quantity: Scalars['Int'];
   replacements?: InputMaybe<ReplacementsCreateNestedManyWithoutItemsInput>;
-  unit_price: Scalars["Float"];
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  unit_price: Scalars['Float'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type ItemsCreateManyItemCatagoryInput = {
-  code: Scalars["String"];
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  id?: InputMaybe<Scalars["String"]>;
-  name: Scalars["String"];
-  quantity: Scalars["Int"];
-  unit_price: Scalars["Float"];
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  code: Scalars['String'];
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  name: Scalars['String'];
+  quantity: Scalars['Int'];
+  unit_price: Scalars['Float'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type ItemsCreateManyItemCatagoryInputEnvelope = {
   data: Array<ItemsCreateManyItemCatagoryInput>;
-  skipDuplicates?: InputMaybe<Scalars["Boolean"]>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']>;
 };
 
 export type ItemsCreateNestedManyWithoutItemCatagoryInput = {
   connect?: InputMaybe<Array<ItemsWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<
-    Array<ItemsCreateOrConnectWithoutItemCatagoryInput>
-  >;
+  connectOrCreate?: InputMaybe<Array<ItemsCreateOrConnectWithoutItemCatagoryInput>>;
   create?: InputMaybe<Array<ItemsCreateWithoutItemCatagoryInput>>;
   createMany?: InputMaybe<ItemsCreateManyItemCatagoryInputEnvelope>;
 };
@@ -633,25 +628,25 @@ export type ItemsCreateOrConnectWithoutReplacementsInput = {
 };
 
 export type ItemsCreateWithoutItemCatagoryInput = {
-  code: Scalars["String"];
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  id?: InputMaybe<Scalars["String"]>;
-  name: Scalars["String"];
-  quantity: Scalars["Int"];
+  code: Scalars['String'];
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  name: Scalars['String'];
+  quantity: Scalars['Int'];
   replacements_scheduled?: InputMaybe<ReplacementsCreateNestedManyWithoutItemsInput>;
-  unit_price: Scalars["Float"];
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  unit_price: Scalars['Float'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type ItemsCreateWithoutReplacementsInput = {
   catagory: CatagoryCreateNestedOneWithoutItemsInput;
-  code: Scalars["String"];
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  id?: InputMaybe<Scalars["BigInt"]>;
-  name: Scalars["String"];
-  quantity: Scalars["Int"];
-  unit_price: Scalars["Float"];
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  code: Scalars['String'];
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['BigInt']>;
+  name: Scalars['String'];
+  quantity: Scalars['Int'];
+  unit_price: Scalars['Float'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type ItemsListRelationFilter = {
@@ -661,15 +656,15 @@ export type ItemsListRelationFilter = {
 };
 
 export type ItemsMaxAggregate = {
-  __typename?: "ItemsMaxAggregate";
-  catagory_id?: Maybe<Scalars["BigInt"]>;
-  code?: Maybe<Scalars["String"]>;
-  created_at?: Maybe<Scalars["DateTime"]>;
-  id?: Maybe<Scalars["BigInt"]>;
-  name?: Maybe<Scalars["String"]>;
-  quantity?: Maybe<Scalars["Int"]>;
-  unit_price?: Maybe<Scalars["Float"]>;
-  updated_at?: Maybe<Scalars["DateTime"]>;
+  __typename?: 'ItemsMaxAggregate';
+  catagory_id?: Maybe<Scalars['BigInt']>;
+  code?: Maybe<Scalars['String']>;
+  created_at?: Maybe<Scalars['DateTime']>;
+  id?: Maybe<Scalars['BigInt']>;
+  name?: Maybe<Scalars['String']>;
+  quantity?: Maybe<Scalars['Int']>;
+  unit_price?: Maybe<Scalars['Float']>;
+  updated_at?: Maybe<Scalars['DateTime']>;
 };
 
 export type ItemsMaxOrderByAggregateInput = {
@@ -684,15 +679,15 @@ export type ItemsMaxOrderByAggregateInput = {
 };
 
 export type ItemsMinAggregate = {
-  __typename?: "ItemsMinAggregate";
-  catagory_id?: Maybe<Scalars["BigInt"]>;
-  code?: Maybe<Scalars["String"]>;
-  created_at?: Maybe<Scalars["DateTime"]>;
-  id?: Maybe<Scalars["BigInt"]>;
-  name?: Maybe<Scalars["String"]>;
-  quantity?: Maybe<Scalars["Int"]>;
-  unit_price?: Maybe<Scalars["Float"]>;
-  updated_at?: Maybe<Scalars["DateTime"]>;
+  __typename?: 'ItemsMinAggregate';
+  catagory_id?: Maybe<Scalars['BigInt']>;
+  code?: Maybe<Scalars['String']>;
+  created_at?: Maybe<Scalars['DateTime']>;
+  id?: Maybe<Scalars['BigInt']>;
+  name?: Maybe<Scalars['String']>;
+  quantity?: Maybe<Scalars['Int']>;
+  unit_price?: Maybe<Scalars['Float']>;
+  updated_at?: Maybe<Scalars['DateTime']>;
 };
 
 export type ItemsMinOrderByAggregateInput = {
@@ -759,11 +754,11 @@ export type ItemsScalarWhereInput = {
 };
 
 export type ItemsSumAggregate = {
-  __typename?: "ItemsSumAggregate";
-  catagory_id?: Maybe<Scalars["BigInt"]>;
-  id?: Maybe<Scalars["BigInt"]>;
-  quantity?: Maybe<Scalars["Int"]>;
-  unit_price?: Maybe<Scalars["Float"]>;
+  __typename?: 'ItemsSumAggregate';
+  catagory_id?: Maybe<Scalars['BigInt']>;
+  id?: Maybe<Scalars['BigInt']>;
+  quantity?: Maybe<Scalars['Int']>;
+  unit_price?: Maybe<Scalars['Float']>;
 };
 
 export type ItemsSumOrderByAggregateInput = {
@@ -802,24 +797,16 @@ export type ItemsUpdateManyWithWhereWithoutItemCatagoryInput = {
 
 export type ItemsUpdateManyWithoutItemCatagoryNestedInput = {
   connect?: InputMaybe<Array<ItemsWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<
-    Array<ItemsCreateOrConnectWithoutItemCatagoryInput>
-  >;
+  connectOrCreate?: InputMaybe<Array<ItemsCreateOrConnectWithoutItemCatagoryInput>>;
   create?: InputMaybe<Array<ItemsCreateWithoutItemCatagoryInput>>;
   createMany?: InputMaybe<ItemsCreateManyItemCatagoryInputEnvelope>;
   delete?: InputMaybe<Array<ItemsWhereUniqueInput>>;
   deleteMany?: InputMaybe<Array<ItemsScalarWhereInput>>;
   disconnect?: InputMaybe<Array<ItemsWhereUniqueInput>>;
   set?: InputMaybe<Array<ItemsWhereUniqueInput>>;
-  update?: InputMaybe<
-    Array<ItemsUpdateWithWhereUniqueWithoutItemCatagoryInput>
-  >;
-  updateMany?: InputMaybe<
-    Array<ItemsUpdateManyWithWhereWithoutItemCatagoryInput>
-  >;
-  upsert?: InputMaybe<
-    Array<ItemsUpsertWithWhereUniqueWithoutItemCatagoryInput>
-  >;
+  update?: InputMaybe<Array<ItemsUpdateWithWhereUniqueWithoutItemCatagoryInput>>;
+  updateMany?: InputMaybe<Array<ItemsUpdateManyWithWhereWithoutItemCatagoryInput>>;
+  upsert?: InputMaybe<Array<ItemsUpsertWithWhereUniqueWithoutItemCatagoryInput>>;
 };
 
 export type ItemsUpdateOneRequiredWithoutReplacementsNestedInput = {
@@ -885,83 +872,136 @@ export type ItemsWhereInput = {
 };
 
 export type ItemsWhereUniqueInput = {
-  id?: InputMaybe<Scalars["BigInt"]>;
+  id?: InputMaybe<Scalars['BigInt']>;
 };
 
 export type JsonFilter = {
-  array_contains?: InputMaybe<Scalars["JSON"]>;
-  array_ends_with?: InputMaybe<Scalars["JSON"]>;
-  array_starts_with?: InputMaybe<Scalars["JSON"]>;
-  equals?: InputMaybe<Scalars["JSON"]>;
-  gt?: InputMaybe<Scalars["JSON"]>;
-  gte?: InputMaybe<Scalars["JSON"]>;
-  lt?: InputMaybe<Scalars["JSON"]>;
-  lte?: InputMaybe<Scalars["JSON"]>;
-  not?: InputMaybe<Scalars["JSON"]>;
-  path?: InputMaybe<Array<Scalars["String"]>>;
-  string_contains?: InputMaybe<Scalars["String"]>;
-  string_ends_with?: InputMaybe<Scalars["String"]>;
-  string_starts_with?: InputMaybe<Scalars["String"]>;
+  array_contains?: InputMaybe<Scalars['JSON']>;
+  array_ends_with?: InputMaybe<Scalars['JSON']>;
+  array_starts_with?: InputMaybe<Scalars['JSON']>;
+  equals?: InputMaybe<Scalars['JSON']>;
+  gt?: InputMaybe<Scalars['JSON']>;
+  gte?: InputMaybe<Scalars['JSON']>;
+  lt?: InputMaybe<Scalars['JSON']>;
+  lte?: InputMaybe<Scalars['JSON']>;
+  not?: InputMaybe<Scalars['JSON']>;
+  path?: InputMaybe<Array<Scalars['String']>>;
+  string_contains?: InputMaybe<Scalars['String']>;
+  string_ends_with?: InputMaybe<Scalars['String']>;
+  string_starts_with?: InputMaybe<Scalars['String']>;
+};
+
+export type Machine_CatagoryAvgAggregate = {
+  __typename?: 'Machine_catagoryAvgAggregate';
+  id?: Maybe<Scalars['Float']>;
+};
+
+export type Machine_CatagoryCount = {
+  __typename?: 'Machine_catagoryCount';
+  machines: Scalars['Int'];
+};
+
+export type Machine_CatagoryCountAggregate = {
+  __typename?: 'Machine_catagoryCountAggregate';
+  _all: Scalars['Int'];
+  created_at: Scalars['Int'];
+  id: Scalars['Int'];
+  name: Scalars['Int'];
+  updated_at: Scalars['Int'];
+};
+
+export type Machine_CatagoryMaxAggregate = {
+  __typename?: 'Machine_catagoryMaxAggregate';
+  created_at?: Maybe<Scalars['DateTime']>;
+  id?: Maybe<Scalars['BigInt']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['DateTime']>;
+};
+
+export type Machine_CatagoryMinAggregate = {
+  __typename?: 'Machine_catagoryMinAggregate';
+  created_at?: Maybe<Scalars['DateTime']>;
+  id?: Maybe<Scalars['BigInt']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['DateTime']>;
+};
+
+export type Machine_CatagoryRelationFilter = {
+  is?: InputMaybe<Machine_CatagoryWhereInput>;
+  isNot?: InputMaybe<Machine_CatagoryWhereInput>;
+};
+
+export type Machine_CatagorySumAggregate = {
+  __typename?: 'Machine_catagorySumAggregate';
+  id?: Maybe<Scalars['BigInt']>;
 };
 
 export type Machines = {
-  __typename?: "Machines";
+  __typename?: 'Machines';
   Ticket?: Maybe<Array<Ticket>>;
   _count: MachinesCount;
   block: Block;
-  block_id: Scalars["BigInt"];
-  created_at: Scalars["DateTime"];
-  id: Scalars["BigInt"];
-  label: Scalars["String"];
+  block_id: Scalars['BigInt'];
+  created_at: Scalars['DateTime'];
+  id: Scalars['BigInt'];
+  label: Scalars['String'];
+  machine_catagory: Machine_Catagory;
+  machine_catagory_id: Scalars['BigInt'];
   maintenance?: Maybe<Array<Maintenance>>;
-  name: Scalars["String"];
-  priority: Scalars["Int"];
-  profile: Scalars["JSON"];
+  name: Scalars['String'];
+  priority: Scalars['Int'];
+  profile: Scalars['JSON'];
+  routine_maintanances?: Maybe<Array<Routine_Maintanances>>;
   section: Sections;
-  section_id: Scalars["BigInt"];
-  updated_at: Scalars["DateTime"];
+  section_id: Scalars['BigInt'];
+  updated_at: Scalars['DateTime'];
 };
 
+
 export type MachinesMaintenanceArgs = {
-  limit?: InputMaybe<Scalars["Int"]>;
-  offset?: InputMaybe<Scalars["Int"]>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<MaintenanceOrderByWithRelationInput>;
   where?: InputMaybe<MaintenanceWhereInput>;
 };
 
 export type MachinesAvgAggregate = {
-  __typename?: "MachinesAvgAggregate";
-  block_id?: Maybe<Scalars["Float"]>;
-  id?: Maybe<Scalars["Float"]>;
-  priority?: Maybe<Scalars["Float"]>;
-  section_id?: Maybe<Scalars["Float"]>;
+  __typename?: 'MachinesAvgAggregate';
+  block_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  machine_catagory_id?: Maybe<Scalars['Float']>;
+  priority?: Maybe<Scalars['Float']>;
+  section_id?: Maybe<Scalars['Float']>;
 };
 
 export type MachinesAvgOrderByAggregateInput = {
   block_id?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
+  machine_catagory_id?: InputMaybe<SortOrder>;
   priority?: InputMaybe<SortOrder>;
   section_id?: InputMaybe<SortOrder>;
 };
 
 export type MachinesCount = {
-  __typename?: "MachinesCount";
-  Ticket: Scalars["Int"];
-  maintenance: Scalars["Int"];
+  __typename?: 'MachinesCount';
+  Ticket: Scalars['Int'];
+  maintenance: Scalars['Int'];
+  routine_maintanances: Scalars['Int'];
 };
 
 export type MachinesCountAggregate = {
-  __typename?: "MachinesCountAggregate";
-  _all: Scalars["Int"];
-  block_id: Scalars["Int"];
-  created_at: Scalars["Int"];
-  id: Scalars["Int"];
-  label: Scalars["Int"];
-  name: Scalars["Int"];
-  priority: Scalars["Int"];
-  profile: Scalars["Int"];
-  section_id: Scalars["Int"];
-  updated_at: Scalars["Int"];
+  __typename?: 'MachinesCountAggregate';
+  _all: Scalars['Int'];
+  block_id: Scalars['Int'];
+  created_at: Scalars['Int'];
+  id: Scalars['Int'];
+  label: Scalars['Int'];
+  machine_catagory_id: Scalars['Int'];
+  name: Scalars['Int'];
+  priority: Scalars['Int'];
+  profile: Scalars['Int'];
+  section_id: Scalars['Int'];
+  updated_at: Scalars['Int'];
 };
 
 export type MachinesCountOrderByAggregateInput = {
@@ -969,6 +1009,7 @@ export type MachinesCountOrderByAggregateInput = {
   created_at?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   label?: InputMaybe<SortOrder>;
+  machine_catagory_id?: InputMaybe<SortOrder>;
   name?: InputMaybe<SortOrder>;
   priority?: InputMaybe<SortOrder>;
   profile?: InputMaybe<SortOrder>;
@@ -979,47 +1020,34 @@ export type MachinesCountOrderByAggregateInput = {
 export type MachinesCreateInput = {
   Ticket?: InputMaybe<TicketCreateNestedManyWithoutMachinesInput>;
   block: BlockCreateNestedOneWithoutMachinesInput;
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  id?: InputMaybe<Scalars["BigInt"]>;
-  label: Scalars["String"];
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['BigInt']>;
+  label: Scalars['String'];
+  machine_catagory: Machine_CatagoryCreateNestedOneWithoutMachinesInput;
   maintenance?: InputMaybe<MaintenanceCreateNestedManyWithoutMachinesInput>;
-  name: Scalars["String"];
-  priority: Scalars["Int"];
-  profile?: InputMaybe<Scalars["JSON"]>;
+  name: Scalars['String'];
+  priority: Scalars['Int'];
+  profile?: InputMaybe<Scalars['JSON']>;
+  routine_maintanances?: InputMaybe<Routine_MaintanancesCreateNestedManyWithoutMeachineInput>;
   section: SectionsCreateNestedOneWithoutMachinesInput;
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type MachinesCreateManyBlockInput = {
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  id?: InputMaybe<Scalars["BigInt"]>;
-  label: Scalars["String"];
-  name: Scalars["String"];
-  priority: Scalars["Int"];
-  profile?: InputMaybe<Scalars["JSON"]>;
-  section_id: Scalars["BigInt"];
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['BigInt']>;
+  label: Scalars['String'];
+  machine_catagory_id: Scalars['BigInt'];
+  name: Scalars['String'];
+  priority: Scalars['Int'];
+  profile?: InputMaybe<Scalars['JSON']>;
+  section_id: Scalars['BigInt'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type MachinesCreateManyBlockInputEnvelope = {
   data: Array<MachinesCreateManyBlockInput>;
-  skipDuplicates?: InputMaybe<Scalars["Boolean"]>;
-};
-
-export type MachinesCreateManySection_Machines_SectionTosectionInput = {
-  block_id: Scalars["BigInt"];
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  id?: InputMaybe<Scalars["BigInt"]>;
-  label: Scalars["String"];
-  name: Scalars["String"];
-  priority: Scalars["Int"];
-  profile?: InputMaybe<Scalars["JSON"]>;
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
-};
-
-export type MachinesCreateManySection_Machines_SectionTosectionInputEnvelope = {
-  data: Array<MachinesCreateManySection_Machines_SectionTosectionInput>;
-  skipDuplicates?: InputMaybe<Scalars["Boolean"]>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']>;
 };
 
 export type MachinesCreateNestedManyWithoutBlockInput = {
@@ -1029,22 +1057,16 @@ export type MachinesCreateNestedManyWithoutBlockInput = {
   createMany?: InputMaybe<MachinesCreateManyBlockInputEnvelope>;
 };
 
-export type MachinesCreateNestedManyWithoutSection_Machines_SectionTosectionInput =
-  {
-    connect?: InputMaybe<Array<MachinesWhereUniqueInput>>;
-    connectOrCreate?: InputMaybe<
-      Array<MachinesCreateOrConnectWithoutSection_Machines_SectionTosectionInput>
-    >;
-    create?: InputMaybe<
-      Array<MachinesCreateWithoutSection_Machines_SectionTosectionInput>
-    >;
-    createMany?: InputMaybe<MachinesCreateManySection_Machines_SectionTosectionInputEnvelope>;
-  };
-
 export type MachinesCreateNestedOneWithoutMaintenanceInput = {
   connect?: InputMaybe<MachinesWhereUniqueInput>;
   connectOrCreate?: InputMaybe<MachinesCreateOrConnectWithoutMaintenanceInput>;
   create?: InputMaybe<MachinesCreateWithoutMaintenanceInput>;
+};
+
+export type MachinesCreateNestedOneWithoutRoutine_MaintanancesInput = {
+  connect?: InputMaybe<MachinesWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<MachinesCreateOrConnectWithoutRoutine_MaintanancesInput>;
+  create?: InputMaybe<MachinesCreateWithoutRoutine_MaintanancesInput>;
 };
 
 export type MachinesCreateNestedOneWithoutTicketInput = {
@@ -1063,11 +1085,10 @@ export type MachinesCreateOrConnectWithoutMaintenanceInput = {
   where: MachinesWhereUniqueInput;
 };
 
-export type MachinesCreateOrConnectWithoutSection_Machines_SectionTosectionInput =
-  {
-    create: MachinesCreateWithoutSection_Machines_SectionTosectionInput;
-    where: MachinesWhereUniqueInput;
-  };
+export type MachinesCreateOrConnectWithoutRoutine_MaintanancesInput = {
+  create: MachinesCreateWithoutRoutine_MaintanancesInput;
+  where: MachinesWhereUniqueInput;
+};
 
 export type MachinesCreateOrConnectWithoutTicketInput = {
   create: MachinesCreateWithoutTicketInput;
@@ -1076,53 +1097,62 @@ export type MachinesCreateOrConnectWithoutTicketInput = {
 
 export type MachinesCreateWithoutBlockInput = {
   Ticket?: InputMaybe<TicketCreateNestedManyWithoutMachinesInput>;
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  id?: InputMaybe<Scalars["BigInt"]>;
-  label: Scalars["String"];
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['BigInt']>;
+  label: Scalars['String'];
+  machine_catagory: Machine_CatagoryCreateNestedOneWithoutMachinesInput;
   maintenance?: InputMaybe<MaintenanceCreateNestedManyWithoutMachinesInput>;
-  name: Scalars["String"];
-  priority: Scalars["Int"];
-  profile?: InputMaybe<Scalars["JSON"]>;
+  name: Scalars['String'];
+  priority: Scalars['Int'];
+  profile?: InputMaybe<Scalars['JSON']>;
+  routine_maintanances?: InputMaybe<Routine_MaintanancesCreateNestedManyWithoutMeachineInput>;
   section: SectionsCreateNestedOneWithoutMachinesInput;
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type MachinesCreateWithoutMaintenanceInput = {
   Ticket?: InputMaybe<TicketCreateNestedManyWithoutMachinesInput>;
   block: BlockCreateNestedOneWithoutMachinesInput;
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  id?: InputMaybe<Scalars["BigInt"]>;
-  label: Scalars["String"];
-  name: Scalars["String"];
-  priority: Scalars["Int"];
-  profile?: InputMaybe<Scalars["JSON"]>;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['BigInt']>;
+  label: Scalars['String'];
+  machine_catagory: Machine_CatagoryCreateNestedOneWithoutMachinesInput;
+  name: Scalars['String'];
+  priority: Scalars['Int'];
+  profile?: InputMaybe<Scalars['JSON']>;
+  routine_maintanances?: InputMaybe<Routine_MaintanancesCreateNestedManyWithoutMeachineInput>;
   section: SectionsCreateNestedOneWithoutMachinesInput;
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
-export type MachinesCreateWithoutSection_Machines_SectionTosectionInput = {
+export type MachinesCreateWithoutRoutine_MaintanancesInput = {
+  Ticket?: InputMaybe<TicketCreateNestedManyWithoutMachinesInput>;
   block: BlockCreateNestedOneWithoutMachinesInput;
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  id?: InputMaybe<Scalars["BigInt"]>;
-  label: Scalars["String"];
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['BigInt']>;
+  label: Scalars['String'];
+  machine_catagory: Machine_CatagoryCreateNestedOneWithoutMachinesInput;
   maintenance?: InputMaybe<MaintenanceCreateNestedManyWithoutMachinesInput>;
-  name: Scalars["String"];
-  priority: Scalars["Int"];
-  profile?: InputMaybe<Scalars["JSON"]>;
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  name: Scalars['String'];
+  priority: Scalars['Int'];
+  profile?: InputMaybe<Scalars['JSON']>;
+  section: SectionsCreateNestedOneWithoutMachinesInput;
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type MachinesCreateWithoutTicketInput = {
   block: BlockCreateNestedOneWithoutMachinesInput;
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  id?: InputMaybe<Scalars["BigInt"]>;
-  label: Scalars["String"];
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['BigInt']>;
+  label: Scalars['String'];
+  machine_catagory: Machine_CatagoryCreateNestedOneWithoutMachinesInput;
   maintenance?: InputMaybe<MaintenanceCreateNestedManyWithoutMachinesInput>;
-  name: Scalars["String"];
-  priority: Scalars["Int"];
-  profile?: InputMaybe<Scalars["JSON"]>;
+  name: Scalars['String'];
+  priority: Scalars['Int'];
+  profile?: InputMaybe<Scalars['JSON']>;
+  routine_maintanances?: InputMaybe<Routine_MaintanancesCreateNestedManyWithoutMeachineInput>;
   section: SectionsCreateNestedOneWithoutMachinesInput;
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type MachinesListRelationFilter = {
@@ -1132,15 +1162,16 @@ export type MachinesListRelationFilter = {
 };
 
 export type MachinesMaxAggregate = {
-  __typename?: "MachinesMaxAggregate";
-  block_id?: Maybe<Scalars["BigInt"]>;
-  created_at?: Maybe<Scalars["DateTime"]>;
-  id?: Maybe<Scalars["BigInt"]>;
-  label?: Maybe<Scalars["String"]>;
-  name?: Maybe<Scalars["String"]>;
-  priority?: Maybe<Scalars["Int"]>;
-  section_id?: Maybe<Scalars["BigInt"]>;
-  updated_at?: Maybe<Scalars["DateTime"]>;
+  __typename?: 'MachinesMaxAggregate';
+  block_id?: Maybe<Scalars['BigInt']>;
+  created_at?: Maybe<Scalars['DateTime']>;
+  id?: Maybe<Scalars['BigInt']>;
+  label?: Maybe<Scalars['String']>;
+  machine_catagory_id?: Maybe<Scalars['BigInt']>;
+  name?: Maybe<Scalars['String']>;
+  priority?: Maybe<Scalars['Int']>;
+  section_id?: Maybe<Scalars['BigInt']>;
+  updated_at?: Maybe<Scalars['DateTime']>;
 };
 
 export type MachinesMaxOrderByAggregateInput = {
@@ -1148,6 +1179,7 @@ export type MachinesMaxOrderByAggregateInput = {
   created_at?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   label?: InputMaybe<SortOrder>;
+  machine_catagory_id?: InputMaybe<SortOrder>;
   name?: InputMaybe<SortOrder>;
   priority?: InputMaybe<SortOrder>;
   section_id?: InputMaybe<SortOrder>;
@@ -1155,15 +1187,16 @@ export type MachinesMaxOrderByAggregateInput = {
 };
 
 export type MachinesMinAggregate = {
-  __typename?: "MachinesMinAggregate";
-  block_id?: Maybe<Scalars["BigInt"]>;
-  created_at?: Maybe<Scalars["DateTime"]>;
-  id?: Maybe<Scalars["BigInt"]>;
-  label?: Maybe<Scalars["String"]>;
-  name?: Maybe<Scalars["String"]>;
-  priority?: Maybe<Scalars["Int"]>;
-  section_id?: Maybe<Scalars["BigInt"]>;
-  updated_at?: Maybe<Scalars["DateTime"]>;
+  __typename?: 'MachinesMinAggregate';
+  block_id?: Maybe<Scalars['BigInt']>;
+  created_at?: Maybe<Scalars['DateTime']>;
+  id?: Maybe<Scalars['BigInt']>;
+  label?: Maybe<Scalars['String']>;
+  machine_catagory_id?: Maybe<Scalars['BigInt']>;
+  name?: Maybe<Scalars['String']>;
+  priority?: Maybe<Scalars['Int']>;
+  section_id?: Maybe<Scalars['BigInt']>;
+  updated_at?: Maybe<Scalars['DateTime']>;
 };
 
 export type MachinesMinOrderByAggregateInput = {
@@ -1171,6 +1204,7 @@ export type MachinesMinOrderByAggregateInput = {
   created_at?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   label?: InputMaybe<SortOrder>;
+  machine_catagory_id?: InputMaybe<SortOrder>;
   name?: InputMaybe<SortOrder>;
   priority?: InputMaybe<SortOrder>;
   section_id?: InputMaybe<SortOrder>;
@@ -1191,6 +1225,7 @@ export type MachinesOrderByWithAggregationInput = {
   created_at?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   label?: InputMaybe<SortOrder>;
+  machine_catagory_id?: InputMaybe<SortOrder>;
   name?: InputMaybe<SortOrder>;
   priority?: InputMaybe<SortOrder>;
   profile?: InputMaybe<SortOrder>;
@@ -1227,6 +1262,7 @@ export type MachinesScalarWhereInput = {
   created_at?: InputMaybe<DateTimeFilter>;
   id?: InputMaybe<BigIntFilter>;
   label?: InputMaybe<StringFilter>;
+  machine_catagory_id?: InputMaybe<BigIntFilter>;
   name?: InputMaybe<StringFilter>;
   priority?: InputMaybe<IntFilter>;
   profile?: InputMaybe<JsonFilter>;
@@ -1235,16 +1271,18 @@ export type MachinesScalarWhereInput = {
 };
 
 export type MachinesSumAggregate = {
-  __typename?: "MachinesSumAggregate";
-  block_id?: Maybe<Scalars["BigInt"]>;
-  id?: Maybe<Scalars["BigInt"]>;
-  priority?: Maybe<Scalars["Int"]>;
-  section_id?: Maybe<Scalars["BigInt"]>;
+  __typename?: 'MachinesSumAggregate';
+  block_id?: Maybe<Scalars['BigInt']>;
+  id?: Maybe<Scalars['BigInt']>;
+  machine_catagory_id?: Maybe<Scalars['BigInt']>;
+  priority?: Maybe<Scalars['Int']>;
+  section_id?: Maybe<Scalars['BigInt']>;
 };
 
 export type MachinesSumOrderByAggregateInput = {
   block_id?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
+  machine_catagory_id?: InputMaybe<SortOrder>;
   priority?: InputMaybe<SortOrder>;
   section_id?: InputMaybe<SortOrder>;
 };
@@ -1255,10 +1293,12 @@ export type MachinesUpdateInput = {
   created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
   label?: InputMaybe<StringFieldUpdateOperationsInput>;
+  machine_catagory?: InputMaybe<Machine_CatagoryUpdateOneRequiredWithoutMachinesNestedInput>;
   maintenance?: InputMaybe<MaintenanceUpdateManyWithoutMachinesNestedInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
   priority?: InputMaybe<IntFieldUpdateOperationsInput>;
-  profile?: InputMaybe<Scalars["JSON"]>;
+  profile?: InputMaybe<Scalars['JSON']>;
+  routine_maintanances?: InputMaybe<Routine_MaintanancesUpdateManyWithoutMeachineNestedInput>;
   section?: InputMaybe<SectionsUpdateOneRequiredWithoutMachinesNestedInput>;
   updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
@@ -1269,7 +1309,7 @@ export type MachinesUpdateManyMutationInput = {
   label?: InputMaybe<StringFieldUpdateOperationsInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
   priority?: InputMaybe<IntFieldUpdateOperationsInput>;
-  profile?: InputMaybe<Scalars["JSON"]>;
+  profile?: InputMaybe<Scalars['JSON']>;
   updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
@@ -1277,12 +1317,6 @@ export type MachinesUpdateManyWithWhereWithoutBlockInput = {
   data: MachinesUpdateManyMutationInput;
   where: MachinesScalarWhereInput;
 };
-
-export type MachinesUpdateManyWithWhereWithoutSection_Machines_SectionTosectionInput =
-  {
-    data: MachinesUpdateManyMutationInput;
-    where: MachinesScalarWhereInput;
-  };
 
 export type MachinesUpdateManyWithoutBlockNestedInput = {
   connect?: InputMaybe<Array<MachinesWhereUniqueInput>>;
@@ -1298,37 +1332,20 @@ export type MachinesUpdateManyWithoutBlockNestedInput = {
   upsert?: InputMaybe<Array<MachinesUpsertWithWhereUniqueWithoutBlockInput>>;
 };
 
-export type MachinesUpdateManyWithoutSection_Machines_SectionTosectionNestedInput =
-  {
-    connect?: InputMaybe<Array<MachinesWhereUniqueInput>>;
-    connectOrCreate?: InputMaybe<
-      Array<MachinesCreateOrConnectWithoutSection_Machines_SectionTosectionInput>
-    >;
-    create?: InputMaybe<
-      Array<MachinesCreateWithoutSection_Machines_SectionTosectionInput>
-    >;
-    createMany?: InputMaybe<MachinesCreateManySection_Machines_SectionTosectionInputEnvelope>;
-    delete?: InputMaybe<Array<MachinesWhereUniqueInput>>;
-    deleteMany?: InputMaybe<Array<MachinesScalarWhereInput>>;
-    disconnect?: InputMaybe<Array<MachinesWhereUniqueInput>>;
-    set?: InputMaybe<Array<MachinesWhereUniqueInput>>;
-    update?: InputMaybe<
-      Array<MachinesUpdateWithWhereUniqueWithoutSection_Machines_SectionTosectionInput>
-    >;
-    updateMany?: InputMaybe<
-      Array<MachinesUpdateManyWithWhereWithoutSection_Machines_SectionTosectionInput>
-    >;
-    upsert?: InputMaybe<
-      Array<MachinesUpsertWithWhereUniqueWithoutSection_Machines_SectionTosectionInput>
-    >;
-  };
-
 export type MachinesUpdateOneRequiredWithoutMaintenanceNestedInput = {
   connect?: InputMaybe<MachinesWhereUniqueInput>;
   connectOrCreate?: InputMaybe<MachinesCreateOrConnectWithoutMaintenanceInput>;
   create?: InputMaybe<MachinesCreateWithoutMaintenanceInput>;
   update?: InputMaybe<MachinesUpdateWithoutMaintenanceInput>;
   upsert?: InputMaybe<MachinesUpsertWithoutMaintenanceInput>;
+};
+
+export type MachinesUpdateOneRequiredWithoutRoutine_MaintanancesNestedInput = {
+  connect?: InputMaybe<MachinesWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<MachinesCreateOrConnectWithoutRoutine_MaintanancesInput>;
+  create?: InputMaybe<MachinesCreateWithoutRoutine_MaintanancesInput>;
+  update?: InputMaybe<MachinesUpdateWithoutRoutine_MaintanancesInput>;
+  upsert?: InputMaybe<MachinesUpsertWithoutRoutine_MaintanancesInput>;
 };
 
 export type MachinesUpdateOneRequiredWithoutTicketNestedInput = {
@@ -1344,21 +1361,17 @@ export type MachinesUpdateWithWhereUniqueWithoutBlockInput = {
   where: MachinesWhereUniqueInput;
 };
 
-export type MachinesUpdateWithWhereUniqueWithoutSection_Machines_SectionTosectionInput =
-  {
-    data: MachinesUpdateWithoutSection_Machines_SectionTosectionInput;
-    where: MachinesWhereUniqueInput;
-  };
-
 export type MachinesUpdateWithoutBlockInput = {
   Ticket?: InputMaybe<TicketUpdateManyWithoutMachinesNestedInput>;
   created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
   label?: InputMaybe<StringFieldUpdateOperationsInput>;
+  machine_catagory?: InputMaybe<Machine_CatagoryUpdateOneRequiredWithoutMachinesNestedInput>;
   maintenance?: InputMaybe<MaintenanceUpdateManyWithoutMachinesNestedInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
   priority?: InputMaybe<IntFieldUpdateOperationsInput>;
-  profile?: InputMaybe<Scalars["JSON"]>;
+  profile?: InputMaybe<Scalars['JSON']>;
+  routine_maintanances?: InputMaybe<Routine_MaintanancesUpdateManyWithoutMeachineNestedInput>;
   section?: InputMaybe<SectionsUpdateOneRequiredWithoutMachinesNestedInput>;
   updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
@@ -1369,22 +1382,27 @@ export type MachinesUpdateWithoutMaintenanceInput = {
   created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
   label?: InputMaybe<StringFieldUpdateOperationsInput>;
+  machine_catagory?: InputMaybe<Machine_CatagoryUpdateOneRequiredWithoutMachinesNestedInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
   priority?: InputMaybe<IntFieldUpdateOperationsInput>;
-  profile?: InputMaybe<Scalars["JSON"]>;
+  profile?: InputMaybe<Scalars['JSON']>;
+  routine_maintanances?: InputMaybe<Routine_MaintanancesUpdateManyWithoutMeachineNestedInput>;
   section?: InputMaybe<SectionsUpdateOneRequiredWithoutMachinesNestedInput>;
   updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
-export type MachinesUpdateWithoutSection_Machines_SectionTosectionInput = {
+export type MachinesUpdateWithoutRoutine_MaintanancesInput = {
+  Ticket?: InputMaybe<TicketUpdateManyWithoutMachinesNestedInput>;
   block?: InputMaybe<BlockUpdateOneRequiredWithoutMachinesNestedInput>;
   created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
   label?: InputMaybe<StringFieldUpdateOperationsInput>;
+  machine_catagory?: InputMaybe<Machine_CatagoryUpdateOneRequiredWithoutMachinesNestedInput>;
   maintenance?: InputMaybe<MaintenanceUpdateManyWithoutMachinesNestedInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
   priority?: InputMaybe<IntFieldUpdateOperationsInput>;
-  profile?: InputMaybe<Scalars["JSON"]>;
+  profile?: InputMaybe<Scalars['JSON']>;
+  section?: InputMaybe<SectionsUpdateOneRequiredWithoutMachinesNestedInput>;
   updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
@@ -1393,10 +1411,12 @@ export type MachinesUpdateWithoutTicketInput = {
   created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
   label?: InputMaybe<StringFieldUpdateOperationsInput>;
+  machine_catagory?: InputMaybe<Machine_CatagoryUpdateOneRequiredWithoutMachinesNestedInput>;
   maintenance?: InputMaybe<MaintenanceUpdateManyWithoutMachinesNestedInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
   priority?: InputMaybe<IntFieldUpdateOperationsInput>;
-  profile?: InputMaybe<Scalars["JSON"]>;
+  profile?: InputMaybe<Scalars['JSON']>;
+  routine_maintanances?: InputMaybe<Routine_MaintanancesUpdateManyWithoutMeachineNestedInput>;
   section?: InputMaybe<SectionsUpdateOneRequiredWithoutMachinesNestedInput>;
   updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
@@ -1407,16 +1427,14 @@ export type MachinesUpsertWithWhereUniqueWithoutBlockInput = {
   where: MachinesWhereUniqueInput;
 };
 
-export type MachinesUpsertWithWhereUniqueWithoutSection_Machines_SectionTosectionInput =
-  {
-    create: MachinesCreateWithoutSection_Machines_SectionTosectionInput;
-    update: MachinesUpdateWithoutSection_Machines_SectionTosectionInput;
-    where: MachinesWhereUniqueInput;
-  };
-
 export type MachinesUpsertWithoutMaintenanceInput = {
   create: MachinesCreateWithoutMaintenanceInput;
   update: MachinesUpdateWithoutMaintenanceInput;
+};
+
+export type MachinesUpsertWithoutRoutine_MaintanancesInput = {
+  create: MachinesCreateWithoutRoutine_MaintanancesInput;
+  update: MachinesUpdateWithoutRoutine_MaintanancesInput;
 };
 
 export type MachinesUpsertWithoutTicketInput = {
@@ -1434,153 +1452,152 @@ export type MachinesWhereInput = {
   created_at?: InputMaybe<DateTimeFilter>;
   id?: InputMaybe<BigIntFilter>;
   label?: InputMaybe<StringFilter>;
+  machine_catagory?: InputMaybe<Machine_CatagoryRelationFilter>;
+  machine_catagory_id?: InputMaybe<BigIntFilter>;
   maintenance?: InputMaybe<MaintenanceListRelationFilter>;
   name?: InputMaybe<StringFilter>;
   priority?: InputMaybe<IntFilter>;
   profile?: InputMaybe<JsonFilter>;
+  routine_maintanances?: InputMaybe<Routine_MaintanancesListRelationFilter>;
   section?: InputMaybe<SectionsRelationFilter>;
   section_id?: InputMaybe<BigIntFilter>;
   updated_at?: InputMaybe<DateTimeFilter>;
 };
 
 export type MachinesWhereUniqueInput = {
-  id?: InputMaybe<Scalars["BigInt"]>;
+  id?: InputMaybe<Scalars['BigInt']>;
 };
 
 export type Maintenance = {
-  __typename?: "Maintenance";
+  __typename?: 'Maintenance';
   _count: MaintenanceCount;
-  assigned?: Maybe<Scalars["Boolean"]>;
+  assigned?: Maybe<Scalars['Boolean']>;
   assignee: Users;
-  assignee_id: Scalars["BigInt"];
-  created_at: Scalars["DateTime"];
-  description: Scalars["String"];
-  elapsed?: Maybe<Scalars["DateTime"]>;
-  from: Scalars["DateTime"];
-  id: Scalars["BigInt"];
+  assignee_id: Scalars['BigInt'];
+  created_at: Scalars['DateTime'];
+  description: Scalars['String'];
+  elapsed?: Maybe<Scalars['DateTime']>;
+  from: Scalars['DateTime'];
+  id: Scalars['BigInt'];
   machine: Machines;
-  machine_id: Scalars["BigInt"];
+  machine_id: Scalars['BigInt'];
   machines: Machines;
-  metadata: Scalars["JSON"];
-  name: Scalars["String"];
-  photo?: Maybe<Scalars["String"]>;
+  metadata: Scalars['JSON'];
+  name: Scalars['String'];
+  photo?: Maybe<Scalars['String']>;
   replacements?: Maybe<Array<Replacements>>;
   reports?: Maybe<Array<Reports>>;
-  resolved: Scalars["Boolean"];
+  resolved: Scalars['Boolean'];
   ticket?: Maybe<Ticket>;
-  to: Scalars["DateTime"];
-  un_planned: Scalars["Boolean"];
-  updated_at: Scalars["DateTime"];
+  to: Scalars['DateTime'];
+  un_planned: Scalars['Boolean'];
+  updated_at: Scalars['DateTime'];
 };
 
 export type MaintenanceAvgAggregate = {
-  __typename?: "MaintenanceAvgAggregate";
-  assignee_id?: Maybe<Scalars["Float"]>;
-  id?: Maybe<Scalars["Float"]>;
-  machine_id?: Maybe<Scalars["Float"]>;
+  __typename?: 'MaintenanceAvgAggregate';
+  assignee_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  machine_id?: Maybe<Scalars['Float']>;
 };
 
 export type MaintenanceCount = {
-  __typename?: "MaintenanceCount";
-  replacements: Scalars["Int"];
-  reports: Scalars["Int"];
+  __typename?: 'MaintenanceCount';
+  replacements: Scalars['Int'];
+  reports: Scalars['Int'];
 };
 
 export type MaintenanceCountAggregate = {
-  __typename?: "MaintenanceCountAggregate";
-  _all: Scalars["Int"];
-  assignee_id: Scalars["Int"];
-  created_at: Scalars["Int"];
-  description: Scalars["Int"];
-  elapsed: Scalars["Int"];
-  from: Scalars["Int"];
-  id: Scalars["Int"];
-  machine_id: Scalars["Int"];
-  metadata: Scalars["Int"];
-  name: Scalars["Int"];
-  photo: Scalars["Int"];
-  resolved: Scalars["Int"];
-  to: Scalars["Int"];
-  un_planned: Scalars["Int"];
-  updated_at: Scalars["Int"];
+  __typename?: 'MaintenanceCountAggregate';
+  _all: Scalars['Int'];
+  assignee_id: Scalars['Int'];
+  created_at: Scalars['Int'];
+  description: Scalars['Int'];
+  elapsed: Scalars['Int'];
+  from: Scalars['Int'];
+  id: Scalars['Int'];
+  machine_id: Scalars['Int'];
+  metadata: Scalars['Int'];
+  name: Scalars['Int'];
+  photo: Scalars['Int'];
+  resolved: Scalars['Int'];
+  to: Scalars['Int'];
+  un_planned: Scalars['Int'];
+  updated_at: Scalars['Int'];
 };
 
 export type MaintenanceCreateInput = {
   assignee: UsersCreateNestedOneWithoutMaintenanceInput;
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  description: Scalars["String"];
-  elapsed?: InputMaybe<Scalars["DateTime"]>;
-  from: Scalars["DateTime"];
-  id?: InputMaybe<Scalars["BigInt"]>;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  elapsed?: InputMaybe<Scalars['DateTime']>;
+  from: Scalars['DateTime'];
+  id?: InputMaybe<Scalars['BigInt']>;
   machines: MachinesCreateNestedOneWithoutMaintenanceInput;
-  metadata?: InputMaybe<Scalars["JSON"]>;
-  name: Scalars["String"];
-  photo?: InputMaybe<Scalars["String"]>;
+  metadata?: InputMaybe<Scalars['JSON']>;
+  name: Scalars['String'];
+  photo?: InputMaybe<Scalars['String']>;
   replacements?: InputMaybe<ReplacementsCreateNestedManyWithoutMaintenanceInput>;
   reports?: InputMaybe<ReportsCreateNestedManyWithoutMaintenanceInput>;
-  resolved: Scalars["Boolean"];
+  resolved: Scalars['Boolean'];
   ticket?: InputMaybe<TicketCreateNestedOneWithoutMaintenanceInput>;
-  to: Scalars["DateTime"];
-  un_planned: Scalars["Boolean"];
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  to: Scalars['DateTime'];
+  un_planned: Scalars['Boolean'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type MaintenanceCreateManyAssigneeInput = {
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  description: Scalars["String"];
-  elapsed?: InputMaybe<Scalars["DateTime"]>;
-  from: Scalars["DateTime"];
-  id?: InputMaybe<Scalars["BigInt"]>;
-  machine_id: Scalars["BigInt"];
-  metadata?: InputMaybe<Scalars["JSON"]>;
-  name: Scalars["String"];
-  photo?: InputMaybe<Scalars["String"]>;
-  resolved: Scalars["Boolean"];
-  to: Scalars["DateTime"];
-  un_planned: Scalars["Boolean"];
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  elapsed?: InputMaybe<Scalars['DateTime']>;
+  from: Scalars['DateTime'];
+  id?: InputMaybe<Scalars['BigInt']>;
+  machine_id: Scalars['BigInt'];
+  metadata?: InputMaybe<Scalars['JSON']>;
+  name: Scalars['String'];
+  photo?: InputMaybe<Scalars['String']>;
+  resolved: Scalars['Boolean'];
+  to: Scalars['DateTime'];
+  un_planned: Scalars['Boolean'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type MaintenanceCreateManyAssigneeInputEnvelope = {
   data: Array<MaintenanceCreateManyAssigneeInput>;
-  skipDuplicates?: InputMaybe<Scalars["Boolean"]>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']>;
 };
 
 export type MaintenanceCreateManyMachinesInput = {
-  assignee_id: Scalars["BigInt"];
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  description: Scalars["String"];
-  elapsed?: InputMaybe<Scalars["DateTime"]>;
-  from: Scalars["DateTime"];
-  id?: InputMaybe<Scalars["BigInt"]>;
-  metadata?: InputMaybe<Scalars["JSON"]>;
-  name: Scalars["String"];
-  photo?: InputMaybe<Scalars["String"]>;
-  resolved: Scalars["Boolean"];
-  to: Scalars["DateTime"];
-  un_planned: Scalars["Boolean"];
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  assignee_id: Scalars['BigInt'];
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  elapsed?: InputMaybe<Scalars['DateTime']>;
+  from: Scalars['DateTime'];
+  id?: InputMaybe<Scalars['BigInt']>;
+  metadata?: InputMaybe<Scalars['JSON']>;
+  name: Scalars['String'];
+  photo?: InputMaybe<Scalars['String']>;
+  resolved: Scalars['Boolean'];
+  to: Scalars['DateTime'];
+  un_planned: Scalars['Boolean'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type MaintenanceCreateManyMachinesInputEnvelope = {
   data: Array<MaintenanceCreateManyMachinesInput>;
-  skipDuplicates?: InputMaybe<Scalars["Boolean"]>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']>;
 };
 
 export type MaintenanceCreateNestedManyWithoutAssigneeInput = {
   connect?: InputMaybe<Array<MaintenanceWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<
-    Array<MaintenanceCreateOrConnectWithoutAssigneeInput>
-  >;
+  connectOrCreate?: InputMaybe<Array<MaintenanceCreateOrConnectWithoutAssigneeInput>>;
   create?: InputMaybe<Array<MaintenanceCreateWithoutAssigneeInput>>;
   createMany?: InputMaybe<MaintenanceCreateManyAssigneeInputEnvelope>;
 };
 
 export type MaintenanceCreateNestedManyWithoutMachinesInput = {
   connect?: InputMaybe<Array<MaintenanceWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<
-    Array<MaintenanceCreateOrConnectWithoutMachinesInput>
-  >;
+  connectOrCreate?: InputMaybe<Array<MaintenanceCreateOrConnectWithoutMachinesInput>>;
   create?: InputMaybe<Array<MaintenanceCreateWithoutMachinesInput>>;
   createMany?: InputMaybe<MaintenanceCreateManyMachinesInputEnvelope>;
 };
@@ -1629,98 +1646,98 @@ export type MaintenanceCreateOrConnectWithoutTicketInput = {
 };
 
 export type MaintenanceCreateWithoutAssigneeInput = {
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  description: Scalars["String"];
-  elapsed?: InputMaybe<Scalars["DateTime"]>;
-  from: Scalars["DateTime"];
-  id?: InputMaybe<Scalars["BigInt"]>;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  elapsed?: InputMaybe<Scalars['DateTime']>;
+  from: Scalars['DateTime'];
+  id?: InputMaybe<Scalars['BigInt']>;
   machines: MachinesCreateNestedOneWithoutMaintenanceInput;
-  metadata?: InputMaybe<Scalars["JSON"]>;
-  name: Scalars["String"];
-  photo?: InputMaybe<Scalars["String"]>;
+  metadata?: InputMaybe<Scalars['JSON']>;
+  name: Scalars['String'];
+  photo?: InputMaybe<Scalars['String']>;
   replacements?: InputMaybe<ReplacementsCreateNestedManyWithoutMaintenanceInput>;
   reports?: InputMaybe<ReportsCreateNestedManyWithoutMaintenanceInput>;
-  resolved: Scalars["Boolean"];
+  resolved: Scalars['Boolean'];
   ticket?: InputMaybe<TicketCreateNestedOneWithoutMaintenanceInput>;
-  to: Scalars["DateTime"];
-  un_planned: Scalars["Boolean"];
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  to: Scalars['DateTime'];
+  un_planned: Scalars['Boolean'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type MaintenanceCreateWithoutMachinesInput = {
   assignee: UsersCreateNestedOneWithoutMaintenanceInput;
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  description: Scalars["String"];
-  elapsed?: InputMaybe<Scalars["DateTime"]>;
-  from: Scalars["DateTime"];
-  id?: InputMaybe<Scalars["BigInt"]>;
-  metadata?: InputMaybe<Scalars["JSON"]>;
-  name: Scalars["String"];
-  photo?: InputMaybe<Scalars["String"]>;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  elapsed?: InputMaybe<Scalars['DateTime']>;
+  from: Scalars['DateTime'];
+  id?: InputMaybe<Scalars['BigInt']>;
+  metadata?: InputMaybe<Scalars['JSON']>;
+  name: Scalars['String'];
+  photo?: InputMaybe<Scalars['String']>;
   replacements?: InputMaybe<ReplacementsCreateNestedManyWithoutMaintenanceInput>;
   reports?: InputMaybe<ReportsCreateNestedManyWithoutMaintenanceInput>;
-  resolved: Scalars["Boolean"];
+  resolved: Scalars['Boolean'];
   ticket?: InputMaybe<TicketCreateNestedOneWithoutMaintenanceInput>;
-  to: Scalars["DateTime"];
-  un_planned: Scalars["Boolean"];
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  to: Scalars['DateTime'];
+  un_planned: Scalars['Boolean'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type MaintenanceCreateWithoutReplacementsInput = {
   assignee: UsersCreateNestedOneWithoutMaintenanceInput;
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  description: Scalars["String"];
-  elapsed?: InputMaybe<Scalars["DateTime"]>;
-  from: Scalars["DateTime"];
-  id?: InputMaybe<Scalars["BigInt"]>;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  elapsed?: InputMaybe<Scalars['DateTime']>;
+  from: Scalars['DateTime'];
+  id?: InputMaybe<Scalars['BigInt']>;
   machines: MachinesCreateNestedOneWithoutMaintenanceInput;
-  metadata?: InputMaybe<Scalars["JSON"]>;
-  name: Scalars["String"];
-  photo?: InputMaybe<Scalars["String"]>;
+  metadata?: InputMaybe<Scalars['JSON']>;
+  name: Scalars['String'];
+  photo?: InputMaybe<Scalars['String']>;
   reports?: InputMaybe<ReportsCreateNestedManyWithoutMaintenanceInput>;
-  resolved: Scalars["Boolean"];
+  resolved: Scalars['Boolean'];
   ticket?: InputMaybe<TicketCreateNestedOneWithoutMaintenanceInput>;
-  to: Scalars["DateTime"];
-  un_planned: Scalars["Boolean"];
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  to: Scalars['DateTime'];
+  un_planned: Scalars['Boolean'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type MaintenanceCreateWithoutReportsInput = {
   assignee: UsersCreateNestedOneWithoutMaintenanceInput;
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  description: Scalars["String"];
-  elapsed?: InputMaybe<Scalars["DateTime"]>;
-  from: Scalars["DateTime"];
-  id?: InputMaybe<Scalars["BigInt"]>;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  elapsed?: InputMaybe<Scalars['DateTime']>;
+  from: Scalars['DateTime'];
+  id?: InputMaybe<Scalars['BigInt']>;
   machines: MachinesCreateNestedOneWithoutMaintenanceInput;
-  metadata?: InputMaybe<Scalars["JSON"]>;
-  name: Scalars["String"];
-  photo?: InputMaybe<Scalars["String"]>;
+  metadata?: InputMaybe<Scalars['JSON']>;
+  name: Scalars['String'];
+  photo?: InputMaybe<Scalars['String']>;
   replacements?: InputMaybe<ReplacementsCreateNestedManyWithoutMaintenanceInput>;
-  resolved: Scalars["Boolean"];
+  resolved: Scalars['Boolean'];
   ticket?: InputMaybe<TicketCreateNestedOneWithoutMaintenanceInput>;
-  to: Scalars["DateTime"];
-  un_planned: Scalars["Boolean"];
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  to: Scalars['DateTime'];
+  un_planned: Scalars['Boolean'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type MaintenanceCreateWithoutTicketInput = {
   assignee: UsersCreateNestedOneWithoutMaintenanceInput;
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  description: Scalars["String"];
-  elapsed?: InputMaybe<Scalars["DateTime"]>;
-  from: Scalars["DateTime"];
-  id?: InputMaybe<Scalars["BigInt"]>;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  elapsed?: InputMaybe<Scalars['DateTime']>;
+  from: Scalars['DateTime'];
+  id?: InputMaybe<Scalars['BigInt']>;
   machines: MachinesCreateNestedOneWithoutMaintenanceInput;
-  metadata?: InputMaybe<Scalars["JSON"]>;
-  name: Scalars["String"];
-  photo?: InputMaybe<Scalars["String"]>;
+  metadata?: InputMaybe<Scalars['JSON']>;
+  name: Scalars['String'];
+  photo?: InputMaybe<Scalars['String']>;
   replacements?: InputMaybe<ReplacementsCreateNestedManyWithoutMaintenanceInput>;
   reports?: InputMaybe<ReportsCreateNestedManyWithoutMaintenanceInput>;
-  resolved: Scalars["Boolean"];
-  to: Scalars["DateTime"];
-  un_planned: Scalars["Boolean"];
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  resolved: Scalars['Boolean'];
+  to: Scalars['DateTime'];
+  un_planned: Scalars['Boolean'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type MaintenanceListRelationFilter = {
@@ -1730,37 +1747,37 @@ export type MaintenanceListRelationFilter = {
 };
 
 export type MaintenanceMaxAggregate = {
-  __typename?: "MaintenanceMaxAggregate";
-  assignee_id?: Maybe<Scalars["BigInt"]>;
-  created_at?: Maybe<Scalars["DateTime"]>;
-  description?: Maybe<Scalars["String"]>;
-  elapsed?: Maybe<Scalars["DateTime"]>;
-  from?: Maybe<Scalars["DateTime"]>;
-  id?: Maybe<Scalars["BigInt"]>;
-  machine_id?: Maybe<Scalars["BigInt"]>;
-  name?: Maybe<Scalars["String"]>;
-  photo?: Maybe<Scalars["String"]>;
-  resolved?: Maybe<Scalars["Boolean"]>;
-  to?: Maybe<Scalars["DateTime"]>;
-  un_planned?: Maybe<Scalars["Boolean"]>;
-  updated_at?: Maybe<Scalars["DateTime"]>;
+  __typename?: 'MaintenanceMaxAggregate';
+  assignee_id?: Maybe<Scalars['BigInt']>;
+  created_at?: Maybe<Scalars['DateTime']>;
+  description?: Maybe<Scalars['String']>;
+  elapsed?: Maybe<Scalars['DateTime']>;
+  from?: Maybe<Scalars['DateTime']>;
+  id?: Maybe<Scalars['BigInt']>;
+  machine_id?: Maybe<Scalars['BigInt']>;
+  name?: Maybe<Scalars['String']>;
+  photo?: Maybe<Scalars['String']>;
+  resolved?: Maybe<Scalars['Boolean']>;
+  to?: Maybe<Scalars['DateTime']>;
+  un_planned?: Maybe<Scalars['Boolean']>;
+  updated_at?: Maybe<Scalars['DateTime']>;
 };
 
 export type MaintenanceMinAggregate = {
-  __typename?: "MaintenanceMinAggregate";
-  assignee_id?: Maybe<Scalars["BigInt"]>;
-  created_at?: Maybe<Scalars["DateTime"]>;
-  description?: Maybe<Scalars["String"]>;
-  elapsed?: Maybe<Scalars["DateTime"]>;
-  from?: Maybe<Scalars["DateTime"]>;
-  id?: Maybe<Scalars["BigInt"]>;
-  machine_id?: Maybe<Scalars["BigInt"]>;
-  name?: Maybe<Scalars["String"]>;
-  photo?: Maybe<Scalars["String"]>;
-  resolved?: Maybe<Scalars["Boolean"]>;
-  to?: Maybe<Scalars["DateTime"]>;
-  un_planned?: Maybe<Scalars["Boolean"]>;
-  updated_at?: Maybe<Scalars["DateTime"]>;
+  __typename?: 'MaintenanceMinAggregate';
+  assignee_id?: Maybe<Scalars['BigInt']>;
+  created_at?: Maybe<Scalars['DateTime']>;
+  description?: Maybe<Scalars['String']>;
+  elapsed?: Maybe<Scalars['DateTime']>;
+  from?: Maybe<Scalars['DateTime']>;
+  id?: Maybe<Scalars['BigInt']>;
+  machine_id?: Maybe<Scalars['BigInt']>;
+  name?: Maybe<Scalars['String']>;
+  photo?: Maybe<Scalars['String']>;
+  resolved?: Maybe<Scalars['Boolean']>;
+  to?: Maybe<Scalars['DateTime']>;
+  un_planned?: Maybe<Scalars['Boolean']>;
+  updated_at?: Maybe<Scalars['DateTime']>;
 };
 
 export type MaintenanceOrderByRelationAggregateInput = {
@@ -1814,10 +1831,10 @@ export type MaintenanceScalarWhereInput = {
 };
 
 export type MaintenanceSumAggregate = {
-  __typename?: "MaintenanceSumAggregate";
-  assignee_id?: Maybe<Scalars["BigInt"]>;
-  id?: Maybe<Scalars["BigInt"]>;
-  machine_id?: Maybe<Scalars["BigInt"]>;
+  __typename?: 'MaintenanceSumAggregate';
+  assignee_id?: Maybe<Scalars['BigInt']>;
+  id?: Maybe<Scalars['BigInt']>;
+  machine_id?: Maybe<Scalars['BigInt']>;
 };
 
 export type MaintenanceUpdateInput = {
@@ -1828,7 +1845,7 @@ export type MaintenanceUpdateInput = {
   from?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
   machines?: InputMaybe<MachinesUpdateOneRequiredWithoutMaintenanceNestedInput>;
-  metadata?: InputMaybe<Scalars["JSON"]>;
+  metadata?: InputMaybe<Scalars['JSON']>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
   photo?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   replacements?: InputMaybe<ReplacementsUpdateManyWithoutMaintenanceNestedInput>;
@@ -1846,7 +1863,7 @@ export type MaintenanceUpdateManyMutationInput = {
   elapsed?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
   from?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
-  metadata?: InputMaybe<Scalars["JSON"]>;
+  metadata?: InputMaybe<Scalars['JSON']>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
   photo?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   resolved?: InputMaybe<BoolFieldUpdateOperationsInput>;
@@ -1867,46 +1884,30 @@ export type MaintenanceUpdateManyWithWhereWithoutMachinesInput = {
 
 export type MaintenanceUpdateManyWithoutAssigneeNestedInput = {
   connect?: InputMaybe<Array<MaintenanceWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<
-    Array<MaintenanceCreateOrConnectWithoutAssigneeInput>
-  >;
+  connectOrCreate?: InputMaybe<Array<MaintenanceCreateOrConnectWithoutAssigneeInput>>;
   create?: InputMaybe<Array<MaintenanceCreateWithoutAssigneeInput>>;
   createMany?: InputMaybe<MaintenanceCreateManyAssigneeInputEnvelope>;
   delete?: InputMaybe<Array<MaintenanceWhereUniqueInput>>;
   deleteMany?: InputMaybe<Array<MaintenanceScalarWhereInput>>;
   disconnect?: InputMaybe<Array<MaintenanceWhereUniqueInput>>;
   set?: InputMaybe<Array<MaintenanceWhereUniqueInput>>;
-  update?: InputMaybe<
-    Array<MaintenanceUpdateWithWhereUniqueWithoutAssigneeInput>
-  >;
-  updateMany?: InputMaybe<
-    Array<MaintenanceUpdateManyWithWhereWithoutAssigneeInput>
-  >;
-  upsert?: InputMaybe<
-    Array<MaintenanceUpsertWithWhereUniqueWithoutAssigneeInput>
-  >;
+  update?: InputMaybe<Array<MaintenanceUpdateWithWhereUniqueWithoutAssigneeInput>>;
+  updateMany?: InputMaybe<Array<MaintenanceUpdateManyWithWhereWithoutAssigneeInput>>;
+  upsert?: InputMaybe<Array<MaintenanceUpsertWithWhereUniqueWithoutAssigneeInput>>;
 };
 
 export type MaintenanceUpdateManyWithoutMachinesNestedInput = {
   connect?: InputMaybe<Array<MaintenanceWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<
-    Array<MaintenanceCreateOrConnectWithoutMachinesInput>
-  >;
+  connectOrCreate?: InputMaybe<Array<MaintenanceCreateOrConnectWithoutMachinesInput>>;
   create?: InputMaybe<Array<MaintenanceCreateWithoutMachinesInput>>;
   createMany?: InputMaybe<MaintenanceCreateManyMachinesInputEnvelope>;
   delete?: InputMaybe<Array<MaintenanceWhereUniqueInput>>;
   deleteMany?: InputMaybe<Array<MaintenanceScalarWhereInput>>;
   disconnect?: InputMaybe<Array<MaintenanceWhereUniqueInput>>;
   set?: InputMaybe<Array<MaintenanceWhereUniqueInput>>;
-  update?: InputMaybe<
-    Array<MaintenanceUpdateWithWhereUniqueWithoutMachinesInput>
-  >;
-  updateMany?: InputMaybe<
-    Array<MaintenanceUpdateManyWithWhereWithoutMachinesInput>
-  >;
-  upsert?: InputMaybe<
-    Array<MaintenanceUpsertWithWhereUniqueWithoutMachinesInput>
-  >;
+  update?: InputMaybe<Array<MaintenanceUpdateWithWhereUniqueWithoutMachinesInput>>;
+  updateMany?: InputMaybe<Array<MaintenanceUpdateManyWithWhereWithoutMachinesInput>>;
+  upsert?: InputMaybe<Array<MaintenanceUpsertWithWhereUniqueWithoutMachinesInput>>;
 };
 
 export type MaintenanceUpdateOneRequiredWithoutReplacementsNestedInput = {
@@ -1929,8 +1930,8 @@ export type MaintenanceUpdateOneWithoutTicketNestedInput = {
   connect?: InputMaybe<MaintenanceWhereUniqueInput>;
   connectOrCreate?: InputMaybe<MaintenanceCreateOrConnectWithoutTicketInput>;
   create?: InputMaybe<MaintenanceCreateWithoutTicketInput>;
-  delete?: InputMaybe<Scalars["Boolean"]>;
-  disconnect?: InputMaybe<Scalars["Boolean"]>;
+  delete?: InputMaybe<Scalars['Boolean']>;
+  disconnect?: InputMaybe<Scalars['Boolean']>;
   update?: InputMaybe<MaintenanceUpdateWithoutTicketInput>;
   upsert?: InputMaybe<MaintenanceUpsertWithoutTicketInput>;
 };
@@ -1952,7 +1953,7 @@ export type MaintenanceUpdateWithoutAssigneeInput = {
   from?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
   machines?: InputMaybe<MachinesUpdateOneRequiredWithoutMaintenanceNestedInput>;
-  metadata?: InputMaybe<Scalars["JSON"]>;
+  metadata?: InputMaybe<Scalars['JSON']>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
   photo?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   replacements?: InputMaybe<ReplacementsUpdateManyWithoutMaintenanceNestedInput>;
@@ -1971,7 +1972,7 @@ export type MaintenanceUpdateWithoutMachinesInput = {
   elapsed?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
   from?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
-  metadata?: InputMaybe<Scalars["JSON"]>;
+  metadata?: InputMaybe<Scalars['JSON']>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
   photo?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   replacements?: InputMaybe<ReplacementsUpdateManyWithoutMaintenanceNestedInput>;
@@ -1991,7 +1992,7 @@ export type MaintenanceUpdateWithoutReplacementsInput = {
   from?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
   machines?: InputMaybe<MachinesUpdateOneRequiredWithoutMaintenanceNestedInput>;
-  metadata?: InputMaybe<Scalars["JSON"]>;
+  metadata?: InputMaybe<Scalars['JSON']>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
   photo?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   reports?: InputMaybe<ReportsUpdateManyWithoutMaintenanceNestedInput>;
@@ -2010,7 +2011,7 @@ export type MaintenanceUpdateWithoutReportsInput = {
   from?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
   machines?: InputMaybe<MachinesUpdateOneRequiredWithoutMaintenanceNestedInput>;
-  metadata?: InputMaybe<Scalars["JSON"]>;
+  metadata?: InputMaybe<Scalars['JSON']>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
   photo?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   replacements?: InputMaybe<ReplacementsUpdateManyWithoutMaintenanceNestedInput>;
@@ -2029,7 +2030,7 @@ export type MaintenanceUpdateWithoutTicketInput = {
   from?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
   machines?: InputMaybe<MachinesUpdateOneRequiredWithoutMaintenanceNestedInput>;
-  metadata?: InputMaybe<Scalars["JSON"]>;
+  metadata?: InputMaybe<Scalars['JSON']>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
   photo?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   replacements?: InputMaybe<ReplacementsUpdateManyWithoutMaintenanceNestedInput>;
@@ -2093,18 +2094,20 @@ export type MaintenanceWhereInput = {
 };
 
 export type MaintenanceWhereUniqueInput = {
-  id?: InputMaybe<Scalars["BigInt"]>;
+  id?: InputMaybe<Scalars['BigInt']>;
 };
 
 export type Mutation = {
-  __typename?: "Mutation";
+  __typename?: 'Mutation';
   createBlock: Block;
   createItem: Items;
   createItemCatagory: ItemCatagory;
   createMachine: Machines;
+  createMachineCategory: Machine_Catagory;
   createMaintanance: Maintenance;
   createReplacement: Replacements;
   createReport: Reports;
+  createRoutineMaintanance: Routine_Maintanances;
   createSection: Section;
   createTicket: Ticket;
   createUser: Users;
@@ -2112,9 +2115,11 @@ export type Mutation = {
   removeItem: Items;
   removeItemCatagory: ItemCatagory;
   removeMachine: Machines;
+  removeMachineCatagories: Machine_Catagory;
   removeMaintanance: Maintenance;
   removeReplacement: Replacements;
   removeReport: Reports;
+  removeRoutineMaintanance: Routine_Maintanances;
   removeSection: Section;
   removeTicket: Ticket;
   removeUser: Users;
@@ -2122,191 +2127,255 @@ export type Mutation = {
   updateItem: Items;
   updateItemCatagory: ItemCatagory;
   updateMachine: Machines;
+  updateMachineCatagories: Machine_Catagory;
   updateMaintanance: Maintenance;
   updateReplacement: Replacements;
   updateReport: Reports;
+  updateRoutineMaintanance: Routine_Maintanances;
   updateSection: Section;
   updateTicket: Ticket;
   updateUser: Users;
 };
 
+
 export type MutationCreateBlockArgs = {
   createBlockInput: BlockCreateInput;
 };
+
 
 export type MutationCreateItemArgs = {
   createItemInput: ItemsCreateInput;
 };
 
+
 export type MutationCreateItemCatagoryArgs = {
   createItemCatagoryInput: ItemCatagoryCreateInput;
 };
+
 
 export type MutationCreateMachineArgs = {
   createMachineInput: MachinesCreateInput;
 };
 
+
+export type MutationCreateMachineCategoryArgs = {
+  createCategoryInput: Machine_CatagoryCreateWithoutMachinesInput;
+};
+
+
 export type MutationCreateMaintananceArgs = {
   createMaintananceInput: MaintenanceCreateInput;
 };
+
 
 export type MutationCreateReplacementArgs = {
   createReplacementInput: ReplacementsCreateInput;
 };
 
+
 export type MutationCreateReportArgs = {
   createReportInput: ReportsCreateInput;
 };
 
-export type MutationCreateSectionArgs = {
-  createSectionInput: SectionCreateInput;
+
+export type MutationCreateRoutineMaintananceArgs = {
+  createRoutineMaintananceInput: Routine_MaintanancesCreateInput;
 };
+
+
+export type MutationCreateSectionArgs = {
+  createSectionInput: SectionCreateWithoutMachinesInput;
+};
+
 
 export type MutationCreateTicketArgs = {
   createTicketInput: TicketCreateInput;
 };
 
+
 export type MutationCreateUserArgs = {
   createUserInput: UsersCreateInput;
 };
 
+
 export type MutationRemoveBlockArgs = {
-  id: Scalars["Int"];
+  id: Scalars['Int'];
 };
+
 
 export type MutationRemoveItemArgs = {
-  id: Scalars["Int"];
+  id: Scalars['Int'];
 };
+
 
 export type MutationRemoveItemCatagoryArgs = {
-  id: Scalars["Int"];
+  id: Scalars['Int'];
 };
+
 
 export type MutationRemoveMachineArgs = {
-  id: Scalars["Int"];
+  id: Scalars['Int'];
 };
+
+
+export type MutationRemoveMachineCatagoriesArgs = {
+  id: Scalars['Int'];
+};
+
 
 export type MutationRemoveMaintananceArgs = {
-  id: Scalars["Int"];
+  id: Scalars['Int'];
 };
+
 
 export type MutationRemoveReplacementArgs = {
-  id: Scalars["Int"];
+  id: Scalars['Int'];
 };
+
 
 export type MutationRemoveReportArgs = {
-  id: Scalars["Int"];
+  id: Scalars['Int'];
 };
+
+
+export type MutationRemoveRoutineMaintananceArgs = {
+  id: Scalars['Int'];
+};
+
 
 export type MutationRemoveSectionArgs = {
-  id: Scalars["Int"];
+  id: Scalars['Int'];
 };
+
 
 export type MutationRemoveTicketArgs = {
-  id: Scalars["Int"];
+  id: Scalars['Int'];
 };
+
 
 export type MutationRemoveUserArgs = {
-  id: Scalars["Int"];
+  id: Scalars['Int'];
 };
 
+
 export type MutationUpdateBlockArgs = {
-  id: Scalars["Int"];
+  id: Scalars['Int'];
   updateBlockInput: BlockUpdateInput;
 };
 
+
 export type MutationUpdateItemArgs = {
-  id: Scalars["Int"];
+  id: Scalars['Int'];
   updateItemInput: ItemsUpdateInput;
 };
 
+
 export type MutationUpdateItemCatagoryArgs = {
-  id: Scalars["Int"];
+  id: Scalars['Int'];
   updateItemCatagoryInput: ItemCatagoryUpdateInput;
 };
 
+
 export type MutationUpdateMachineArgs = {
-  id: Scalars["Int"];
+  id: Scalars['Int'];
   updateMachineInput: MachinesUpdateInput;
 };
 
+
+export type MutationUpdateMachineCatagoriesArgs = {
+  data: Machine_CatagoryUpdateOneWithoutMachinesNestedInput;
+  id: Scalars['Int'];
+};
+
+
 export type MutationUpdateMaintananceArgs = {
-  id: Scalars["Int"];
+  id: Scalars['Int'];
   updateMaintananceInput: MaintenanceUpdateInput;
 };
 
+
 export type MutationUpdateReplacementArgs = {
-  id: Scalars["Int"];
+  id: Scalars['Int'];
   updateReplacementInput: ReplacementsUpdateInput;
 };
 
+
 export type MutationUpdateReportArgs = {
-  id: Scalars["Int"];
+  id: Scalars['Int'];
   updateReportInput: ReportsUpdateInput;
 };
 
-export type MutationUpdateSectionArgs = {
-  id: Scalars["Int"];
-  updateSectionInput: SectionUpdateInput;
+
+export type MutationUpdateRoutineMaintananceArgs = {
+  id: Scalars['Int'];
+  updateRoutineMaintananceInput: Routine_MaintanancesUpdateInput;
 };
 
+
+export type MutationUpdateSectionArgs = {
+  id: Scalars['Int'];
+  updateSectionInput: SectionUpdateWithoutMachinesInput;
+};
+
+
 export type MutationUpdateTicketArgs = {
-  id: Scalars["Int"];
+  id: Scalars['Int'];
   updateTicketInput: TicketUpdateInput;
 };
 
+
 export type MutationUpdateUserArgs = {
-  id: Scalars["Int"];
+  id: Scalars['Int'];
   updateUserInput: UsersUpdateInput;
 };
 
 export type NestedBigIntFilter = {
-  equals?: InputMaybe<Scalars["BigInt"]>;
-  gt?: InputMaybe<Scalars["BigInt"]>;
-  gte?: InputMaybe<Scalars["BigInt"]>;
-  in?: InputMaybe<Array<Scalars["BigInt"]>>;
-  lt?: InputMaybe<Scalars["BigInt"]>;
-  lte?: InputMaybe<Scalars["BigInt"]>;
+  equals?: InputMaybe<Scalars['BigInt']>;
+  gt?: InputMaybe<Scalars['BigInt']>;
+  gte?: InputMaybe<Scalars['BigInt']>;
+  in?: InputMaybe<Array<Scalars['BigInt']>>;
+  lt?: InputMaybe<Scalars['BigInt']>;
+  lte?: InputMaybe<Scalars['BigInt']>;
   not?: InputMaybe<NestedBigIntFilter>;
-  notIn?: InputMaybe<Array<Scalars["BigInt"]>>;
+  notIn?: InputMaybe<Array<Scalars['BigInt']>>;
 };
 
 export type NestedBigIntNullableFilter = {
-  equals?: InputMaybe<Scalars["BigInt"]>;
-  gt?: InputMaybe<Scalars["BigInt"]>;
-  gte?: InputMaybe<Scalars["BigInt"]>;
-  in?: InputMaybe<Array<Scalars["BigInt"]>>;
-  lt?: InputMaybe<Scalars["BigInt"]>;
-  lte?: InputMaybe<Scalars["BigInt"]>;
+  equals?: InputMaybe<Scalars['BigInt']>;
+  gt?: InputMaybe<Scalars['BigInt']>;
+  gte?: InputMaybe<Scalars['BigInt']>;
+  in?: InputMaybe<Array<Scalars['BigInt']>>;
+  lt?: InputMaybe<Scalars['BigInt']>;
+  lte?: InputMaybe<Scalars['BigInt']>;
   not?: InputMaybe<NestedBigIntNullableFilter>;
-  notIn?: InputMaybe<Array<Scalars["BigInt"]>>;
+  notIn?: InputMaybe<Array<Scalars['BigInt']>>;
 };
 
 export type NestedBoolFilter = {
-  equals?: InputMaybe<Scalars["Boolean"]>;
+  equals?: InputMaybe<Scalars['Boolean']>;
   not?: InputMaybe<NestedBoolFilter>;
 };
 
 export type NestedDateTimeFilter = {
-  equals?: InputMaybe<Scalars["DateTime"]>;
-  gt?: InputMaybe<Scalars["DateTime"]>;
-  gte?: InputMaybe<Scalars["DateTime"]>;
-  in?: InputMaybe<Array<Scalars["DateTime"]>>;
-  lt?: InputMaybe<Scalars["DateTime"]>;
-  lte?: InputMaybe<Scalars["DateTime"]>;
+  equals?: InputMaybe<Scalars['DateTime']>;
+  gt?: InputMaybe<Scalars['DateTime']>;
+  gte?: InputMaybe<Scalars['DateTime']>;
+  in?: InputMaybe<Array<Scalars['DateTime']>>;
+  lt?: InputMaybe<Scalars['DateTime']>;
+  lte?: InputMaybe<Scalars['DateTime']>;
   not?: InputMaybe<NestedDateTimeFilter>;
-  notIn?: InputMaybe<Array<Scalars["DateTime"]>>;
+  notIn?: InputMaybe<Array<Scalars['DateTime']>>;
 };
 
 export type NestedDateTimeNullableFilter = {
-  equals?: InputMaybe<Scalars["DateTime"]>;
-  gt?: InputMaybe<Scalars["DateTime"]>;
-  gte?: InputMaybe<Scalars["DateTime"]>;
-  in?: InputMaybe<Array<Scalars["DateTime"]>>;
-  lt?: InputMaybe<Scalars["DateTime"]>;
-  lte?: InputMaybe<Scalars["DateTime"]>;
+  equals?: InputMaybe<Scalars['DateTime']>;
+  gt?: InputMaybe<Scalars['DateTime']>;
+  gte?: InputMaybe<Scalars['DateTime']>;
+  in?: InputMaybe<Array<Scalars['DateTime']>>;
+  lt?: InputMaybe<Scalars['DateTime']>;
+  lte?: InputMaybe<Scalars['DateTime']>;
   not?: InputMaybe<NestedDateTimeNullableFilter>;
-  notIn?: InputMaybe<Array<Scalars["DateTime"]>>;
+  notIn?: InputMaybe<Array<Scalars['DateTime']>>;
 };
 
 export type NestedEnumRoleFilter = {
@@ -2324,321 +2393,414 @@ export type NestedEnumticket_StatusFilter = {
 };
 
 export type NestedFloatFilter = {
-  equals?: InputMaybe<Scalars["Float"]>;
-  gt?: InputMaybe<Scalars["Float"]>;
-  gte?: InputMaybe<Scalars["Float"]>;
-  in?: InputMaybe<Array<Scalars["Float"]>>;
-  lt?: InputMaybe<Scalars["Float"]>;
-  lte?: InputMaybe<Scalars["Float"]>;
+  equals?: InputMaybe<Scalars['Float']>;
+  gt?: InputMaybe<Scalars['Float']>;
+  gte?: InputMaybe<Scalars['Float']>;
+  in?: InputMaybe<Array<Scalars['Float']>>;
+  lt?: InputMaybe<Scalars['Float']>;
+  lte?: InputMaybe<Scalars['Float']>;
   not?: InputMaybe<NestedFloatFilter>;
-  notIn?: InputMaybe<Array<Scalars["Float"]>>;
+  notIn?: InputMaybe<Array<Scalars['Float']>>;
 };
 
 export type NestedIntFilter = {
-  equals?: InputMaybe<Scalars["Int"]>;
-  gt?: InputMaybe<Scalars["Int"]>;
-  gte?: InputMaybe<Scalars["Int"]>;
-  in?: InputMaybe<Array<Scalars["Int"]>>;
-  lt?: InputMaybe<Scalars["Int"]>;
-  lte?: InputMaybe<Scalars["Int"]>;
+  equals?: InputMaybe<Scalars['Int']>;
+  gt?: InputMaybe<Scalars['Int']>;
+  gte?: InputMaybe<Scalars['Int']>;
+  in?: InputMaybe<Array<Scalars['Int']>>;
+  lt?: InputMaybe<Scalars['Int']>;
+  lte?: InputMaybe<Scalars['Int']>;
   not?: InputMaybe<NestedIntFilter>;
-  notIn?: InputMaybe<Array<Scalars["Int"]>>;
+  notIn?: InputMaybe<Array<Scalars['Int']>>;
 };
 
 export type NestedStringFilter = {
-  contains?: InputMaybe<Scalars["String"]>;
-  endsWith?: InputMaybe<Scalars["String"]>;
-  equals?: InputMaybe<Scalars["String"]>;
-  gt?: InputMaybe<Scalars["String"]>;
-  gte?: InputMaybe<Scalars["String"]>;
-  in?: InputMaybe<Array<Scalars["String"]>>;
-  lt?: InputMaybe<Scalars["String"]>;
-  lte?: InputMaybe<Scalars["String"]>;
+  contains?: InputMaybe<Scalars['String']>;
+  endsWith?: InputMaybe<Scalars['String']>;
+  equals?: InputMaybe<Scalars['String']>;
+  gt?: InputMaybe<Scalars['String']>;
+  gte?: InputMaybe<Scalars['String']>;
+  in?: InputMaybe<Array<Scalars['String']>>;
+  lt?: InputMaybe<Scalars['String']>;
+  lte?: InputMaybe<Scalars['String']>;
   not?: InputMaybe<NestedStringFilter>;
-  notIn?: InputMaybe<Array<Scalars["String"]>>;
-  search?: InputMaybe<Scalars["String"]>;
-  startsWith?: InputMaybe<Scalars["String"]>;
+  notIn?: InputMaybe<Array<Scalars['String']>>;
+  search?: InputMaybe<Scalars['String']>;
+  startsWith?: InputMaybe<Scalars['String']>;
 };
 
 export type NestedStringNullableFilter = {
-  contains?: InputMaybe<Scalars["String"]>;
-  endsWith?: InputMaybe<Scalars["String"]>;
-  equals?: InputMaybe<Scalars["String"]>;
-  gt?: InputMaybe<Scalars["String"]>;
-  gte?: InputMaybe<Scalars["String"]>;
-  in?: InputMaybe<Array<Scalars["String"]>>;
-  lt?: InputMaybe<Scalars["String"]>;
-  lte?: InputMaybe<Scalars["String"]>;
+  contains?: InputMaybe<Scalars['String']>;
+  endsWith?: InputMaybe<Scalars['String']>;
+  equals?: InputMaybe<Scalars['String']>;
+  gt?: InputMaybe<Scalars['String']>;
+  gte?: InputMaybe<Scalars['String']>;
+  in?: InputMaybe<Array<Scalars['String']>>;
+  lt?: InputMaybe<Scalars['String']>;
+  lte?: InputMaybe<Scalars['String']>;
   not?: InputMaybe<NestedStringNullableFilter>;
-  notIn?: InputMaybe<Array<Scalars["String"]>>;
-  search?: InputMaybe<Scalars["String"]>;
-  startsWith?: InputMaybe<Scalars["String"]>;
+  notIn?: InputMaybe<Array<Scalars['String']>>;
+  search?: InputMaybe<Scalars['String']>;
+  startsWith?: InputMaybe<Scalars['String']>;
 };
 
 export type NullableDateTimeFieldUpdateOperationsInput = {
-  set?: InputMaybe<Scalars["DateTime"]>;
+  set?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type NullableStringFieldUpdateOperationsInput = {
-  set?: InputMaybe<Scalars["String"]>;
+  set?: InputMaybe<Scalars['String']>;
 };
 
 export type Query = {
-  __typename?: "Query";
+  __typename?: 'Query';
   block: Block;
   blocks: Array<Block>;
+  blocksCount: Scalars['Int'];
   item: Items;
   itemCatagories: Array<ItemCatagory>;
   itemCatagory: ItemCatagory;
   items: Array<Items>;
   machine: Machines;
+  machineCatagories: Array<Machine_Catagory>;
+  machineCatagoriesCount: Scalars['Int'];
+  machineCategory: Machine_Catagory;
   machines: Array<Machines>;
-  machinesCount: Scalars["Int"];
+  machinesCount: Scalars['Int'];
   maintenance: Maintenance;
-  maintenanceCount: Scalars["Int"];
+  maintenanceCount: Scalars['Int'];
   maintenances: Array<Maintenance>;
   replacement: Replacements;
   replacements: Array<Replacements>;
   report: Reports;
+  routineMaintanance: Routine_Maintanances;
+  routineMaintanances: Array<Routine_Maintanances>;
+  routineMaintanancesCount: Scalars['Int'];
   section: Section;
+  sections: Array<Section>;
+  sectionsCount: Scalars['Int'];
   ticket: Ticket;
   tickets: Array<Ticket>;
-  ticketsCount: Scalars["Int"];
+  ticketsCount: Scalars['Int'];
   user: Users;
   users: Array<Users>;
-  usersCount: Scalars["Int"];
+  usersCount: Scalars['Int'];
 };
+
 
 export type QueryBlockArgs = {
-  id: Scalars["Int"];
+  id: Scalars['Int'];
 };
 
+
 export type QueryBlocksArgs = {
-  limit?: InputMaybe<Scalars["Int"]>;
-  offset?: InputMaybe<Scalars["Int"]>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<BlockOrderByWithAggregationInput>;
   where?: InputMaybe<BlockWhereInput>;
 };
 
-export type QueryItemArgs = {
-  id: Scalars["Int"];
+
+export type QueryBlocksCountArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<BlockOrderByWithAggregationInput>;
+  where?: InputMaybe<BlockWhereInput>;
 };
 
+
+export type QueryItemArgs = {
+  id: Scalars['Int'];
+};
+
+
 export type QueryItemCatagoriesArgs = {
-  limit?: InputMaybe<Scalars["Int"]>;
-  offset?: InputMaybe<Scalars["Int"]>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<ItemCatagoryOrderByWithAggregationInput>;
   where?: InputMaybe<ItemCatagoryWhereInput>;
 };
 
+
 export type QueryItemCatagoryArgs = {
-  id: Scalars["Int"];
+  id: Scalars['Int'];
 };
 
+
 export type QueryItemsArgs = {
-  limit?: InputMaybe<Scalars["Int"]>;
-  offset?: InputMaybe<Scalars["Int"]>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<ItemsOrderByWithRelationInput>;
   where?: InputMaybe<ItemsWhereInput>;
 };
 
+
 export type QueryMachineArgs = {
-  id: Scalars["Int"];
+  id: Scalars['Int'];
 };
+
+
+export type QueryMachineCatagoriesArgs = {
+  orderBy?: InputMaybe<Machine_CatagoryOrderByWithRelationAndSearchRelevanceInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<Machine_CatagoryWhereInput>;
+};
+
+
+export type QueryMachineCatagoriesCountArgs = {
+  orderBy?: InputMaybe<Machine_CatagoryOrderByWithRelationAndSearchRelevanceInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<Machine_CatagoryWhereInput>;
+};
+
+
+export type QueryMachineCategoryArgs = {
+  id: Scalars['Int'];
+};
+
 
 export type QueryMachinesArgs = {
-  limit?: InputMaybe<Scalars["Int"]>;
-  offset?: InputMaybe<Scalars["Int"]>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<MachinesOrderByWithRelationInput>;
   where?: InputMaybe<MachinesWhereInput>;
 };
+
 
 export type QueryMachinesCountArgs = {
-  limit?: InputMaybe<Scalars["Int"]>;
-  offset?: InputMaybe<Scalars["Int"]>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<MachinesOrderByWithRelationInput>;
   where?: InputMaybe<MachinesWhereInput>;
 };
 
+
 export type QueryMaintenanceArgs = {
-  id: Scalars["Int"];
+  id: Scalars['Int'];
 };
+
 
 export type QueryMaintenanceCountArgs = {
-  limit?: InputMaybe<Scalars["Int"]>;
-  offset?: InputMaybe<Scalars["Int"]>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<MaintenanceOrderByWithRelationInput>;
   where?: InputMaybe<MaintenanceWhereInput>;
 };
+
 
 export type QueryMaintenancesArgs = {
-  limit?: InputMaybe<Scalars["Int"]>;
-  offset?: InputMaybe<Scalars["Int"]>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<MaintenanceOrderByWithRelationInput>;
   where?: InputMaybe<MaintenanceWhereInput>;
 };
 
+
 export type QueryReplacementArgs = {
-  id: Scalars["Int"];
+  id: Scalars['Int'];
 };
 
+
 export type QueryReplacementsArgs = {
-  limit?: InputMaybe<Scalars["Int"]>;
-  offset?: InputMaybe<Scalars["Int"]>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<ReplacementsOrderByWithRelationInput>;
   where?: InputMaybe<ReplacementsWhereInput>;
 };
 
+
 export type QueryReportArgs = {
-  id: Scalars["Int"];
+  id: Scalars['Int'];
 };
+
+
+export type QueryRoutineMaintananceArgs = {
+  id: Scalars['Int'];
+};
+
+
+export type QueryRoutineMaintanancesArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Routine_MaintanancesSumOrderByAggregateInput>;
+  where?: InputMaybe<Routine_MaintanancesWhereInput>;
+};
+
+
+export type QueryRoutineMaintanancesCountArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Routine_MaintanancesSumOrderByAggregateInput>;
+  where?: InputMaybe<Routine_MaintanancesWhereInput>;
+};
+
 
 export type QuerySectionArgs = {
-  id: Scalars["Int"];
+  id: Scalars['Int'];
 };
 
-export type QueryTicketArgs = {
-  id: Scalars["Int"];
+
+export type QuerySectionsArgs = {
+  orderBy?: InputMaybe<SectionOrderByWithRelationInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<SectionWhereInput>;
 };
+
+
+export type QuerySectionsCountArgs = {
+  orderBy?: InputMaybe<SectionOrderByWithRelationInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<SectionWhereInput>;
+};
+
+
+export type QueryTicketArgs = {
+  id: Scalars['Int'];
+};
+
 
 export type QueryTicketsArgs = {
   orderBy?: InputMaybe<TicketOrderByWithRelationInput>;
-  skip?: InputMaybe<Scalars["Float"]>;
-  take?: InputMaybe<Scalars["Float"]>;
+  skip?: InputMaybe<Scalars['Float']>;
+  take?: InputMaybe<Scalars['Float']>;
   where?: InputMaybe<TicketWhereInput>;
 };
+
 
 export type QueryTicketsCountArgs = {
   orderBy?: InputMaybe<TicketOrderByWithRelationInput>;
-  skip?: InputMaybe<Scalars["Float"]>;
-  take?: InputMaybe<Scalars["Float"]>;
+  skip?: InputMaybe<Scalars['Float']>;
+  take?: InputMaybe<Scalars['Float']>;
   where?: InputMaybe<TicketWhereInput>;
 };
 
+
 export type QueryUserArgs = {
-  id: Scalars["Int"];
+  id: Scalars['Int'];
 };
 
+
 export type QueryUsersArgs = {
-  limit?: InputMaybe<Scalars["Int"]>;
-  offset?: InputMaybe<Scalars["Int"]>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<UsersOrderByWithRelationInput>;
   where?: InputMaybe<UsersWhereInput>;
 };
 
+
 export type QueryUsersCountArgs = {
-  limit?: InputMaybe<Scalars["Int"]>;
-  offset?: InputMaybe<Scalars["Int"]>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<UsersOrderByWithRelationInput>;
   where?: InputMaybe<UsersWhereInput>;
 };
 
 export enum QueryMode {
-  Default = "default",
-  Insensitive = "insensitive",
+  Default = 'default',
+  Insensitive = 'insensitive'
 }
 
 export type Replacements = {
-  __typename?: "Replacements";
-  approved: Scalars["Boolean"];
-  created_at: Scalars["DateTime"];
-  description: Scalars["String"];
-  id: Scalars["BigInt"];
+  __typename?: 'Replacements';
+  approved: Scalars['Boolean'];
+  created_at: Scalars['DateTime'];
+  description: Scalars['String'];
+  id: Scalars['BigInt'];
   item: Items;
-  item_id: Scalars["BigInt"];
+  item_id: Scalars['BigInt'];
   items: Items;
-  maintanance_id: Scalars["BigInt"];
+  maintanance_id: Scalars['BigInt'];
   maintenance: Maintenance;
-  metadata: Scalars["JSON"];
-  name: Scalars["String"];
-  quantity: Scalars["Int"];
-  updated_at: Scalars["DateTime"];
+  metadata: Scalars['JSON'];
+  name: Scalars['String'];
+  quantity: Scalars['Int'];
+  updated_at: Scalars['DateTime'];
 };
 
 export type ReplacementsAvgAggregate = {
-  __typename?: "ReplacementsAvgAggregate";
-  id?: Maybe<Scalars["Float"]>;
-  item_id?: Maybe<Scalars["Float"]>;
-  maintanance_id?: Maybe<Scalars["Float"]>;
-  quantity?: Maybe<Scalars["Float"]>;
+  __typename?: 'ReplacementsAvgAggregate';
+  id?: Maybe<Scalars['Float']>;
+  item_id?: Maybe<Scalars['Float']>;
+  maintanance_id?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
 };
 
 export type ReplacementsCountAggregate = {
-  __typename?: "ReplacementsCountAggregate";
-  _all: Scalars["Int"];
-  approved: Scalars["Int"];
-  created_at: Scalars["Int"];
-  description: Scalars["Int"];
-  id: Scalars["Int"];
-  item_id: Scalars["Int"];
-  maintanance_id: Scalars["Int"];
-  metadata: Scalars["Int"];
-  name: Scalars["Int"];
-  quantity: Scalars["Int"];
-  updated_at: Scalars["Int"];
+  __typename?: 'ReplacementsCountAggregate';
+  _all: Scalars['Int'];
+  approved: Scalars['Int'];
+  created_at: Scalars['Int'];
+  description: Scalars['Int'];
+  id: Scalars['Int'];
+  item_id: Scalars['Int'];
+  maintanance_id: Scalars['Int'];
+  metadata: Scalars['Int'];
+  name: Scalars['Int'];
+  quantity: Scalars['Int'];
+  updated_at: Scalars['Int'];
 };
 
 export type ReplacementsCreateInput = {
-  approved?: InputMaybe<Scalars["Boolean"]>;
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  description: Scalars["String"];
-  id?: InputMaybe<Scalars["BigInt"]>;
+  approved?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  id?: InputMaybe<Scalars['BigInt']>;
   items: ItemsCreateNestedOneWithoutReplacementsInput;
   maintenance: MaintenanceCreateNestedOneWithoutReplacementsInput;
-  metadata?: InputMaybe<Scalars["JSON"]>;
-  name: Scalars["String"];
-  quantity: Scalars["Int"];
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  metadata?: InputMaybe<Scalars['JSON']>;
+  name: Scalars['String'];
+  quantity: Scalars['Int'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type ReplacementsCreateManyItemsInput = {
-  approved?: InputMaybe<Scalars["Boolean"]>;
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  description: Scalars["String"];
-  id?: InputMaybe<Scalars["BigInt"]>;
-  maintanance_id: Scalars["BigInt"];
-  metadata?: InputMaybe<Scalars["JSON"]>;
-  name: Scalars["String"];
-  quantity: Scalars["Int"];
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  approved?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  id?: InputMaybe<Scalars['BigInt']>;
+  maintanance_id: Scalars['BigInt'];
+  metadata?: InputMaybe<Scalars['JSON']>;
+  name: Scalars['String'];
+  quantity: Scalars['Int'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type ReplacementsCreateManyItemsInputEnvelope = {
   data: Array<ReplacementsCreateManyItemsInput>;
-  skipDuplicates?: InputMaybe<Scalars["Boolean"]>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']>;
 };
 
 export type ReplacementsCreateManyMaintenanceInput = {
-  approved?: InputMaybe<Scalars["Boolean"]>;
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  description: Scalars["String"];
-  id?: InputMaybe<Scalars["BigInt"]>;
-  item_id: Scalars["BigInt"];
-  metadata?: InputMaybe<Scalars["JSON"]>;
-  name: Scalars["String"];
-  quantity: Scalars["Int"];
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  approved?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  id?: InputMaybe<Scalars['BigInt']>;
+  item_id: Scalars['BigInt'];
+  metadata?: InputMaybe<Scalars['JSON']>;
+  name: Scalars['String'];
+  quantity: Scalars['Int'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type ReplacementsCreateManyMaintenanceInputEnvelope = {
   data: Array<ReplacementsCreateManyMaintenanceInput>;
-  skipDuplicates?: InputMaybe<Scalars["Boolean"]>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']>;
 };
 
 export type ReplacementsCreateNestedManyWithoutItemsInput = {
   connect?: InputMaybe<Array<ReplacementsWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<
-    Array<ReplacementsCreateOrConnectWithoutItemsInput>
-  >;
+  connectOrCreate?: InputMaybe<Array<ReplacementsCreateOrConnectWithoutItemsInput>>;
   create?: InputMaybe<Array<ReplacementsCreateWithoutItemsInput>>;
   createMany?: InputMaybe<ReplacementsCreateManyItemsInputEnvelope>;
 };
 
 export type ReplacementsCreateNestedManyWithoutMaintenanceInput = {
   connect?: InputMaybe<Array<ReplacementsWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<
-    Array<ReplacementsCreateOrConnectWithoutMaintenanceInput>
-  >;
+  connectOrCreate?: InputMaybe<Array<ReplacementsCreateOrConnectWithoutMaintenanceInput>>;
   create?: InputMaybe<Array<ReplacementsCreateWithoutMaintenanceInput>>;
   createMany?: InputMaybe<ReplacementsCreateManyMaintenanceInputEnvelope>;
 };
@@ -2654,27 +2816,27 @@ export type ReplacementsCreateOrConnectWithoutMaintenanceInput = {
 };
 
 export type ReplacementsCreateWithoutItemsInput = {
-  approved?: InputMaybe<Scalars["Boolean"]>;
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  description: Scalars["String"];
-  id?: InputMaybe<Scalars["BigInt"]>;
+  approved?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  id?: InputMaybe<Scalars['BigInt']>;
   maintenance: MaintenanceCreateNestedOneWithoutReplacementsInput;
-  metadata?: InputMaybe<Scalars["JSON"]>;
-  name: Scalars["String"];
-  quantity: Scalars["Int"];
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  metadata?: InputMaybe<Scalars['JSON']>;
+  name: Scalars['String'];
+  quantity: Scalars['Int'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type ReplacementsCreateWithoutMaintenanceInput = {
-  approved?: InputMaybe<Scalars["Boolean"]>;
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  description: Scalars["String"];
-  id?: InputMaybe<Scalars["BigInt"]>;
+  approved?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  id?: InputMaybe<Scalars['BigInt']>;
   items: ItemsCreateNestedOneWithoutReplacementsInput;
-  metadata?: InputMaybe<Scalars["JSON"]>;
-  name: Scalars["String"];
-  quantity: Scalars["Int"];
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  metadata?: InputMaybe<Scalars['JSON']>;
+  name: Scalars['String'];
+  quantity: Scalars['Int'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type ReplacementsListRelationFilter = {
@@ -2684,29 +2846,29 @@ export type ReplacementsListRelationFilter = {
 };
 
 export type ReplacementsMaxAggregate = {
-  __typename?: "ReplacementsMaxAggregate";
-  approved?: Maybe<Scalars["Boolean"]>;
-  created_at?: Maybe<Scalars["DateTime"]>;
-  description?: Maybe<Scalars["String"]>;
-  id?: Maybe<Scalars["BigInt"]>;
-  item_id?: Maybe<Scalars["BigInt"]>;
-  maintanance_id?: Maybe<Scalars["BigInt"]>;
-  name?: Maybe<Scalars["String"]>;
-  quantity?: Maybe<Scalars["Int"]>;
-  updated_at?: Maybe<Scalars["DateTime"]>;
+  __typename?: 'ReplacementsMaxAggregate';
+  approved?: Maybe<Scalars['Boolean']>;
+  created_at?: Maybe<Scalars['DateTime']>;
+  description?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['BigInt']>;
+  item_id?: Maybe<Scalars['BigInt']>;
+  maintanance_id?: Maybe<Scalars['BigInt']>;
+  name?: Maybe<Scalars['String']>;
+  quantity?: Maybe<Scalars['Int']>;
+  updated_at?: Maybe<Scalars['DateTime']>;
 };
 
 export type ReplacementsMinAggregate = {
-  __typename?: "ReplacementsMinAggregate";
-  approved?: Maybe<Scalars["Boolean"]>;
-  created_at?: Maybe<Scalars["DateTime"]>;
-  description?: Maybe<Scalars["String"]>;
-  id?: Maybe<Scalars["BigInt"]>;
-  item_id?: Maybe<Scalars["BigInt"]>;
-  maintanance_id?: Maybe<Scalars["BigInt"]>;
-  name?: Maybe<Scalars["String"]>;
-  quantity?: Maybe<Scalars["Int"]>;
-  updated_at?: Maybe<Scalars["DateTime"]>;
+  __typename?: 'ReplacementsMinAggregate';
+  approved?: Maybe<Scalars['Boolean']>;
+  created_at?: Maybe<Scalars['DateTime']>;
+  description?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['BigInt']>;
+  item_id?: Maybe<Scalars['BigInt']>;
+  maintanance_id?: Maybe<Scalars['BigInt']>;
+  name?: Maybe<Scalars['String']>;
+  quantity?: Maybe<Scalars['Int']>;
+  updated_at?: Maybe<Scalars['DateTime']>;
 };
 
 export type ReplacementsOrderByRelationAggregateInput = {
@@ -2745,11 +2907,11 @@ export type ReplacementsScalarWhereInput = {
 };
 
 export type ReplacementsSumAggregate = {
-  __typename?: "ReplacementsSumAggregate";
-  id?: Maybe<Scalars["BigInt"]>;
-  item_id?: Maybe<Scalars["BigInt"]>;
-  maintanance_id?: Maybe<Scalars["BigInt"]>;
-  quantity?: Maybe<Scalars["Int"]>;
+  __typename?: 'ReplacementsSumAggregate';
+  id?: Maybe<Scalars['BigInt']>;
+  item_id?: Maybe<Scalars['BigInt']>;
+  maintanance_id?: Maybe<Scalars['BigInt']>;
+  quantity?: Maybe<Scalars['Int']>;
 };
 
 export type ReplacementsUpdateInput = {
@@ -2759,7 +2921,7 @@ export type ReplacementsUpdateInput = {
   id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
   items?: InputMaybe<ItemsUpdateOneRequiredWithoutReplacementsNestedInput>;
   maintenance?: InputMaybe<MaintenanceUpdateOneRequiredWithoutReplacementsNestedInput>;
-  metadata?: InputMaybe<Scalars["JSON"]>;
+  metadata?: InputMaybe<Scalars['JSON']>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
   quantity?: InputMaybe<IntFieldUpdateOperationsInput>;
   updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
@@ -2770,7 +2932,7 @@ export type ReplacementsUpdateManyMutationInput = {
   created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   description?: InputMaybe<StringFieldUpdateOperationsInput>;
   id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
-  metadata?: InputMaybe<Scalars["JSON"]>;
+  metadata?: InputMaybe<Scalars['JSON']>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
   quantity?: InputMaybe<IntFieldUpdateOperationsInput>;
   updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
@@ -2788,46 +2950,30 @@ export type ReplacementsUpdateManyWithWhereWithoutMaintenanceInput = {
 
 export type ReplacementsUpdateManyWithoutItemsNestedInput = {
   connect?: InputMaybe<Array<ReplacementsWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<
-    Array<ReplacementsCreateOrConnectWithoutItemsInput>
-  >;
+  connectOrCreate?: InputMaybe<Array<ReplacementsCreateOrConnectWithoutItemsInput>>;
   create?: InputMaybe<Array<ReplacementsCreateWithoutItemsInput>>;
   createMany?: InputMaybe<ReplacementsCreateManyItemsInputEnvelope>;
   delete?: InputMaybe<Array<ReplacementsWhereUniqueInput>>;
   deleteMany?: InputMaybe<Array<ReplacementsScalarWhereInput>>;
   disconnect?: InputMaybe<Array<ReplacementsWhereUniqueInput>>;
   set?: InputMaybe<Array<ReplacementsWhereUniqueInput>>;
-  update?: InputMaybe<
-    Array<ReplacementsUpdateWithWhereUniqueWithoutItemsInput>
-  >;
-  updateMany?: InputMaybe<
-    Array<ReplacementsUpdateManyWithWhereWithoutItemsInput>
-  >;
-  upsert?: InputMaybe<
-    Array<ReplacementsUpsertWithWhereUniqueWithoutItemsInput>
-  >;
+  update?: InputMaybe<Array<ReplacementsUpdateWithWhereUniqueWithoutItemsInput>>;
+  updateMany?: InputMaybe<Array<ReplacementsUpdateManyWithWhereWithoutItemsInput>>;
+  upsert?: InputMaybe<Array<ReplacementsUpsertWithWhereUniqueWithoutItemsInput>>;
 };
 
 export type ReplacementsUpdateManyWithoutMaintenanceNestedInput = {
   connect?: InputMaybe<Array<ReplacementsWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<
-    Array<ReplacementsCreateOrConnectWithoutMaintenanceInput>
-  >;
+  connectOrCreate?: InputMaybe<Array<ReplacementsCreateOrConnectWithoutMaintenanceInput>>;
   create?: InputMaybe<Array<ReplacementsCreateWithoutMaintenanceInput>>;
   createMany?: InputMaybe<ReplacementsCreateManyMaintenanceInputEnvelope>;
   delete?: InputMaybe<Array<ReplacementsWhereUniqueInput>>;
   deleteMany?: InputMaybe<Array<ReplacementsScalarWhereInput>>;
   disconnect?: InputMaybe<Array<ReplacementsWhereUniqueInput>>;
   set?: InputMaybe<Array<ReplacementsWhereUniqueInput>>;
-  update?: InputMaybe<
-    Array<ReplacementsUpdateWithWhereUniqueWithoutMaintenanceInput>
-  >;
-  updateMany?: InputMaybe<
-    Array<ReplacementsUpdateManyWithWhereWithoutMaintenanceInput>
-  >;
-  upsert?: InputMaybe<
-    Array<ReplacementsUpsertWithWhereUniqueWithoutMaintenanceInput>
-  >;
+  update?: InputMaybe<Array<ReplacementsUpdateWithWhereUniqueWithoutMaintenanceInput>>;
+  updateMany?: InputMaybe<Array<ReplacementsUpdateManyWithWhereWithoutMaintenanceInput>>;
+  upsert?: InputMaybe<Array<ReplacementsUpsertWithWhereUniqueWithoutMaintenanceInput>>;
 };
 
 export type ReplacementsUpdateWithWhereUniqueWithoutItemsInput = {
@@ -2846,7 +2992,7 @@ export type ReplacementsUpdateWithoutItemsInput = {
   description?: InputMaybe<StringFieldUpdateOperationsInput>;
   id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
   maintenance?: InputMaybe<MaintenanceUpdateOneRequiredWithoutReplacementsNestedInput>;
-  metadata?: InputMaybe<Scalars["JSON"]>;
+  metadata?: InputMaybe<Scalars['JSON']>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
   quantity?: InputMaybe<IntFieldUpdateOperationsInput>;
   updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
@@ -2858,7 +3004,7 @@ export type ReplacementsUpdateWithoutMaintenanceInput = {
   description?: InputMaybe<StringFieldUpdateOperationsInput>;
   id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
   items?: InputMaybe<ItemsUpdateOneRequiredWithoutReplacementsNestedInput>;
-  metadata?: InputMaybe<Scalars["JSON"]>;
+  metadata?: InputMaybe<Scalars['JSON']>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
   quantity?: InputMaybe<IntFieldUpdateOperationsInput>;
   updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
@@ -2895,78 +3041,76 @@ export type ReplacementsWhereInput = {
 };
 
 export type ReplacementsWhereUniqueInput = {
-  id?: InputMaybe<Scalars["BigInt"]>;
+  id?: InputMaybe<Scalars['BigInt']>;
 };
 
 export type Reports = {
-  __typename?: "Reports";
-  created_at: Scalars["DateTime"];
-  id: Scalars["BigInt"];
-  maintance_id: Scalars["BigInt"];
+  __typename?: 'Reports';
+  created_at: Scalars['DateTime'];
+  id: Scalars['BigInt'];
+  maintance_id: Scalars['BigInt'];
   maintenance: Maintenance;
-  report: Scalars["String"];
-  sign: Scalars["String"];
-  tag: Scalars["JSON"];
-  updated_at: Scalars["DateTime"];
-  validated: Scalars["BigInt"];
-  validated_sign: Scalars["BigInt"];
+  report: Scalars['String'];
+  sign: Scalars['String'];
+  tag: Scalars['JSON'];
+  updated_at: Scalars['DateTime'];
+  validated: Scalars['BigInt'];
+  validated_sign: Scalars['BigInt'];
 };
 
 export type ReportsAvgAggregate = {
-  __typename?: "ReportsAvgAggregate";
-  id?: Maybe<Scalars["Float"]>;
-  maintance_id?: Maybe<Scalars["Float"]>;
-  validated?: Maybe<Scalars["Float"]>;
-  validated_sign?: Maybe<Scalars["Float"]>;
+  __typename?: 'ReportsAvgAggregate';
+  id?: Maybe<Scalars['Float']>;
+  maintance_id?: Maybe<Scalars['Float']>;
+  validated?: Maybe<Scalars['Float']>;
+  validated_sign?: Maybe<Scalars['Float']>;
 };
 
 export type ReportsCountAggregate = {
-  __typename?: "ReportsCountAggregate";
-  _all: Scalars["Int"];
-  created_at: Scalars["Int"];
-  id: Scalars["Int"];
-  maintance_id: Scalars["Int"];
-  report: Scalars["Int"];
-  sign: Scalars["Int"];
-  tag: Scalars["Int"];
-  updated_at: Scalars["Int"];
-  validated: Scalars["Int"];
-  validated_sign: Scalars["Int"];
+  __typename?: 'ReportsCountAggregate';
+  _all: Scalars['Int'];
+  created_at: Scalars['Int'];
+  id: Scalars['Int'];
+  maintance_id: Scalars['Int'];
+  report: Scalars['Int'];
+  sign: Scalars['Int'];
+  tag: Scalars['Int'];
+  updated_at: Scalars['Int'];
+  validated: Scalars['Int'];
+  validated_sign: Scalars['Int'];
 };
 
 export type ReportsCreateInput = {
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  id?: InputMaybe<Scalars["BigInt"]>;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['BigInt']>;
   maintenance: MaintenanceCreateNestedOneWithoutReportsInput;
-  report: Scalars["String"];
-  sign: Scalars["String"];
-  tag: Scalars["JSON"];
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
-  validated: Scalars["BigInt"];
-  validated_sign: Scalars["BigInt"];
+  report: Scalars['String'];
+  sign: Scalars['String'];
+  tag: Scalars['JSON'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
+  validated: Scalars['BigInt'];
+  validated_sign: Scalars['BigInt'];
 };
 
 export type ReportsCreateManyMaintenanceInput = {
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  id?: InputMaybe<Scalars["BigInt"]>;
-  report: Scalars["String"];
-  sign: Scalars["String"];
-  tag: Scalars["JSON"];
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
-  validated: Scalars["BigInt"];
-  validated_sign: Scalars["BigInt"];
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['BigInt']>;
+  report: Scalars['String'];
+  sign: Scalars['String'];
+  tag: Scalars['JSON'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
+  validated: Scalars['BigInt'];
+  validated_sign: Scalars['BigInt'];
 };
 
 export type ReportsCreateManyMaintenanceInputEnvelope = {
   data: Array<ReportsCreateManyMaintenanceInput>;
-  skipDuplicates?: InputMaybe<Scalars["Boolean"]>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']>;
 };
 
 export type ReportsCreateNestedManyWithoutMaintenanceInput = {
   connect?: InputMaybe<Array<ReportsWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<
-    Array<ReportsCreateOrConnectWithoutMaintenanceInput>
-  >;
+  connectOrCreate?: InputMaybe<Array<ReportsCreateOrConnectWithoutMaintenanceInput>>;
   create?: InputMaybe<Array<ReportsCreateWithoutMaintenanceInput>>;
   createMany?: InputMaybe<ReportsCreateManyMaintenanceInputEnvelope>;
 };
@@ -2977,14 +3121,14 @@ export type ReportsCreateOrConnectWithoutMaintenanceInput = {
 };
 
 export type ReportsCreateWithoutMaintenanceInput = {
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  id?: InputMaybe<Scalars["BigInt"]>;
-  report: Scalars["String"];
-  sign: Scalars["String"];
-  tag: Scalars["JSON"];
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
-  validated: Scalars["BigInt"];
-  validated_sign: Scalars["BigInt"];
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['BigInt']>;
+  report: Scalars['String'];
+  sign: Scalars['String'];
+  tag: Scalars['JSON'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
+  validated: Scalars['BigInt'];
+  validated_sign: Scalars['BigInt'];
 };
 
 export type ReportsListRelationFilter = {
@@ -2994,27 +3138,27 @@ export type ReportsListRelationFilter = {
 };
 
 export type ReportsMaxAggregate = {
-  __typename?: "ReportsMaxAggregate";
-  created_at?: Maybe<Scalars["DateTime"]>;
-  id?: Maybe<Scalars["BigInt"]>;
-  maintance_id?: Maybe<Scalars["BigInt"]>;
-  report?: Maybe<Scalars["String"]>;
-  sign?: Maybe<Scalars["String"]>;
-  updated_at?: Maybe<Scalars["DateTime"]>;
-  validated?: Maybe<Scalars["BigInt"]>;
-  validated_sign?: Maybe<Scalars["BigInt"]>;
+  __typename?: 'ReportsMaxAggregate';
+  created_at?: Maybe<Scalars['DateTime']>;
+  id?: Maybe<Scalars['BigInt']>;
+  maintance_id?: Maybe<Scalars['BigInt']>;
+  report?: Maybe<Scalars['String']>;
+  sign?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['DateTime']>;
+  validated?: Maybe<Scalars['BigInt']>;
+  validated_sign?: Maybe<Scalars['BigInt']>;
 };
 
 export type ReportsMinAggregate = {
-  __typename?: "ReportsMinAggregate";
-  created_at?: Maybe<Scalars["DateTime"]>;
-  id?: Maybe<Scalars["BigInt"]>;
-  maintance_id?: Maybe<Scalars["BigInt"]>;
-  report?: Maybe<Scalars["String"]>;
-  sign?: Maybe<Scalars["String"]>;
-  updated_at?: Maybe<Scalars["DateTime"]>;
-  validated?: Maybe<Scalars["BigInt"]>;
-  validated_sign?: Maybe<Scalars["BigInt"]>;
+  __typename?: 'ReportsMinAggregate';
+  created_at?: Maybe<Scalars['DateTime']>;
+  id?: Maybe<Scalars['BigInt']>;
+  maintance_id?: Maybe<Scalars['BigInt']>;
+  report?: Maybe<Scalars['String']>;
+  sign?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['DateTime']>;
+  validated?: Maybe<Scalars['BigInt']>;
+  validated_sign?: Maybe<Scalars['BigInt']>;
 };
 
 export type ReportsOrderByRelationAggregateInput = {
@@ -3037,11 +3181,11 @@ export type ReportsScalarWhereInput = {
 };
 
 export type ReportsSumAggregate = {
-  __typename?: "ReportsSumAggregate";
-  id?: Maybe<Scalars["BigInt"]>;
-  maintance_id?: Maybe<Scalars["BigInt"]>;
-  validated?: Maybe<Scalars["BigInt"]>;
-  validated_sign?: Maybe<Scalars["BigInt"]>;
+  __typename?: 'ReportsSumAggregate';
+  id?: Maybe<Scalars['BigInt']>;
+  maintance_id?: Maybe<Scalars['BigInt']>;
+  validated?: Maybe<Scalars['BigInt']>;
+  validated_sign?: Maybe<Scalars['BigInt']>;
 };
 
 export type ReportsUpdateInput = {
@@ -3050,7 +3194,7 @@ export type ReportsUpdateInput = {
   maintenance?: InputMaybe<MaintenanceUpdateOneRequiredWithoutReportsNestedInput>;
   report?: InputMaybe<StringFieldUpdateOperationsInput>;
   sign?: InputMaybe<StringFieldUpdateOperationsInput>;
-  tag?: InputMaybe<Scalars["JSON"]>;
+  tag?: InputMaybe<Scalars['JSON']>;
   updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   validated?: InputMaybe<BigIntFieldUpdateOperationsInput>;
   validated_sign?: InputMaybe<BigIntFieldUpdateOperationsInput>;
@@ -3061,7 +3205,7 @@ export type ReportsUpdateManyMutationInput = {
   id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
   report?: InputMaybe<StringFieldUpdateOperationsInput>;
   sign?: InputMaybe<StringFieldUpdateOperationsInput>;
-  tag?: InputMaybe<Scalars["JSON"]>;
+  tag?: InputMaybe<Scalars['JSON']>;
   updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   validated?: InputMaybe<BigIntFieldUpdateOperationsInput>;
   validated_sign?: InputMaybe<BigIntFieldUpdateOperationsInput>;
@@ -3074,24 +3218,16 @@ export type ReportsUpdateManyWithWhereWithoutMaintenanceInput = {
 
 export type ReportsUpdateManyWithoutMaintenanceNestedInput = {
   connect?: InputMaybe<Array<ReportsWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<
-    Array<ReportsCreateOrConnectWithoutMaintenanceInput>
-  >;
+  connectOrCreate?: InputMaybe<Array<ReportsCreateOrConnectWithoutMaintenanceInput>>;
   create?: InputMaybe<Array<ReportsCreateWithoutMaintenanceInput>>;
   createMany?: InputMaybe<ReportsCreateManyMaintenanceInputEnvelope>;
   delete?: InputMaybe<Array<ReportsWhereUniqueInput>>;
   deleteMany?: InputMaybe<Array<ReportsScalarWhereInput>>;
   disconnect?: InputMaybe<Array<ReportsWhereUniqueInput>>;
   set?: InputMaybe<Array<ReportsWhereUniqueInput>>;
-  update?: InputMaybe<
-    Array<ReportsUpdateWithWhereUniqueWithoutMaintenanceInput>
-  >;
-  updateMany?: InputMaybe<
-    Array<ReportsUpdateManyWithWhereWithoutMaintenanceInput>
-  >;
-  upsert?: InputMaybe<
-    Array<ReportsUpsertWithWhereUniqueWithoutMaintenanceInput>
-  >;
+  update?: InputMaybe<Array<ReportsUpdateWithWhereUniqueWithoutMaintenanceInput>>;
+  updateMany?: InputMaybe<Array<ReportsUpdateManyWithWhereWithoutMaintenanceInput>>;
+  upsert?: InputMaybe<Array<ReportsUpsertWithWhereUniqueWithoutMaintenanceInput>>;
 };
 
 export type ReportsUpdateWithWhereUniqueWithoutMaintenanceInput = {
@@ -3104,7 +3240,7 @@ export type ReportsUpdateWithoutMaintenanceInput = {
   id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
   report?: InputMaybe<StringFieldUpdateOperationsInput>;
   sign?: InputMaybe<StringFieldUpdateOperationsInput>;
-  tag?: InputMaybe<Scalars["JSON"]>;
+  tag?: InputMaybe<Scalars['JSON']>;
   updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   validated?: InputMaybe<BigIntFieldUpdateOperationsInput>;
   validated_sign?: InputMaybe<BigIntFieldUpdateOperationsInput>;
@@ -3133,118 +3269,199 @@ export type ReportsWhereInput = {
 };
 
 export type ReportsWhereUniqueInput = {
-  id?: InputMaybe<Scalars["BigInt"]>;
+  id?: InputMaybe<Scalars['BigInt']>;
 };
 
 export enum Role {
-  Admin = "ADMIN",
-  Engineer = "ENGINEER",
-  Fitter = "FITTER",
-  Guest = "GUEST",
-  Manager = "MANAGER",
-  Supervisor = "SUPERVISOR",
+  Admin = 'ADMIN',
+  Engineer = 'ENGINEER',
+  Fitter = 'FITTER',
+  Guest = 'GUEST',
+  Manager = 'MANAGER',
+  Supervisor = 'SUPERVISOR'
 }
 
-export type Section = {
-  __typename?: "Section";
-  _count: SectionCount;
-  created_at: Scalars["DateTime"];
-  id: Scalars["ID"];
-  machines?: Maybe<Array<Machines>>;
-  name: Scalars["String"];
-  updated_at: Scalars["DateTime"];
+export type Routine_MaintanancesAvgAggregate = {
+  __typename?: 'Routine_maintanancesAvgAggregate';
+  assignee_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  meachine_id?: Maybe<Scalars['Float']>;
 };
+
+export type Routine_MaintanancesCountAggregate = {
+  __typename?: 'Routine_maintanancesCountAggregate';
+  _all: Scalars['Int'];
+  assignee_id: Scalars['Int'];
+  created_at: Scalars['Int'];
+  cron: Scalars['Int'];
+  description: Scalars['Int'];
+  from: Scalars['Int'];
+  id: Scalars['Int'];
+  meachine_id: Scalars['Int'];
+  name: Scalars['Int'];
+  to: Scalars['Int'];
+  updated_at: Scalars['Int'];
+};
+
+export type Routine_MaintanancesListRelationFilter = {
+  every?: InputMaybe<Routine_MaintanancesWhereInput>;
+  none?: InputMaybe<Routine_MaintanancesWhereInput>;
+  some?: InputMaybe<Routine_MaintanancesWhereInput>;
+};
+
+export type Routine_MaintanancesMaxAggregate = {
+  __typename?: 'Routine_maintanancesMaxAggregate';
+  assignee_id?: Maybe<Scalars['BigInt']>;
+  created_at?: Maybe<Scalars['DateTime']>;
+  cron?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  from?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['BigInt']>;
+  meachine_id?: Maybe<Scalars['BigInt']>;
+  name?: Maybe<Scalars['String']>;
+  to?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['DateTime']>;
+};
+
+export type Routine_MaintanancesMinAggregate = {
+  __typename?: 'Routine_maintanancesMinAggregate';
+  assignee_id?: Maybe<Scalars['BigInt']>;
+  created_at?: Maybe<Scalars['DateTime']>;
+  cron?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  from?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['BigInt']>;
+  meachine_id?: Maybe<Scalars['BigInt']>;
+  name?: Maybe<Scalars['String']>;
+  to?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['DateTime']>;
+};
+
+export type Routine_MaintanancesSumAggregate = {
+  __typename?: 'Routine_maintanancesSumAggregate';
+  assignee_id?: Maybe<Scalars['BigInt']>;
+  id?: Maybe<Scalars['BigInt']>;
+  meachine_id?: Maybe<Scalars['BigInt']>;
+};
+
+export type Section = {
+  __typename?: 'Section';
+  _count: SectionCount;
+  created_at: Scalars['DateTime'];
+  id: Scalars['ID'];
+  machines?: Maybe<Array<Machines>>;
+  name: Scalars['String'];
+  updated_at: Scalars['DateTime'];
+};
+
 
 export type SectionMachinesArgs = {
   orderBy?: InputMaybe<MachinesOrderByWithRelationInput>;
-  skip?: InputMaybe<Scalars["Int"]>;
-  take?: InputMaybe<Scalars["Int"]>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<MachinesWhereInput>;
 };
 
 export type SectionAvgAggregate = {
-  __typename?: "SectionAvgAggregate";
-  id?: Maybe<Scalars["Float"]>;
+  __typename?: 'SectionAvgAggregate';
+  id?: Maybe<Scalars['Float']>;
 };
 
 export type SectionCount = {
-  __typename?: "SectionCount";
-  machines: Scalars["Int"];
+  __typename?: 'SectionCount';
+  machines: Scalars['Int'];
 };
 
 export type SectionCountAggregate = {
-  __typename?: "SectionCountAggregate";
-  _all: Scalars["Int"];
-  created_at: Scalars["Int"];
-  id: Scalars["Int"];
-  name: Scalars["Int"];
-  updated_at: Scalars["Int"];
+  __typename?: 'SectionCountAggregate';
+  _all: Scalars['Int'];
+  created_at: Scalars['Int'];
+  id: Scalars['Int'];
+  name: Scalars['Int'];
+  updated_at: Scalars['Int'];
 };
 
-export type SectionCreateInput = {
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  id?: InputMaybe<Scalars["String"]>;
-  machines?: InputMaybe<MachinesCreateNestedManyWithoutSection_Machines_SectionTosectionInput>;
-  name: Scalars["String"];
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+export type SectionCreateWithoutMachinesInput = {
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  name: Scalars['String'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type SectionMaxAggregate = {
-  __typename?: "SectionMaxAggregate";
-  created_at?: Maybe<Scalars["DateTime"]>;
-  id?: Maybe<Scalars["String"]>;
-  name?: Maybe<Scalars["String"]>;
-  updated_at?: Maybe<Scalars["DateTime"]>;
+  __typename?: 'SectionMaxAggregate';
+  created_at?: Maybe<Scalars['DateTime']>;
+  id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['DateTime']>;
 };
 
 export type SectionMinAggregate = {
-  __typename?: "SectionMinAggregate";
-  created_at?: Maybe<Scalars["DateTime"]>;
-  id?: Maybe<Scalars["String"]>;
-  name?: Maybe<Scalars["String"]>;
-  updated_at?: Maybe<Scalars["DateTime"]>;
+  __typename?: 'SectionMinAggregate';
+  created_at?: Maybe<Scalars['DateTime']>;
+  id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['DateTime']>;
+};
+
+export type SectionOrderByWithRelationInput = {
+  created_at?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  machines?: InputMaybe<MachinesOrderByRelationAggregateInput>;
+  name?: InputMaybe<SortOrder>;
+  updated_at?: InputMaybe<SortOrder>;
 };
 
 export type SectionSumAggregate = {
-  __typename?: "SectionSumAggregate";
-  id?: Maybe<Scalars["String"]>;
+  __typename?: 'SectionSumAggregate';
+  id?: Maybe<Scalars['String']>;
 };
 
-export type SectionUpdateInput = {
+export type SectionUpdateWithoutMachinesInput = {
   created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
-  machines?: InputMaybe<MachinesUpdateManyWithoutSection_Machines_SectionTosectionNestedInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
   updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
+export type SectionWhereInput = {
+  AND?: InputMaybe<Array<SectionWhereInput>>;
+  NOT?: InputMaybe<Array<SectionWhereInput>>;
+  OR?: InputMaybe<Array<SectionWhereInput>>;
+  created_at?: InputMaybe<DateTimeFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  machines?: InputMaybe<MachinesListRelationFilter>;
+  name?: InputMaybe<StringFilter>;
+  updated_at?: InputMaybe<DateTimeFilter>;
+};
+
 export type Sections = {
-  __typename?: "Sections";
+  __typename?: 'Sections';
   _count: SectionsCount;
-  created_at: Scalars["DateTime"];
-  id: Scalars["BigInt"];
+  created_at: Scalars['DateTime'];
+  id: Scalars['BigInt'];
   machines?: Maybe<Array<Machines>>;
-  name: Scalars["String"];
-  updated_at: Scalars["DateTime"];
+  name: Scalars['String'];
+  updated_at: Scalars['DateTime'];
 };
 
 export type SectionsAvgAggregate = {
-  __typename?: "SectionsAvgAggregate";
-  id?: Maybe<Scalars["Float"]>;
+  __typename?: 'SectionsAvgAggregate';
+  id?: Maybe<Scalars['Float']>;
 };
 
 export type SectionsCount = {
-  __typename?: "SectionsCount";
-  machines: Scalars["Int"];
+  __typename?: 'SectionsCount';
+  machines: Scalars['Int'];
 };
 
 export type SectionsCountAggregate = {
-  __typename?: "SectionsCountAggregate";
-  _all: Scalars["Int"];
-  created_at: Scalars["Int"];
-  id: Scalars["Int"];
-  name: Scalars["Int"];
-  updated_at: Scalars["Int"];
+  __typename?: 'SectionsCountAggregate';
+  _all: Scalars['Int'];
+  created_at: Scalars['Int'];
+  id: Scalars['Int'];
+  name: Scalars['Int'];
+  updated_at: Scalars['Int'];
 };
 
 export type SectionsCreateNestedOneWithoutMachinesInput = {
@@ -3259,26 +3476,26 @@ export type SectionsCreateOrConnectWithoutMachinesInput = {
 };
 
 export type SectionsCreateWithoutMachinesInput = {
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  id?: InputMaybe<Scalars["BigInt"]>;
-  name: Scalars["String"];
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['BigInt']>;
+  name: Scalars['String'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type SectionsMaxAggregate = {
-  __typename?: "SectionsMaxAggregate";
-  created_at?: Maybe<Scalars["DateTime"]>;
-  id?: Maybe<Scalars["BigInt"]>;
-  name?: Maybe<Scalars["String"]>;
-  updated_at?: Maybe<Scalars["DateTime"]>;
+  __typename?: 'SectionsMaxAggregate';
+  created_at?: Maybe<Scalars['DateTime']>;
+  id?: Maybe<Scalars['BigInt']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['DateTime']>;
 };
 
 export type SectionsMinAggregate = {
-  __typename?: "SectionsMinAggregate";
-  created_at?: Maybe<Scalars["DateTime"]>;
-  id?: Maybe<Scalars["BigInt"]>;
-  name?: Maybe<Scalars["String"]>;
-  updated_at?: Maybe<Scalars["DateTime"]>;
+  __typename?: 'SectionsMinAggregate';
+  created_at?: Maybe<Scalars['DateTime']>;
+  id?: Maybe<Scalars['BigInt']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['DateTime']>;
 };
 
 export type SectionsOrderByWithRelationInput = {
@@ -3295,8 +3512,8 @@ export type SectionsRelationFilter = {
 };
 
 export type SectionsSumAggregate = {
-  __typename?: "SectionsSumAggregate";
-  id?: Maybe<Scalars["BigInt"]>;
+  __typename?: 'SectionsSumAggregate';
+  id?: Maybe<Scalars['BigInt']>;
 };
 
 export type SectionsUpdateOneRequiredWithoutMachinesNestedInput = {
@@ -3331,142 +3548,140 @@ export type SectionsWhereInput = {
 };
 
 export type SectionsWhereUniqueInput = {
-  id?: InputMaybe<Scalars["BigInt"]>;
+  id?: InputMaybe<Scalars['BigInt']>;
 };
 
 export enum SortOrder {
-  Asc = "asc",
-  Desc = "desc",
+  Asc = 'asc',
+  Desc = 'desc'
 }
 
 export type StringFieldUpdateOperationsInput = {
-  set?: InputMaybe<Scalars["String"]>;
+  set?: InputMaybe<Scalars['String']>;
 };
 
 export type StringFilter = {
-  contains?: InputMaybe<Scalars["String"]>;
-  endsWith?: InputMaybe<Scalars["String"]>;
-  equals?: InputMaybe<Scalars["String"]>;
-  gt?: InputMaybe<Scalars["String"]>;
-  gte?: InputMaybe<Scalars["String"]>;
-  in?: InputMaybe<Array<Scalars["String"]>>;
-  lt?: InputMaybe<Scalars["String"]>;
-  lte?: InputMaybe<Scalars["String"]>;
+  contains?: InputMaybe<Scalars['String']>;
+  endsWith?: InputMaybe<Scalars['String']>;
+  equals?: InputMaybe<Scalars['String']>;
+  gt?: InputMaybe<Scalars['String']>;
+  gte?: InputMaybe<Scalars['String']>;
+  in?: InputMaybe<Array<Scalars['String']>>;
+  lt?: InputMaybe<Scalars['String']>;
+  lte?: InputMaybe<Scalars['String']>;
   mode?: InputMaybe<QueryMode>;
   not?: InputMaybe<NestedStringFilter>;
-  notIn?: InputMaybe<Array<Scalars["String"]>>;
-  search?: InputMaybe<Scalars["String"]>;
-  startsWith?: InputMaybe<Scalars["String"]>;
+  notIn?: InputMaybe<Array<Scalars['String']>>;
+  search?: InputMaybe<Scalars['String']>;
+  startsWith?: InputMaybe<Scalars['String']>;
 };
 
 export type StringNullableFilter = {
-  contains?: InputMaybe<Scalars["String"]>;
-  endsWith?: InputMaybe<Scalars["String"]>;
-  equals?: InputMaybe<Scalars["String"]>;
-  gt?: InputMaybe<Scalars["String"]>;
-  gte?: InputMaybe<Scalars["String"]>;
-  in?: InputMaybe<Array<Scalars["String"]>>;
-  lt?: InputMaybe<Scalars["String"]>;
-  lte?: InputMaybe<Scalars["String"]>;
+  contains?: InputMaybe<Scalars['String']>;
+  endsWith?: InputMaybe<Scalars['String']>;
+  equals?: InputMaybe<Scalars['String']>;
+  gt?: InputMaybe<Scalars['String']>;
+  gte?: InputMaybe<Scalars['String']>;
+  in?: InputMaybe<Array<Scalars['String']>>;
+  lt?: InputMaybe<Scalars['String']>;
+  lte?: InputMaybe<Scalars['String']>;
   mode?: InputMaybe<QueryMode>;
   not?: InputMaybe<NestedStringNullableFilter>;
-  notIn?: InputMaybe<Array<Scalars["String"]>>;
-  search?: InputMaybe<Scalars["String"]>;
-  startsWith?: InputMaybe<Scalars["String"]>;
+  notIn?: InputMaybe<Array<Scalars['String']>>;
+  search?: InputMaybe<Scalars['String']>;
+  startsWith?: InputMaybe<Scalars['String']>;
 };
 
 export type Ticket = {
-  __typename?: "Ticket";
-  created_at: Scalars["DateTime"];
-  description: Scalars["String"];
-  id: Scalars["BigInt"];
+  __typename?: 'Ticket';
+  created_at: Scalars['DateTime'];
+  description: Scalars['String'];
+  id: Scalars['BigInt'];
   machine: Machines;
-  machine_id: Scalars["BigInt"];
+  machine_id: Scalars['BigInt'];
   machines: Machines;
   maintanance?: Maybe<Maintenance>;
   maintenance?: Maybe<Maintenance>;
-  maintenance_id?: Maybe<Scalars["BigInt"]>;
-  name: Scalars["String"];
-  photos: Scalars["String"];
+  maintenance_id?: Maybe<Scalars['BigInt']>;
+  name: Scalars['String'];
+  photos: Scalars['String'];
   status: Ticket_Status;
-  updated_at: Scalars["DateTime"];
+  updated_at: Scalars['DateTime'];
   user: Users;
-  user_id: Scalars["BigInt"];
+  user_id: Scalars['BigInt'];
 };
 
 export type TicketAvgAggregate = {
-  __typename?: "TicketAvgAggregate";
-  id?: Maybe<Scalars["Float"]>;
-  machine_id?: Maybe<Scalars["Float"]>;
-  maintenance_id?: Maybe<Scalars["Float"]>;
-  user_id?: Maybe<Scalars["Float"]>;
+  __typename?: 'TicketAvgAggregate';
+  id?: Maybe<Scalars['Float']>;
+  machine_id?: Maybe<Scalars['Float']>;
+  maintenance_id?: Maybe<Scalars['Float']>;
+  user_id?: Maybe<Scalars['Float']>;
 };
 
 export type TicketCountAggregate = {
-  __typename?: "TicketCountAggregate";
-  _all: Scalars["Int"];
-  created_at: Scalars["Int"];
-  description: Scalars["Int"];
-  id: Scalars["Int"];
-  machine_id: Scalars["Int"];
-  maintenance_id: Scalars["Int"];
-  name: Scalars["Int"];
-  photos: Scalars["Int"];
-  status: Scalars["Int"];
-  updated_at: Scalars["Int"];
-  user_id: Scalars["Int"];
+  __typename?: 'TicketCountAggregate';
+  _all: Scalars['Int'];
+  created_at: Scalars['Int'];
+  description: Scalars['Int'];
+  id: Scalars['Int'];
+  machine_id: Scalars['Int'];
+  maintenance_id: Scalars['Int'];
+  name: Scalars['Int'];
+  photos: Scalars['Int'];
+  status: Scalars['Int'];
+  updated_at: Scalars['Int'];
+  user_id: Scalars['Int'];
 };
 
 export type TicketCreateInput = {
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  description: Scalars["String"];
-  id?: InputMaybe<Scalars["BigInt"]>;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  id?: InputMaybe<Scalars['BigInt']>;
   machines: MachinesCreateNestedOneWithoutTicketInput;
   maintenance?: InputMaybe<MaintenanceCreateNestedOneWithoutTicketInput>;
-  name: Scalars["String"];
-  photos: Scalars["String"];
+  name: Scalars['String'];
+  photos: Scalars['String'];
   status: Ticket_Status;
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type TicketCreateManyMachinesInput = {
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  description: Scalars["String"];
-  id?: InputMaybe<Scalars["BigInt"]>;
-  maintenance_id?: InputMaybe<Scalars["BigInt"]>;
-  name: Scalars["String"];
-  photos: Scalars["String"];
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  id?: InputMaybe<Scalars['BigInt']>;
+  maintenance_id?: InputMaybe<Scalars['BigInt']>;
+  name: Scalars['String'];
+  photos: Scalars['String'];
   status: Ticket_Status;
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type TicketCreateManyMachinesInputEnvelope = {
   data: Array<TicketCreateManyMachinesInput>;
-  skipDuplicates?: InputMaybe<Scalars["Boolean"]>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']>;
 };
 
 export type TicketCreateManyUserInput = {
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  description: Scalars["String"];
-  id?: InputMaybe<Scalars["BigInt"]>;
-  machine_id: Scalars["BigInt"];
-  maintenance_id?: InputMaybe<Scalars["BigInt"]>;
-  name: Scalars["String"];
-  photos: Scalars["String"];
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  id?: InputMaybe<Scalars['BigInt']>;
+  machine_id: Scalars['BigInt'];
+  maintenance_id?: InputMaybe<Scalars['BigInt']>;
+  name: Scalars['String'];
+  photos: Scalars['String'];
   status: Ticket_Status;
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type TicketCreateManyUserInputEnvelope = {
   data: Array<TicketCreateManyUserInput>;
-  skipDuplicates?: InputMaybe<Scalars["Boolean"]>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']>;
 };
 
 export type TicketCreateNestedManyWithoutMachinesInput = {
   connect?: InputMaybe<Array<TicketWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<
-    Array<TicketCreateOrConnectWithoutMachinesInput>
-  >;
+  connectOrCreate?: InputMaybe<Array<TicketCreateOrConnectWithoutMachinesInput>>;
   create?: InputMaybe<Array<TicketCreateWithoutMachinesInput>>;
   createMany?: InputMaybe<TicketCreateManyMachinesInputEnvelope>;
 };
@@ -3500,37 +3715,37 @@ export type TicketCreateOrConnectWithoutUserInput = {
 };
 
 export type TicketCreateWithoutMachinesInput = {
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  description: Scalars["String"];
-  id?: InputMaybe<Scalars["BigInt"]>;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  id?: InputMaybe<Scalars['BigInt']>;
   maintenance?: InputMaybe<MaintenanceCreateNestedOneWithoutTicketInput>;
-  name: Scalars["String"];
-  photos: Scalars["String"];
+  name: Scalars['String'];
+  photos: Scalars['String'];
   status: Ticket_Status;
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type TicketCreateWithoutMaintenanceInput = {
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  description: Scalars["String"];
-  id?: InputMaybe<Scalars["BigInt"]>;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  id?: InputMaybe<Scalars['BigInt']>;
   machines: MachinesCreateNestedOneWithoutTicketInput;
-  name: Scalars["String"];
-  photos: Scalars["String"];
+  name: Scalars['String'];
+  photos: Scalars['String'];
   status: Ticket_Status;
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type TicketCreateWithoutUserInput = {
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  description: Scalars["String"];
-  id?: InputMaybe<Scalars["BigInt"]>;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  id?: InputMaybe<Scalars['BigInt']>;
   machines: MachinesCreateNestedOneWithoutTicketInput;
   maintenance?: InputMaybe<MaintenanceCreateNestedOneWithoutTicketInput>;
-  name: Scalars["String"];
-  photos: Scalars["String"];
+  name: Scalars['String'];
+  photos: Scalars['String'];
   status: Ticket_Status;
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type TicketListRelationFilter = {
@@ -3540,31 +3755,31 @@ export type TicketListRelationFilter = {
 };
 
 export type TicketMaxAggregate = {
-  __typename?: "TicketMaxAggregate";
-  created_at?: Maybe<Scalars["DateTime"]>;
-  description?: Maybe<Scalars["String"]>;
-  id?: Maybe<Scalars["BigInt"]>;
-  machine_id?: Maybe<Scalars["BigInt"]>;
-  maintenance_id?: Maybe<Scalars["BigInt"]>;
-  name?: Maybe<Scalars["String"]>;
-  photos?: Maybe<Scalars["String"]>;
+  __typename?: 'TicketMaxAggregate';
+  created_at?: Maybe<Scalars['DateTime']>;
+  description?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['BigInt']>;
+  machine_id?: Maybe<Scalars['BigInt']>;
+  maintenance_id?: Maybe<Scalars['BigInt']>;
+  name?: Maybe<Scalars['String']>;
+  photos?: Maybe<Scalars['String']>;
   status?: Maybe<Ticket_Status>;
-  updated_at?: Maybe<Scalars["DateTime"]>;
-  user_id?: Maybe<Scalars["BigInt"]>;
+  updated_at?: Maybe<Scalars['DateTime']>;
+  user_id?: Maybe<Scalars['BigInt']>;
 };
 
 export type TicketMinAggregate = {
-  __typename?: "TicketMinAggregate";
-  created_at?: Maybe<Scalars["DateTime"]>;
-  description?: Maybe<Scalars["String"]>;
-  id?: Maybe<Scalars["BigInt"]>;
-  machine_id?: Maybe<Scalars["BigInt"]>;
-  maintenance_id?: Maybe<Scalars["BigInt"]>;
-  name?: Maybe<Scalars["String"]>;
-  photos?: Maybe<Scalars["String"]>;
+  __typename?: 'TicketMinAggregate';
+  created_at?: Maybe<Scalars['DateTime']>;
+  description?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['BigInt']>;
+  machine_id?: Maybe<Scalars['BigInt']>;
+  maintenance_id?: Maybe<Scalars['BigInt']>;
+  name?: Maybe<Scalars['String']>;
+  photos?: Maybe<Scalars['String']>;
   status?: Maybe<Ticket_Status>;
-  updated_at?: Maybe<Scalars["DateTime"]>;
-  user_id?: Maybe<Scalars["BigInt"]>;
+  updated_at?: Maybe<Scalars['DateTime']>;
+  user_id?: Maybe<Scalars['BigInt']>;
 };
 
 export type TicketOrderByRelationAggregateInput = {
@@ -3606,11 +3821,11 @@ export type TicketScalarWhereInput = {
 };
 
 export type TicketSumAggregate = {
-  __typename?: "TicketSumAggregate";
-  id?: Maybe<Scalars["BigInt"]>;
-  machine_id?: Maybe<Scalars["BigInt"]>;
-  maintenance_id?: Maybe<Scalars["BigInt"]>;
-  user_id?: Maybe<Scalars["BigInt"]>;
+  __typename?: 'TicketSumAggregate';
+  id?: Maybe<Scalars['BigInt']>;
+  machine_id?: Maybe<Scalars['BigInt']>;
+  maintenance_id?: Maybe<Scalars['BigInt']>;
+  user_id?: Maybe<Scalars['BigInt']>;
 };
 
 export type TicketUpdateInput = {
@@ -3647,9 +3862,7 @@ export type TicketUpdateManyWithWhereWithoutUserInput = {
 
 export type TicketUpdateManyWithoutMachinesNestedInput = {
   connect?: InputMaybe<Array<TicketWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<
-    Array<TicketCreateOrConnectWithoutMachinesInput>
-  >;
+  connectOrCreate?: InputMaybe<Array<TicketCreateOrConnectWithoutMachinesInput>>;
   create?: InputMaybe<Array<TicketCreateWithoutMachinesInput>>;
   createMany?: InputMaybe<TicketCreateManyMachinesInputEnvelope>;
   delete?: InputMaybe<Array<TicketWhereUniqueInput>>;
@@ -3679,8 +3892,8 @@ export type TicketUpdateOneWithoutMaintenanceNestedInput = {
   connect?: InputMaybe<TicketWhereUniqueInput>;
   connectOrCreate?: InputMaybe<TicketCreateOrConnectWithoutMaintenanceInput>;
   create?: InputMaybe<TicketCreateWithoutMaintenanceInput>;
-  delete?: InputMaybe<Scalars["Boolean"]>;
-  disconnect?: InputMaybe<Scalars["Boolean"]>;
+  delete?: InputMaybe<Scalars['Boolean']>;
+  disconnect?: InputMaybe<Scalars['Boolean']>;
   update?: InputMaybe<TicketUpdateWithoutMaintenanceInput>;
   upsert?: InputMaybe<TicketUpsertWithoutMaintenanceInput>;
 };
@@ -3764,78 +3977,83 @@ export type TicketWhereInput = {
 };
 
 export type TicketWhereUniqueInput = {
-  id?: InputMaybe<Scalars["BigInt"]>;
-  maintenance_id?: InputMaybe<Scalars["BigInt"]>;
+  id?: InputMaybe<Scalars['BigInt']>;
+  maintenance_id?: InputMaybe<Scalars['BigInt']>;
 };
 
 export type Users = {
-  __typename?: "Users";
+  __typename?: 'Users';
   _count: UsersCount;
-  created_at: Scalars["DateTime"];
-  id: Scalars["BigInt"];
+  created_at: Scalars['DateTime'];
+  id: Scalars['BigInt'];
   maintenance?: Maybe<Array<Maintenance>>;
-  name: Scalars["String"];
-  phone: Scalars["String"];
-  profile: Scalars["JSON"];
+  name: Scalars['String'];
+  phone: Scalars['String'];
+  profile: Scalars['JSON'];
   role: Role;
+  routine_maintanances?: Maybe<Array<Routine_Maintanances>>;
   ticket?: Maybe<Array<Ticket>>;
-  updated_at: Scalars["DateTime"];
+  updated_at: Scalars['DateTime'];
   /**
    * @DtoCreateHidden
    * @DtoUpdateHidden
    */
-  user_auth_id?: Maybe<Scalars["String"]>;
+  user_auth_id?: Maybe<Scalars['String']>;
 };
 
+
 export type UsersMaintenanceArgs = {
-  limit?: InputMaybe<Scalars["Int"]>;
-  offset?: InputMaybe<Scalars["Int"]>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<MaintenanceOrderByWithRelationInput>;
   where?: InputMaybe<MaintenanceWhereInput>;
 };
 
+
 export type UsersTicketArgs = {
-  limit?: InputMaybe<Scalars["Int"]>;
-  offset?: InputMaybe<Scalars["Int"]>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<TicketOrderByWithRelationInput>;
   where?: InputMaybe<TicketWhereInput>;
 };
 
 export type UsersAvgAggregate = {
-  __typename?: "UsersAvgAggregate";
-  id?: Maybe<Scalars["Float"]>;
+  __typename?: 'UsersAvgAggregate';
+  id?: Maybe<Scalars['Float']>;
 };
 
 export type UsersCount = {
-  __typename?: "UsersCount";
-  maintenance: Scalars["Int"];
-  ticket: Scalars["Int"];
+  __typename?: 'UsersCount';
+  maintenance: Scalars['Int'];
+  routine_maintanances: Scalars['Int'];
+  ticket: Scalars['Int'];
 };
 
 export type UsersCountAggregate = {
-  __typename?: "UsersCountAggregate";
-  _all: Scalars["Int"];
-  created_at: Scalars["Int"];
-  id: Scalars["Int"];
-  name: Scalars["Int"];
-  phone: Scalars["Int"];
-  profile: Scalars["Int"];
-  role: Scalars["Int"];
-  updated_at: Scalars["Int"];
-  user_auth_id: Scalars["Int"];
+  __typename?: 'UsersCountAggregate';
+  _all: Scalars['Int'];
+  created_at: Scalars['Int'];
+  id: Scalars['Int'];
+  name: Scalars['Int'];
+  phone: Scalars['Int'];
+  profile: Scalars['Int'];
+  role: Scalars['Int'];
+  updated_at: Scalars['Int'];
+  user_auth_id: Scalars['Int'];
 };
 
 export type UsersCreateInput = {
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  id?: InputMaybe<Scalars["BigInt"]>;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['BigInt']>;
   maintenance?: InputMaybe<MaintenanceCreateNestedManyWithoutAssigneeInput>;
-  name: Scalars["String"];
-  phone: Scalars["String"];
-  profile?: InputMaybe<Scalars["JSON"]>;
+  name: Scalars['String'];
+  phone: Scalars['String'];
+  profile?: InputMaybe<Scalars['JSON']>;
   role: Role;
+  routine_maintanances?: InputMaybe<Routine_MaintanancesCreateNestedManyWithoutAssigneeInput>;
   ticket?: InputMaybe<TicketCreateNestedManyWithoutUserInput>;
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
-  user_auth_id?: InputMaybe<Scalars["String"]>;
+  updated_at?: InputMaybe<Scalars['DateTime']>;
+  user_auth_id?: InputMaybe<Scalars['String']>;
 };
 
 export type UsersCreateNestedOneWithoutMaintenanceInput = {
@@ -3844,43 +4062,68 @@ export type UsersCreateNestedOneWithoutMaintenanceInput = {
   create?: InputMaybe<UsersCreateWithoutMaintenanceInput>;
 };
 
+export type UsersCreateNestedOneWithoutRoutine_MaintanancesInput = {
+  connect?: InputMaybe<UsersWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<UsersCreateOrConnectWithoutRoutine_MaintanancesInput>;
+  create?: InputMaybe<UsersCreateWithoutRoutine_MaintanancesInput>;
+};
+
 export type UsersCreateOrConnectWithoutMaintenanceInput = {
   create: UsersCreateWithoutMaintenanceInput;
   where: UsersWhereUniqueInput;
 };
 
+export type UsersCreateOrConnectWithoutRoutine_MaintanancesInput = {
+  create: UsersCreateWithoutRoutine_MaintanancesInput;
+  where: UsersWhereUniqueInput;
+};
+
 export type UsersCreateWithoutMaintenanceInput = {
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  id?: InputMaybe<Scalars["BigInt"]>;
-  name: Scalars["String"];
-  phone: Scalars["String"];
-  profile?: InputMaybe<Scalars["JSON"]>;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['BigInt']>;
+  name: Scalars['String'];
+  phone: Scalars['String'];
+  profile?: InputMaybe<Scalars['JSON']>;
+  role: Role;
+  routine_maintanances?: InputMaybe<Routine_MaintanancesCreateNestedManyWithoutAssigneeInput>;
+  ticket?: InputMaybe<TicketCreateNestedManyWithoutUserInput>;
+  updated_at?: InputMaybe<Scalars['DateTime']>;
+  user_auth_id?: InputMaybe<Scalars['String']>;
+};
+
+export type UsersCreateWithoutRoutine_MaintanancesInput = {
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['BigInt']>;
+  maintenance?: InputMaybe<MaintenanceCreateNestedManyWithoutAssigneeInput>;
+  name: Scalars['String'];
+  phone: Scalars['String'];
+  profile?: InputMaybe<Scalars['JSON']>;
   role: Role;
   ticket?: InputMaybe<TicketCreateNestedManyWithoutUserInput>;
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
-  user_auth_id?: InputMaybe<Scalars["String"]>;
+  updated_at?: InputMaybe<Scalars['DateTime']>;
+  user_auth_id?: InputMaybe<Scalars['String']>;
 };
 
 export type UsersMaxAggregate = {
-  __typename?: "UsersMaxAggregate";
-  created_at?: Maybe<Scalars["DateTime"]>;
-  id?: Maybe<Scalars["BigInt"]>;
-  name?: Maybe<Scalars["String"]>;
-  phone?: Maybe<Scalars["String"]>;
+  __typename?: 'UsersMaxAggregate';
+  created_at?: Maybe<Scalars['DateTime']>;
+  id?: Maybe<Scalars['BigInt']>;
+  name?: Maybe<Scalars['String']>;
+  phone?: Maybe<Scalars['String']>;
   role?: Maybe<Role>;
-  updated_at?: Maybe<Scalars["DateTime"]>;
-  user_auth_id?: Maybe<Scalars["String"]>;
+  updated_at?: Maybe<Scalars['DateTime']>;
+  user_auth_id?: Maybe<Scalars['String']>;
 };
 
 export type UsersMinAggregate = {
-  __typename?: "UsersMinAggregate";
-  created_at?: Maybe<Scalars["DateTime"]>;
-  id?: Maybe<Scalars["BigInt"]>;
-  name?: Maybe<Scalars["String"]>;
-  phone?: Maybe<Scalars["String"]>;
+  __typename?: 'UsersMinAggregate';
+  created_at?: Maybe<Scalars['DateTime']>;
+  id?: Maybe<Scalars['BigInt']>;
+  name?: Maybe<Scalars['String']>;
+  phone?: Maybe<Scalars['String']>;
   role?: Maybe<Role>;
-  updated_at?: Maybe<Scalars["DateTime"]>;
-  user_auth_id?: Maybe<Scalars["String"]>;
+  updated_at?: Maybe<Scalars['DateTime']>;
+  user_auth_id?: Maybe<Scalars['String']>;
 };
 
 export type UsersOrderByWithRelationInput = {
@@ -3903,8 +4146,8 @@ export type UsersRelationFilter = {
 };
 
 export type UsersSumAggregate = {
-  __typename?: "UsersSumAggregate";
-  id?: Maybe<Scalars["BigInt"]>;
+  __typename?: 'UsersSumAggregate';
+  id?: Maybe<Scalars['BigInt']>;
 };
 
 export type UsersUpdateInput = {
@@ -3913,8 +4156,9 @@ export type UsersUpdateInput = {
   maintenance?: InputMaybe<MaintenanceUpdateManyWithoutAssigneeNestedInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
   phone?: InputMaybe<StringFieldUpdateOperationsInput>;
-  profile?: InputMaybe<Scalars["JSON"]>;
+  profile?: InputMaybe<Scalars['JSON']>;
   role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
+  routine_maintanances?: InputMaybe<Routine_MaintanancesUpdateManyWithoutAssigneeNestedInput>;
   ticket?: InputMaybe<TicketUpdateManyWithoutUserNestedInput>;
   updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   user_auth_id?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
@@ -3928,12 +4172,34 @@ export type UsersUpdateOneRequiredWithoutMaintenanceNestedInput = {
   upsert?: InputMaybe<UsersUpsertWithoutMaintenanceInput>;
 };
 
+export type UsersUpdateOneRequiredWithoutRoutine_MaintanancesNestedInput = {
+  connect?: InputMaybe<UsersWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<UsersCreateOrConnectWithoutRoutine_MaintanancesInput>;
+  create?: InputMaybe<UsersCreateWithoutRoutine_MaintanancesInput>;
+  update?: InputMaybe<UsersUpdateWithoutRoutine_MaintanancesInput>;
+  upsert?: InputMaybe<UsersUpsertWithoutRoutine_MaintanancesInput>;
+};
+
 export type UsersUpdateWithoutMaintenanceInput = {
   created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
   phone?: InputMaybe<StringFieldUpdateOperationsInput>;
-  profile?: InputMaybe<Scalars["JSON"]>;
+  profile?: InputMaybe<Scalars['JSON']>;
+  role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
+  routine_maintanances?: InputMaybe<Routine_MaintanancesUpdateManyWithoutAssigneeNestedInput>;
+  ticket?: InputMaybe<TicketUpdateManyWithoutUserNestedInput>;
+  updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  user_auth_id?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+};
+
+export type UsersUpdateWithoutRoutine_MaintanancesInput = {
+  created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
+  maintenance?: InputMaybe<MaintenanceUpdateManyWithoutAssigneeNestedInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  phone?: InputMaybe<StringFieldUpdateOperationsInput>;
+  profile?: InputMaybe<Scalars['JSON']>;
   role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
   ticket?: InputMaybe<TicketUpdateManyWithoutUserNestedInput>;
   updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
@@ -3943,6 +4209,11 @@ export type UsersUpdateWithoutMaintenanceInput = {
 export type UsersUpsertWithoutMaintenanceInput = {
   create: UsersCreateWithoutMaintenanceInput;
   update: UsersUpdateWithoutMaintenanceInput;
+};
+
+export type UsersUpsertWithoutRoutine_MaintanancesInput = {
+  create: UsersCreateWithoutRoutine_MaintanancesInput;
+  update: UsersUpdateWithoutRoutine_MaintanancesInput;
 };
 
 export type UsersWhereInput = {
@@ -3956,25 +4227,26 @@ export type UsersWhereInput = {
   phone?: InputMaybe<StringFilter>;
   profile?: InputMaybe<JsonFilter>;
   role?: InputMaybe<EnumRoleFilter>;
+  routine_maintanances?: InputMaybe<Routine_MaintanancesListRelationFilter>;
   ticket?: InputMaybe<TicketListRelationFilter>;
   updated_at?: InputMaybe<DateTimeFilter>;
   user_auth_id?: InputMaybe<StringNullableFilter>;
 };
 
 export type UsersWhereUniqueInput = {
-  id?: InputMaybe<Scalars["BigInt"]>;
-  phone?: InputMaybe<Scalars["String"]>;
-  user_auth_id?: InputMaybe<Scalars["String"]>;
+  id?: InputMaybe<Scalars['BigInt']>;
+  phone?: InputMaybe<Scalars['String']>;
+  user_auth_id?: InputMaybe<Scalars['String']>;
 };
 
 export type Catagory = {
-  __typename?: "catagory";
+  __typename?: 'catagory';
   _count: CatagoryCount;
-  created_at: Scalars["DateTime"];
-  id: Scalars["BigInt"];
+  created_at: Scalars['DateTime'];
+  id: Scalars['BigInt'];
   items?: Maybe<Array<Items>>;
-  name: Scalars["String"];
-  updated_at: Scalars["DateTime"];
+  name: Scalars['String'];
+  updated_at: Scalars['DateTime'];
 };
 
 export type CatagoryCreateNestedOneWithoutItemsInput = {
@@ -3989,10 +4261,10 @@ export type CatagoryCreateOrConnectWithoutItemsInput = {
 };
 
 export type CatagoryCreateWithoutItemsInput = {
-  created_at?: InputMaybe<Scalars["DateTime"]>;
-  id?: InputMaybe<Scalars["BigInt"]>;
-  name: Scalars["String"];
-  updated_at?: InputMaybe<Scalars["DateTime"]>;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['BigInt']>;
+  name: Scalars['String'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type CatagoryOrderByWithRelationInput = {
@@ -4035,317 +4307,441 @@ export type CatagoryWhereInput = {
 };
 
 export type CatagoryWhereUniqueInput = {
-  id?: InputMaybe<Scalars["BigInt"]>;
+  id?: InputMaybe<Scalars['BigInt']>;
+};
+
+export type Machine_Catagory = {
+  __typename?: 'machine_catagory';
+  _count: Machine_CatagoryCount;
+  created_at: Scalars['DateTime'];
+  id: Scalars['BigInt'];
+  machines?: Maybe<Array<Machines>>;
+  name: Scalars['String'];
+  updated_at: Scalars['DateTime'];
+};
+
+
+export type Machine_CatagoryMachinesArgs = {
+  orderBy?: InputMaybe<MachinesOrderByWithRelationInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<MachinesWhereInput>;
+};
+
+export type Machine_CatagoryCreateNestedOneWithoutMachinesInput = {
+  connect?: InputMaybe<Machine_CatagoryWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<Machine_CatagoryCreateOrConnectWithoutMachinesInput>;
+  create?: InputMaybe<Machine_CatagoryCreateWithoutMachinesInput>;
+};
+
+export type Machine_CatagoryCreateOrConnectWithoutMachinesInput = {
+  create: Machine_CatagoryCreateWithoutMachinesInput;
+  where: Machine_CatagoryWhereUniqueInput;
+};
+
+export type Machine_CatagoryCreateWithoutMachinesInput = {
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['BigInt']>;
+  name: Scalars['String'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
+};
+
+export enum Machine_CatagoryOrderByRelevanceFieldEnum {
+  Name = 'name'
+}
+
+export type Machine_CatagoryOrderByRelevanceInput = {
+  fields: Array<Machine_CatagoryOrderByRelevanceFieldEnum>;
+  search: Scalars['String'];
+  sort: SortOrder;
+};
+
+export type Machine_CatagoryOrderByWithRelationAndSearchRelevanceInput = {
+  _relevance?: InputMaybe<Machine_CatagoryOrderByRelevanceInput>;
+  created_at?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  machines?: InputMaybe<MachinesOrderByRelationAggregateInput>;
+  name?: InputMaybe<SortOrder>;
+  updated_at?: InputMaybe<SortOrder>;
+};
+
+export type Machine_CatagoryUpdateOneRequiredWithoutMachinesNestedInput = {
+  connect?: InputMaybe<Machine_CatagoryWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<Machine_CatagoryCreateOrConnectWithoutMachinesInput>;
+  create?: InputMaybe<Machine_CatagoryCreateWithoutMachinesInput>;
+  update?: InputMaybe<Machine_CatagoryUpdateWithoutMachinesInput>;
+  upsert?: InputMaybe<Machine_CatagoryUpsertWithoutMachinesInput>;
+};
+
+export type Machine_CatagoryUpdateOneWithoutMachinesNestedInput = {
+  connect?: InputMaybe<Machine_CatagoryWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<Machine_CatagoryCreateOrConnectWithoutMachinesInput>;
+  create?: InputMaybe<Machine_CatagoryCreateWithoutMachinesInput>;
+  delete?: InputMaybe<Scalars['Boolean']>;
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  update?: InputMaybe<Machine_CatagoryUpdateWithoutMachinesInput>;
+  upsert?: InputMaybe<Machine_CatagoryUpsertWithoutMachinesInput>;
+};
+
+export type Machine_CatagoryUpdateWithoutMachinesInput = {
+  created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type Machine_CatagoryUpsertWithoutMachinesInput = {
+  create: Machine_CatagoryCreateWithoutMachinesInput;
+  update: Machine_CatagoryUpdateWithoutMachinesInput;
+};
+
+export type Machine_CatagoryWhereInput = {
+  AND?: InputMaybe<Array<Machine_CatagoryWhereInput>>;
+  NOT?: InputMaybe<Array<Machine_CatagoryWhereInput>>;
+  OR?: InputMaybe<Array<Machine_CatagoryWhereInput>>;
+  created_at?: InputMaybe<DateTimeFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  machines?: InputMaybe<MachinesListRelationFilter>;
+  name?: InputMaybe<StringFilter>;
+  updated_at?: InputMaybe<DateTimeFilter>;
+};
+
+export type Machine_CatagoryWhereUniqueInput = {
+  id?: InputMaybe<Scalars['BigInt']>;
+};
+
+export type Routine_Maintanances = {
+  __typename?: 'routine_maintanances';
+  assignee: Users;
+  assignee_id: Scalars['BigInt'];
+  created_at: Scalars['DateTime'];
+  cron: Scalars['String'];
+  description: Scalars['String'];
+  from: Scalars['String'];
+  id: Scalars['BigInt'];
+  meachine: Machines;
+  meachine_id: Scalars['BigInt'];
+  name: Scalars['String'];
+  to: Scalars['String'];
+  updated_at: Scalars['DateTime'];
+};
+
+export type Routine_MaintanancesCreateInput = {
+  assignee: UsersCreateNestedOneWithoutRoutine_MaintanancesInput;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  cron: Scalars['String'];
+  description: Scalars['String'];
+  from: Scalars['String'];
+  id?: InputMaybe<Scalars['BigInt']>;
+  meachine: MachinesCreateNestedOneWithoutRoutine_MaintanancesInput;
+  name: Scalars['String'];
+  to: Scalars['String'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type Routine_MaintanancesCreateManyAssigneeInput = {
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  cron: Scalars['String'];
+  description: Scalars['String'];
+  from: Scalars['String'];
+  id?: InputMaybe<Scalars['BigInt']>;
+  meachine_id: Scalars['BigInt'];
+  name: Scalars['String'];
+  to: Scalars['String'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type Routine_MaintanancesCreateManyAssigneeInputEnvelope = {
+  data: Array<Routine_MaintanancesCreateManyAssigneeInput>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type Routine_MaintanancesCreateManyMeachineInput = {
+  assignee_id: Scalars['BigInt'];
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  cron: Scalars['String'];
+  description: Scalars['String'];
+  from: Scalars['String'];
+  id?: InputMaybe<Scalars['BigInt']>;
+  name: Scalars['String'];
+  to: Scalars['String'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type Routine_MaintanancesCreateManyMeachineInputEnvelope = {
+  data: Array<Routine_MaintanancesCreateManyMeachineInput>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type Routine_MaintanancesCreateNestedManyWithoutAssigneeInput = {
+  connect?: InputMaybe<Array<Routine_MaintanancesWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<Routine_MaintanancesCreateOrConnectWithoutAssigneeInput>>;
+  create?: InputMaybe<Array<Routine_MaintanancesCreateWithoutAssigneeInput>>;
+  createMany?: InputMaybe<Routine_MaintanancesCreateManyAssigneeInputEnvelope>;
+};
+
+export type Routine_MaintanancesCreateNestedManyWithoutMeachineInput = {
+  connect?: InputMaybe<Array<Routine_MaintanancesWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<Routine_MaintanancesCreateOrConnectWithoutMeachineInput>>;
+  create?: InputMaybe<Array<Routine_MaintanancesCreateWithoutMeachineInput>>;
+  createMany?: InputMaybe<Routine_MaintanancesCreateManyMeachineInputEnvelope>;
+};
+
+export type Routine_MaintanancesCreateOrConnectWithoutAssigneeInput = {
+  create: Routine_MaintanancesCreateWithoutAssigneeInput;
+  where: Routine_MaintanancesWhereUniqueInput;
+};
+
+export type Routine_MaintanancesCreateOrConnectWithoutMeachineInput = {
+  create: Routine_MaintanancesCreateWithoutMeachineInput;
+  where: Routine_MaintanancesWhereUniqueInput;
+};
+
+export type Routine_MaintanancesCreateWithoutAssigneeInput = {
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  cron: Scalars['String'];
+  description: Scalars['String'];
+  from: Scalars['String'];
+  id?: InputMaybe<Scalars['BigInt']>;
+  meachine: MachinesCreateNestedOneWithoutRoutine_MaintanancesInput;
+  name: Scalars['String'];
+  to: Scalars['String'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type Routine_MaintanancesCreateWithoutMeachineInput = {
+  assignee: UsersCreateNestedOneWithoutRoutine_MaintanancesInput;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  cron: Scalars['String'];
+  description: Scalars['String'];
+  from: Scalars['String'];
+  id?: InputMaybe<Scalars['BigInt']>;
+  name: Scalars['String'];
+  to: Scalars['String'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type Routine_MaintanancesScalarWhereInput = {
+  AND?: InputMaybe<Array<Routine_MaintanancesScalarWhereInput>>;
+  NOT?: InputMaybe<Array<Routine_MaintanancesScalarWhereInput>>;
+  OR?: InputMaybe<Array<Routine_MaintanancesScalarWhereInput>>;
+  assignee_id?: InputMaybe<BigIntFilter>;
+  created_at?: InputMaybe<DateTimeFilter>;
+  cron?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  from?: InputMaybe<StringFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  meachine_id?: InputMaybe<BigIntFilter>;
+  name?: InputMaybe<StringFilter>;
+  to?: InputMaybe<StringFilter>;
+  updated_at?: InputMaybe<DateTimeFilter>;
+};
+
+export type Routine_MaintanancesSumOrderByAggregateInput = {
+  assignee_id?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  meachine_id?: InputMaybe<SortOrder>;
+};
+
+export type Routine_MaintanancesUpdateInput = {
+  assignee?: InputMaybe<UsersUpdateOneRequiredWithoutRoutine_MaintanancesNestedInput>;
+  created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  cron?: InputMaybe<StringFieldUpdateOperationsInput>;
+  description?: InputMaybe<StringFieldUpdateOperationsInput>;
+  from?: InputMaybe<StringFieldUpdateOperationsInput>;
+  id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
+  meachine?: InputMaybe<MachinesUpdateOneRequiredWithoutRoutine_MaintanancesNestedInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  to?: InputMaybe<StringFieldUpdateOperationsInput>;
+  updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type Routine_MaintanancesUpdateManyMutationInput = {
+  created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  cron?: InputMaybe<StringFieldUpdateOperationsInput>;
+  description?: InputMaybe<StringFieldUpdateOperationsInput>;
+  from?: InputMaybe<StringFieldUpdateOperationsInput>;
+  id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  to?: InputMaybe<StringFieldUpdateOperationsInput>;
+  updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type Routine_MaintanancesUpdateManyWithWhereWithoutAssigneeInput = {
+  data: Routine_MaintanancesUpdateManyMutationInput;
+  where: Routine_MaintanancesScalarWhereInput;
+};
+
+export type Routine_MaintanancesUpdateManyWithWhereWithoutMeachineInput = {
+  data: Routine_MaintanancesUpdateManyMutationInput;
+  where: Routine_MaintanancesScalarWhereInput;
+};
+
+export type Routine_MaintanancesUpdateManyWithoutAssigneeNestedInput = {
+  connect?: InputMaybe<Array<Routine_MaintanancesWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<Routine_MaintanancesCreateOrConnectWithoutAssigneeInput>>;
+  create?: InputMaybe<Array<Routine_MaintanancesCreateWithoutAssigneeInput>>;
+  createMany?: InputMaybe<Routine_MaintanancesCreateManyAssigneeInputEnvelope>;
+  delete?: InputMaybe<Array<Routine_MaintanancesWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<Routine_MaintanancesScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<Routine_MaintanancesWhereUniqueInput>>;
+  set?: InputMaybe<Array<Routine_MaintanancesWhereUniqueInput>>;
+  update?: InputMaybe<Array<Routine_MaintanancesUpdateWithWhereUniqueWithoutAssigneeInput>>;
+  updateMany?: InputMaybe<Array<Routine_MaintanancesUpdateManyWithWhereWithoutAssigneeInput>>;
+  upsert?: InputMaybe<Array<Routine_MaintanancesUpsertWithWhereUniqueWithoutAssigneeInput>>;
+};
+
+export type Routine_MaintanancesUpdateManyWithoutMeachineNestedInput = {
+  connect?: InputMaybe<Array<Routine_MaintanancesWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<Routine_MaintanancesCreateOrConnectWithoutMeachineInput>>;
+  create?: InputMaybe<Array<Routine_MaintanancesCreateWithoutMeachineInput>>;
+  createMany?: InputMaybe<Routine_MaintanancesCreateManyMeachineInputEnvelope>;
+  delete?: InputMaybe<Array<Routine_MaintanancesWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<Routine_MaintanancesScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<Routine_MaintanancesWhereUniqueInput>>;
+  set?: InputMaybe<Array<Routine_MaintanancesWhereUniqueInput>>;
+  update?: InputMaybe<Array<Routine_MaintanancesUpdateWithWhereUniqueWithoutMeachineInput>>;
+  updateMany?: InputMaybe<Array<Routine_MaintanancesUpdateManyWithWhereWithoutMeachineInput>>;
+  upsert?: InputMaybe<Array<Routine_MaintanancesUpsertWithWhereUniqueWithoutMeachineInput>>;
+};
+
+export type Routine_MaintanancesUpdateWithWhereUniqueWithoutAssigneeInput = {
+  data: Routine_MaintanancesUpdateWithoutAssigneeInput;
+  where: Routine_MaintanancesWhereUniqueInput;
+};
+
+export type Routine_MaintanancesUpdateWithWhereUniqueWithoutMeachineInput = {
+  data: Routine_MaintanancesUpdateWithoutMeachineInput;
+  where: Routine_MaintanancesWhereUniqueInput;
+};
+
+export type Routine_MaintanancesUpdateWithoutAssigneeInput = {
+  created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  cron?: InputMaybe<StringFieldUpdateOperationsInput>;
+  description?: InputMaybe<StringFieldUpdateOperationsInput>;
+  from?: InputMaybe<StringFieldUpdateOperationsInput>;
+  id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
+  meachine?: InputMaybe<MachinesUpdateOneRequiredWithoutRoutine_MaintanancesNestedInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  to?: InputMaybe<StringFieldUpdateOperationsInput>;
+  updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type Routine_MaintanancesUpdateWithoutMeachineInput = {
+  assignee?: InputMaybe<UsersUpdateOneRequiredWithoutRoutine_MaintanancesNestedInput>;
+  created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  cron?: InputMaybe<StringFieldUpdateOperationsInput>;
+  description?: InputMaybe<StringFieldUpdateOperationsInput>;
+  from?: InputMaybe<StringFieldUpdateOperationsInput>;
+  id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  to?: InputMaybe<StringFieldUpdateOperationsInput>;
+  updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type Routine_MaintanancesUpsertWithWhereUniqueWithoutAssigneeInput = {
+  create: Routine_MaintanancesCreateWithoutAssigneeInput;
+  update: Routine_MaintanancesUpdateWithoutAssigneeInput;
+  where: Routine_MaintanancesWhereUniqueInput;
+};
+
+export type Routine_MaintanancesUpsertWithWhereUniqueWithoutMeachineInput = {
+  create: Routine_MaintanancesCreateWithoutMeachineInput;
+  update: Routine_MaintanancesUpdateWithoutMeachineInput;
+  where: Routine_MaintanancesWhereUniqueInput;
+};
+
+export type Routine_MaintanancesWhereInput = {
+  AND?: InputMaybe<Array<Routine_MaintanancesWhereInput>>;
+  NOT?: InputMaybe<Array<Routine_MaintanancesWhereInput>>;
+  OR?: InputMaybe<Array<Routine_MaintanancesWhereInput>>;
+  assignee?: InputMaybe<UsersRelationFilter>;
+  assignee_id?: InputMaybe<BigIntFilter>;
+  created_at?: InputMaybe<DateTimeFilter>;
+  cron?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  from?: InputMaybe<StringFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  meachine?: InputMaybe<MachinesRelationFilter>;
+  meachine_id?: InputMaybe<BigIntFilter>;
+  name?: InputMaybe<StringFilter>;
+  to?: InputMaybe<StringFilter>;
+  updated_at?: InputMaybe<DateTimeFilter>;
+};
+
+export type Routine_MaintanancesWhereUniqueInput = {
+  id?: InputMaybe<Scalars['BigInt']>;
 };
 
 export enum Ticket_Status {
-  Closed = "CLOSED",
-  Open = "OPEN",
-  Pending = "PENDING",
+  Closed = 'CLOSED',
+  Open = 'OPEN',
+  Pending = 'PENDING'
 }
 
-export type GetAllMachinesDropdownQueryVariables = Exact<{
-  [key: string]: never;
-}>;
+export type GetAllMachinesDropdownQueryVariables = Exact<{ [key: string]: never; }>;
 
-export type GetAllMachinesDropdownQuery = {
-  __typename?: "Query";
-  machines: Array<{ __typename?: "Machines"; label: string; value: any }>;
-};
 
-export type MachinesQueryVariables = Exact<{
-  limit?: InputMaybe<Scalars["Int"]>;
-  orderBy?: InputMaybe<MachinesOrderByWithRelationInput>;
-  offset?: InputMaybe<Scalars["Int"]>;
-  where?: InputMaybe<MachinesWhereInput>;
-}>;
-
-export type MachinesQuery = {
-  __typename?: "Query";
-  machines: Array<{
-    __typename?: "Machines";
-    id: any;
-    label: string;
-    name: string;
-    priority: number;
-    profile: any;
-    section: { __typename?: "Sections"; id: any; name: string };
-    block: { __typename?: "Block"; id: any; name: string };
-  }>;
-};
-
-export type MachinesCountQueryVariables = Exact<{
-  limit?: InputMaybe<Scalars["Int"]>;
-  orderBy?: InputMaybe<MachinesOrderByWithRelationInput>;
-  offset?: InputMaybe<Scalars["Int"]>;
-  where?: InputMaybe<MachinesWhereInput>;
-}>;
-
-export type MachinesCountQuery = {
-  __typename?: "Query";
-  machinesCount: number;
-};
+export type GetAllMachinesDropdownQuery = { __typename?: 'Query', machines: Array<{ __typename?: 'Machines', label: string, value: any }> };
 
 export type MaintenanceQueryVariables = Exact<{
   where?: InputMaybe<MaintenanceWhereInput>;
   orderBy?: InputMaybe<MaintenanceOrderByWithRelationInput>;
-  offset?: InputMaybe<Scalars["Int"]>;
-  limit?: InputMaybe<Scalars["Int"]>;
+  offset?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
 }>;
 
-export type MaintenanceQuery = {
-  __typename?: "Query";
-  maintenances: Array<{
-    __typename?: "Maintenance";
-    id: any;
-    from: any;
-    to: any;
-    elapsed?: any | null;
-    created_at: any;
-    description: string;
-    resolved: boolean;
-    name: string;
-    assignee: { __typename?: "Users"; id: any; name: string };
-    machine: { __typename?: "Machines"; id: any; label: string };
-  }>;
-};
 
-export type MaintanceCountQueryVariables = Exact<{
-  where?: InputMaybe<MaintenanceWhereInput>;
-  offset?: InputMaybe<Scalars["Int"]>;
-  orderBy?: InputMaybe<MaintenanceOrderByWithRelationInput>;
-  limit?: InputMaybe<Scalars["Int"]>;
-}>;
-
-export type MaintanceCountQuery = {
-  __typename?: "Query";
-  maintenanceCount: number;
-};
+export type MaintenanceQuery = { __typename?: 'Query', maintenances: Array<{ __typename?: 'Maintenance', id: any, from: any, to: any, elapsed?: any | null, description: string, resolved: boolean, name: string, machine_id: any, assignee: { __typename?: 'Users', id: any, name: string } }> };
 
 export type GetMaintananceQueryVariables = Exact<{
-  maintenanceId: Scalars["Int"];
+  maintenanceId: Scalars['Int'];
 }>;
 
-export type GetMaintananceQuery = {
-  __typename?: "Query";
-  maintenance: {
-    __typename?: "Maintenance";
-    created_at: any;
-    updated_at: any;
-    photo?: string | null;
-    description: string;
-    name: string;
-    id: any;
-    from: any;
-    to: any;
-    assigned?: boolean | null;
-    elapsed?: any | null;
-    resolved: boolean;
-    un_planned: boolean;
-    ticket?: {
-      __typename?: "Ticket";
-      id: any;
-      name: string;
-      created_at: any;
-    } | null;
-    assignee: { __typename?: "Users"; id: any; name: string; phone: string };
-    machine: {
-      __typename?: "Machines";
-      id: any;
-      label: string;
-      priority: number;
-      block: { __typename?: "Block"; id: any; name: string };
-      section: { __typename?: "Sections"; id: any; name: string };
-    };
-  };
-};
+
+export type GetMaintananceQuery = { __typename?: 'Query', maintenance: { __typename?: 'Maintenance', created_at: any, updated_at: any, description: string, name: string, id: any, from: any, to: any, elapsed?: any | null, resolved: boolean, un_planned: boolean, ticket?: { __typename?: 'Ticket', id: any, name: string, created_at: any } | null, assignee: { __typename?: 'Users', id: any, name: string }, machine: { __typename?: 'Machines', id: any, label: string, priority: number, block: { __typename?: 'Block', id: any, name: string }, section: { __typename?: 'Sections', id: any, name: string } } } };
 
 export type UpdateMaintananceMutationVariables = Exact<{
-  updateMaintananceId: Scalars["Int"];
+  updateMaintananceId: Scalars['Int'];
   updateMaintananceInput: MaintenanceUpdateInput;
 }>;
 
-export type UpdateMaintananceMutation = {
-  __typename?: "Mutation";
-  updateMaintanance: { __typename?: "Maintenance"; id: any };
-};
 
-export type CreateMaintananceMutationVariables = Exact<{
-  createMaintananceInput: MaintenanceCreateInput;
-}>;
-
-export type CreateMaintananceMutation = {
-  __typename?: "Mutation";
-  createMaintanance: { __typename?: "Maintenance"; id: any };
-};
-
-export type DeleteMaintananceMutationVariables = Exact<{
-  removeMaintananceId: Scalars["Int"];
-}>;
-
-export type DeleteMaintananceMutation = {
-  __typename?: "Mutation";
-  removeMaintanance: { __typename?: "Maintenance"; id: any };
-};
+export type UpdateMaintananceMutation = { __typename?: 'Mutation', updateMaintanance: { __typename?: 'Maintenance', id: any } };
 
 export type TicketsQueryVariables = Exact<{
   where?: InputMaybe<TicketWhereInput>;
-  skip?: InputMaybe<Scalars["Float"]>;
-  take?: InputMaybe<Scalars["Float"]>;
+  skip?: InputMaybe<Scalars['Float']>;
+  take?: InputMaybe<Scalars['Float']>;
   orderBy?: InputMaybe<TicketOrderByWithRelationInput>;
 }>;
 
-export type TicketsQuery = {
-  __typename?: "Query";
-  tickets: Array<{
-    __typename?: "Ticket";
-    id: any;
-    description: string;
-    name: string;
-    photos: string;
-    status: Ticket_Status;
-    created_at: any;
-    machine: { __typename?: "Machines"; id: any; name: string; label: string };
-    user: { __typename?: "Users"; id: any; name: string };
-  }>;
-};
+
+export type TicketsQuery = { __typename?: 'Query', tickets: Array<{ __typename?: 'Ticket', id: any, description: string, name: string, photos: string, status: Ticket_Status, created_at: any, machine: { __typename?: 'Machines', id: any, name: string, label: string }, user: { __typename?: 'Users', id: any, name: string } }> };
 
 export type CreateTicketsMutationVariables = Exact<{
   createTicketInput: TicketCreateInput;
 }>;
 
-export type CreateTicketsMutation = {
-  __typename?: "Mutation";
-  createTicket: {
-    __typename?: "Ticket";
-    id: any;
-    description: string;
-    name: string;
-    photos: string;
-    status: Ticket_Status;
-    created_at: any;
-    machine: { __typename?: "Machines"; id: any; name: string; label: string };
-    user: { __typename?: "Users"; id: any; name: string };
-  };
-};
+
+export type CreateTicketsMutation = { __typename?: 'Mutation', createTicket: { __typename?: 'Ticket', id: any, description: string, name: string, photos: string, status: Ticket_Status, created_at: any, machine: { __typename?: 'Machines', id: any, name: string, label: string }, user: { __typename?: 'Users', id: any, name: string } } };
 
 export type GetTicketQueryVariables = Exact<{
-  ticketId: Scalars["Int"];
+  ticketId: Scalars['Int'];
 }>;
 
-export type GetTicketQuery = {
-  __typename?: "Query";
-  ticket: {
-    __typename?: "Ticket";
-    id: any;
-    description: string;
-    name: string;
-    photos: string;
-    status: Ticket_Status;
-    updated_at: any;
-    created_at: any;
-    machine: {
-      __typename?: "Machines";
-      id: any;
-      label: string;
-      priority: number;
-      block: { __typename?: "Block"; id: any; name: string };
-      section: { __typename?: "Sections"; id: any; name: string };
-    };
-    user: { __typename?: "Users"; id: any; name: string };
-  };
-};
 
-export type TicketsCountQueryVariables = Exact<{
-  orderBy?: InputMaybe<TicketOrderByWithRelationInput>;
-  skip?: InputMaybe<Scalars["Float"]>;
-  take?: InputMaybe<Scalars["Float"]>;
-  where?: InputMaybe<TicketWhereInput>;
-}>;
+export type GetTicketQuery = { __typename?: 'Query', ticket: { __typename?: 'Ticket', id: any, description: string, name: string, photos: string, status: Ticket_Status, updated_at: any, created_at: any, machine: { __typename?: 'Machines', id: any, label: string, priority: number, block: { __typename?: 'Block', id: any, name: string }, section: { __typename?: 'Sections', id: any, name: string } }, user: { __typename?: 'Users', id: any, name: string } } };
 
-export type TicketsCountQuery = { __typename?: "Query"; ticketsCount: number };
-
-export type DeleteTicketMutationVariables = Exact<{
-  id: Scalars["Int"];
-}>;
-
-export type DeleteTicketMutation = {
-  __typename?: "Mutation";
-  removeTicket: { __typename?: "Ticket"; id: any };
-};
-
-export type UsersQueryVariables = Exact<{
-  where?: InputMaybe<UsersWhereInput>;
-  offset?: InputMaybe<Scalars["Int"]>;
-  orderBy?: InputMaybe<UsersOrderByWithRelationInput>;
-  limit?: InputMaybe<Scalars["Int"]>;
-}>;
-
-export type UsersQuery = {
-  __typename?: "Query";
-  users: Array<{
-    __typename?: "Users";
-    id: any;
-    name: string;
-    role: Role;
-    profile: any;
-    phone: string;
-    created_at: any;
-  }>;
-};
-
-export type UsersCountQueryVariables = Exact<{
-  where?: InputMaybe<UsersWhereInput>;
-  orderBy?: InputMaybe<UsersOrderByWithRelationInput>;
-  limit?: InputMaybe<Scalars["Int"]>;
-  offset?: InputMaybe<Scalars["Int"]>;
-}>;
-
-export type UsersCountQuery = { __typename?: "Query"; usersCount: number };
-
-export type UsersDropDownQueryVariables = Exact<{
-  where?: InputMaybe<UsersWhereInput>;
-  orderBy?: InputMaybe<UsersOrderByWithRelationInput>;
-  limit?: InputMaybe<Scalars["Int"]>;
-  offset?: InputMaybe<Scalars["Int"]>;
-}>;
-
-export type UsersDropDownQuery = {
-  __typename?: "Query";
-  users: Array<{
-    __typename?: "Users";
-    name: string;
-    phone: string;
-    value: any;
-  }>;
-};
-
-export type CreateUserMutationVariables = Exact<{
-  createUserInput: UsersCreateInput;
-}>;
-
-export type CreateUserMutation = {
-  __typename?: "Mutation";
-  createUser: { __typename?: "Users"; id: any };
-};
-
-export type DeleteUsersMutationVariables = Exact<{
-  removeUserId: Scalars["Int"];
-}>;
-
-export type DeleteUsersMutation = {
-  __typename?: "Mutation";
-  removeUser: { __typename?: "Users"; id: any };
-};
 
 export const GetAllMachinesDropdownDocument = gql`
-  query getAllMachinesDropdown {
-    machines {
-      value: id
-      label
-    }
+    query getAllMachinesDropdown {
+  machines {
+    value: id
+    label
   }
-`;
+}
+    `;
 
 /**
  * __useGetAllMachinesDropdownQuery__
@@ -4362,215 +4758,35 @@ export const GetAllMachinesDropdownDocument = gql`
  *   },
  * });
  */
-export function useGetAllMachinesDropdownQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    GetAllMachinesDropdownQuery,
-    GetAllMachinesDropdownQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<
-    GetAllMachinesDropdownQuery,
-    GetAllMachinesDropdownQueryVariables
-  >(GetAllMachinesDropdownDocument, options);
-}
-export function useGetAllMachinesDropdownLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetAllMachinesDropdownQuery,
-    GetAllMachinesDropdownQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    GetAllMachinesDropdownQuery,
-    GetAllMachinesDropdownQueryVariables
-  >(GetAllMachinesDropdownDocument, options);
-}
-export type GetAllMachinesDropdownQueryHookResult = ReturnType<
-  typeof useGetAllMachinesDropdownQuery
->;
-export type GetAllMachinesDropdownLazyQueryHookResult = ReturnType<
-  typeof useGetAllMachinesDropdownLazyQuery
->;
-export type GetAllMachinesDropdownQueryResult = Apollo.QueryResult<
-  GetAllMachinesDropdownQuery,
-  GetAllMachinesDropdownQueryVariables
->;
-export const MachinesDocument = gql`
-  query Machines(
-    $limit: Int
-    $orderBy: MachinesOrderByWithRelationInput
-    $offset: Int
-    $where: MachinesWhereInput
-  ) {
-    machines(limit: $limit, orderBy: $orderBy, offset: $offset, where: $where) {
-      id
-      label
-      name
-      priority
-      profile
-      section {
-        id
-        name
+export function useGetAllMachinesDropdownQuery(baseOptions?: Apollo.QueryHookOptions<GetAllMachinesDropdownQuery, GetAllMachinesDropdownQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetAllMachinesDropdownQuery, GetAllMachinesDropdownQueryVariables>(GetAllMachinesDropdownDocument, options);
       }
-      block {
-        id
-        name
-      }
-      priority
-    }
-  }
-`;
-
-/**
- * __useMachinesQuery__
- *
- * To run a query within a React component, call `useMachinesQuery` and pass it any options that fit your needs.
- * When your component renders, `useMachinesQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useMachinesQuery({
- *   variables: {
- *      limit: // value for 'limit'
- *      orderBy: // value for 'orderBy'
- *      offset: // value for 'offset'
- *      where: // value for 'where'
- *   },
- * });
- */
-export function useMachinesQuery(
-  baseOptions?: Apollo.QueryHookOptions<MachinesQuery, MachinesQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<MachinesQuery, MachinesQueryVariables>(
-    MachinesDocument,
-    options
-  );
-}
-export function useMachinesLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    MachinesQuery,
-    MachinesQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<MachinesQuery, MachinesQueryVariables>(
-    MachinesDocument,
-    options
-  );
-}
-export type MachinesQueryHookResult = ReturnType<typeof useMachinesQuery>;
-export type MachinesLazyQueryHookResult = ReturnType<
-  typeof useMachinesLazyQuery
->;
-export type MachinesQueryResult = Apollo.QueryResult<
-  MachinesQuery,
-  MachinesQueryVariables
->;
-export const MachinesCountDocument = gql`
-  query MachinesCount(
-    $limit: Int
-    $orderBy: MachinesOrderByWithRelationInput
-    $offset: Int
-    $where: MachinesWhereInput
-  ) {
-    machinesCount(
-      limit: $limit
-      orderBy: $orderBy
-      offset: $offset
-      where: $where
-    )
-  }
-`;
-
-/**
- * __useMachinesCountQuery__
- *
- * To run a query within a React component, call `useMachinesCountQuery` and pass it any options that fit your needs.
- * When your component renders, `useMachinesCountQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useMachinesCountQuery({
- *   variables: {
- *      limit: // value for 'limit'
- *      orderBy: // value for 'orderBy'
- *      offset: // value for 'offset'
- *      where: // value for 'where'
- *   },
- * });
- */
-export function useMachinesCountQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    MachinesCountQuery,
-    MachinesCountQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<MachinesCountQuery, MachinesCountQueryVariables>(
-    MachinesCountDocument,
-    options
-  );
-}
-export function useMachinesCountLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    MachinesCountQuery,
-    MachinesCountQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<MachinesCountQuery, MachinesCountQueryVariables>(
-    MachinesCountDocument,
-    options
-  );
-}
-export type MachinesCountQueryHookResult = ReturnType<
-  typeof useMachinesCountQuery
->;
-export type MachinesCountLazyQueryHookResult = ReturnType<
-  typeof useMachinesCountLazyQuery
->;
-export type MachinesCountQueryResult = Apollo.QueryResult<
-  MachinesCountQuery,
-  MachinesCountQueryVariables
->;
+export function useGetAllMachinesDropdownLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAllMachinesDropdownQuery, GetAllMachinesDropdownQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetAllMachinesDropdownQuery, GetAllMachinesDropdownQueryVariables>(GetAllMachinesDropdownDocument, options);
+        }
+export type GetAllMachinesDropdownQueryHookResult = ReturnType<typeof useGetAllMachinesDropdownQuery>;
+export type GetAllMachinesDropdownLazyQueryHookResult = ReturnType<typeof useGetAllMachinesDropdownLazyQuery>;
+export type GetAllMachinesDropdownQueryResult = Apollo.QueryResult<GetAllMachinesDropdownQuery, GetAllMachinesDropdownQueryVariables>;
 export const MaintenanceDocument = gql`
-  query Maintenance(
-    $where: MaintenanceWhereInput
-    $orderBy: MaintenanceOrderByWithRelationInput
-    $offset: Int
-    $limit: Int
-  ) {
-    maintenances(
-      where: $where
-      orderBy: $orderBy
-      offset: $offset
-      limit: $limit
-    ) {
+    query Maintenance($where: MaintenanceWhereInput, $orderBy: MaintenanceOrderByWithRelationInput, $offset: Int, $limit: Int) {
+  maintenances(where: $where, orderBy: $orderBy, offset: $offset, limit: $limit) {
+    id
+    assignee {
       id
-      assignee {
-        id
-        name
-      }
-      from
-      to
-      elapsed
-      created_at
-      description
-      resolved
       name
-      machine {
-        id
-        label
-      }
     }
+    from
+    to
+    elapsed
+    description
+    resolved
+    name
+    machine_id
   }
-`;
+}
+    `;
 
 /**
  * __useMaintenanceQuery__
@@ -4591,148 +4807,55 @@ export const MaintenanceDocument = gql`
  *   },
  * });
  */
-export function useMaintenanceQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    MaintenanceQuery,
-    MaintenanceQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<MaintenanceQuery, MaintenanceQueryVariables>(
-    MaintenanceDocument,
-    options
-  );
-}
-export function useMaintenanceLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    MaintenanceQuery,
-    MaintenanceQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<MaintenanceQuery, MaintenanceQueryVariables>(
-    MaintenanceDocument,
-    options
-  );
-}
+export function useMaintenanceQuery(baseOptions?: Apollo.QueryHookOptions<MaintenanceQuery, MaintenanceQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<MaintenanceQuery, MaintenanceQueryVariables>(MaintenanceDocument, options);
+      }
+export function useMaintenanceLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MaintenanceQuery, MaintenanceQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<MaintenanceQuery, MaintenanceQueryVariables>(MaintenanceDocument, options);
+        }
 export type MaintenanceQueryHookResult = ReturnType<typeof useMaintenanceQuery>;
-export type MaintenanceLazyQueryHookResult = ReturnType<
-  typeof useMaintenanceLazyQuery
->;
-export type MaintenanceQueryResult = Apollo.QueryResult<
-  MaintenanceQuery,
-  MaintenanceQueryVariables
->;
-export const MaintanceCountDocument = gql`
-  query maintanceCount(
-    $where: MaintenanceWhereInput
-    $offset: Int
-    $orderBy: MaintenanceOrderByWithRelationInput
-    $limit: Int
-  ) {
-    maintenanceCount(
-      where: $where
-      offset: $offset
-      orderBy: $orderBy
-      limit: $limit
-    )
-  }
-`;
-
-/**
- * __useMaintanceCountQuery__
- *
- * To run a query within a React component, call `useMaintanceCountQuery` and pass it any options that fit your needs.
- * When your component renders, `useMaintanceCountQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useMaintanceCountQuery({
- *   variables: {
- *      where: // value for 'where'
- *      offset: // value for 'offset'
- *      orderBy: // value for 'orderBy'
- *      limit: // value for 'limit'
- *   },
- * });
- */
-export function useMaintanceCountQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    MaintanceCountQuery,
-    MaintanceCountQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<MaintanceCountQuery, MaintanceCountQueryVariables>(
-    MaintanceCountDocument,
-    options
-  );
-}
-export function useMaintanceCountLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    MaintanceCountQuery,
-    MaintanceCountQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<MaintanceCountQuery, MaintanceCountQueryVariables>(
-    MaintanceCountDocument,
-    options
-  );
-}
-export type MaintanceCountQueryHookResult = ReturnType<
-  typeof useMaintanceCountQuery
->;
-export type MaintanceCountLazyQueryHookResult = ReturnType<
-  typeof useMaintanceCountLazyQuery
->;
-export type MaintanceCountQueryResult = Apollo.QueryResult<
-  MaintanceCountQuery,
-  MaintanceCountQueryVariables
->;
+export type MaintenanceLazyQueryHookResult = ReturnType<typeof useMaintenanceLazyQuery>;
+export type MaintenanceQueryResult = Apollo.QueryResult<MaintenanceQuery, MaintenanceQueryVariables>;
 export const GetMaintananceDocument = gql`
-  query getMaintanance($maintenanceId: Int!) {
-    maintenance(id: $maintenanceId) {
-      created_at
-      updated_at
-      photo
-      description
-      name
+    query getMaintanance($maintenanceId: Int!) {
+  maintenance(id: $maintenanceId) {
+    created_at
+    updated_at
+    description
+    name
+    id
+    from
+    to
+    elapsed
+    resolved
+    un_planned
+    ticket {
       id
-      from
-      to
-      assigned
-      elapsed
-      resolved
-      un_planned
-      ticket {
+      name
+      created_at
+    }
+    assignee {
+      id
+      name
+    }
+    machine {
+      id
+      label
+      priority
+      block {
         id
         name
-        created_at
       }
-      assignee {
+      section {
         id
         name
-        phone
-      }
-      machine {
-        id
-        label
-        priority
-        block {
-          id
-          name
-        }
-        section {
-          id
-          name
-        }
       }
     }
   }
-`;
+}
+    `;
 
 /**
  * __useGetMaintananceQuery__
@@ -4750,57 +4873,28 @@ export const GetMaintananceDocument = gql`
  *   },
  * });
  */
-export function useGetMaintananceQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    GetMaintananceQuery,
-    GetMaintananceQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetMaintananceQuery, GetMaintananceQueryVariables>(
-    GetMaintananceDocument,
-    options
-  );
-}
-export function useGetMaintananceLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetMaintananceQuery,
-    GetMaintananceQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetMaintananceQuery, GetMaintananceQueryVariables>(
-    GetMaintananceDocument,
-    options
-  );
-}
-export type GetMaintananceQueryHookResult = ReturnType<
-  typeof useGetMaintananceQuery
->;
-export type GetMaintananceLazyQueryHookResult = ReturnType<
-  typeof useGetMaintananceLazyQuery
->;
-export type GetMaintananceQueryResult = Apollo.QueryResult<
-  GetMaintananceQuery,
-  GetMaintananceQueryVariables
->;
+export function useGetMaintananceQuery(baseOptions: Apollo.QueryHookOptions<GetMaintananceQuery, GetMaintananceQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetMaintananceQuery, GetMaintananceQueryVariables>(GetMaintananceDocument, options);
+      }
+export function useGetMaintananceLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetMaintananceQuery, GetMaintananceQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetMaintananceQuery, GetMaintananceQueryVariables>(GetMaintananceDocument, options);
+        }
+export type GetMaintananceQueryHookResult = ReturnType<typeof useGetMaintananceQuery>;
+export type GetMaintananceLazyQueryHookResult = ReturnType<typeof useGetMaintananceLazyQuery>;
+export type GetMaintananceQueryResult = Apollo.QueryResult<GetMaintananceQuery, GetMaintananceQueryVariables>;
 export const UpdateMaintananceDocument = gql`
-  mutation updateMaintanance(
-    $updateMaintananceId: Int!
-    $updateMaintananceInput: MaintenanceUpdateInput!
+    mutation updateMaintanance($updateMaintananceId: Int!, $updateMaintananceInput: MaintenanceUpdateInput!) {
+  updateMaintanance(
+    id: $updateMaintananceId
+    updateMaintananceInput: $updateMaintananceInput
   ) {
-    updateMaintanance(
-      id: $updateMaintananceId
-      updateMaintananceInput: $updateMaintananceInput
-    ) {
-      id
-    }
+    id
   }
-`;
-export type UpdateMaintananceMutationFn = Apollo.MutationFunction<
-  UpdateMaintananceMutation,
-  UpdateMaintananceMutationVariables
->;
+}
+    `;
+export type UpdateMaintananceMutationFn = Apollo.MutationFunction<UpdateMaintananceMutation, UpdateMaintananceMutationVariables>;
 
 /**
  * __useUpdateMaintananceMutation__
@@ -4820,154 +4914,34 @@ export type UpdateMaintananceMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useUpdateMaintananceMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    UpdateMaintananceMutation,
-    UpdateMaintananceMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    UpdateMaintananceMutation,
-    UpdateMaintananceMutationVariables
-  >(UpdateMaintananceDocument, options);
-}
-export type UpdateMaintananceMutationHookResult = ReturnType<
-  typeof useUpdateMaintananceMutation
->;
-export type UpdateMaintananceMutationResult =
-  Apollo.MutationResult<UpdateMaintananceMutation>;
-export type UpdateMaintananceMutationOptions = Apollo.BaseMutationOptions<
-  UpdateMaintananceMutation,
-  UpdateMaintananceMutationVariables
->;
-export const CreateMaintananceDocument = gql`
-  mutation createMaintanance($createMaintananceInput: MaintenanceCreateInput!) {
-    createMaintanance(createMaintananceInput: $createMaintananceInput) {
-      id
-    }
-  }
-`;
-export type CreateMaintananceMutationFn = Apollo.MutationFunction<
-  CreateMaintananceMutation,
-  CreateMaintananceMutationVariables
->;
-
-/**
- * __useCreateMaintananceMutation__
- *
- * To run a mutation, you first call `useCreateMaintananceMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useCreateMaintananceMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [createMaintananceMutation, { data, loading, error }] = useCreateMaintananceMutation({
- *   variables: {
- *      createMaintananceInput: // value for 'createMaintananceInput'
- *   },
- * });
- */
-export function useCreateMaintananceMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    CreateMaintananceMutation,
-    CreateMaintananceMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    CreateMaintananceMutation,
-    CreateMaintananceMutationVariables
-  >(CreateMaintananceDocument, options);
-}
-export type CreateMaintananceMutationHookResult = ReturnType<
-  typeof useCreateMaintananceMutation
->;
-export type CreateMaintananceMutationResult =
-  Apollo.MutationResult<CreateMaintananceMutation>;
-export type CreateMaintananceMutationOptions = Apollo.BaseMutationOptions<
-  CreateMaintananceMutation,
-  CreateMaintananceMutationVariables
->;
-export const DeleteMaintananceDocument = gql`
-  mutation deleteMaintanance($removeMaintananceId: Int!) {
-    removeMaintanance(id: $removeMaintananceId) {
-      id
-    }
-  }
-`;
-export type DeleteMaintananceMutationFn = Apollo.MutationFunction<
-  DeleteMaintananceMutation,
-  DeleteMaintananceMutationVariables
->;
-
-/**
- * __useDeleteMaintananceMutation__
- *
- * To run a mutation, you first call `useDeleteMaintananceMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useDeleteMaintananceMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [deleteMaintananceMutation, { data, loading, error }] = useDeleteMaintananceMutation({
- *   variables: {
- *      removeMaintananceId: // value for 'removeMaintananceId'
- *   },
- * });
- */
-export function useDeleteMaintananceMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    DeleteMaintananceMutation,
-    DeleteMaintananceMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    DeleteMaintananceMutation,
-    DeleteMaintananceMutationVariables
-  >(DeleteMaintananceDocument, options);
-}
-export type DeleteMaintananceMutationHookResult = ReturnType<
-  typeof useDeleteMaintananceMutation
->;
-export type DeleteMaintananceMutationResult =
-  Apollo.MutationResult<DeleteMaintananceMutation>;
-export type DeleteMaintananceMutationOptions = Apollo.BaseMutationOptions<
-  DeleteMaintananceMutation,
-  DeleteMaintananceMutationVariables
->;
+export function useUpdateMaintananceMutation(baseOptions?: Apollo.MutationHookOptions<UpdateMaintananceMutation, UpdateMaintananceMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateMaintananceMutation, UpdateMaintananceMutationVariables>(UpdateMaintananceDocument, options);
+      }
+export type UpdateMaintananceMutationHookResult = ReturnType<typeof useUpdateMaintananceMutation>;
+export type UpdateMaintananceMutationResult = Apollo.MutationResult<UpdateMaintananceMutation>;
+export type UpdateMaintananceMutationOptions = Apollo.BaseMutationOptions<UpdateMaintananceMutation, UpdateMaintananceMutationVariables>;
 export const TicketsDocument = gql`
-  query Tickets(
-    $where: TicketWhereInput
-    $skip: Float
-    $take: Float
-    $orderBy: TicketOrderByWithRelationInput
-  ) {
-    tickets(where: $where, skip: $skip, take: $take, orderBy: $orderBy) {
+    query Tickets($where: TicketWhereInput, $skip: Float, $take: Float, $orderBy: TicketOrderByWithRelationInput) {
+  tickets(where: $where, skip: $skip, take: $take, orderBy: $orderBy) {
+    id
+    description
+    machine {
       id
-      description
       name
-      machine {
-        id
-        name
-        label
-      }
-      name
-      photos
-      status
-      user {
-        id
-        name
-      }
-      created_at
+      label
     }
+    name
+    photos
+    status
+    user {
+      id
+      name
+    }
+    created_at
   }
-`;
+}
+    `;
 
 /**
  * __useTicketsQuery__
@@ -4988,55 +4962,39 @@ export const TicketsDocument = gql`
  *   },
  * });
  */
-export function useTicketsQuery(
-  baseOptions?: Apollo.QueryHookOptions<TicketsQuery, TicketsQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<TicketsQuery, TicketsQueryVariables>(
-    TicketsDocument,
-    options
-  );
-}
-export function useTicketsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<TicketsQuery, TicketsQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<TicketsQuery, TicketsQueryVariables>(
-    TicketsDocument,
-    options
-  );
-}
+export function useTicketsQuery(baseOptions?: Apollo.QueryHookOptions<TicketsQuery, TicketsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<TicketsQuery, TicketsQueryVariables>(TicketsDocument, options);
+      }
+export function useTicketsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TicketsQuery, TicketsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<TicketsQuery, TicketsQueryVariables>(TicketsDocument, options);
+        }
 export type TicketsQueryHookResult = ReturnType<typeof useTicketsQuery>;
 export type TicketsLazyQueryHookResult = ReturnType<typeof useTicketsLazyQuery>;
-export type TicketsQueryResult = Apollo.QueryResult<
-  TicketsQuery,
-  TicketsQueryVariables
->;
+export type TicketsQueryResult = Apollo.QueryResult<TicketsQuery, TicketsQueryVariables>;
 export const CreateTicketsDocument = gql`
-  mutation createTickets($createTicketInput: TicketCreateInput!) {
-    createTicket(createTicketInput: $createTicketInput) {
+    mutation createTickets($createTicketInput: TicketCreateInput!) {
+  createTicket(createTicketInput: $createTicketInput) {
+    id
+    description
+    machine {
       id
-      description
-      machine {
-        id
-        name
-        label
-      }
       name
-      photos
-      status
-      user {
-        id
-        name
-      }
-      created_at
+      label
     }
+    name
+    photos
+    status
+    user {
+      id
+      name
+    }
+    created_at
   }
-`;
-export type CreateTicketsMutationFn = Apollo.MutationFunction<
-  CreateTicketsMutation,
-  CreateTicketsMutationVariables
->;
+}
+    `;
+export type CreateTicketsMutationFn = Apollo.MutationFunction<CreateTicketsMutation, CreateTicketsMutationVariables>;
 
 /**
  * __useCreateTicketsMutation__
@@ -5055,57 +5013,43 @@ export type CreateTicketsMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useCreateTicketsMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    CreateTicketsMutation,
-    CreateTicketsMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    CreateTicketsMutation,
-    CreateTicketsMutationVariables
-  >(CreateTicketsDocument, options);
-}
-export type CreateTicketsMutationHookResult = ReturnType<
-  typeof useCreateTicketsMutation
->;
-export type CreateTicketsMutationResult =
-  Apollo.MutationResult<CreateTicketsMutation>;
-export type CreateTicketsMutationOptions = Apollo.BaseMutationOptions<
-  CreateTicketsMutation,
-  CreateTicketsMutationVariables
->;
-export const GetTicketDocument = gql`
-  query getTicket($ticketId: Int!) {
-    ticket(id: $ticketId) {
-      id
-      description
-      machine {
-        id
-        label
-        priority
-        block {
-          id
-          name
-        }
-        section {
-          id
-          name
-        }
+export function useCreateTicketsMutation(baseOptions?: Apollo.MutationHookOptions<CreateTicketsMutation, CreateTicketsMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateTicketsMutation, CreateTicketsMutationVariables>(CreateTicketsDocument, options);
       }
-      name
-      photos
-      status
-      updated_at
-      created_at
-      user {
+export type CreateTicketsMutationHookResult = ReturnType<typeof useCreateTicketsMutation>;
+export type CreateTicketsMutationResult = Apollo.MutationResult<CreateTicketsMutation>;
+export type CreateTicketsMutationOptions = Apollo.BaseMutationOptions<CreateTicketsMutation, CreateTicketsMutationVariables>;
+export const GetTicketDocument = gql`
+    query getTicket($ticketId: Int!) {
+  ticket(id: $ticketId) {
+    id
+    description
+    machine {
+      id
+      label
+      priority
+      block {
+        id
+        name
+      }
+      section {
         id
         name
       }
     }
+    name
+    photos
+    status
+    updated_at
+    created_at
+    user {
+      id
+      name
+    }
   }
-`;
+}
+    `;
 
 /**
  * __useGetTicketQuery__
@@ -5123,437 +5067,14 @@ export const GetTicketDocument = gql`
  *   },
  * });
  */
-export function useGetTicketQuery(
-  baseOptions: Apollo.QueryHookOptions<GetTicketQuery, GetTicketQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetTicketQuery, GetTicketQueryVariables>(
-    GetTicketDocument,
-    options
-  );
-}
-export function useGetTicketLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetTicketQuery,
-    GetTicketQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetTicketQuery, GetTicketQueryVariables>(
-    GetTicketDocument,
-    options
-  );
-}
+export function useGetTicketQuery(baseOptions: Apollo.QueryHookOptions<GetTicketQuery, GetTicketQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetTicketQuery, GetTicketQueryVariables>(GetTicketDocument, options);
+      }
+export function useGetTicketLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetTicketQuery, GetTicketQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetTicketQuery, GetTicketQueryVariables>(GetTicketDocument, options);
+        }
 export type GetTicketQueryHookResult = ReturnType<typeof useGetTicketQuery>;
-export type GetTicketLazyQueryHookResult = ReturnType<
-  typeof useGetTicketLazyQuery
->;
-export type GetTicketQueryResult = Apollo.QueryResult<
-  GetTicketQuery,
-  GetTicketQueryVariables
->;
-export const TicketsCountDocument = gql`
-  query ticketsCount(
-    $orderBy: TicketOrderByWithRelationInput
-    $skip: Float
-    $take: Float
-    $where: TicketWhereInput
-  ) {
-    ticketsCount(orderBy: $orderBy, skip: $skip, take: $take, where: $where)
-  }
-`;
-
-/**
- * __useTicketsCountQuery__
- *
- * To run a query within a React component, call `useTicketsCountQuery` and pass it any options that fit your needs.
- * When your component renders, `useTicketsCountQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useTicketsCountQuery({
- *   variables: {
- *      orderBy: // value for 'orderBy'
- *      skip: // value for 'skip'
- *      take: // value for 'take'
- *      where: // value for 'where'
- *   },
- * });
- */
-export function useTicketsCountQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    TicketsCountQuery,
-    TicketsCountQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<TicketsCountQuery, TicketsCountQueryVariables>(
-    TicketsCountDocument,
-    options
-  );
-}
-export function useTicketsCountLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    TicketsCountQuery,
-    TicketsCountQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<TicketsCountQuery, TicketsCountQueryVariables>(
-    TicketsCountDocument,
-    options
-  );
-}
-export type TicketsCountQueryHookResult = ReturnType<
-  typeof useTicketsCountQuery
->;
-export type TicketsCountLazyQueryHookResult = ReturnType<
-  typeof useTicketsCountLazyQuery
->;
-export type TicketsCountQueryResult = Apollo.QueryResult<
-  TicketsCountQuery,
-  TicketsCountQueryVariables
->;
-export const DeleteTicketDocument = gql`
-  mutation deleteTicket($id: Int!) {
-    removeTicket(id: $id) {
-      id
-    }
-  }
-`;
-export type DeleteTicketMutationFn = Apollo.MutationFunction<
-  DeleteTicketMutation,
-  DeleteTicketMutationVariables
->;
-
-/**
- * __useDeleteTicketMutation__
- *
- * To run a mutation, you first call `useDeleteTicketMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useDeleteTicketMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [deleteTicketMutation, { data, loading, error }] = useDeleteTicketMutation({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function useDeleteTicketMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    DeleteTicketMutation,
-    DeleteTicketMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    DeleteTicketMutation,
-    DeleteTicketMutationVariables
-  >(DeleteTicketDocument, options);
-}
-export type DeleteTicketMutationHookResult = ReturnType<
-  typeof useDeleteTicketMutation
->;
-export type DeleteTicketMutationResult =
-  Apollo.MutationResult<DeleteTicketMutation>;
-export type DeleteTicketMutationOptions = Apollo.BaseMutationOptions<
-  DeleteTicketMutation,
-  DeleteTicketMutationVariables
->;
-export const UsersDocument = gql`
-  query Users(
-    $where: UsersWhereInput
-    $offset: Int
-    $orderBy: UsersOrderByWithRelationInput
-    $limit: Int
-  ) {
-    users(where: $where, offset: $offset, orderBy: $orderBy, limit: $limit) {
-      id
-      name
-      role
-      profile
-      phone
-      created_at
-    }
-  }
-`;
-
-/**
- * __useUsersQuery__
- *
- * To run a query within a React component, call `useUsersQuery` and pass it any options that fit your needs.
- * When your component renders, `useUsersQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useUsersQuery({
- *   variables: {
- *      where: // value for 'where'
- *      offset: // value for 'offset'
- *      orderBy: // value for 'orderBy'
- *      limit: // value for 'limit'
- *   },
- * });
- */
-export function useUsersQuery(
-  baseOptions?: Apollo.QueryHookOptions<UsersQuery, UsersQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<UsersQuery, UsersQueryVariables>(
-    UsersDocument,
-    options
-  );
-}
-export function useUsersLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<UsersQuery, UsersQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<UsersQuery, UsersQueryVariables>(
-    UsersDocument,
-    options
-  );
-}
-export type UsersQueryHookResult = ReturnType<typeof useUsersQuery>;
-export type UsersLazyQueryHookResult = ReturnType<typeof useUsersLazyQuery>;
-export type UsersQueryResult = Apollo.QueryResult<
-  UsersQuery,
-  UsersQueryVariables
->;
-export const UsersCountDocument = gql`
-  query usersCount(
-    $where: UsersWhereInput
-    $orderBy: UsersOrderByWithRelationInput
-    $limit: Int
-    $offset: Int
-  ) {
-    usersCount(where: $where, orderBy: $orderBy, limit: $limit, offset: $offset)
-  }
-`;
-
-/**
- * __useUsersCountQuery__
- *
- * To run a query within a React component, call `useUsersCountQuery` and pass it any options that fit your needs.
- * When your component renders, `useUsersCountQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useUsersCountQuery({
- *   variables: {
- *      where: // value for 'where'
- *      orderBy: // value for 'orderBy'
- *      limit: // value for 'limit'
- *      offset: // value for 'offset'
- *   },
- * });
- */
-export function useUsersCountQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    UsersCountQuery,
-    UsersCountQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<UsersCountQuery, UsersCountQueryVariables>(
-    UsersCountDocument,
-    options
-  );
-}
-export function useUsersCountLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    UsersCountQuery,
-    UsersCountQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<UsersCountQuery, UsersCountQueryVariables>(
-    UsersCountDocument,
-    options
-  );
-}
-export type UsersCountQueryHookResult = ReturnType<typeof useUsersCountQuery>;
-export type UsersCountLazyQueryHookResult = ReturnType<
-  typeof useUsersCountLazyQuery
->;
-export type UsersCountQueryResult = Apollo.QueryResult<
-  UsersCountQuery,
-  UsersCountQueryVariables
->;
-export const UsersDropDownDocument = gql`
-  query usersDropDown(
-    $where: UsersWhereInput
-    $orderBy: UsersOrderByWithRelationInput
-    $limit: Int
-    $offset: Int
-  ) {
-    users(where: $where, orderBy: $orderBy, limit: $limit, offset: $offset) {
-      value: id
-      name
-      phone
-    }
-  }
-`;
-
-/**
- * __useUsersDropDownQuery__
- *
- * To run a query within a React component, call `useUsersDropDownQuery` and pass it any options that fit your needs.
- * When your component renders, `useUsersDropDownQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useUsersDropDownQuery({
- *   variables: {
- *      where: // value for 'where'
- *      orderBy: // value for 'orderBy'
- *      limit: // value for 'limit'
- *      offset: // value for 'offset'
- *   },
- * });
- */
-export function useUsersDropDownQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    UsersDropDownQuery,
-    UsersDropDownQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<UsersDropDownQuery, UsersDropDownQueryVariables>(
-    UsersDropDownDocument,
-    options
-  );
-}
-export function useUsersDropDownLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    UsersDropDownQuery,
-    UsersDropDownQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<UsersDropDownQuery, UsersDropDownQueryVariables>(
-    UsersDropDownDocument,
-    options
-  );
-}
-export type UsersDropDownQueryHookResult = ReturnType<
-  typeof useUsersDropDownQuery
->;
-export type UsersDropDownLazyQueryHookResult = ReturnType<
-  typeof useUsersDropDownLazyQuery
->;
-export type UsersDropDownQueryResult = Apollo.QueryResult<
-  UsersDropDownQuery,
-  UsersDropDownQueryVariables
->;
-export const CreateUserDocument = gql`
-  mutation createUser($createUserInput: UsersCreateInput!) {
-    createUser(createUserInput: $createUserInput) {
-      id
-    }
-  }
-`;
-export type CreateUserMutationFn = Apollo.MutationFunction<
-  CreateUserMutation,
-  CreateUserMutationVariables
->;
-
-/**
- * __useCreateUserMutation__
- *
- * To run a mutation, you first call `useCreateUserMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useCreateUserMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [createUserMutation, { data, loading, error }] = useCreateUserMutation({
- *   variables: {
- *      createUserInput: // value for 'createUserInput'
- *   },
- * });
- */
-export function useCreateUserMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    CreateUserMutation,
-    CreateUserMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<CreateUserMutation, CreateUserMutationVariables>(
-    CreateUserDocument,
-    options
-  );
-}
-export type CreateUserMutationHookResult = ReturnType<
-  typeof useCreateUserMutation
->;
-export type CreateUserMutationResult =
-  Apollo.MutationResult<CreateUserMutation>;
-export type CreateUserMutationOptions = Apollo.BaseMutationOptions<
-  CreateUserMutation,
-  CreateUserMutationVariables
->;
-export const DeleteUsersDocument = gql`
-  mutation deleteUsers($removeUserId: Int!) {
-    removeUser(id: $removeUserId) {
-      id
-    }
-  }
-`;
-export type DeleteUsersMutationFn = Apollo.MutationFunction<
-  DeleteUsersMutation,
-  DeleteUsersMutationVariables
->;
-
-/**
- * __useDeleteUsersMutation__
- *
- * To run a mutation, you first call `useDeleteUsersMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useDeleteUsersMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [deleteUsersMutation, { data, loading, error }] = useDeleteUsersMutation({
- *   variables: {
- *      removeUserId: // value for 'removeUserId'
- *   },
- * });
- */
-export function useDeleteUsersMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    DeleteUsersMutation,
-    DeleteUsersMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<DeleteUsersMutation, DeleteUsersMutationVariables>(
-    DeleteUsersDocument,
-    options
-  );
-}
-export type DeleteUsersMutationHookResult = ReturnType<
-  typeof useDeleteUsersMutation
->;
-export type DeleteUsersMutationResult =
-  Apollo.MutationResult<DeleteUsersMutation>;
-export type DeleteUsersMutationOptions = Apollo.BaseMutationOptions<
-  DeleteUsersMutation,
-  DeleteUsersMutationVariables
->;
+export type GetTicketLazyQueryHookResult = ReturnType<typeof useGetTicketLazyQuery>;
+export type GetTicketQueryResult = Apollo.QueryResult<GetTicketQuery, GetTicketQueryVariables>;

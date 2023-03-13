@@ -7,36 +7,29 @@ import MaintenanceCard from "../../../components/maintananceCard";
 import { useMaintenanceQuery } from "../../../generated/generated";
 import Spinner from "react-native-loading-spinner-overlay";
 import UserContext from "../../../context/userContext";
+import axios from "../../../utils/axios";
+import { useInterval } from "../../../utils/interval";
 interface MaintanceHomeProps {
   navigation: any;
 }
 
 const MaintanceHome: React.FunctionComponent<MaintanceHomeProps> = (props) => {
   const user = React.useContext(UserContext);
-  const { data, loading, error, startPolling, stopPolling } =
-    useMaintenanceQuery({
-      variables: {
-        where: {
-          assignee: {
-            is: {
-              id: {
-                equals: user?.id,
-              },
-            },
-          },
-          resolved: {
-            equals: false,
-          },
-        },
-      },
-    });
-
+  const [loading, setLoading] = React.useState(false);
+  const [data, setData] = React.useState<any[]>([]);
   React.useEffect(() => {
-    startPolling(10000);
-    return () => {
-      stopPolling();
-    };
+    setLoading(true);
+    axios.post("/maintenance").then((res) => {
+      setData(res.data);
+      setLoading(false);
+    });
   }, []);
+
+  useInterval(() => {
+    axios.post("maintenance").then((res) => {
+      setData(res.data);
+    });
+  }, 10000);
 
   return (
     <ScrollView style={style.container}>
@@ -49,21 +42,19 @@ const MaintanceHome: React.FunctionComponent<MaintanceHomeProps> = (props) => {
       />
       <Spinner visible={loading} textContent={"Loading..."} />
       {!loading &&
-        data?.maintenances
-          .filter((d) => d.resolved == false)
-          .map((data, index) => {
-            return (
-              <MaintenanceCard
-                data={data}
-                key={index}
-                viewMaintenance={(id) => {
-                  props.navigation.navigate("ViewMaintenance", {
-                    MaintenanceId: id,
-                  });
-                }}
-              />
-            );
-          })}
+        data.map((data, index) => {
+          return (
+            <MaintenanceCard
+              data={data}
+              key={index}
+              viewMaintenance={(id) => {
+                props.navigation.navigate("ViewMaintenance", {
+                  MaintenanceId: id,
+                });
+              }}
+            />
+          );
+        })}
     </ScrollView>
   );
 };

@@ -2,7 +2,13 @@ const { config } = require("dotenv");
 config();
 module.exports = {
   schema: [
-    "http://localhost:8080/graphql"
+   {
+      "http://localhost:8000/graphql": {
+        "headers": {
+          "apikey": "someapikey"
+        }
+      }
+    }
   ],
   documents: "./**/*{.graphql,.gql}",
   overwrite: true,

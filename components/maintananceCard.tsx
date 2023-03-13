@@ -16,7 +16,7 @@ const MaintenanceCard: RneFunctionComponent<MaintenanceCardProps> = (props) => {
       <Card.Divider />
       <Text style={{ marginBottom: 10 }}>{props.data.description}</Text>
       <Text style={{ marginBottom: 10 }}>
-        machine : {props.data.machine.id} ({props.data.machine.label})
+        machine : {props.data.machines.id} ({props.data.machines.label})
       </Text>
       <Text style={{ marginBottom: 10 }}>
         status : {props.data.resolved ? "resolved" : "un-resolved"}

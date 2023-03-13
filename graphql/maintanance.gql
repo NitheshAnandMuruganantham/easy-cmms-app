@@ -1,4 +1,4 @@
-query Maintenance($where: MaintenanceWhereInput, $orderBy: String, $offset: Int, $limit: Int) {
+query Maintenance($where: MaintenanceWhereInput, $orderBy: MaintenanceOrderByWithRelationInput, $offset: Int, $limit: Int) {
   maintenances(where: $where,orderBy: $orderBy,offset: $offset,limit: $limit) {
      id
      assignee {
@@ -11,10 +11,7 @@ query Maintenance($where: MaintenanceWhereInput, $orderBy: String, $offset: Int,
      description
      resolved
     name
-    machine {
-      id
-      label
-    }
+    machine_id
   }
 }
 
@@ -39,7 +36,6 @@ query getMaintanance($maintenanceId: Int!) {
     assignee {
       id
       name
-      email
     }
     machine {
     id
