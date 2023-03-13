@@ -40,6 +40,7 @@ const CompleteMaintenance: FunctionComponent<Props> = (props) => {
             setLoading(true);
             try {
               setImage(image);
+              setLoading(false);
               props.submit(image);
             } catch (error) {
               log.error(error);

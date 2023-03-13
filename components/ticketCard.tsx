@@ -29,7 +29,7 @@ const TicketCard: RneFunctionComponent<TicketCardProps> = (props) => {
       />
       <Text style={{ marginBottom: 10 }}>{props.data.description}</Text>
       <Text style={{ marginBottom: 10 }}>
-        machine : {props.data.machine.id} ({props.data.machine.name})
+        machine : {props.data.machines.id} ({props.data.machines.name})
       </Text>
       <Text style={{ marginBottom: 10 }}>status : {props.data.status}</Text>
       <Text style={{ marginBottom: 10 }}>

@@ -33,6 +33,8 @@ const ViewTicket: FunctionComponent<Props> = (props) => {
     },
   });
 
+  const [completeTaskLoading, SetCompleteTaskLoading] =
+    useState<boolean>(false);
   const [updateMaintanance] = useUpdateMaintananceMutation();
   const [refresh, setRefresh] = useContext(RefetchContext);
 
@@ -48,6 +50,7 @@ const ViewTicket: FunctionComponent<Props> = (props) => {
         setIsVisible={SetShowSubmit}
         isVisible={ShowSubmit}
         submit={async (uri: string) => {
+          SetCompleteTaskLoading(true);
           await updateMaintanance({
             variables: {
               updateMaintananceId: data?.maintenance.id,
@@ -72,11 +75,13 @@ const ViewTicket: FunctionComponent<Props> = (props) => {
                 toast.show("Task completed", {
                   position: toast.positions.TOP + 50,
                 });
+                SetCompleteTaskLoading(false);
                 props.navigation.goBack();
               }
             })
             .catch((err) => {
               if (err) {
+                SetCompleteTaskLoading(false);
                 toast.show("Something went wrong", {
                   position: toast.positions.TOP + 50,
                 });
