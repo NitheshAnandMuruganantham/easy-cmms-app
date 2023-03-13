@@ -7,6 +7,8 @@ on:
 jobs:
   preview:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write # Allow comments on PRs
     steps:
       - name: 🏗 Setup repo
         uses: actions/checkout@v3
@@ -20,7 +22,7 @@ jobs:
       - name: 🏗 Setup EAS
         uses: expo/expo-github-action@v8
         with:
-          expo-version: latest
+          eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 📦 Install dependencies
@@ -29,4 +31,8 @@ jobs:
       - name: 🚀 Create preview
         uses: expo/expo-github-action/preview@v8
         with:
+<<<<<<< HEAD
           command: eas update --auto
+=======
+          command: eas update --auto
+>>>>>>> c15c50b073b8ecc53a18b821d8e9db47f25edf4d
