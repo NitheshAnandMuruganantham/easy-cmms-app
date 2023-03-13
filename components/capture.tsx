@@ -108,10 +108,10 @@ const Capture: FunctionComponent<{
                     <TouchableOpacity
                       onPress={__takePicture}
                       style={{
-                        width: 40,
-                        height: 40,
-                        bottom: 40,
-                        borderRadius: 40,
+                        width: 50,
+                        height: 50,
+                        bottom: 20,
+                        borderRadius: 50,
                         backgroundColor: "#fff",
                       }}
                     />

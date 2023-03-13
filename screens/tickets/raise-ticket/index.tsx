@@ -22,7 +22,7 @@ import Logger from "../../../utils/logger";
 import Spinner from "react-native-loading-spinner-overlay/lib";
 import Toast from "react-native-root-toast";
 import Capture from "../../../components/capture";
-import RefetchContext from "../../../context/RefetchContext";
+import RefetchContext from "../../../context/refetchContext";
 
 interface Props {
   isVisible: boolean;

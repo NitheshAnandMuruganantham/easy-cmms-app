@@ -6,16 +6,24 @@ import style from "./style";
 import MaintenanceCard from "../../../components/maintananceCard";
 import { useMaintenanceQuery } from "../../../generated/generated";
 import Spinner from "react-native-loading-spinner-overlay";
-
+import UserContext from "../../../context/userContext";
 interface MaintanceHomeProps {
   navigation: any;
 }
 
 const MaintanceHome: React.FunctionComponent<MaintanceHomeProps> = (props) => {
+  const user = React.useContext(UserContext);
   const { data, loading, error, startPolling, stopPolling } =
     useMaintenanceQuery({
       variables: {
         where: {
+          assignee: {
+            is: {
+              id: {
+                equals: user?.id,
+              },
+            },
+          },
           resolved: {
             equals: false,
           },

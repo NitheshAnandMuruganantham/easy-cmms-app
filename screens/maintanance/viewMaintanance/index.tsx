@@ -18,7 +18,7 @@ import style from "./style";
 import client from "../../../utils/apollo";
 import CompleteMaintenance from "./completeMaintenance";
 import Spinner from "react-native-loading-spinner-overlay/lib";
-import RefetchContext from "../../../context/RefetchContext";
+import RefetchContext from "../../../context/refetchContext";
 interface Props {
   navigation: any;
 }
@@ -26,6 +26,7 @@ interface Props {
 const ViewTicket: FunctionComponent<Props> = (props) => {
   const route = useRoute<any>();
   const [ShowSubmit, SetShowSubmit] = useState<boolean>(false);
+
   const { data, error, loading } = useGetMaintananceQuery({
     variables: {
       maintenanceId: route.params.MaintenanceId,
@@ -37,7 +38,11 @@ const ViewTicket: FunctionComponent<Props> = (props) => {
 
   return (
     <ScrollView>
-      <Spinner visible={loading} textContent={"Loading..."} />
+      <Spinner
+        visible={loading}
+        textContent={"Loading..."}
+        overlayColor="white"
+      />
       <Text style={style.title}>{data?.maintenance.name}</Text>
       <CompleteMaintenance
         setIsVisible={SetShowSubmit}
@@ -55,22 +60,28 @@ const ViewTicket: FunctionComponent<Props> = (props) => {
                 },
               },
             },
-          }).catch((err) => {
-            toast.show("Something went wrong", {
-              position: toast.positions.TOP + 50,
-            });
-          });
-
-          client
-            .refetchQueries({
-              include: ["getMaintanance"],
+          })
+            .then((dt) => {
+              if (!dt?.data?.updateMaintanance?.id) {
+                client
+                  .refetchQueries({
+                    include: ["getMaintanance"],
+                  })
+                  .catch(() => {});
+                setRefresh(true);
+                toast.show("Task completed", {
+                  position: toast.positions.TOP + 50,
+                });
+                props.navigation.goBack();
+              }
             })
-            .catch(() => {});
-          setRefresh(true);
-          toast.show("Task completed", {
-            position: toast.positions.TOP + 50,
-          });
-          props.navigation.goBack();
+            .catch((err) => {
+              if (err) {
+                toast.show("Something went wrong", {
+                  position: toast.positions.TOP + 50,
+                });
+              }
+            });
         }}
       />
       <Text style={style.description}>{data?.maintenance.description}</Text>
