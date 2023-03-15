@@ -34,7 +34,7 @@ const TicketHome: React.FunctionComponent<TicketHomeProps> = (props) => {
   }, []);
 
   useInterval(() => {
-    axios.post("/tickets").then((res) => {
+    axios.post("tickets").then((res) => {
       setData(res.data);
     });
   }, 10000);
@@ -50,7 +50,7 @@ const TicketHome: React.FunctionComponent<TicketHomeProps> = (props) => {
       <Spinner visible={loading} textContent={"Loading..."} />
 
       {!loading &&
-        data.map((ticket, index) => {
+        data?.map((ticket, index) => {
           return (
             <TicketItem
               data={ticket}

@@ -4,7 +4,7 @@ import network from "../constants/network";
 
 export const checkProfileStatus = async (
   axios: AxiosInstance,
-  setUser: any
+  setUser?: any
 ) => {
   try {
     await SuperTokens.attemptRefreshingSession();
@@ -13,7 +13,7 @@ export const checkProfileStatus = async (
       `${network.server}/me/profile/status`
     );
     console.info("fetching profile exists status");
-    if (profileExists.data) {
+    if (profileExists?.data && setUser) {
       setUser(profileExists.data);
       return "SESSION_CREATED";
     } else {

@@ -5,12 +5,10 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { Image, Text, View } from "react-native";
-import { BottomSheet, Button, Input, ListItem } from "@rneui/themed";
-import { Camera, CameraType } from "expo-camera";
+import { Text, View } from "react-native";
+import { BottomSheet, Button, Input } from "@rneui/themed";
 import { Formik } from "formik";
-import Picker from "react-native-picker-select";
-import axios from "../../../utils/axios";
+import { Picker } from "@react-native-picker/picker";
 import client from "../../../utils/apollo";
 import toast from "react-native-root-toast";
 import {
@@ -100,7 +98,7 @@ const RaiseTicket: FunctionComponent<Props> = (props) => {
             }}
           >
             <Spinner
-              visible={CreateTicketsLoading || isSubmitting}
+              visible={CreateTicketsLoading || isSubmitting || loading}
               textContent={"Loading..."}
             />
 
@@ -129,37 +127,37 @@ const RaiseTicket: FunctionComponent<Props> = (props) => {
               value={values.description}
             />
             <Picker
+              selectedValue={values.machine}
               style={{
-                inputIOS: {
-                  fontSize: 16,
-                  paddingVertical: 12,
-                  paddingHorizontal: 10,
-                  borderWidth: 2,
-                  borderColor: "gray",
-                  width: "95%",
-                  marginLeft: "auto",
-                  marginRight: "auto",
-                  borderRadius: 10,
-                  color: "black",
-                  paddingRight: 30,
-                },
-                inputAndroid: {
-                  fontSize: 16,
-                  paddingVertical: 12,
-                  paddingHorizontal: 10,
-                  borderWidth: 2,
-                  borderColor: "gray",
-                  width: "95%",
-                  marginLeft: "auto",
-                  marginRight: "auto",
-                  borderRadius: 10,
-                  color: "black",
-                  paddingRight: 30,
-                },
+                fontSize: 16,
+                paddingVertical: 12,
+                paddingHorizontal: 10,
+                borderWidth: 2,
+                borderColor: "gray",
+                width: "95%",
+                marginLeft: "auto",
+                marginRight: "auto",
+                borderRadius: 10,
+                color: "black",
+                paddingRight: 30,
               }}
-              onValueChange={(itemValue) => setFieldValue("machine", itemValue)}
-              items={machines?.machines || []}
-            />
+              onValueChange={(itemValue, itemIndex) => {
+                setFieldValue("machine", itemValue);
+              }}
+            >
+              {machines &&
+                machines?.machines.map((machine) => {
+                  return (
+                    <Picker.Item
+                      label={machine.label}
+                      value={machine.value}
+                      key={machine.value}
+                    />
+                  );
+                })}
+              <Picker.Item label="Java" value="java" />
+              <Picker.Item label="JavaScript" value="js" />
+            </Picker>
             <Capture
               startCamera={props.isVisible}
               image={image}
