@@ -2,7 +2,6 @@ import { StyleSheet } from "react-native";
 import { RneFunctionComponent, Text } from "@rneui/base";
 import { Button, Card, Icon } from "@rneui/themed";
 import React from "react";
-import { Maintenance } from "../generated/generated";
 
 interface MaintenanceCardProps {
   data: any;

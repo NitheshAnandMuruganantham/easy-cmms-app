@@ -9,21 +9,33 @@ import Spinner from "react-native-loading-spinner-overlay";
 import UserContext from "../../../context/userContext";
 import axios from "../../../utils/axios";
 import { useInterval } from "../../../utils/interval";
+import RefetchContext from "../../../context/refetchContext";
 interface MaintanceHomeProps {
   navigation: any;
 }
 
 const MaintanceHome: React.FunctionComponent<MaintanceHomeProps> = (props) => {
   const user = React.useContext(UserContext);
+  const [refetch, setRefresh] = React.useContext(RefetchContext);
+
   const [loading, setLoading] = React.useState(false);
   const [data, setData] = React.useState<any[]>([]);
   React.useEffect(() => {
     setLoading(true);
-    axios.post("/maintenance").then((res) => {
+    axios.post("maintenance").then((res) => {
       setData(res.data);
       setLoading(false);
     });
   }, []);
+
+  React.useEffect(() => {
+    setLoading(true);
+    console.log("refetching maintenance");
+    axios.post("maintenance").then((res) => {
+      setData(res.data);
+      setLoading(false);
+    });
+  }, [refetch]);
 
   useInterval(() => {
     axios.post("maintenance").then((res) => {

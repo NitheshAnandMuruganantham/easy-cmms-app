@@ -27,13 +27,12 @@ axios.interceptors.response.use(
 );
 
 axios.interceptors.request.use((request) => {
-  new Logger("AXIOS").network(`Request: ${JSON.stringify(request, null, 2)}`);
+  // new Logger("AXIOS").network(`Request: ${JSON.stringify(request, null, 2)}`);
   return request;
 });
 
 axios.interceptors.response.use((response) => {
-  new Logger("AXIOS").network(`Response: ${JSON.stringify(response, null, 2)}`);
-  console.log("Response:", JSON.stringify(response, null, 2));
+  // new Logger("AXIOS").network(`Response: ${JSON.stringify(response, null, 2)}`);
   return response;
 });
 

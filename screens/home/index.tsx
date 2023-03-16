@@ -17,26 +17,24 @@ const Home = (props) => {
       .then((resp) => {
         SetData(resp.data);
         SetLoading(false);
-        setRefetchApi(false);
       })
       .catch(() => {
         SetLoading(false);
-        setRefetchApi(false);
         alert("something went wrong !");
       });
   };
 
-  // useInterval(() => {
-  //   axios
-  //     .get("/dashboard/mobileDashboard")
-  //     .then((resp) => {
-  //       SetData(resp.data);
-  //       setRefetchApi(false);
-  //     })
-  //     .catch(() => {});
-  // }, 10000);
+  useInterval(() => {
+    axios
+      .get("/dashboard/mobileDashboard")
+      .then((resp) => {
+        SetData(resp.data);
+      })
+      .catch(() => {});
+  }, 10000);
 
   React.useEffect(() => {
+    console.log("refetching home");
     refetch();
   }, [refetchApi]);
 

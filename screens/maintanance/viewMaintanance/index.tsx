@@ -15,7 +15,6 @@ import toast from "react-native-root-toast";
 import { Button } from "@rneui/themed";
 import { Table, Row, Rows } from "react-native-table-component";
 import style from "./style";
-import client from "../../../utils/apollo";
 import CompleteMaintenance from "./completeMaintenance";
 import Spinner from "react-native-loading-spinner-overlay/lib";
 import RefetchContext from "../../../context/refetchContext";
@@ -41,9 +40,8 @@ const ViewTicket: FunctionComponent<Props> = (props) => {
   return (
     <ScrollView>
       <Spinner
-        visible={loading}
+        visible={loading || completeTaskLoading}
         textContent={"Loading..."}
-        overlayColor="white"
       />
       <Text style={style.title}>{data?.maintenance.name}</Text>
       <CompleteMaintenance
@@ -65,32 +63,33 @@ const ViewTicket: FunctionComponent<Props> = (props) => {
             },
           })
             .then((dt) => {
-              if (!dt?.data?.updateMaintanance?.id) {
-                client
-                  .refetchQueries({
-                    include: ["getMaintanance"],
-                  })
-                  .catch(() => {});
-                setRefresh(true);
+              if (dt?.data?.updateMaintanance?.id) {
                 toast.show("Task completed", {
                   position: toast.positions.TOP + 50,
                 });
-                SetCompleteTaskLoading(false);
-                props.navigation.goBack();
               }
             })
             .catch((err) => {
               if (err) {
-                SetCompleteTaskLoading(false);
                 toast.show("Something went wrong", {
                   position: toast.positions.TOP + 50,
                 });
               }
             });
+          setRefresh((prev) => !prev);
+          SetCompleteTaskLoading(false);
+          props.navigation.goBack();
         }}
       />
       <Text style={style.description}>{data?.maintenance.description}</Text>
-      <View style={{ width: "80%", marginLeft: "10%", marginTop: "5%" }}>
+      <View
+        style={{
+          width: "80%",
+          marginLeft: "10%",
+          marginTop: "5%",
+          display: data ? "flex" : "none",
+        }}
+      >
         <Table
           borderStyle={{
             borderBottomWidth: 3,

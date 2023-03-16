@@ -9,7 +9,7 @@ import { Text, View } from "react-native";
 import { BottomSheet, Button, Input } from "@rneui/themed";
 import { Formik } from "formik";
 import { Picker } from "@react-native-picker/picker";
-import client from "../../../utils/apollo";
+import axios from "../../../utils/axios";
 import toast from "react-native-root-toast";
 import {
   Ticket_Status,
@@ -21,7 +21,7 @@ import Spinner from "react-native-loading-spinner-overlay/lib";
 import Toast from "react-native-root-toast";
 import Capture from "../../../components/capture";
 import RefetchContext from "../../../context/refetchContext";
-
+import * as Yup from "yup";
 interface Props {
   isVisible: boolean;
   setIsVisible: (isVisible: boolean) => void;
@@ -32,8 +32,7 @@ const log = new Logger("RaiseTicket");
 const RaiseTicket: FunctionComponent<Props> = (props) => {
   const { data: machines, loading } = useGetAllMachinesDropdownQuery();
   const [image, setImage] = useState<any>();
-  const [createTicket, { loading: CreateTicketsLoading }] =
-    useCreateTicketsMutation();
+  const [uploadLoading, SetUploadLoading] = useState<boolean>(false);
   const [refresh, setRefresh] = useContext(RefetchContext);
   return (
     <BottomSheet
@@ -43,40 +42,40 @@ const RaiseTicket: FunctionComponent<Props> = (props) => {
       <Formik
         initialValues={{
           title: "",
-          machine: "",
+          machine: undefined,
           description: "",
         }}
+        validationSchema={Yup.object().shape({
+          title: Yup.string().required("Title is required"),
+          machine: Yup.number().required("Machine is required"),
+          description: Yup.string().required("Description is required"),
+        })}
         onSubmit={async (values) => {
-          await createTicket({
-            variables: {
-              createTicketInput: {
-                machines: {
-                  connect: {
-                    id: values.machine,
-                  },
-                },
-                name: values.title,
-                description: values.description,
-                photos: image,
-                status: Ticket_Status.Open,
-              },
+          await axios({
+            url: "raiseTicket",
+            method: "POST",
+            data: {
+              name: values.title,
+              description: values.description,
+              machine_id: values.machine,
+              photos: image,
             },
-          }).catch((e) => {
-            toast.show("Something went wrong", {
-              position: toast.positions.TOP + 50,
-            });
-          });
-          client
-            .refetchQueries({
-              include: ["Tickets"],
+          })
+            .then((res) => {
+              if (res?.data) {
+                Toast.show("Ticket raised successfully", {
+                  position: Toast.positions.TOP + 50,
+                  duration: Toast.durations.SHORT,
+                });
+              }
             })
-            .catch((e) => {});
-          setRefresh(true);
+            .catch((e) => {
+              toast.show("Something went wrong", {
+                position: toast.positions.TOP + 50,
+              });
+            });
+          setRefresh((prev) => !prev);
           props.setIsVisible(false);
-          Toast.show("Ticket raised successfully", {
-            position: Toast.positions.TOP + 50,
-            duration: Toast.durations.SHORT,
-          });
         }}
       >
         {({
@@ -98,7 +97,7 @@ const RaiseTicket: FunctionComponent<Props> = (props) => {
             }}
           >
             <Spinner
-              visible={CreateTicketsLoading || isSubmitting || loading}
+              visible={isSubmitting || loading}
               textContent={"Loading..."}
             />
 
@@ -128,6 +127,7 @@ const RaiseTicket: FunctionComponent<Props> = (props) => {
             />
             <Picker
               selectedValue={values.machine}
+              placeholder="Select Machine"
               style={{
                 fontSize: 16,
                 paddingVertical: 12,
@@ -145,6 +145,7 @@ const RaiseTicket: FunctionComponent<Props> = (props) => {
                 setFieldValue("machine", itemValue);
               }}
             >
+              <Picker.Item label="Select Machine" value={undefined} />
               {machines &&
                 machines?.machines.map((machine) => {
                   return (
@@ -155,8 +156,6 @@ const RaiseTicket: FunctionComponent<Props> = (props) => {
                     />
                   );
                 })}
-              <Picker.Item label="Java" value="java" />
-              <Picker.Item label="JavaScript" value="js" />
             </Picker>
             <Capture
               startCamera={props.isVisible}

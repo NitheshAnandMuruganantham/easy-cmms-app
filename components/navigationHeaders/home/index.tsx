@@ -23,18 +23,7 @@ const HomeHeader: FunctionComponent<HomeHeaderProps> = () => {
   const userdata = useContext(UserContext);
   const [refetch, SetRefetch] = useContext(RefetchContext);
   const refetchData = () => {
-    client
-      .refetchQueries({
-        include: ["Maintenance"],
-      })
-      .catch(() => null);
-
-    client
-      .refetchQueries({
-        include: ["Maintenance"],
-      })
-      .catch(() => null);
-    SetRefetch(true);
+    SetRefetch((prev) => !prev);
   };
 
   return (

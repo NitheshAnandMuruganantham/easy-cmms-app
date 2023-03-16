@@ -8,6 +8,7 @@ import Spinner from "react-native-loading-spinner-overlay";
 import axios from "../../../utils/axios";
 import Toast from "react-native-root-toast";
 import { useInterval } from "../../../utils/interval";
+import RefetchContext from "../../../context/refetchContext";
 interface TicketHomeProps {
   navigation: StackNavigationProp<any>;
 }
@@ -15,6 +16,7 @@ interface TicketHomeProps {
 const TicketHome: React.FunctionComponent<TicketHomeProps> = (props) => {
   const [data, setData] = React.useState<any>(null);
   const [loading, setLoading] = React.useState<boolean>(true);
+  const [refresh, setRefresh] = React.useContext(RefetchContext);
 
   React.useEffect(() => {
     setLoading(true);
@@ -38,6 +40,23 @@ const TicketHome: React.FunctionComponent<TicketHomeProps> = (props) => {
       setData(res.data);
     });
   }, 10000);
+
+  React.useEffect(() => {
+    setLoading(true);
+    axios
+      .post("/tickets")
+      .then((res) => {
+        setData(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        Toast.show("Error fetching tickets", {
+          duration: Toast.durations.SHORT,
+          position: Toast.positions.TOP,
+        });
+        setLoading(false);
+      });
+  }, [refresh]);
 
   return (
     <ScrollView style={style.container}>
