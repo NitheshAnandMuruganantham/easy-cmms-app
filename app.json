@@ -32,7 +32,7 @@
     },
     "android": {
       "package": "com.infraweigh.easycmms",
-      "versionCode": 1,
+      "versionCode": 2,
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
