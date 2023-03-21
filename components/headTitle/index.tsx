@@ -10,7 +10,7 @@ interface BodyHeadProps {
 
 const BodyHead: FunctionComponent<BodyHeadProps> = (props) => {
   return (
-    <View style={props.style}>
+    <View style={props?.style}>
       <Text
         style={{
           fontFamily: "Poppins-Light",
@@ -41,10 +41,6 @@ const BodyHead: FunctionComponent<BodyHeadProps> = (props) => {
             {" "}
             {props.text3}
           </Text>
-          <Image
-            style={{ alignSelf: "center" }}
-            source={require("../../assets/images/extras/heading-highlight.png")}
-          />
         </View>
       </View>
     </View>

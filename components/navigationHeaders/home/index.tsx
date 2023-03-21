@@ -9,18 +9,20 @@ import EntoDesign from "react-native-vector-icons/Entypo";
 import IoniconsDesign from "react-native-vector-icons/Ionicons";
 
 import { Button } from "@rneui/themed";
-
+import constants from "expo-constants";
 import RaiseTicket from "../../../screens/tickets/raise-ticket";
 import client from "../../../utils/apollo";
 import UserContext from "../../../context/userContext";
 import Supertokens from "supertokens-react-native";
 import RefetchContext from "../../../context/refetchContext";
+import RaiseMaintenance from "../../../screens/maintanance/raise-maintanance";
 
 interface HomeHeaderProps {}
 
 const HomeHeader: FunctionComponent<HomeHeaderProps> = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const userdata = useContext(UserContext);
+  const [showRaiseTicket, SetShowRaiseTicket] = useState(false);
+  const [showRaiseMaintenance, setShowRaiseMaintenance] = useState(false);
+  const userData = useContext(UserContext);
   const [refetch, SetRefetch] = useContext(RefetchContext);
   const refetchData = () => {
     SetRefetch((prev) => !prev);
@@ -31,40 +33,48 @@ const HomeHeader: FunctionComponent<HomeHeaderProps> = () => {
       style={{
         display: "flex",
         width: "95%",
+        backgroundColor: "white",
+        paddingTop: 10,
+        marginTop: constants.platform?.android ? constants.statusBarHeight : 0,
         marginLeft: "2.5%",
-        height: 100,
+        marginRight: "2.5%",
+        paddingBottom: 15,
         flexDirection: "row",
         alignItems: "flex-end",
         justifyContent: "space-between",
       }}
     >
-      {userdata?.role === "SUPERVISOR" ? (
+      {userData?.role === "SUPERVISOR" ? (
         <Button
-          onPress={() => setIsVisible(true)}
+          onPress={() => SetShowRaiseTicket(true)}
           type="solid"
+          icon={<EntoDesign name="plus" size={20} color="white" />}
           titleStyle={{
             fontFamily: "Poppins-Medium",
             marginLeft: 10,
+            marginTop: 3,
           }}
           buttonStyle={{
             borderRadius: 50,
           }}
         >
-          <EntoDesign name="plus" size={20} color="white" />
           Raise Issue
         </Button>
       ) : (
         <Button
+          onPress={() => setShowRaiseMaintenance(true)}
           type="solid"
+          icon={<EntoDesign name="plus" size={20} color="white" />}
           titleStyle={{
             fontFamily: "Poppins-Medium",
             marginLeft: 10,
+            marginTop: 3,
           }}
           buttonStyle={{
             borderRadius: 50,
           }}
         >
-          easy CMMS
+          Raise Work
         </Button>
       )}
       <View
@@ -92,7 +102,14 @@ const HomeHeader: FunctionComponent<HomeHeaderProps> = () => {
           <IoniconsDesign name="log-out" size={28} color="white" />
         </Button>
       </View>
-      <RaiseTicket isVisible={isVisible} setIsVisible={setIsVisible} />
+      <RaiseTicket
+        isVisible={showRaiseTicket}
+        setIsVisible={SetShowRaiseTicket}
+      />
+      <RaiseMaintenance
+        isVisible={showRaiseMaintenance}
+        setIsVisible={setShowRaiseMaintenance}
+      />
     </View>
   );
 };

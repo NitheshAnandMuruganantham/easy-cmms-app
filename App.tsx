@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import SuperTokens from "supertokens-react-native";
 import { RootSiblingParent } from "react-native-root-siblings";
-
+import { Provider as PaperProvider } from "react-native-paper";
 import { Text, Image, ThemeProvider } from "@rneui/themed";
 import network from "./constants/network";
 import Theme from "./constants/theme";
@@ -76,7 +76,7 @@ export default function App() {
   } else {
     return (
       <ApolloProvider client={client}>
-        <ThemeProvider theme={Theme}>
+        <PaperProvider>
           <RootSiblingParent>
             <AuthContext.Provider value={authStatus}>
               <UserContext.Provider value={userData}>
@@ -89,7 +89,7 @@ export default function App() {
               </UserContext.Provider>
             </AuthContext.Provider>
           </RootSiblingParent>
-        </ThemeProvider>
+        </PaperProvider>
       </ApolloProvider>
     );
   }

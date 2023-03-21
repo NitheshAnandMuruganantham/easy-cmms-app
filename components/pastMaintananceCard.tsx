@@ -5,10 +5,11 @@ import React from "react";
 
 interface MaintenanceCardProps {
   data: any;
-  viewMaintenance: (id: number) => void;
 }
 
-const MaintenanceCard: RneFunctionComponent<MaintenanceCardProps> = (props) => {
+const PastMaintenanceCard: RneFunctionComponent<MaintenanceCardProps> = (
+  props
+) => {
   return (
     <Card
       containerStyle={{
@@ -53,22 +54,11 @@ const MaintenanceCard: RneFunctionComponent<MaintenanceCardProps> = (props) => {
       <Text style={{ marginBottom: 20, fontSize: 20 }}>
         assignee : {props.data.assignee.name} ({props.data.assignee.id})
       </Text>
-      <Button
-        onPress={() => props.viewMaintenance(props.data.id)}
-        type="outline"
-        buttonStyle={{
-          borderRadius: 0,
-          marginLeft: 0,
-          marginRight: 0,
-          marginBottom: 0,
-        }}
-        title="view now"
-      />
     </Card>
   );
 };
 
-export default MaintenanceCard;
+export default PastMaintenanceCard;
 
 const styles = StyleSheet.create({
   fonts: {

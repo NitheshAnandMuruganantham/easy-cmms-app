@@ -17,7 +17,18 @@ const TicketCard: RneFunctionComponent<TicketCardProps> = (props) => {
         props.viewTicket(props.data.id);
       }}
     >
-      <Card>
+      <Card
+        containerStyle={{
+          borderRadius: 20,
+          shadowColor: "black",
+          shadowOpacity: 0.2,
+          paddingBottom: 10,
+          shadowOffset: { width: 0, height: 2 },
+          shadowRadius: 8,
+          elevation: 5,
+          backgroundColor: "#fff",
+        }}
+      >
         <Card.Title style={{ fontSize: 25 }}>{props.data.name}</Card.Title>
         <Card.Divider />
         <Text style={{ marginBottom: 10, fontSize: 20, fontWeight: "500" }}>

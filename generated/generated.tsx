@@ -50,12 +50,16 @@ export type BigIntNullableFilter = {
 
 export type Block = {
   __typename?: 'Block';
+  Mailings?: Maybe<Array<Scalars['String']>>;
+  Users?: Maybe<Array<Users>>;
   _count: BlockCount;
+  block_settings?: Maybe<Array<Block_Settings>>;
   created_at: Scalars['DateTime'];
   id: Scalars['BigInt'];
   location: Scalars['String'];
   machines?: Maybe<Array<Machines>>;
   name: Scalars['String'];
+  production_data?: Maybe<Array<Production_Data>>;
   updated_at: Scalars['DateTime'];
 };
 
@@ -78,11 +82,15 @@ export type BlockAvgOrderByAggregateInput = {
 
 export type BlockCount = {
   __typename?: 'BlockCount';
+  Users: Scalars['Int'];
+  block_settings: Scalars['Int'];
   machines: Scalars['Int'];
+  production_data: Scalars['Int'];
 };
 
 export type BlockCountAggregate = {
   __typename?: 'BlockCountAggregate';
+  Mailings: Scalars['Int'];
   _all: Scalars['Int'];
   created_at: Scalars['Int'];
   id: Scalars['Int'];
@@ -92,6 +100,7 @@ export type BlockCountAggregate = {
 };
 
 export type BlockCountOrderByAggregateInput = {
+  Mailings?: InputMaybe<SortOrder>;
   created_at?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   location?: InputMaybe<SortOrder>;
@@ -100,12 +109,20 @@ export type BlockCountOrderByAggregateInput = {
 };
 
 export type BlockCreateInput = {
+  Mailings?: InputMaybe<BlockCreateMailingsInput>;
+  Users?: InputMaybe<UsersCreateNestedManyWithoutBlockInput>;
+  block_settings?: InputMaybe<Block_SettingsCreateNestedManyWithoutBlockInput>;
   created_at?: InputMaybe<Scalars['DateTime']>;
   id?: InputMaybe<Scalars['BigInt']>;
   location: Scalars['String'];
   machines?: InputMaybe<MachinesCreateNestedManyWithoutBlockInput>;
   name: Scalars['String'];
+  production_data?: InputMaybe<Production_DataCreateNestedManyWithoutBlockInput>;
   updated_at?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type BlockCreateMailingsInput = {
+  set: Array<Scalars['String']>;
 };
 
 export type BlockCreateNestedOneWithoutMachinesInput = {
@@ -114,16 +131,66 @@ export type BlockCreateNestedOneWithoutMachinesInput = {
   create?: InputMaybe<BlockCreateWithoutMachinesInput>;
 };
 
+export type BlockCreateNestedOneWithoutProduction_DataInput = {
+  connect?: InputMaybe<BlockWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<BlockCreateOrConnectWithoutProduction_DataInput>;
+  create?: InputMaybe<BlockCreateWithoutProduction_DataInput>;
+};
+
+export type BlockCreateNestedOneWithoutUsersInput = {
+  connect?: InputMaybe<BlockWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<BlockCreateOrConnectWithoutUsersInput>;
+  create?: InputMaybe<BlockCreateWithoutUsersInput>;
+};
+
 export type BlockCreateOrConnectWithoutMachinesInput = {
   create: BlockCreateWithoutMachinesInput;
   where: BlockWhereUniqueInput;
 };
 
+export type BlockCreateOrConnectWithoutProduction_DataInput = {
+  create: BlockCreateWithoutProduction_DataInput;
+  where: BlockWhereUniqueInput;
+};
+
+export type BlockCreateOrConnectWithoutUsersInput = {
+  create: BlockCreateWithoutUsersInput;
+  where: BlockWhereUniqueInput;
+};
+
 export type BlockCreateWithoutMachinesInput = {
+  Mailings?: InputMaybe<BlockCreateMailingsInput>;
+  Users?: InputMaybe<UsersCreateNestedManyWithoutBlockInput>;
+  block_settings?: InputMaybe<Block_SettingsCreateNestedManyWithoutBlockInput>;
   created_at?: InputMaybe<Scalars['DateTime']>;
   id?: InputMaybe<Scalars['BigInt']>;
   location: Scalars['String'];
   name: Scalars['String'];
+  production_data?: InputMaybe<Production_DataCreateNestedManyWithoutBlockInput>;
+  updated_at?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type BlockCreateWithoutProduction_DataInput = {
+  Mailings?: InputMaybe<BlockCreateMailingsInput>;
+  Users?: InputMaybe<UsersCreateNestedManyWithoutBlockInput>;
+  block_settings?: InputMaybe<Block_SettingsCreateNestedManyWithoutBlockInput>;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['BigInt']>;
+  location: Scalars['String'];
+  machines?: InputMaybe<MachinesCreateNestedManyWithoutBlockInput>;
+  name: Scalars['String'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type BlockCreateWithoutUsersInput = {
+  Mailings?: InputMaybe<BlockCreateMailingsInput>;
+  block_settings?: InputMaybe<Block_SettingsCreateNestedManyWithoutBlockInput>;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['BigInt']>;
+  location: Scalars['String'];
+  machines?: InputMaybe<MachinesCreateNestedManyWithoutBlockInput>;
+  name: Scalars['String'];
+  production_data?: InputMaybe<Production_DataCreateNestedManyWithoutBlockInput>;
   updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
@@ -162,6 +229,7 @@ export type BlockMinOrderByAggregateInput = {
 };
 
 export type BlockOrderByWithAggregationInput = {
+  Mailings?: InputMaybe<SortOrder>;
   _avg?: InputMaybe<BlockAvgOrderByAggregateInput>;
   _count?: InputMaybe<BlockCountOrderByAggregateInput>;
   _max?: InputMaybe<BlockMaxOrderByAggregateInput>;
@@ -198,12 +266,21 @@ export type BlockSumOrderByAggregateInput = {
 };
 
 export type BlockUpdateInput = {
+  Mailings?: InputMaybe<BlockUpdateMailingsInput>;
+  Users?: InputMaybe<UsersUpdateManyWithoutBlockNestedInput>;
+  block_settings?: InputMaybe<Block_SettingsUpdateManyWithoutBlockNestedInput>;
   created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
   location?: InputMaybe<StringFieldUpdateOperationsInput>;
   machines?: InputMaybe<MachinesUpdateManyWithoutBlockNestedInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  production_data?: InputMaybe<Production_DataUpdateManyWithoutBlockNestedInput>;
   updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type BlockUpdateMailingsInput = {
+  push?: InputMaybe<Array<Scalars['String']>>;
+  set?: InputMaybe<Array<Scalars['String']>>;
 };
 
 export type BlockUpdateOneRequiredWithoutMachinesNestedInput = {
@@ -214,11 +291,57 @@ export type BlockUpdateOneRequiredWithoutMachinesNestedInput = {
   upsert?: InputMaybe<BlockUpsertWithoutMachinesInput>;
 };
 
+export type BlockUpdateOneRequiredWithoutUsersNestedInput = {
+  connect?: InputMaybe<BlockWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<BlockCreateOrConnectWithoutUsersInput>;
+  create?: InputMaybe<BlockCreateWithoutUsersInput>;
+  update?: InputMaybe<BlockUpdateWithoutUsersInput>;
+  upsert?: InputMaybe<BlockUpsertWithoutUsersInput>;
+};
+
+export type BlockUpdateOneWithoutProduction_DataNestedInput = {
+  connect?: InputMaybe<BlockWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<BlockCreateOrConnectWithoutProduction_DataInput>;
+  create?: InputMaybe<BlockCreateWithoutProduction_DataInput>;
+  delete?: InputMaybe<Scalars['Boolean']>;
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  update?: InputMaybe<BlockUpdateWithoutProduction_DataInput>;
+  upsert?: InputMaybe<BlockUpsertWithoutProduction_DataInput>;
+};
+
 export type BlockUpdateWithoutMachinesInput = {
+  Mailings?: InputMaybe<BlockUpdateMailingsInput>;
+  Users?: InputMaybe<UsersUpdateManyWithoutBlockNestedInput>;
+  block_settings?: InputMaybe<Block_SettingsUpdateManyWithoutBlockNestedInput>;
   created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
   location?: InputMaybe<StringFieldUpdateOperationsInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  production_data?: InputMaybe<Production_DataUpdateManyWithoutBlockNestedInput>;
+  updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type BlockUpdateWithoutProduction_DataInput = {
+  Mailings?: InputMaybe<BlockUpdateMailingsInput>;
+  Users?: InputMaybe<UsersUpdateManyWithoutBlockNestedInput>;
+  block_settings?: InputMaybe<Block_SettingsUpdateManyWithoutBlockNestedInput>;
+  created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
+  location?: InputMaybe<StringFieldUpdateOperationsInput>;
+  machines?: InputMaybe<MachinesUpdateManyWithoutBlockNestedInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type BlockUpdateWithoutUsersInput = {
+  Mailings?: InputMaybe<BlockUpdateMailingsInput>;
+  block_settings?: InputMaybe<Block_SettingsUpdateManyWithoutBlockNestedInput>;
+  created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
+  location?: InputMaybe<StringFieldUpdateOperationsInput>;
+  machines?: InputMaybe<MachinesUpdateManyWithoutBlockNestedInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  production_data?: InputMaybe<Production_DataUpdateManyWithoutBlockNestedInput>;
   updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
@@ -227,20 +350,81 @@ export type BlockUpsertWithoutMachinesInput = {
   update: BlockUpdateWithoutMachinesInput;
 };
 
+export type BlockUpsertWithoutProduction_DataInput = {
+  create: BlockCreateWithoutProduction_DataInput;
+  update: BlockUpdateWithoutProduction_DataInput;
+};
+
+export type BlockUpsertWithoutUsersInput = {
+  create: BlockCreateWithoutUsersInput;
+  update: BlockUpdateWithoutUsersInput;
+};
+
 export type BlockWhereInput = {
   AND?: InputMaybe<Array<BlockWhereInput>>;
+  Mailings?: InputMaybe<StringNullableListFilter>;
   NOT?: InputMaybe<Array<BlockWhereInput>>;
   OR?: InputMaybe<Array<BlockWhereInput>>;
+  Users?: InputMaybe<UsersListRelationFilter>;
+  block_settings?: InputMaybe<Block_SettingsListRelationFilter>;
   created_at?: InputMaybe<DateTimeFilter>;
   id?: InputMaybe<BigIntFilter>;
   location?: InputMaybe<StringFilter>;
   machines?: InputMaybe<MachinesListRelationFilter>;
   name?: InputMaybe<StringFilter>;
+  production_data?: InputMaybe<Production_DataListRelationFilter>;
   updated_at?: InputMaybe<DateTimeFilter>;
 };
 
 export type BlockWhereUniqueInput = {
   id?: InputMaybe<Scalars['BigInt']>;
+};
+
+export type Block_SettingsAvgAggregate = {
+  __typename?: 'Block_settingsAvgAggregate';
+  block_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+export type Block_SettingsCountAggregate = {
+  __typename?: 'Block_settingsCountAggregate';
+  _all: Scalars['Int'];
+  block_id: Scalars['Int'];
+  created_at: Scalars['Int'];
+  id: Scalars['Int'];
+  name: Scalars['Int'];
+  updated_at: Scalars['Int'];
+  value: Scalars['Int'];
+};
+
+export type Block_SettingsListRelationFilter = {
+  every?: InputMaybe<Block_SettingsWhereInput>;
+  none?: InputMaybe<Block_SettingsWhereInput>;
+  some?: InputMaybe<Block_SettingsWhereInput>;
+};
+
+export type Block_SettingsMaxAggregate = {
+  __typename?: 'Block_settingsMaxAggregate';
+  block_id?: Maybe<Scalars['BigInt']>;
+  created_at?: Maybe<Scalars['DateTime']>;
+  id?: Maybe<Scalars['BigInt']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['DateTime']>;
+};
+
+export type Block_SettingsMinAggregate = {
+  __typename?: 'Block_settingsMinAggregate';
+  block_id?: Maybe<Scalars['BigInt']>;
+  created_at?: Maybe<Scalars['DateTime']>;
+  id?: Maybe<Scalars['BigInt']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['DateTime']>;
+};
+
+export type Block_SettingsSumAggregate = {
+  __typename?: 'Block_settingsSumAggregate';
+  block_id?: Maybe<Scalars['BigInt']>;
+  id?: Maybe<Scalars['BigInt']>;
 };
 
 export type BoolFieldUpdateOperationsInput = {
@@ -334,6 +518,14 @@ export type EnumRoleFilter = {
   notIn?: InputMaybe<Array<Role>>;
 };
 
+export type EnumRoleNullableListFilter = {
+  equals?: InputMaybe<Array<Role>>;
+  has?: InputMaybe<Role>;
+  hasEvery?: InputMaybe<Array<Role>>;
+  hasSome?: InputMaybe<Array<Role>>;
+  isEmpty?: InputMaybe<Scalars['Boolean']>;
+};
+
 export type Enumticket_StatusFieldUpdateOperationsInput = {
   set?: InputMaybe<Ticket_Status>;
 };
@@ -380,6 +572,17 @@ export type IntFilter = {
   lt?: InputMaybe<Scalars['Int']>;
   lte?: InputMaybe<Scalars['Int']>;
   not?: InputMaybe<NestedIntFilter>;
+  notIn?: InputMaybe<Array<Scalars['Int']>>;
+};
+
+export type IntNullableFilter = {
+  equals?: InputMaybe<Scalars['Int']>;
+  gt?: InputMaybe<Scalars['Int']>;
+  gte?: InputMaybe<Scalars['Int']>;
+  in?: InputMaybe<Array<Scalars['Int']>>;
+  lt?: InputMaybe<Scalars['Int']>;
+  lte?: InputMaybe<Scalars['Int']>;
+  not?: InputMaybe<NestedIntNullableFilter>;
   notIn?: InputMaybe<Array<Scalars['Int']>>;
 };
 
@@ -2105,6 +2308,7 @@ export type Mutation = {
   createMachine: Machines;
   createMachineCategory: Machine_Catagory;
   createMaintanance: Maintenance;
+  createProduction: Production_Data;
   createReplacement: Replacements;
   createReport: Reports;
   createRoutineMaintanance: Routine_Maintanances;
@@ -2117,6 +2321,7 @@ export type Mutation = {
   removeMachine: Machines;
   removeMachineCatagories: Machine_Catagory;
   removeMaintanance: Maintenance;
+  removeProductionData: Production_Data;
   removeReplacement: Replacements;
   removeReport: Reports;
   removeRoutineMaintanance: Routine_Maintanances;
@@ -2129,6 +2334,7 @@ export type Mutation = {
   updateMachine: Machines;
   updateMachineCatagories: Machine_Catagory;
   updateMaintanance: Maintenance;
+  updateProduction: Production_Data;
   updateReplacement: Replacements;
   updateReport: Reports;
   updateRoutineMaintanance: Routine_Maintanances;
@@ -2165,6 +2371,11 @@ export type MutationCreateMachineCategoryArgs = {
 
 export type MutationCreateMaintananceArgs = {
   createMaintananceInput: MaintenanceCreateInput;
+};
+
+
+export type MutationCreateProductionArgs = {
+  createProductionInput: Production_DataCreateInput;
 };
 
 
@@ -2224,6 +2435,11 @@ export type MutationRemoveMachineCatagoriesArgs = {
 
 
 export type MutationRemoveMaintananceArgs = {
+  id: Scalars['Int'];
+};
+
+
+export type MutationRemoveProductionDataArgs = {
   id: Scalars['Int'];
 };
 
@@ -2291,6 +2507,12 @@ export type MutationUpdateMachineCatagoriesArgs = {
 export type MutationUpdateMaintananceArgs = {
   id: Scalars['Int'];
   updateMaintananceInput: MaintenanceUpdateInput;
+};
+
+
+export type MutationUpdateProductionArgs = {
+  id: Scalars['Int'];
+  updateProductionInput: Production_DataUpdateInput;
 };
 
 
@@ -2414,6 +2636,17 @@ export type NestedIntFilter = {
   notIn?: InputMaybe<Array<Scalars['Int']>>;
 };
 
+export type NestedIntNullableFilter = {
+  equals?: InputMaybe<Scalars['Int']>;
+  gt?: InputMaybe<Scalars['Int']>;
+  gte?: InputMaybe<Scalars['Int']>;
+  in?: InputMaybe<Array<Scalars['Int']>>;
+  lt?: InputMaybe<Scalars['Int']>;
+  lte?: InputMaybe<Scalars['Int']>;
+  not?: InputMaybe<NestedIntNullableFilter>;
+  notIn?: InputMaybe<Array<Scalars['Int']>>;
+};
+
 export type NestedStringFilter = {
   contains?: InputMaybe<Scalars['String']>;
   endsWith?: InputMaybe<Scalars['String']>;
@@ -2448,8 +2681,90 @@ export type NullableDateTimeFieldUpdateOperationsInput = {
   set?: InputMaybe<Scalars['DateTime']>;
 };
 
+export type NullableIntFieldUpdateOperationsInput = {
+  decrement?: InputMaybe<Scalars['Int']>;
+  divide?: InputMaybe<Scalars['Int']>;
+  increment?: InputMaybe<Scalars['Int']>;
+  multiply?: InputMaybe<Scalars['Int']>;
+  set?: InputMaybe<Scalars['Int']>;
+};
+
 export type NullableStringFieldUpdateOperationsInput = {
   set?: InputMaybe<Scalars['String']>;
+};
+
+export type Production_DataAvgAggregate = {
+  __typename?: 'Production_dataAvgAggregate';
+  actual_production?: Maybe<Scalars['Float']>;
+  blockId?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  target_production?: Maybe<Scalars['Float']>;
+  total_down_time?: Maybe<Scalars['Float']>;
+  total_run_time?: Maybe<Scalars['Float']>;
+  updated_by?: Maybe<Scalars['Float']>;
+};
+
+export type Production_DataCountAggregate = {
+  __typename?: 'Production_dataCountAggregate';
+  _all: Scalars['Int'];
+  actual_production: Scalars['Int'];
+  blockId: Scalars['Int'];
+  created_at: Scalars['Int'];
+  from: Scalars['Int'];
+  id: Scalars['Int'];
+  target_production: Scalars['Int'];
+  to: Scalars['Int'];
+  total_down_time: Scalars['Int'];
+  total_run_time: Scalars['Int'];
+  updated_at: Scalars['Int'];
+  updated_by: Scalars['Int'];
+};
+
+export type Production_DataListRelationFilter = {
+  every?: InputMaybe<Production_DataWhereInput>;
+  none?: InputMaybe<Production_DataWhereInput>;
+  some?: InputMaybe<Production_DataWhereInput>;
+};
+
+export type Production_DataMaxAggregate = {
+  __typename?: 'Production_dataMaxAggregate';
+  actual_production?: Maybe<Scalars['Int']>;
+  blockId?: Maybe<Scalars['BigInt']>;
+  created_at?: Maybe<Scalars['DateTime']>;
+  from?: Maybe<Scalars['DateTime']>;
+  id?: Maybe<Scalars['BigInt']>;
+  target_production?: Maybe<Scalars['Int']>;
+  to?: Maybe<Scalars['DateTime']>;
+  total_down_time?: Maybe<Scalars['Int']>;
+  total_run_time?: Maybe<Scalars['Int']>;
+  updated_at?: Maybe<Scalars['DateTime']>;
+  updated_by?: Maybe<Scalars['BigInt']>;
+};
+
+export type Production_DataMinAggregate = {
+  __typename?: 'Production_dataMinAggregate';
+  actual_production?: Maybe<Scalars['Int']>;
+  blockId?: Maybe<Scalars['BigInt']>;
+  created_at?: Maybe<Scalars['DateTime']>;
+  from?: Maybe<Scalars['DateTime']>;
+  id?: Maybe<Scalars['BigInt']>;
+  target_production?: Maybe<Scalars['Int']>;
+  to?: Maybe<Scalars['DateTime']>;
+  total_down_time?: Maybe<Scalars['Int']>;
+  total_run_time?: Maybe<Scalars['Int']>;
+  updated_at?: Maybe<Scalars['DateTime']>;
+  updated_by?: Maybe<Scalars['BigInt']>;
+};
+
+export type Production_DataSumAggregate = {
+  __typename?: 'Production_dataSumAggregate';
+  actual_production?: Maybe<Scalars['Int']>;
+  blockId?: Maybe<Scalars['BigInt']>;
+  id?: Maybe<Scalars['BigInt']>;
+  target_production?: Maybe<Scalars['Int']>;
+  total_down_time?: Maybe<Scalars['Int']>;
+  total_run_time?: Maybe<Scalars['Int']>;
+  updated_by?: Maybe<Scalars['BigInt']>;
 };
 
 export type Query = {
@@ -2470,6 +2785,9 @@ export type Query = {
   maintenance: Maintenance;
   maintenanceCount: Scalars['Int'];
   maintenances: Array<Maintenance>;
+  production: Production_Data;
+  productionData: Array<Production_Data>;
+  productionDataCount: Scalars['Int'];
   replacement: Replacements;
   replacements: Array<Replacements>;
   report: Reports;
@@ -2595,6 +2913,27 @@ export type QueryMaintenancesArgs = {
   offset?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<MaintenanceOrderByWithRelationInput>;
   where?: InputMaybe<MaintenanceWhereInput>;
+};
+
+
+export type QueryProductionArgs = {
+  id: Scalars['Int'];
+};
+
+
+export type QueryProductionDataArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Production_DataOrderByWithAggregationInput>;
+  where?: InputMaybe<Production_DataWhereInput>;
+};
+
+
+export type QueryProductionDataCountArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Production_DataOrderByWithAggregationInput>;
+  where?: InputMaybe<Production_DataWhereInput>;
 };
 
 
@@ -3277,13 +3616,16 @@ export enum Role {
   Engineer = 'ENGINEER',
   Fitter = 'FITTER',
   Guest = 'GUEST',
+  InputController = 'INPUT_CONTROLLER',
   Manager = 'MANAGER',
+  ProductionController = 'PRODUCTION_CONTROLLER',
   Supervisor = 'SUPERVISOR'
 }
 
 export type Routine_MaintanancesAvgAggregate = {
   __typename?: 'Routine_maintanancesAvgAggregate';
   assignee_id?: Maybe<Scalars['Float']>;
+  duration?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   meachine_id?: Maybe<Scalars['Float']>;
 };
@@ -3295,11 +3637,10 @@ export type Routine_MaintanancesCountAggregate = {
   created_at: Scalars['Int'];
   cron: Scalars['Int'];
   description: Scalars['Int'];
-  from: Scalars['Int'];
+  duration: Scalars['Int'];
   id: Scalars['Int'];
   meachine_id: Scalars['Int'];
   name: Scalars['Int'];
-  to: Scalars['Int'];
   updated_at: Scalars['Int'];
 };
 
@@ -3315,11 +3656,10 @@ export type Routine_MaintanancesMaxAggregate = {
   created_at?: Maybe<Scalars['DateTime']>;
   cron?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
-  from?: Maybe<Scalars['String']>;
+  duration?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['BigInt']>;
   meachine_id?: Maybe<Scalars['BigInt']>;
   name?: Maybe<Scalars['String']>;
-  to?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['DateTime']>;
 };
 
@@ -3329,17 +3669,17 @@ export type Routine_MaintanancesMinAggregate = {
   created_at?: Maybe<Scalars['DateTime']>;
   cron?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
-  from?: Maybe<Scalars['String']>;
+  duration?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['BigInt']>;
   meachine_id?: Maybe<Scalars['BigInt']>;
   name?: Maybe<Scalars['String']>;
-  to?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['DateTime']>;
 };
 
 export type Routine_MaintanancesSumAggregate = {
   __typename?: 'Routine_maintanancesSumAggregate';
   assignee_id?: Maybe<Scalars['BigInt']>;
+  duration?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['BigInt']>;
   meachine_id?: Maybe<Scalars['BigInt']>;
 };
@@ -3445,23 +3785,9 @@ export type Sections = {
   updated_at: Scalars['DateTime'];
 };
 
-export type SectionsAvgAggregate = {
-  __typename?: 'SectionsAvgAggregate';
-  id?: Maybe<Scalars['Float']>;
-};
-
 export type SectionsCount = {
   __typename?: 'SectionsCount';
   machines: Scalars['Int'];
-};
-
-export type SectionsCountAggregate = {
-  __typename?: 'SectionsCountAggregate';
-  _all: Scalars['Int'];
-  created_at: Scalars['Int'];
-  id: Scalars['Int'];
-  name: Scalars['Int'];
-  updated_at: Scalars['Int'];
 };
 
 export type SectionsCreateNestedOneWithoutMachinesInput = {
@@ -3482,22 +3808,6 @@ export type SectionsCreateWithoutMachinesInput = {
   updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
-export type SectionsMaxAggregate = {
-  __typename?: 'SectionsMaxAggregate';
-  created_at?: Maybe<Scalars['DateTime']>;
-  id?: Maybe<Scalars['BigInt']>;
-  name?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['DateTime']>;
-};
-
-export type SectionsMinAggregate = {
-  __typename?: 'SectionsMinAggregate';
-  created_at?: Maybe<Scalars['DateTime']>;
-  id?: Maybe<Scalars['BigInt']>;
-  name?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['DateTime']>;
-};
-
 export type SectionsOrderByWithRelationInput = {
   created_at?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
@@ -3509,11 +3819,6 @@ export type SectionsOrderByWithRelationInput = {
 export type SectionsRelationFilter = {
   is?: InputMaybe<SectionsWhereInput>;
   isNot?: InputMaybe<SectionsWhereInput>;
-};
-
-export type SectionsSumAggregate = {
-  __typename?: 'SectionsSumAggregate';
-  id?: Maybe<Scalars['BigInt']>;
 };
 
 export type SectionsUpdateOneRequiredWithoutMachinesNestedInput = {
@@ -3590,6 +3895,14 @@ export type StringNullableFilter = {
   notIn?: InputMaybe<Array<Scalars['String']>>;
   search?: InputMaybe<Scalars['String']>;
   startsWith?: InputMaybe<Scalars['String']>;
+};
+
+export type StringNullableListFilter = {
+  equals?: InputMaybe<Array<Scalars['String']>>;
+  has?: InputMaybe<Scalars['String']>;
+  hasEvery?: InputMaybe<Array<Scalars['String']>>;
+  hasSome?: InputMaybe<Array<Scalars['String']>>;
+  isEmpty?: InputMaybe<Scalars['Boolean']>;
 };
 
 export type Ticket = {
@@ -3984,13 +4297,18 @@ export type TicketWhereUniqueInput = {
 export type Users = {
   __typename?: 'Users';
   _count: UsersCount;
+  block: Block;
+  blockId: Scalars['BigInt'];
   created_at: Scalars['DateTime'];
+  extra_roles?: Maybe<Array<Role>>;
   id: Scalars['BigInt'];
   maintenance?: Maybe<Array<Maintenance>>;
   name: Scalars['String'];
   phone: Scalars['String'];
+  production_data?: Maybe<Array<Production_Data>>;
   profile: Scalars['JSON'];
   role: Role;
+  role_alias: Scalars['String'];
   routine_maintanances?: Maybe<Array<Routine_Maintanances>>;
   ticket?: Maybe<Array<Ticket>>;
   updated_at: Scalars['DateTime'];
@@ -4019,12 +4337,14 @@ export type UsersTicketArgs = {
 
 export type UsersAvgAggregate = {
   __typename?: 'UsersAvgAggregate';
+  blockId?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
 };
 
 export type UsersCount = {
   __typename?: 'UsersCount';
   maintenance: Scalars['Int'];
+  production_data: Scalars['Int'];
   routine_maintanances: Scalars['Int'];
   ticket: Scalars['Int'];
 };
@@ -4032,28 +4352,60 @@ export type UsersCount = {
 export type UsersCountAggregate = {
   __typename?: 'UsersCountAggregate';
   _all: Scalars['Int'];
+  blockId: Scalars['Int'];
   created_at: Scalars['Int'];
+  extra_roles: Scalars['Int'];
   id: Scalars['Int'];
   name: Scalars['Int'];
   phone: Scalars['Int'];
   profile: Scalars['Int'];
   role: Scalars['Int'];
+  role_alias: Scalars['Int'];
   updated_at: Scalars['Int'];
   user_auth_id: Scalars['Int'];
 };
 
 export type UsersCreateInput = {
+  block: BlockCreateNestedOneWithoutUsersInput;
   created_at?: InputMaybe<Scalars['DateTime']>;
+  extra_roles?: InputMaybe<UsersCreateextra_RolesInput>;
   id?: InputMaybe<Scalars['BigInt']>;
   maintenance?: InputMaybe<MaintenanceCreateNestedManyWithoutAssigneeInput>;
   name: Scalars['String'];
   phone: Scalars['String'];
+  production_data?: InputMaybe<Production_DataCreateNestedManyWithoutUpdatedByInput>;
   profile?: InputMaybe<Scalars['JSON']>;
   role: Role;
+  role_alias?: InputMaybe<Scalars['String']>;
   routine_maintanances?: InputMaybe<Routine_MaintanancesCreateNestedManyWithoutAssigneeInput>;
   ticket?: InputMaybe<TicketCreateNestedManyWithoutUserInput>;
   updated_at?: InputMaybe<Scalars['DateTime']>;
   user_auth_id?: InputMaybe<Scalars['String']>;
+};
+
+export type UsersCreateManyBlockInput = {
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  extra_roles?: InputMaybe<UsersCreateextra_RolesInput>;
+  id?: InputMaybe<Scalars['BigInt']>;
+  name: Scalars['String'];
+  phone: Scalars['String'];
+  profile?: InputMaybe<Scalars['JSON']>;
+  role: Role;
+  role_alias?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['DateTime']>;
+  user_auth_id?: InputMaybe<Scalars['String']>;
+};
+
+export type UsersCreateManyBlockInputEnvelope = {
+  data: Array<UsersCreateManyBlockInput>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type UsersCreateNestedManyWithoutBlockInput = {
+  connect?: InputMaybe<Array<UsersWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<UsersCreateOrConnectWithoutBlockInput>>;
+  create?: InputMaybe<Array<UsersCreateWithoutBlockInput>>;
+  createMany?: InputMaybe<UsersCreateManyBlockInputEnvelope>;
 };
 
 export type UsersCreateNestedOneWithoutMaintenanceInput = {
@@ -4062,14 +4414,30 @@ export type UsersCreateNestedOneWithoutMaintenanceInput = {
   create?: InputMaybe<UsersCreateWithoutMaintenanceInput>;
 };
 
+export type UsersCreateNestedOneWithoutProduction_DataInput = {
+  connect?: InputMaybe<UsersWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<UsersCreateOrConnectWithoutProduction_DataInput>;
+  create?: InputMaybe<UsersCreateWithoutProduction_DataInput>;
+};
+
 export type UsersCreateNestedOneWithoutRoutine_MaintanancesInput = {
   connect?: InputMaybe<UsersWhereUniqueInput>;
   connectOrCreate?: InputMaybe<UsersCreateOrConnectWithoutRoutine_MaintanancesInput>;
   create?: InputMaybe<UsersCreateWithoutRoutine_MaintanancesInput>;
 };
 
+export type UsersCreateOrConnectWithoutBlockInput = {
+  create: UsersCreateWithoutBlockInput;
+  where: UsersWhereUniqueInput;
+};
+
 export type UsersCreateOrConnectWithoutMaintenanceInput = {
   create: UsersCreateWithoutMaintenanceInput;
+  where: UsersWhereUniqueInput;
+};
+
+export type UsersCreateOrConnectWithoutProduction_DataInput = {
+  create: UsersCreateWithoutProduction_DataInput;
   where: UsersWhereUniqueInput;
 };
 
@@ -4078,13 +4446,51 @@ export type UsersCreateOrConnectWithoutRoutine_MaintanancesInput = {
   where: UsersWhereUniqueInput;
 };
 
-export type UsersCreateWithoutMaintenanceInput = {
+export type UsersCreateWithoutBlockInput = {
   created_at?: InputMaybe<Scalars['DateTime']>;
+  extra_roles?: InputMaybe<UsersCreateextra_RolesInput>;
   id?: InputMaybe<Scalars['BigInt']>;
+  maintenance?: InputMaybe<MaintenanceCreateNestedManyWithoutAssigneeInput>;
+  name: Scalars['String'];
+  phone: Scalars['String'];
+  production_data?: InputMaybe<Production_DataCreateNestedManyWithoutUpdatedByInput>;
+  profile?: InputMaybe<Scalars['JSON']>;
+  role: Role;
+  role_alias?: InputMaybe<Scalars['String']>;
+  routine_maintanances?: InputMaybe<Routine_MaintanancesCreateNestedManyWithoutAssigneeInput>;
+  ticket?: InputMaybe<TicketCreateNestedManyWithoutUserInput>;
+  updated_at?: InputMaybe<Scalars['DateTime']>;
+  user_auth_id?: InputMaybe<Scalars['String']>;
+};
+
+export type UsersCreateWithoutMaintenanceInput = {
+  block: BlockCreateNestedOneWithoutUsersInput;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  extra_roles?: InputMaybe<UsersCreateextra_RolesInput>;
+  id?: InputMaybe<Scalars['BigInt']>;
+  name: Scalars['String'];
+  phone: Scalars['String'];
+  production_data?: InputMaybe<Production_DataCreateNestedManyWithoutUpdatedByInput>;
+  profile?: InputMaybe<Scalars['JSON']>;
+  role: Role;
+  role_alias?: InputMaybe<Scalars['String']>;
+  routine_maintanances?: InputMaybe<Routine_MaintanancesCreateNestedManyWithoutAssigneeInput>;
+  ticket?: InputMaybe<TicketCreateNestedManyWithoutUserInput>;
+  updated_at?: InputMaybe<Scalars['DateTime']>;
+  user_auth_id?: InputMaybe<Scalars['String']>;
+};
+
+export type UsersCreateWithoutProduction_DataInput = {
+  block: BlockCreateNestedOneWithoutUsersInput;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  extra_roles?: InputMaybe<UsersCreateextra_RolesInput>;
+  id?: InputMaybe<Scalars['BigInt']>;
+  maintenance?: InputMaybe<MaintenanceCreateNestedManyWithoutAssigneeInput>;
   name: Scalars['String'];
   phone: Scalars['String'];
   profile?: InputMaybe<Scalars['JSON']>;
   role: Role;
+  role_alias?: InputMaybe<Scalars['String']>;
   routine_maintanances?: InputMaybe<Routine_MaintanancesCreateNestedManyWithoutAssigneeInput>;
   ticket?: InputMaybe<TicketCreateNestedManyWithoutUserInput>;
   updated_at?: InputMaybe<Scalars['DateTime']>;
@@ -4092,36 +4498,54 @@ export type UsersCreateWithoutMaintenanceInput = {
 };
 
 export type UsersCreateWithoutRoutine_MaintanancesInput = {
+  block: BlockCreateNestedOneWithoutUsersInput;
   created_at?: InputMaybe<Scalars['DateTime']>;
+  extra_roles?: InputMaybe<UsersCreateextra_RolesInput>;
   id?: InputMaybe<Scalars['BigInt']>;
   maintenance?: InputMaybe<MaintenanceCreateNestedManyWithoutAssigneeInput>;
   name: Scalars['String'];
   phone: Scalars['String'];
+  production_data?: InputMaybe<Production_DataCreateNestedManyWithoutUpdatedByInput>;
   profile?: InputMaybe<Scalars['JSON']>;
   role: Role;
+  role_alias?: InputMaybe<Scalars['String']>;
   ticket?: InputMaybe<TicketCreateNestedManyWithoutUserInput>;
   updated_at?: InputMaybe<Scalars['DateTime']>;
   user_auth_id?: InputMaybe<Scalars['String']>;
 };
 
+export type UsersCreateextra_RolesInput = {
+  set: Array<Role>;
+};
+
+export type UsersListRelationFilter = {
+  every?: InputMaybe<UsersWhereInput>;
+  none?: InputMaybe<UsersWhereInput>;
+  some?: InputMaybe<UsersWhereInput>;
+};
+
 export type UsersMaxAggregate = {
   __typename?: 'UsersMaxAggregate';
+  blockId?: Maybe<Scalars['BigInt']>;
   created_at?: Maybe<Scalars['DateTime']>;
   id?: Maybe<Scalars['BigInt']>;
   name?: Maybe<Scalars['String']>;
   phone?: Maybe<Scalars['String']>;
   role?: Maybe<Role>;
+  role_alias?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['DateTime']>;
   user_auth_id?: Maybe<Scalars['String']>;
 };
 
 export type UsersMinAggregate = {
   __typename?: 'UsersMinAggregate';
+  blockId?: Maybe<Scalars['BigInt']>;
   created_at?: Maybe<Scalars['DateTime']>;
   id?: Maybe<Scalars['BigInt']>;
   name?: Maybe<Scalars['String']>;
   phone?: Maybe<Scalars['String']>;
   role?: Maybe<Role>;
+  role_alias?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['DateTime']>;
   user_auth_id?: Maybe<Scalars['String']>;
 };
@@ -4145,23 +4569,77 @@ export type UsersRelationFilter = {
   isNot?: InputMaybe<UsersWhereInput>;
 };
 
+export type UsersScalarWhereInput = {
+  AND?: InputMaybe<Array<UsersScalarWhereInput>>;
+  NOT?: InputMaybe<Array<UsersScalarWhereInput>>;
+  OR?: InputMaybe<Array<UsersScalarWhereInput>>;
+  blockId?: InputMaybe<BigIntFilter>;
+  created_at?: InputMaybe<DateTimeFilter>;
+  extra_roles?: InputMaybe<EnumRoleNullableListFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  name?: InputMaybe<StringFilter>;
+  phone?: InputMaybe<StringFilter>;
+  profile?: InputMaybe<JsonFilter>;
+  role?: InputMaybe<EnumRoleFilter>;
+  role_alias?: InputMaybe<StringFilter>;
+  updated_at?: InputMaybe<DateTimeFilter>;
+  user_auth_id?: InputMaybe<StringNullableFilter>;
+};
+
 export type UsersSumAggregate = {
   __typename?: 'UsersSumAggregate';
+  blockId?: Maybe<Scalars['BigInt']>;
   id?: Maybe<Scalars['BigInt']>;
 };
 
 export type UsersUpdateInput = {
+  block?: InputMaybe<BlockUpdateOneRequiredWithoutUsersNestedInput>;
   created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  extra_roles?: InputMaybe<UsersUpdateextra_RolesInput>;
   id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
   maintenance?: InputMaybe<MaintenanceUpdateManyWithoutAssigneeNestedInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
   phone?: InputMaybe<StringFieldUpdateOperationsInput>;
+  production_data?: InputMaybe<Production_DataUpdateManyWithoutUpdatedByNestedInput>;
   profile?: InputMaybe<Scalars['JSON']>;
   role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
+  role_alias?: InputMaybe<StringFieldUpdateOperationsInput>;
   routine_maintanances?: InputMaybe<Routine_MaintanancesUpdateManyWithoutAssigneeNestedInput>;
   ticket?: InputMaybe<TicketUpdateManyWithoutUserNestedInput>;
   updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   user_auth_id?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+};
+
+export type UsersUpdateManyMutationInput = {
+  created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  extra_roles?: InputMaybe<UsersUpdateextra_RolesInput>;
+  id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  phone?: InputMaybe<StringFieldUpdateOperationsInput>;
+  profile?: InputMaybe<Scalars['JSON']>;
+  role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
+  role_alias?: InputMaybe<StringFieldUpdateOperationsInput>;
+  updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  user_auth_id?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+};
+
+export type UsersUpdateManyWithWhereWithoutBlockInput = {
+  data: UsersUpdateManyMutationInput;
+  where: UsersScalarWhereInput;
+};
+
+export type UsersUpdateManyWithoutBlockNestedInput = {
+  connect?: InputMaybe<Array<UsersWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<UsersCreateOrConnectWithoutBlockInput>>;
+  create?: InputMaybe<Array<UsersCreateWithoutBlockInput>>;
+  createMany?: InputMaybe<UsersCreateManyBlockInputEnvelope>;
+  delete?: InputMaybe<Array<UsersWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<UsersScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<UsersWhereUniqueInput>>;
+  set?: InputMaybe<Array<UsersWhereUniqueInput>>;
+  update?: InputMaybe<Array<UsersUpdateWithWhereUniqueWithoutBlockInput>>;
+  updateMany?: InputMaybe<Array<UsersUpdateManyWithWhereWithoutBlockInput>>;
+  upsert?: InputMaybe<Array<UsersUpsertWithWhereUniqueWithoutBlockInput>>;
 };
 
 export type UsersUpdateOneRequiredWithoutMaintenanceNestedInput = {
@@ -4172,6 +4650,14 @@ export type UsersUpdateOneRequiredWithoutMaintenanceNestedInput = {
   upsert?: InputMaybe<UsersUpsertWithoutMaintenanceInput>;
 };
 
+export type UsersUpdateOneRequiredWithoutProduction_DataNestedInput = {
+  connect?: InputMaybe<UsersWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<UsersCreateOrConnectWithoutProduction_DataInput>;
+  create?: InputMaybe<UsersCreateWithoutProduction_DataInput>;
+  update?: InputMaybe<UsersUpdateWithoutProduction_DataInput>;
+  upsert?: InputMaybe<UsersUpsertWithoutProduction_DataInput>;
+};
+
 export type UsersUpdateOneRequiredWithoutRoutine_MaintanancesNestedInput = {
   connect?: InputMaybe<UsersWhereUniqueInput>;
   connectOrCreate?: InputMaybe<UsersCreateOrConnectWithoutRoutine_MaintanancesInput>;
@@ -4180,13 +4666,56 @@ export type UsersUpdateOneRequiredWithoutRoutine_MaintanancesNestedInput = {
   upsert?: InputMaybe<UsersUpsertWithoutRoutine_MaintanancesInput>;
 };
 
-export type UsersUpdateWithoutMaintenanceInput = {
+export type UsersUpdateWithWhereUniqueWithoutBlockInput = {
+  data: UsersUpdateWithoutBlockInput;
+  where: UsersWhereUniqueInput;
+};
+
+export type UsersUpdateWithoutBlockInput = {
   created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  extra_roles?: InputMaybe<UsersUpdateextra_RolesInput>;
   id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
+  maintenance?: InputMaybe<MaintenanceUpdateManyWithoutAssigneeNestedInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  phone?: InputMaybe<StringFieldUpdateOperationsInput>;
+  production_data?: InputMaybe<Production_DataUpdateManyWithoutUpdatedByNestedInput>;
+  profile?: InputMaybe<Scalars['JSON']>;
+  role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
+  role_alias?: InputMaybe<StringFieldUpdateOperationsInput>;
+  routine_maintanances?: InputMaybe<Routine_MaintanancesUpdateManyWithoutAssigneeNestedInput>;
+  ticket?: InputMaybe<TicketUpdateManyWithoutUserNestedInput>;
+  updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  user_auth_id?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+};
+
+export type UsersUpdateWithoutMaintenanceInput = {
+  block?: InputMaybe<BlockUpdateOneRequiredWithoutUsersNestedInput>;
+  created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  extra_roles?: InputMaybe<UsersUpdateextra_RolesInput>;
+  id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  phone?: InputMaybe<StringFieldUpdateOperationsInput>;
+  production_data?: InputMaybe<Production_DataUpdateManyWithoutUpdatedByNestedInput>;
+  profile?: InputMaybe<Scalars['JSON']>;
+  role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
+  role_alias?: InputMaybe<StringFieldUpdateOperationsInput>;
+  routine_maintanances?: InputMaybe<Routine_MaintanancesUpdateManyWithoutAssigneeNestedInput>;
+  ticket?: InputMaybe<TicketUpdateManyWithoutUserNestedInput>;
+  updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  user_auth_id?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+};
+
+export type UsersUpdateWithoutProduction_DataInput = {
+  block?: InputMaybe<BlockUpdateOneRequiredWithoutUsersNestedInput>;
+  created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  extra_roles?: InputMaybe<UsersUpdateextra_RolesInput>;
+  id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
+  maintenance?: InputMaybe<MaintenanceUpdateManyWithoutAssigneeNestedInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
   phone?: InputMaybe<StringFieldUpdateOperationsInput>;
   profile?: InputMaybe<Scalars['JSON']>;
   role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
+  role_alias?: InputMaybe<StringFieldUpdateOperationsInput>;
   routine_maintanances?: InputMaybe<Routine_MaintanancesUpdateManyWithoutAssigneeNestedInput>;
   ticket?: InputMaybe<TicketUpdateManyWithoutUserNestedInput>;
   updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
@@ -4194,21 +4723,41 @@ export type UsersUpdateWithoutMaintenanceInput = {
 };
 
 export type UsersUpdateWithoutRoutine_MaintanancesInput = {
+  block?: InputMaybe<BlockUpdateOneRequiredWithoutUsersNestedInput>;
   created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  extra_roles?: InputMaybe<UsersUpdateextra_RolesInput>;
   id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
   maintenance?: InputMaybe<MaintenanceUpdateManyWithoutAssigneeNestedInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
   phone?: InputMaybe<StringFieldUpdateOperationsInput>;
+  production_data?: InputMaybe<Production_DataUpdateManyWithoutUpdatedByNestedInput>;
   profile?: InputMaybe<Scalars['JSON']>;
   role?: InputMaybe<EnumRoleFieldUpdateOperationsInput>;
+  role_alias?: InputMaybe<StringFieldUpdateOperationsInput>;
   ticket?: InputMaybe<TicketUpdateManyWithoutUserNestedInput>;
   updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   user_auth_id?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
 };
 
+export type UsersUpdateextra_RolesInput = {
+  push?: InputMaybe<Array<Role>>;
+  set?: InputMaybe<Array<Role>>;
+};
+
+export type UsersUpsertWithWhereUniqueWithoutBlockInput = {
+  create: UsersCreateWithoutBlockInput;
+  update: UsersUpdateWithoutBlockInput;
+  where: UsersWhereUniqueInput;
+};
+
 export type UsersUpsertWithoutMaintenanceInput = {
   create: UsersCreateWithoutMaintenanceInput;
   update: UsersUpdateWithoutMaintenanceInput;
+};
+
+export type UsersUpsertWithoutProduction_DataInput = {
+  create: UsersCreateWithoutProduction_DataInput;
+  update: UsersUpdateWithoutProduction_DataInput;
 };
 
 export type UsersUpsertWithoutRoutine_MaintanancesInput = {
@@ -4220,13 +4769,18 @@ export type UsersWhereInput = {
   AND?: InputMaybe<Array<UsersWhereInput>>;
   NOT?: InputMaybe<Array<UsersWhereInput>>;
   OR?: InputMaybe<Array<UsersWhereInput>>;
+  block?: InputMaybe<BlockRelationFilter>;
+  blockId?: InputMaybe<BigIntFilter>;
   created_at?: InputMaybe<DateTimeFilter>;
+  extra_roles?: InputMaybe<EnumRoleNullableListFilter>;
   id?: InputMaybe<BigIntFilter>;
   maintenance?: InputMaybe<MaintenanceListRelationFilter>;
   name?: InputMaybe<StringFilter>;
   phone?: InputMaybe<StringFilter>;
+  production_data?: InputMaybe<Production_DataListRelationFilter>;
   profile?: InputMaybe<JsonFilter>;
   role?: InputMaybe<EnumRoleFilter>;
+  role_alias?: InputMaybe<StringFilter>;
   routine_maintanances?: InputMaybe<Routine_MaintanancesListRelationFilter>;
   ticket?: InputMaybe<TicketListRelationFilter>;
   updated_at?: InputMaybe<DateTimeFilter>;
@@ -4237,6 +4791,131 @@ export type UsersWhereUniqueInput = {
   id?: InputMaybe<Scalars['BigInt']>;
   phone?: InputMaybe<Scalars['String']>;
   user_auth_id?: InputMaybe<Scalars['String']>;
+};
+
+export type Block_Settings = {
+  __typename?: 'block_settings';
+  block: Block;
+  block_id: Scalars['BigInt'];
+  created_at: Scalars['DateTime'];
+  id: Scalars['BigInt'];
+  name: Scalars['String'];
+  updated_at: Scalars['DateTime'];
+  value: Scalars['JSON'];
+};
+
+export type Block_SettingsBlock_IdNameCompoundUniqueInput = {
+  block_id: Scalars['BigInt'];
+  name: Scalars['String'];
+};
+
+export type Block_SettingsCreateManyBlockInput = {
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['BigInt']>;
+  name: Scalars['String'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
+  value: Scalars['JSON'];
+};
+
+export type Block_SettingsCreateManyBlockInputEnvelope = {
+  data: Array<Block_SettingsCreateManyBlockInput>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type Block_SettingsCreateNestedManyWithoutBlockInput = {
+  connect?: InputMaybe<Array<Block_SettingsWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<Block_SettingsCreateOrConnectWithoutBlockInput>>;
+  create?: InputMaybe<Array<Block_SettingsCreateWithoutBlockInput>>;
+  createMany?: InputMaybe<Block_SettingsCreateManyBlockInputEnvelope>;
+};
+
+export type Block_SettingsCreateOrConnectWithoutBlockInput = {
+  create: Block_SettingsCreateWithoutBlockInput;
+  where: Block_SettingsWhereUniqueInput;
+};
+
+export type Block_SettingsCreateWithoutBlockInput = {
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['BigInt']>;
+  name: Scalars['String'];
+  updated_at?: InputMaybe<Scalars['DateTime']>;
+  value: Scalars['JSON'];
+};
+
+export type Block_SettingsScalarWhereInput = {
+  AND?: InputMaybe<Array<Block_SettingsScalarWhereInput>>;
+  NOT?: InputMaybe<Array<Block_SettingsScalarWhereInput>>;
+  OR?: InputMaybe<Array<Block_SettingsScalarWhereInput>>;
+  block_id?: InputMaybe<BigIntFilter>;
+  created_at?: InputMaybe<DateTimeFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  name?: InputMaybe<StringFilter>;
+  updated_at?: InputMaybe<DateTimeFilter>;
+  value?: InputMaybe<JsonFilter>;
+};
+
+export type Block_SettingsUpdateManyMutationInput = {
+  created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  value?: InputMaybe<Scalars['JSON']>;
+};
+
+export type Block_SettingsUpdateManyWithWhereWithoutBlockInput = {
+  data: Block_SettingsUpdateManyMutationInput;
+  where: Block_SettingsScalarWhereInput;
+};
+
+export type Block_SettingsUpdateManyWithoutBlockNestedInput = {
+  connect?: InputMaybe<Array<Block_SettingsWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<Block_SettingsCreateOrConnectWithoutBlockInput>>;
+  create?: InputMaybe<Array<Block_SettingsCreateWithoutBlockInput>>;
+  createMany?: InputMaybe<Block_SettingsCreateManyBlockInputEnvelope>;
+  delete?: InputMaybe<Array<Block_SettingsWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<Block_SettingsScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<Block_SettingsWhereUniqueInput>>;
+  set?: InputMaybe<Array<Block_SettingsWhereUniqueInput>>;
+  update?: InputMaybe<Array<Block_SettingsUpdateWithWhereUniqueWithoutBlockInput>>;
+  updateMany?: InputMaybe<Array<Block_SettingsUpdateManyWithWhereWithoutBlockInput>>;
+  upsert?: InputMaybe<Array<Block_SettingsUpsertWithWhereUniqueWithoutBlockInput>>;
+};
+
+export type Block_SettingsUpdateWithWhereUniqueWithoutBlockInput = {
+  data: Block_SettingsUpdateWithoutBlockInput;
+  where: Block_SettingsWhereUniqueInput;
+};
+
+export type Block_SettingsUpdateWithoutBlockInput = {
+  created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  value?: InputMaybe<Scalars['JSON']>;
+};
+
+export type Block_SettingsUpsertWithWhereUniqueWithoutBlockInput = {
+  create: Block_SettingsCreateWithoutBlockInput;
+  update: Block_SettingsUpdateWithoutBlockInput;
+  where: Block_SettingsWhereUniqueInput;
+};
+
+export type Block_SettingsWhereInput = {
+  AND?: InputMaybe<Array<Block_SettingsWhereInput>>;
+  NOT?: InputMaybe<Array<Block_SettingsWhereInput>>;
+  OR?: InputMaybe<Array<Block_SettingsWhereInput>>;
+  block?: InputMaybe<BlockRelationFilter>;
+  block_id?: InputMaybe<BigIntFilter>;
+  created_at?: InputMaybe<DateTimeFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  name?: InputMaybe<StringFilter>;
+  updated_at?: InputMaybe<DateTimeFilter>;
+  value?: InputMaybe<JsonFilter>;
+};
+
+export type Block_SettingsWhereUniqueInput = {
+  block_id_name?: InputMaybe<Block_SettingsBlock_IdNameCompoundUniqueInput>;
+  id?: InputMaybe<Scalars['BigInt']>;
 };
 
 export type Catagory = {
@@ -4410,6 +5089,356 @@ export type Machine_CatagoryWhereUniqueInput = {
   id?: InputMaybe<Scalars['BigInt']>;
 };
 
+export type Production_Data = {
+  __typename?: 'production_data';
+  Block?: Maybe<Block>;
+  actual_production?: Maybe<Scalars['Int']>;
+  blockId?: Maybe<Scalars['BigInt']>;
+  created_at: Scalars['DateTime'];
+  from: Scalars['DateTime'];
+  id: Scalars['BigInt'];
+  target_production?: Maybe<Scalars['Int']>;
+  to: Scalars['DateTime'];
+  total_down_time?: Maybe<Scalars['Int']>;
+  total_run_time?: Maybe<Scalars['Int']>;
+  updatedBy: Users;
+  updated_at: Scalars['DateTime'];
+  updated_by: Scalars['BigInt'];
+};
+
+export type Production_DataAvgOrderByAggregateInput = {
+  actual_production?: InputMaybe<SortOrder>;
+  blockId?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  target_production?: InputMaybe<SortOrder>;
+  total_down_time?: InputMaybe<SortOrder>;
+  total_run_time?: InputMaybe<SortOrder>;
+  updated_by?: InputMaybe<SortOrder>;
+};
+
+export type Production_DataCountOrderByAggregateInput = {
+  actual_production?: InputMaybe<SortOrder>;
+  blockId?: InputMaybe<SortOrder>;
+  created_at?: InputMaybe<SortOrder>;
+  from?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  target_production?: InputMaybe<SortOrder>;
+  to?: InputMaybe<SortOrder>;
+  total_down_time?: InputMaybe<SortOrder>;
+  total_run_time?: InputMaybe<SortOrder>;
+  updated_at?: InputMaybe<SortOrder>;
+  updated_by?: InputMaybe<SortOrder>;
+};
+
+export type Production_DataCreateInput = {
+  Block?: InputMaybe<BlockCreateNestedOneWithoutProduction_DataInput>;
+  actual_production?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  from: Scalars['DateTime'];
+  id?: InputMaybe<Scalars['BigInt']>;
+  target_production?: InputMaybe<Scalars['Int']>;
+  to: Scalars['DateTime'];
+  total_down_time?: InputMaybe<Scalars['Int']>;
+  total_run_time?: InputMaybe<Scalars['Int']>;
+  updatedBy: UsersCreateNestedOneWithoutProduction_DataInput;
+  updated_at?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type Production_DataCreateManyBlockInput = {
+  actual_production?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  from: Scalars['DateTime'];
+  id?: InputMaybe<Scalars['BigInt']>;
+  target_production?: InputMaybe<Scalars['Int']>;
+  to: Scalars['DateTime'];
+  total_down_time?: InputMaybe<Scalars['Int']>;
+  total_run_time?: InputMaybe<Scalars['Int']>;
+  updated_at?: InputMaybe<Scalars['DateTime']>;
+  updated_by: Scalars['BigInt'];
+};
+
+export type Production_DataCreateManyBlockInputEnvelope = {
+  data: Array<Production_DataCreateManyBlockInput>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type Production_DataCreateManyUpdatedByInput = {
+  actual_production?: InputMaybe<Scalars['Int']>;
+  blockId?: InputMaybe<Scalars['BigInt']>;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  from: Scalars['DateTime'];
+  id?: InputMaybe<Scalars['BigInt']>;
+  target_production?: InputMaybe<Scalars['Int']>;
+  to: Scalars['DateTime'];
+  total_down_time?: InputMaybe<Scalars['Int']>;
+  total_run_time?: InputMaybe<Scalars['Int']>;
+  updated_at?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type Production_DataCreateManyUpdatedByInputEnvelope = {
+  data: Array<Production_DataCreateManyUpdatedByInput>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type Production_DataCreateNestedManyWithoutBlockInput = {
+  connect?: InputMaybe<Array<Production_DataWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<Production_DataCreateOrConnectWithoutBlockInput>>;
+  create?: InputMaybe<Array<Production_DataCreateWithoutBlockInput>>;
+  createMany?: InputMaybe<Production_DataCreateManyBlockInputEnvelope>;
+};
+
+export type Production_DataCreateNestedManyWithoutUpdatedByInput = {
+  connect?: InputMaybe<Array<Production_DataWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<Production_DataCreateOrConnectWithoutUpdatedByInput>>;
+  create?: InputMaybe<Array<Production_DataCreateWithoutUpdatedByInput>>;
+  createMany?: InputMaybe<Production_DataCreateManyUpdatedByInputEnvelope>;
+};
+
+export type Production_DataCreateOrConnectWithoutBlockInput = {
+  create: Production_DataCreateWithoutBlockInput;
+  where: Production_DataWhereUniqueInput;
+};
+
+export type Production_DataCreateOrConnectWithoutUpdatedByInput = {
+  create: Production_DataCreateWithoutUpdatedByInput;
+  where: Production_DataWhereUniqueInput;
+};
+
+export type Production_DataCreateWithoutBlockInput = {
+  actual_production?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  from: Scalars['DateTime'];
+  id?: InputMaybe<Scalars['BigInt']>;
+  target_production?: InputMaybe<Scalars['Int']>;
+  to: Scalars['DateTime'];
+  total_down_time?: InputMaybe<Scalars['Int']>;
+  total_run_time?: InputMaybe<Scalars['Int']>;
+  updatedBy: UsersCreateNestedOneWithoutProduction_DataInput;
+  updated_at?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type Production_DataCreateWithoutUpdatedByInput = {
+  Block?: InputMaybe<BlockCreateNestedOneWithoutProduction_DataInput>;
+  actual_production?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['DateTime']>;
+  from: Scalars['DateTime'];
+  id?: InputMaybe<Scalars['BigInt']>;
+  target_production?: InputMaybe<Scalars['Int']>;
+  to: Scalars['DateTime'];
+  total_down_time?: InputMaybe<Scalars['Int']>;
+  total_run_time?: InputMaybe<Scalars['Int']>;
+  updated_at?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type Production_DataMaxOrderByAggregateInput = {
+  actual_production?: InputMaybe<SortOrder>;
+  blockId?: InputMaybe<SortOrder>;
+  created_at?: InputMaybe<SortOrder>;
+  from?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  target_production?: InputMaybe<SortOrder>;
+  to?: InputMaybe<SortOrder>;
+  total_down_time?: InputMaybe<SortOrder>;
+  total_run_time?: InputMaybe<SortOrder>;
+  updated_at?: InputMaybe<SortOrder>;
+  updated_by?: InputMaybe<SortOrder>;
+};
+
+export type Production_DataMinOrderByAggregateInput = {
+  actual_production?: InputMaybe<SortOrder>;
+  blockId?: InputMaybe<SortOrder>;
+  created_at?: InputMaybe<SortOrder>;
+  from?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  target_production?: InputMaybe<SortOrder>;
+  to?: InputMaybe<SortOrder>;
+  total_down_time?: InputMaybe<SortOrder>;
+  total_run_time?: InputMaybe<SortOrder>;
+  updated_at?: InputMaybe<SortOrder>;
+  updated_by?: InputMaybe<SortOrder>;
+};
+
+export type Production_DataOrderByWithAggregationInput = {
+  _avg?: InputMaybe<Production_DataAvgOrderByAggregateInput>;
+  _count?: InputMaybe<Production_DataCountOrderByAggregateInput>;
+  _max?: InputMaybe<Production_DataMaxOrderByAggregateInput>;
+  _min?: InputMaybe<Production_DataMinOrderByAggregateInput>;
+  _sum?: InputMaybe<Production_DataSumOrderByAggregateInput>;
+  actual_production?: InputMaybe<SortOrder>;
+  blockId?: InputMaybe<SortOrder>;
+  created_at?: InputMaybe<SortOrder>;
+  from?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  target_production?: InputMaybe<SortOrder>;
+  to?: InputMaybe<SortOrder>;
+  total_down_time?: InputMaybe<SortOrder>;
+  total_run_time?: InputMaybe<SortOrder>;
+  updated_at?: InputMaybe<SortOrder>;
+  updated_by?: InputMaybe<SortOrder>;
+};
+
+export type Production_DataScalarWhereInput = {
+  AND?: InputMaybe<Array<Production_DataScalarWhereInput>>;
+  NOT?: InputMaybe<Array<Production_DataScalarWhereInput>>;
+  OR?: InputMaybe<Array<Production_DataScalarWhereInput>>;
+  actual_production?: InputMaybe<IntNullableFilter>;
+  blockId?: InputMaybe<BigIntNullableFilter>;
+  created_at?: InputMaybe<DateTimeFilter>;
+  from?: InputMaybe<DateTimeFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  target_production?: InputMaybe<IntNullableFilter>;
+  to?: InputMaybe<DateTimeFilter>;
+  total_down_time?: InputMaybe<IntNullableFilter>;
+  total_run_time?: InputMaybe<IntNullableFilter>;
+  updated_at?: InputMaybe<DateTimeFilter>;
+  updated_by?: InputMaybe<BigIntFilter>;
+};
+
+export type Production_DataSumOrderByAggregateInput = {
+  actual_production?: InputMaybe<SortOrder>;
+  blockId?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  target_production?: InputMaybe<SortOrder>;
+  total_down_time?: InputMaybe<SortOrder>;
+  total_run_time?: InputMaybe<SortOrder>;
+  updated_by?: InputMaybe<SortOrder>;
+};
+
+export type Production_DataUpdateInput = {
+  Block?: InputMaybe<BlockUpdateOneWithoutProduction_DataNestedInput>;
+  actual_production?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
+  created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  from?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
+  target_production?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
+  to?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  total_down_time?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
+  total_run_time?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
+  updatedBy?: InputMaybe<UsersUpdateOneRequiredWithoutProduction_DataNestedInput>;
+  updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type Production_DataUpdateManyMutationInput = {
+  actual_production?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
+  created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  from?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
+  target_production?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
+  to?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  total_down_time?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
+  total_run_time?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
+  updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type Production_DataUpdateManyWithWhereWithoutBlockInput = {
+  data: Production_DataUpdateManyMutationInput;
+  where: Production_DataScalarWhereInput;
+};
+
+export type Production_DataUpdateManyWithWhereWithoutUpdatedByInput = {
+  data: Production_DataUpdateManyMutationInput;
+  where: Production_DataScalarWhereInput;
+};
+
+export type Production_DataUpdateManyWithoutBlockNestedInput = {
+  connect?: InputMaybe<Array<Production_DataWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<Production_DataCreateOrConnectWithoutBlockInput>>;
+  create?: InputMaybe<Array<Production_DataCreateWithoutBlockInput>>;
+  createMany?: InputMaybe<Production_DataCreateManyBlockInputEnvelope>;
+  delete?: InputMaybe<Array<Production_DataWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<Production_DataScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<Production_DataWhereUniqueInput>>;
+  set?: InputMaybe<Array<Production_DataWhereUniqueInput>>;
+  update?: InputMaybe<Array<Production_DataUpdateWithWhereUniqueWithoutBlockInput>>;
+  updateMany?: InputMaybe<Array<Production_DataUpdateManyWithWhereWithoutBlockInput>>;
+  upsert?: InputMaybe<Array<Production_DataUpsertWithWhereUniqueWithoutBlockInput>>;
+};
+
+export type Production_DataUpdateManyWithoutUpdatedByNestedInput = {
+  connect?: InputMaybe<Array<Production_DataWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<Production_DataCreateOrConnectWithoutUpdatedByInput>>;
+  create?: InputMaybe<Array<Production_DataCreateWithoutUpdatedByInput>>;
+  createMany?: InputMaybe<Production_DataCreateManyUpdatedByInputEnvelope>;
+  delete?: InputMaybe<Array<Production_DataWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<Production_DataScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<Production_DataWhereUniqueInput>>;
+  set?: InputMaybe<Array<Production_DataWhereUniqueInput>>;
+  update?: InputMaybe<Array<Production_DataUpdateWithWhereUniqueWithoutUpdatedByInput>>;
+  updateMany?: InputMaybe<Array<Production_DataUpdateManyWithWhereWithoutUpdatedByInput>>;
+  upsert?: InputMaybe<Array<Production_DataUpsertWithWhereUniqueWithoutUpdatedByInput>>;
+};
+
+export type Production_DataUpdateWithWhereUniqueWithoutBlockInput = {
+  data: Production_DataUpdateWithoutBlockInput;
+  where: Production_DataWhereUniqueInput;
+};
+
+export type Production_DataUpdateWithWhereUniqueWithoutUpdatedByInput = {
+  data: Production_DataUpdateWithoutUpdatedByInput;
+  where: Production_DataWhereUniqueInput;
+};
+
+export type Production_DataUpdateWithoutBlockInput = {
+  actual_production?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
+  created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  from?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
+  target_production?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
+  to?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  total_down_time?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
+  total_run_time?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
+  updatedBy?: InputMaybe<UsersUpdateOneRequiredWithoutProduction_DataNestedInput>;
+  updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type Production_DataUpdateWithoutUpdatedByInput = {
+  Block?: InputMaybe<BlockUpdateOneWithoutProduction_DataNestedInput>;
+  actual_production?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
+  created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  from?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
+  target_production?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
+  to?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  total_down_time?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
+  total_run_time?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
+  updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type Production_DataUpsertWithWhereUniqueWithoutBlockInput = {
+  create: Production_DataCreateWithoutBlockInput;
+  update: Production_DataUpdateWithoutBlockInput;
+  where: Production_DataWhereUniqueInput;
+};
+
+export type Production_DataUpsertWithWhereUniqueWithoutUpdatedByInput = {
+  create: Production_DataCreateWithoutUpdatedByInput;
+  update: Production_DataUpdateWithoutUpdatedByInput;
+  where: Production_DataWhereUniqueInput;
+};
+
+export type Production_DataWhereInput = {
+  AND?: InputMaybe<Array<Production_DataWhereInput>>;
+  Block?: InputMaybe<BlockRelationFilter>;
+  NOT?: InputMaybe<Array<Production_DataWhereInput>>;
+  OR?: InputMaybe<Array<Production_DataWhereInput>>;
+  actual_production?: InputMaybe<IntNullableFilter>;
+  blockId?: InputMaybe<BigIntNullableFilter>;
+  created_at?: InputMaybe<DateTimeFilter>;
+  from?: InputMaybe<DateTimeFilter>;
+  id?: InputMaybe<BigIntFilter>;
+  target_production?: InputMaybe<IntNullableFilter>;
+  to?: InputMaybe<DateTimeFilter>;
+  total_down_time?: InputMaybe<IntNullableFilter>;
+  total_run_time?: InputMaybe<IntNullableFilter>;
+  updatedBy?: InputMaybe<UsersRelationFilter>;
+  updated_at?: InputMaybe<DateTimeFilter>;
+  updated_by?: InputMaybe<BigIntFilter>;
+};
+
+export type Production_DataWhereUniqueInput = {
+  id?: InputMaybe<Scalars['BigInt']>;
+};
+
 export type Routine_Maintanances = {
   __typename?: 'routine_maintanances';
   assignee: Users;
@@ -4417,12 +5446,11 @@ export type Routine_Maintanances = {
   created_at: Scalars['DateTime'];
   cron: Scalars['String'];
   description: Scalars['String'];
-  from: Scalars['String'];
+  duration: Scalars['Int'];
   id: Scalars['BigInt'];
   meachine: Machines;
   meachine_id: Scalars['BigInt'];
   name: Scalars['String'];
-  to: Scalars['String'];
   updated_at: Scalars['DateTime'];
 };
 
@@ -4431,11 +5459,10 @@ export type Routine_MaintanancesCreateInput = {
   created_at?: InputMaybe<Scalars['DateTime']>;
   cron: Scalars['String'];
   description: Scalars['String'];
-  from: Scalars['String'];
+  duration: Scalars['Int'];
   id?: InputMaybe<Scalars['BigInt']>;
   meachine: MachinesCreateNestedOneWithoutRoutine_MaintanancesInput;
   name: Scalars['String'];
-  to: Scalars['String'];
   updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
@@ -4443,11 +5470,10 @@ export type Routine_MaintanancesCreateManyAssigneeInput = {
   created_at?: InputMaybe<Scalars['DateTime']>;
   cron: Scalars['String'];
   description: Scalars['String'];
-  from: Scalars['String'];
+  duration: Scalars['Int'];
   id?: InputMaybe<Scalars['BigInt']>;
   meachine_id: Scalars['BigInt'];
   name: Scalars['String'];
-  to: Scalars['String'];
   updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
@@ -4461,10 +5487,9 @@ export type Routine_MaintanancesCreateManyMeachineInput = {
   created_at?: InputMaybe<Scalars['DateTime']>;
   cron: Scalars['String'];
   description: Scalars['String'];
-  from: Scalars['String'];
+  duration: Scalars['Int'];
   id?: InputMaybe<Scalars['BigInt']>;
   name: Scalars['String'];
-  to: Scalars['String'];
   updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
@@ -4501,11 +5526,10 @@ export type Routine_MaintanancesCreateWithoutAssigneeInput = {
   created_at?: InputMaybe<Scalars['DateTime']>;
   cron: Scalars['String'];
   description: Scalars['String'];
-  from: Scalars['String'];
+  duration: Scalars['Int'];
   id?: InputMaybe<Scalars['BigInt']>;
   meachine: MachinesCreateNestedOneWithoutRoutine_MaintanancesInput;
   name: Scalars['String'];
-  to: Scalars['String'];
   updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
@@ -4514,10 +5538,9 @@ export type Routine_MaintanancesCreateWithoutMeachineInput = {
   created_at?: InputMaybe<Scalars['DateTime']>;
   cron: Scalars['String'];
   description: Scalars['String'];
-  from: Scalars['String'];
+  duration: Scalars['Int'];
   id?: InputMaybe<Scalars['BigInt']>;
   name: Scalars['String'];
-  to: Scalars['String'];
   updated_at?: InputMaybe<Scalars['DateTime']>;
 };
 
@@ -4529,16 +5552,16 @@ export type Routine_MaintanancesScalarWhereInput = {
   created_at?: InputMaybe<DateTimeFilter>;
   cron?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
-  from?: InputMaybe<StringFilter>;
+  duration?: InputMaybe<IntFilter>;
   id?: InputMaybe<BigIntFilter>;
   meachine_id?: InputMaybe<BigIntFilter>;
   name?: InputMaybe<StringFilter>;
-  to?: InputMaybe<StringFilter>;
   updated_at?: InputMaybe<DateTimeFilter>;
 };
 
 export type Routine_MaintanancesSumOrderByAggregateInput = {
   assignee_id?: InputMaybe<SortOrder>;
+  duration?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   meachine_id?: InputMaybe<SortOrder>;
 };
@@ -4548,11 +5571,10 @@ export type Routine_MaintanancesUpdateInput = {
   created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   cron?: InputMaybe<StringFieldUpdateOperationsInput>;
   description?: InputMaybe<StringFieldUpdateOperationsInput>;
-  from?: InputMaybe<StringFieldUpdateOperationsInput>;
+  duration?: InputMaybe<IntFieldUpdateOperationsInput>;
   id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
   meachine?: InputMaybe<MachinesUpdateOneRequiredWithoutRoutine_MaintanancesNestedInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
-  to?: InputMaybe<StringFieldUpdateOperationsInput>;
   updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
@@ -4560,10 +5582,9 @@ export type Routine_MaintanancesUpdateManyMutationInput = {
   created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   cron?: InputMaybe<StringFieldUpdateOperationsInput>;
   description?: InputMaybe<StringFieldUpdateOperationsInput>;
-  from?: InputMaybe<StringFieldUpdateOperationsInput>;
+  duration?: InputMaybe<IntFieldUpdateOperationsInput>;
   id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
-  to?: InputMaybe<StringFieldUpdateOperationsInput>;
   updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
@@ -4619,11 +5640,10 @@ export type Routine_MaintanancesUpdateWithoutAssigneeInput = {
   created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   cron?: InputMaybe<StringFieldUpdateOperationsInput>;
   description?: InputMaybe<StringFieldUpdateOperationsInput>;
-  from?: InputMaybe<StringFieldUpdateOperationsInput>;
+  duration?: InputMaybe<IntFieldUpdateOperationsInput>;
   id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
   meachine?: InputMaybe<MachinesUpdateOneRequiredWithoutRoutine_MaintanancesNestedInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
-  to?: InputMaybe<StringFieldUpdateOperationsInput>;
   updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
@@ -4632,10 +5652,9 @@ export type Routine_MaintanancesUpdateWithoutMeachineInput = {
   created_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   cron?: InputMaybe<StringFieldUpdateOperationsInput>;
   description?: InputMaybe<StringFieldUpdateOperationsInput>;
-  from?: InputMaybe<StringFieldUpdateOperationsInput>;
+  duration?: InputMaybe<IntFieldUpdateOperationsInput>;
   id?: InputMaybe<BigIntFieldUpdateOperationsInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
-  to?: InputMaybe<StringFieldUpdateOperationsInput>;
   updated_at?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
@@ -4660,12 +5679,11 @@ export type Routine_MaintanancesWhereInput = {
   created_at?: InputMaybe<DateTimeFilter>;
   cron?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
-  from?: InputMaybe<StringFilter>;
+  duration?: InputMaybe<IntFilter>;
   id?: InputMaybe<BigIntFilter>;
   meachine?: InputMaybe<MachinesRelationFilter>;
   meachine_id?: InputMaybe<BigIntFilter>;
   name?: InputMaybe<StringFilter>;
-  to?: InputMaybe<StringFilter>;
   updated_at?: InputMaybe<DateTimeFilter>;
 };
 
@@ -4708,6 +5726,13 @@ export type UpdateMaintananceMutationVariables = Exact<{
 
 
 export type UpdateMaintananceMutation = { __typename?: 'Mutation', updateMaintanance: { __typename?: 'Maintenance', id: any } };
+
+export type CreateMaintananceMutationVariables = Exact<{
+  createMaintananceInput: MaintenanceCreateInput;
+}>;
+
+
+export type CreateMaintananceMutation = { __typename?: 'Mutation', createMaintanance: { __typename?: 'Maintenance', id: any } };
 
 export type TicketsQueryVariables = Exact<{
   where?: InputMaybe<TicketWhereInput>;
@@ -4921,6 +5946,39 @@ export function useUpdateMaintananceMutation(baseOptions?: Apollo.MutationHookOp
 export type UpdateMaintananceMutationHookResult = ReturnType<typeof useUpdateMaintananceMutation>;
 export type UpdateMaintananceMutationResult = Apollo.MutationResult<UpdateMaintananceMutation>;
 export type UpdateMaintananceMutationOptions = Apollo.BaseMutationOptions<UpdateMaintananceMutation, UpdateMaintananceMutationVariables>;
+export const CreateMaintananceDocument = gql`
+    mutation createMaintanance($createMaintananceInput: MaintenanceCreateInput!) {
+  createMaintanance(createMaintananceInput: $createMaintananceInput) {
+    id
+  }
+}
+    `;
+export type CreateMaintananceMutationFn = Apollo.MutationFunction<CreateMaintananceMutation, CreateMaintananceMutationVariables>;
+
+/**
+ * __useCreateMaintananceMutation__
+ *
+ * To run a mutation, you first call `useCreateMaintananceMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateMaintananceMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createMaintananceMutation, { data, loading, error }] = useCreateMaintananceMutation({
+ *   variables: {
+ *      createMaintananceInput: // value for 'createMaintananceInput'
+ *   },
+ * });
+ */
+export function useCreateMaintananceMutation(baseOptions?: Apollo.MutationHookOptions<CreateMaintananceMutation, CreateMaintananceMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateMaintananceMutation, CreateMaintananceMutationVariables>(CreateMaintananceDocument, options);
+      }
+export type CreateMaintananceMutationHookResult = ReturnType<typeof useCreateMaintananceMutation>;
+export type CreateMaintananceMutationResult = Apollo.MutationResult<CreateMaintananceMutation>;
+export type CreateMaintananceMutationOptions = Apollo.BaseMutationOptions<CreateMaintananceMutation, CreateMaintananceMutationVariables>;
 export const TicketsDocument = gql`
     query Tickets($where: TicketWhereInput, $skip: Float, $take: Float, $orderBy: TicketOrderByWithRelationInput) {
   tickets(where: $where, skip: $skip, take: $take, orderBy: $orderBy) {

@@ -33,7 +33,7 @@ const PhoneInput: React.FunctionComponent<PhoneInputProps> = ({
         ref={phoneInput}
         disabled={loading}
         defaultCode="IN"
-        layout="second"
+        layout="first"
         onChangeText={(text) => {
           setValid(phoneInput.current?.isValidNumber(text) || false);
           setValue(text);

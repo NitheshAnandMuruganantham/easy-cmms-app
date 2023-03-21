@@ -5,6 +5,7 @@ import axios from "../../utils/axios";
 import Spinner from "react-native-loading-spinner-overlay/lib";
 import RefetchContext from "../../context/refetchContext";
 import { useInterval } from "../../utils/interval";
+import HomeHeader from "../../components/navigationHeaders/home";
 const Home = (props) => {
   const [data, SetData] = React.useState<any>({});
   const [loading, SetLoading] = useState(true);
@@ -41,42 +42,64 @@ const Home = (props) => {
   return (
     <View
       style={{
-        marginTop: "auto",
-        marginBottom: "auto",
+        backgroundColor: "white",
       }}
     >
-      <Spinner visible={loading} textContent={"Loading..."} />
-      <DisplayCard
-        textColor="white"
-        bgColor="red"
-        name="PENDING MAINTENANCES"
-        value={
-          typeof data?.openMaintenanceCount === "number"
-            ? data?.openMaintenanceCount
-            : "--"
-        }
-      />
-      <DisplayCard
-        textColor="white"
-        bgColor="green"
-        name="ACTIVE TICKETS"
-        value={
-          typeof data?.openTicketCount === "number"
-            ? data?.openTicketCount
-            : "--"
-        }
-      />
-
-      <DisplayCard
-        bgColor="yellow"
-        textColor="black"
-        textStyle={{
-          fontSize: 20,
-          textAlign: "center",
+      <HomeHeader />
+      <View
+        style={{
+          backgroundColor: "white",
+          marginTop: "auto",
+          marginBottom: "auto",
         }}
-        name="UPCOMING TASK"
-        value={data?.nextMaintenance ? data?.nextMaintenance.name : "--"}
-      />
+      >
+        <Spinner visible={loading} textContent={"Loading..."} />
+        <DisplayCard
+          textColor="white"
+          bgColor="#2196f3"
+          name="PENDING MAINTENANCES"
+          value={
+            typeof data?.openMaintenanceCount === "number"
+              ? data?.openMaintenanceCount
+              : "--"
+          }
+        />
+        <DisplayCard
+          textColor="white"
+          bgColor="#2196f3"
+          name="ACTIVE TICKETS"
+          value={
+            typeof data?.openTicketCount === "number"
+              ? data?.openTicketCount
+              : "--"
+          }
+        />
+
+        <DisplayCard
+          bgColor="#2196f3"
+          textColor="white"
+          textStyle={{
+            fontSize: 20,
+            textAlign: "center",
+          }}
+          name="UPCOMING TASK"
+          value={data?.nextMaintenance ? data?.nextMaintenance.name : "--"}
+        />
+        <DisplayCard
+          bgColor="#2196f3"
+          textColor="white"
+          textStyle={{
+            fontSize: 20,
+            textAlign: "center",
+          }}
+          name="NEXT MAINTENANCE IN"
+          value={
+            data?.nextMaintenance
+              ? new Date(data?.nextMaintenance?.from).toLocaleString()
+              : "--"
+          }
+        />
+      </View>
     </View>
   );
 };
