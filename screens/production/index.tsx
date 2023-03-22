@@ -61,8 +61,12 @@ export default function InputProductionData() {
               total_down_time:
                 parseInt(values.total_down_time) * 60 +
                 parseInt(values.total_down_time_minutes),
-              target_production: parseInt(values.target_production),
-              actual_production: parseInt(values.actual_production),
+              target_production: parseInt(
+                `${parseFloat(values.target_production) * 1000}`
+              ),
+              actual_production: parseInt(
+                `${parseFloat(values.actual_production) * 1000}`
+              ),
             })
             .then((res) => {
               if (res?.data) {

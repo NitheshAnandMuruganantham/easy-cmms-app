@@ -20,6 +20,9 @@ function Authenticated() {
     if (userData?.role) {
       SetLoading(false);
     }
+    setTimeout(() => {
+      SetLoading(false);
+    }, 5000);
   }, [userData]);
 
   return (

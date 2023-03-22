@@ -1,11 +1,10 @@
 import React, { useRef, useState } from "react";
 import { Keyboard, View } from "react-native";
-import Phone from "react-native-phone-number-input";
 import Toast from "react-native-root-toast";
 import Logger from "../../../utils/logger";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { Button, Icon, Text } from "@rneui/themed";
-
+import Phone from "react-native-phone-input";
 import axios from "../../../utils/axios";
 import style from "./style";
 
@@ -17,36 +16,46 @@ const log = new Logger("PhoneInput");
 const PhoneInput: React.FunctionComponent<PhoneInputProps> = ({
   navigation,
 }) => {
-  const [value, setValue] = useState("");
   const [formattedValue, setFormattedValue] = useState("");
   const [valid, setValid] = useState(false);
   const [loading, SetLoading] = useState(false);
   const phoneInput = useRef<Phone>(null);
-
+  const phoneRef = useRef<Phone>(null);
   return (
     <View style={style.container}>
       <Text style={style.primaryText}>Phone</Text>
       <Text style={style.secondaryText}>Enter your phone number</Text>
+
       <Phone
-        containerStyle={style.input}
-        defaultValue={value}
-        ref={phoneInput}
-        disabled={loading}
-        defaultCode="IN"
-        layout="first"
-        onChangeText={(text) => {
-          setValid(phoneInput.current?.isValidNumber(text) || false);
-          setValue(text);
+        initialCountry="IN"
+        initialValue="+91"
+        flagStyle={{
+          marginLeft: 10,
         }}
-        onChangeFormattedText={(text) => {
-          setFormattedValue(text);
+        onChangePhoneNumber={(value) => {
+          setFormattedValue(value);
         }}
-        autoFocus
-        withShadow
+        style={{
+          width: "95%",
+          height: 50,
+          borderWidth: 1,
+          marginRight: "auto",
+          marginLeft: "auto",
+          borderColor: "#ccc",
+          borderRadius: 5,
+        }}
+        autoFormat
+        ref={phoneRef}
       />
       <Button
-        style={style.button}
-        disabled={!valid}
+        containerStyle={{
+          width: "30%",
+          marginTop: 20,
+          marginRight: 10,
+          marginLeft: "auto",
+        }}
+        buttonStyle={{}}
+        disabled={!phoneRef.current?.isValidNumber()}
         loading={loading}
         onPress={async () => {
           try {
@@ -86,8 +95,7 @@ const PhoneInput: React.FunctionComponent<PhoneInputProps> = ({
         }}
         type="solid"
       >
-        Next
-        <Icon name="arrow-right" color="white" />
+        <Icon name="arrow-right" size={30} color="white" />
       </Button>
     </View>
   );

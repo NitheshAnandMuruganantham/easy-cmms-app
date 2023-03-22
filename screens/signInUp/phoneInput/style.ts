@@ -1,11 +1,8 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 const style = StyleSheet.create({
   container: {
     display: "flex",
-    alignContent: "center",
-    width: "90%",
-    marginLeft: "5%",
   },
 
   input: {
