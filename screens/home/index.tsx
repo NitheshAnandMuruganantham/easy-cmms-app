@@ -1,16 +1,19 @@
 import React, { FunctionComponent, useContext, useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import { Card } from "@rneui/base";
+import { Button, Card } from "@rneui/base";
 import axios from "../../utils/axios";
 import Spinner from "react-native-loading-spinner-overlay/lib";
 import RefetchContext from "../../context/refetchContext";
 import { useInterval } from "../../utils/interval";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 import HomeHeader from "../../components/navigationHeaders/home";
+import NewWorkOrder from "./newWorkOrder/newWorkOrder";
+import UserContext from "../../context/userContext";
+import { Role } from "../../generated/generated";
 const Home = (props) => {
   const [data, SetData] = React.useState<any>({});
   const [loading, SetLoading] = useState(true);
   const [refetchApi, setRefetchApi] = React.useContext(RefetchContext);
-
   const refetch = () => {
     SetLoading(true);
     axios
@@ -38,7 +41,7 @@ const Home = (props) => {
     console.log("refetching home");
     refetch();
   }, [refetchApi]);
-
+  const user = useContext(UserContext);
   return (
     <View
       style={{
@@ -46,6 +49,7 @@ const Home = (props) => {
       }}
     >
       <HomeHeader />
+
       <View
         style={{
           backgroundColor: "white",
@@ -54,9 +58,24 @@ const Home = (props) => {
         }}
       >
         <Spinner visible={loading} textContent={"Loading..."} />
+        <Card
+          containerStyle={{
+            borderRadius: 10,
+            backgroundColor: "#6A0DAD",
+          }}
+        >
+          <Card.Title
+            style={{
+              fontSize: 15,
+              color: "white",
+            }}
+          >
+            WELCOME {user?.name} ({user?.id})
+          </Card.Title>
+        </Card>
         <DisplayCard
           textColor="white"
-          bgColor="#2196f3"
+          bgColor="#8B008B"
           name="PENDING MAINTENANCES"
           value={
             typeof data?.openMaintenanceCount === "number"
@@ -66,7 +85,7 @@ const Home = (props) => {
         />
         <DisplayCard
           textColor="white"
-          bgColor="#2196f3"
+          bgColor="#DE6FA1"
           name="ACTIVE TICKETS"
           value={
             typeof data?.openTicketCount === "number"
@@ -76,7 +95,7 @@ const Home = (props) => {
         />
 
         <DisplayCard
-          bgColor="#2196f3"
+          bgColor="#C54B8C"
           textColor="white"
           textStyle={{
             fontSize: 20,

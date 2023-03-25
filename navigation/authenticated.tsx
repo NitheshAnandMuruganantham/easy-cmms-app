@@ -46,7 +46,9 @@ function Authenticated() {
             ),
           }}
         />
-        {userData?.role === "SUPERVISOR" && (
+        {(userData?.role === "SUPERVISOR" ||
+          (userData?.extra_roles &&
+            userData?.extra_roles.indexOf("SUPERVISOR") !== -1)) && (
           <Tab.Screen
             name="tickets"
             component={Tickets}
@@ -70,7 +72,9 @@ function Authenticated() {
             }}
           />
         )}
-        {userData?.role === "FITTER" && (
+        {(userData?.role === "FITTER" ||
+          userData?.role === "MANAGER" ||
+          userData?.role === "ADMIN") && (
           <Tab.Screen
             name="PastMaintenance"
             component={PastMaintenance}

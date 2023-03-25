@@ -16,6 +16,7 @@ import UserContext from "../../../context/userContext";
 import Supertokens from "supertokens-react-native";
 import RefetchContext from "../../../context/refetchContext";
 import RaiseMaintenance from "../../../screens/maintanance/raise-maintanance";
+import NewWorkOrder from "../../../screens/home/newWorkOrder/newWorkOrder";
 
 interface HomeHeaderProps {}
 
@@ -23,6 +24,7 @@ const HomeHeader: FunctionComponent<HomeHeaderProps> = () => {
   const [showRaiseTicket, SetShowRaiseTicket] = useState(false);
   const [showRaiseMaintenance, setShowRaiseMaintenance] = useState(false);
   const userData = useContext(UserContext);
+  const [showNewWorkOrder, SetShowNewWorkOrder] = useState(false);
   const [refetch, SetRefetch] = useContext(RefetchContext);
   const refetchData = () => {
     SetRefetch((prev) => !prev);
@@ -62,7 +64,13 @@ const HomeHeader: FunctionComponent<HomeHeaderProps> = () => {
         </Button>
       ) : (
         <Button
-          onPress={() => setShowRaiseMaintenance(true)}
+          onPress={() => {
+            if (userData?.role === "ADMIN" || userData?.role === "MANAGER") {
+              SetShowNewWorkOrder(true);
+            } else {
+              setShowRaiseMaintenance(true);
+            }
+          }}
           type="solid"
           icon={<EntoDesign name="plus" size={20} color="white" />}
           titleStyle={{
@@ -77,6 +85,22 @@ const HomeHeader: FunctionComponent<HomeHeaderProps> = () => {
           Raise Work
         </Button>
       )}
+      {userData?.extra_roles &&
+        userData?.extra_roles.indexOf("SUPERVISOR") !== -1 && (
+          <Button
+            onPress={() => SetShowRaiseTicket(true)}
+            type="solid"
+            icon={<EntoDesign name="ticket" size={30} color="white" />}
+            titleStyle={{
+              fontFamily: "Poppins-Medium",
+              marginLeft: 10,
+              marginTop: 3,
+            }}
+            buttonStyle={{
+              borderRadius: 50,
+            }}
+          />
+        )}
       <View
         style={{
           display: "flex",
@@ -92,12 +116,17 @@ const HomeHeader: FunctionComponent<HomeHeaderProps> = () => {
         >
           <IoniconsDesign name="refresh" size={28} color="white" />
         </Button>
+
         <Button
           type="solid"
           onPress={() => {
             Supertokens.signOut();
           }}
-          buttonStyle={{ borderRadius: 50, marginLeft: 20 }}
+          buttonStyle={{
+            borderRadius: 50,
+            marginLeft: 20,
+            backgroundColor: "#8B008B",
+          }}
         >
           <IoniconsDesign name="log-out" size={28} color="white" />
         </Button>
@@ -109,6 +138,12 @@ const HomeHeader: FunctionComponent<HomeHeaderProps> = () => {
       <RaiseMaintenance
         isVisible={showRaiseMaintenance}
         setIsVisible={setShowRaiseMaintenance}
+      />
+      <NewWorkOrder
+        isVisible={showNewWorkOrder}
+        setIsVisible={(v) => {
+          SetShowNewWorkOrder(v);
+        }}
       />
     </View>
   );

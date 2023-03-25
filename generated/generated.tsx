@@ -5758,6 +5758,16 @@ export type GetTicketQueryVariables = Exact<{
 
 export type GetTicketQuery = { __typename?: 'Query', ticket: { __typename?: 'Ticket', id: any, description: string, name: string, photos: string, status: Ticket_Status, updated_at: any, created_at: any, machine: { __typename?: 'Machines', id: any, label: string, priority: number, block: { __typename?: 'Block', id: any, name: string }, section: { __typename?: 'Sections', id: any, name: string } }, user: { __typename?: 'Users', id: any, name: string } } };
 
+export type UsersDropDownQueryVariables = Exact<{
+  where?: InputMaybe<UsersWhereInput>;
+  orderBy?: InputMaybe<UsersOrderByWithRelationInput>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+}>;
+
+
+export type UsersDropDownQuery = { __typename?: 'Query', users: Array<{ __typename?: 'Users', name: string, phone: string, value: any }> };
+
 
 export const GetAllMachinesDropdownDocument = gql`
     query getAllMachinesDropdown {
@@ -6136,3 +6146,43 @@ export function useGetTicketLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<
 export type GetTicketQueryHookResult = ReturnType<typeof useGetTicketQuery>;
 export type GetTicketLazyQueryHookResult = ReturnType<typeof useGetTicketLazyQuery>;
 export type GetTicketQueryResult = Apollo.QueryResult<GetTicketQuery, GetTicketQueryVariables>;
+export const UsersDropDownDocument = gql`
+    query usersDropDown($where: UsersWhereInput, $orderBy: UsersOrderByWithRelationInput, $limit: Int, $offset: Int) {
+  users(where: $where, orderBy: $orderBy, limit: $limit, offset: $offset) {
+    value: id
+    name
+    phone
+  }
+}
+    `;
+
+/**
+ * __useUsersDropDownQuery__
+ *
+ * To run a query within a React component, call `useUsersDropDownQuery` and pass it any options that fit your needs.
+ * When your component renders, `useUsersDropDownQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useUsersDropDownQuery({
+ *   variables: {
+ *      where: // value for 'where'
+ *      orderBy: // value for 'orderBy'
+ *      limit: // value for 'limit'
+ *      offset: // value for 'offset'
+ *   },
+ * });
+ */
+export function useUsersDropDownQuery(baseOptions?: Apollo.QueryHookOptions<UsersDropDownQuery, UsersDropDownQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<UsersDropDownQuery, UsersDropDownQueryVariables>(UsersDropDownDocument, options);
+      }
+export function useUsersDropDownLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<UsersDropDownQuery, UsersDropDownQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<UsersDropDownQuery, UsersDropDownQueryVariables>(UsersDropDownDocument, options);
+        }
+export type UsersDropDownQueryHookResult = ReturnType<typeof useUsersDropDownQuery>;
+export type UsersDropDownLazyQueryHookResult = ReturnType<typeof useUsersDropDownLazyQuery>;
+export type UsersDropDownQueryResult = Apollo.QueryResult<UsersDropDownQuery, UsersDropDownQueryVariables>;

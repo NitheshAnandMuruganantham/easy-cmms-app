@@ -41,19 +41,6 @@ const OtpInput: React.FunctionComponent<OtpInputProps> = ({
               );
               console.log(authResponse.data);
               console.info("successfully logged in");
-
-              const resp = await axios.get(`/me/profile/status`);
-              console.info("profile check response ", resp.data);
-              if (
-                resp?.data?.role !== "FITTER" &&
-                resp?.data?.role !== "SUPERVISOR"
-              ) {
-                alert(
-                  "you are not authorized to access mobile app use the web dashboard for operations"
-                );
-                SuperTokens.signOut();
-              }
-              console.info("successfully fetched profile status");
               setLoading(false);
             } catch (e) {
               setLoading(false);
