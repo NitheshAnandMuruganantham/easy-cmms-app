@@ -6,6 +6,7 @@ import AuthContext from "../context/authContext";
 import SignUp from "../screens/signInUp";
 import { RootStackParamList } from "../types";
 import Authenticated from "./authenticated";
+import { SafeAreaView } from "react-native";
 
 export default function Navigation() {
   return (

@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useContext, useState } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { Button, Card } from "@rneui/base";
 import axios from "../../utils/axios";
 import Spinner from "react-native-loading-spinner-overlay/lib";
@@ -9,7 +9,25 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import HomeHeader from "../../components/navigationHeaders/home";
 import NewWorkOrder from "./newWorkOrder/newWorkOrder";
 import UserContext from "../../context/userContext";
-import { Role } from "../../generated/generated";
+
+const colors = [
+  "#6A0DAD",
+  "#8B008B",
+  "#C54B8C",
+  "#C70039",
+  "#900C3F",
+  "#FF5733",
+  "#FFC300",
+  "#DAF7A6",
+  "#FFC300",
+  "#FF5733",
+  "#900C3F",
+  "#C70039",
+  "#C54B8C",
+  "#8B008B",
+  "#6A0DAD",
+];
+
 const Home = (props) => {
   const [data, SetData] = React.useState<any>({});
   const [loading, SetLoading] = useState(true);
@@ -45,12 +63,13 @@ const Home = (props) => {
   return (
     <View
       style={{
+        flex: 1,
         backgroundColor: "white",
       }}
     >
       <HomeHeader />
 
-      <View
+      <ScrollView
         style={{
           backgroundColor: "white",
           marginTop: "auto",
@@ -61,7 +80,7 @@ const Home = (props) => {
         <Card
           containerStyle={{
             borderRadius: 10,
-            backgroundColor: "#6A0DAD",
+            backgroundColor: "#FF5733",
           }}
         >
           <Card.Title
@@ -73,52 +92,28 @@ const Home = (props) => {
             WELCOME {user?.name} ({user?.id})
           </Card.Title>
         </Card>
-        <DisplayCard
-          textColor="white"
-          bgColor="#8B008B"
-          name="PENDING MAINTENANCES"
-          value={
-            typeof data?.openMaintenanceCount === "number"
-              ? data?.openMaintenanceCount
-              : "--"
-          }
-        />
-        <DisplayCard
-          textColor="white"
-          bgColor="#DE6FA1"
-          name="ACTIVE TICKETS"
-          value={
-            typeof data?.openTicketCount === "number"
-              ? data?.openTicketCount
-              : "--"
-          }
-        />
-
-        <DisplayCard
-          bgColor="#C54B8C"
-          textColor="white"
-          textStyle={{
-            fontSize: 20,
-            textAlign: "center",
+        <View
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            width: "100%",
+            justifyContent: "space-evenly",
           }}
-          name="UPCOMING TASK"
-          value={data?.nextMaintenance ? data?.nextMaintenance.name : "--"}
-        />
-        <DisplayCard
-          bgColor="#2196f3"
-          textColor="white"
-          textStyle={{
-            fontSize: 20,
-            textAlign: "center",
-          }}
-          name="NEXT MAINTENANCE IN"
-          value={
-            data?.nextMaintenance
-              ? new Date(data?.nextMaintenance?.from).toLocaleString()
-              : "--"
-          }
-        />
-      </View>
+        >
+          {data &&
+            Object.keys(data).map((key, i) => {
+              return (
+                <DisplayCard
+                  key={key}
+                  name={key.replace(/_/g, " ")}
+                  value={data[key]}
+                  textColor={"white"}
+                  bgColor={i + 1 > colors.length ? colors[0] : colors[i]}
+                />
+              );
+            })}
+        </View>
+      </ScrollView>
     </View>
   );
 };
@@ -136,12 +131,15 @@ const DisplayCard: FunctionComponent<{
     <Card
       containerStyle={{
         borderRadius: 10,
+        width: "42%",
         backgroundColor: props.bgColor,
       }}
       wrapperStyle={{}}
     >
       <Card.Title
         style={{
+          fontSize: 15,
+          fontStyle: "italic",
           color: props.textColor,
         }}
       >
@@ -155,7 +153,7 @@ const DisplayCard: FunctionComponent<{
       >
         <Text
           style={{
-            fontSize: 50,
+            fontSize: 60,
             color: props.textColor,
             ...props.textStyle,
           }}

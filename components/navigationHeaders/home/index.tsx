@@ -37,7 +37,6 @@ const HomeHeader: FunctionComponent<HomeHeaderProps> = () => {
         width: "95%",
         backgroundColor: "white",
         paddingTop: 10,
-        marginTop: constants.platform?.android ? constants.statusBarHeight : 0,
         marginLeft: "2.5%",
         marginRight: "2.5%",
         paddingBottom: 15,

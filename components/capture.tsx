@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import React, { FunctionComponent, useEffect } from "react";
 import {
   StyleSheet,
@@ -122,7 +121,6 @@ const Capture: FunctionComponent<{
           )}
         </View>
       )}
-      <StatusBar style="auto" />
     </View>
   );
 };

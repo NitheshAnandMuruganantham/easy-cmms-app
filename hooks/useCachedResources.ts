@@ -2,7 +2,6 @@ import * as Font from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect, useState } from "react";
 
-import { FontAwesome } from "@expo/vector-icons";
 import Logger from "../utils/logger";
 
 const logger = new Logger("cache");
@@ -16,7 +15,6 @@ export default function useCachedResources() {
         SplashScreen.preventAutoHideAsync();
         logger.info("Loading fonts");
         await Font.loadAsync({
-          ...FontAwesome.font,
           "space-mono": require("../assets/fonts/SpaceMono-Regular.ttf"),
           "Poppins-Black": require("../assets/fonts/Poppins-Black.ttf"),
           "Poppins-BlackItalic": require("../assets/fonts/Poppins-BlackItalic.ttf"),

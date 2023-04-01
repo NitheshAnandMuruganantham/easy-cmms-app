@@ -1,12 +1,11 @@
 import { checkProfileStatus } from "./utils/auth";
-import { StatusBar } from "expo-status-bar";
 import axios from "axios";
 import React, { useEffect } from "react";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import SuperTokens from "supertokens-react-native";
 import { RootSiblingParent } from "react-native-root-siblings";
 import { Provider as PaperProvider } from "react-native-paper";
-import { Text, Image, ThemeProvider } from "@rneui/themed";
+import { Text, Image } from "@rneui/themed";
 import network from "./constants/network";
 import Theme from "./constants/theme";
 import AuthContext from "./context/authContext";
@@ -14,7 +13,7 @@ import useCachedResources from "./hooks/useCachedResources";
 import Navigation from "./navigation";
 import { ApolloProvider } from "@apollo/client";
 import client from "./utils/apollo";
-import { View } from "react-native";
+import { StatusBar, View } from "react-native";
 import UserContext from "./context/userContext";
 import RefetchContext from "./context/refetchContext";
 
