@@ -145,92 +145,93 @@ const InputProductionData: React.FunctionComponent<{
                 marginBottom: 20,
               }}
             />
-            {schema.form.map((item, index) => {
-              switch (item.type) {
-                case "text":
-                  return (
-                    <TextInput
-                      label={item.label}
-                      value={values[item.field]}
-                      style={{
-                        marginTop: 10,
-                      }}
-                      onChangeText={handleChange(item.field) as any}
-                      onBlur={handleBlur(item.field) as any}
-                      key={index}
-                    />
-                  );
-                case "duration":
-                  return (
-                    <DurationPicker
-                      label={item.label}
-                      setValue={(v) => {
-                        setFieldValue(item.field, v);
-                      }}
-                      value={values[item.field]}
-                      key={index}
-                    />
-                  );
-                case "date":
-                  return (
-                    <DatePicker
-                      key={index}
-                      value={values[item.field]}
-                      setValue={(d) => setFieldValue(item.field, d)}
-                    />
-                  );
-                case "number":
-                  return (
-                    <TextInput
-                      label={item.label}
-                      value={values[item.field]}
-                      style={{
-                        marginTop: 10,
-                      }}
-                      onChangeText={handleChange(item.field) as any}
-                      onBlur={handleBlur(item.field) as any}
-                      key={index}
-                      keyboardType="numeric"
-                    />
-                  );
-                case "select":
-                  return (
-                    <View
-                      style={{
-                        marginTop: 10,
-                        borderBottomColor: "gray",
-                        borderBottomWidth: 1,
-                        backgroundColor: "#e7e0ec",
-                      }}
-                      key={index}
-                    >
-                      <Picker
+            {schema &&
+              schema?.form?.map((item, index) => {
+                switch (item.type) {
+                  case "text":
+                    return (
+                      <TextInput
+                        label={item.label}
+                        value={values[item.field]}
                         style={{
-                          color: "#4f4b55",
+                          marginTop: 10,
+                        }}
+                        onChangeText={handleChange(item.field) as any}
+                        onBlur={handleBlur(item.field) as any}
+                        key={index}
+                      />
+                    );
+                  case "duration":
+                    return (
+                      <DurationPicker
+                        label={item.label}
+                        setValue={(v) => {
+                          setFieldValue(item.field, v);
+                        }}
+                        value={values[item.field]}
+                        key={index}
+                      />
+                    );
+                  case "date":
+                    return (
+                      <DatePicker
+                        key={index}
+                        value={values[item.field]}
+                        setValue={(d) => setFieldValue(item.field, d)}
+                      />
+                    );
+                  case "number":
+                    return (
+                      <TextInput
+                        label={item.label}
+                        value={values[item.field]}
+                        style={{
+                          marginTop: 10,
+                        }}
+                        onChangeText={handleChange(item.field) as any}
+                        onBlur={handleBlur(item.field) as any}
+                        key={index}
+                        keyboardType="numeric"
+                      />
+                    );
+                  case "select":
+                    return (
+                      <View
+                        style={{
+                          marginTop: 10,
+                          borderBottomColor: "gray",
+                          borderBottomWidth: 1,
                           backgroundColor: "#e7e0ec",
-                          textDecorationLine: "underline",
                         }}
-                        onValueChange={(value) => {
-                          setFieldValue(item.field, value);
-                        }}
-                        selectedValue={values[item.field]}
                         key={index}
                       >
-                        {item.options &&
-                          item.options.map((option, index) => {
-                            return (
-                              <Picker.Item
-                                label={option.label}
-                                value={option.value}
-                                key={index}
-                              />
-                            );
-                          })}
-                      </Picker>
-                    </View>
-                  );
-              }
-            })}
+                        <Picker
+                          style={{
+                            color: "#4f4b55",
+                            backgroundColor: "#e7e0ec",
+                            textDecorationLine: "underline",
+                          }}
+                          onValueChange={(value) => {
+                            setFieldValue(item.field, value);
+                          }}
+                          selectedValue={values[item.field]}
+                          key={index}
+                        >
+                          {item.options &&
+                            item.options.map((option, index) => {
+                              return (
+                                <Picker.Item
+                                  label={option.label}
+                                  value={option.value}
+                                  key={index}
+                                />
+                              );
+                            })}
+                        </Picker>
+                      </View>
+                    );
+                }
+              })}
             <Button
               disabled={!isValid}
               buttonStyle={{}}
