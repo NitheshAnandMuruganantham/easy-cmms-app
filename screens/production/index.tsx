@@ -91,12 +91,11 @@ const InputProductionData: React.FunctionComponent<{
             return;
           }
           console.log("values", values);
-          let from = new Date(values.date * 1000).toISOString();
-          console.log("from", from);
+
           await axios
             .post("punchProduction", {
               shift: values.shift,
-              date: from,
+              date: values.date,
               data: parsedValues,
             })
             .then((res) => {

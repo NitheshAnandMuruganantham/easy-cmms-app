@@ -10,8 +10,23 @@ interface DatePickerProps {
 }
 
 const DatePicker: React.FunctionComponent<DatePickerProps> = (props) => {
-  const [isVisible, setVisible] = useState(false);
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+
   const inputRef = useRef<any>(null);
+
+  const showDatePicker = () => {
+    setDatePickerVisibility(true);
+  };
+
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
+  };
+
+  const handleConfirm = (date: Date) => {
+    props.setValue(date);
+    hideDatePicker();
+  };
+
   return (
     <View>
       <TextInput
@@ -21,23 +36,15 @@ const DatePicker: React.FunctionComponent<DatePickerProps> = (props) => {
         ref={inputRef}
         showSoftInputOnFocus={false}
         onPressIn={() => {
-          setVisible(true);
+          showDatePicker();
         }}
-        value={
-          (typeof props.value === "number"
-            ? new Date(props.value * 1000).toLocaleDateString()
-            : new Date(props.value).toLocaleDateString()) || "select a date"
-        }
+        value={new Date(props.value).toLocaleDateString() || "select a date"}
       />
       <DateTimePickerModal
-        isVisible={isVisible}
-        onConfirm={(date) => {
-          setVisible(false);
-          inputRef?.current?.blur();
-          console.log("date component", date, "date type", typeof date);
-          props.setValue(date);
-        }}
-        onCancel={() => setVisible(false)}
+        isVisible={isDatePickerVisible}
+        mode="date"
+        onConfirm={handleConfirm}
+        onCancel={() => hideDatePicker()}
       />
     </View>
   );
