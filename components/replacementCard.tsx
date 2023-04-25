@@ -3,13 +3,11 @@ import { RneFunctionComponent, Text } from "@rneui/base";
 import { Button, Card, Icon } from "@rneui/themed";
 import React from "react";
 
-interface MaintenanceCardProps {
+interface ReplacementCardProps {
   data: any;
 }
 
-const PastMaintenanceCard: RneFunctionComponent<MaintenanceCardProps> = (
-  props
-) => {
+const ReplacementCard: RneFunctionComponent<ReplacementCardProps> = (props) => {
   return (
     <Card
       containerStyle={{
@@ -26,32 +24,36 @@ const PastMaintenanceCard: RneFunctionComponent<MaintenanceCardProps> = (
       <Card.Title
         style={{
           fontFamily: "Poppins-Black",
-          fontSize: 25,
+          fontSize: 20,
         }}
       >
         {props.data.name}
       </Card.Title>
       <Card.Divider />
       <Text style={{ marginBottom: 10, fontSize: 20 }}>
-        machine : {props.data.machines.label} ({props.data.machines.id})
+        item : {props.data.items?.name} ({props.data.items?.id})
       </Text>
       <Text style={{ marginBottom: 10, fontSize: 20 }}>
-        from :{" "}
-        {`${new Date(props.data.from).toLocaleDateString()} ${new Date(
-          props.data.from
-        ).toLocaleTimeString("en-US")}`}
+        quantity : {props.data.quantity}
       </Text>
-      <Text style={{ marginBottom: 10, fontSize: 20 }}>
-        to :{" "}
-        {`${new Date(props.data.to).toLocaleDateString()} ${new Date(
-          props.data.to
-        ).toLocaleTimeString("en-US")}`}
+      <Text style={{ marginBottom: 10, fontSize: 20, fontWeight: "bold" }}>
+        Approved :{" "}
+        <Text
+          style={{
+            backgroundColor: props.data.approved ? "#5cb85c" : "#d9534f",
+            padding: 5,
+            color: "#fff",
+            fontWeight: "bold",
+          }}
+        >
+          {props.data.approved ? "  Yes  " : "  No  "}
+        </Text>
       </Text>
     </Card>
   );
 };
 
-export default PastMaintenanceCard;
+export default ReplacementCard;
 
 const styles = StyleSheet.create({
   fonts: {

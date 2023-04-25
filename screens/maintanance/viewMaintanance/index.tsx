@@ -10,7 +10,7 @@ import {
   useGetMaintananceQuery,
   useUpdateMaintananceMutation,
 } from "../../../generated/generated";
-
+import axios from "../../../utils/axios";
 import toast from "react-native-root-toast";
 import { Button } from "@rneui/themed";
 import { Table, Row, Rows } from "react-native-table-component";
@@ -18,6 +18,7 @@ import style from "./style";
 import CompleteMaintenance from "./completeMaintenance";
 import Spinner from "react-native-loading-spinner-overlay/lib";
 import RefetchContext from "../../../context/refetchContext";
+import RequestSpares from "./requestSpares";
 interface Props {
   navigation: any;
 }
@@ -25,7 +26,6 @@ interface Props {
 const ViewTicket: FunctionComponent<Props> = (props) => {
   const route = useRoute<any>();
   const [ShowSubmit, SetShowSubmit] = useState<boolean>(false);
-
   const { data, error, loading } = useGetMaintananceQuery({
     variables: {
       maintenanceId: route.params.MaintenanceId,
@@ -36,7 +36,7 @@ const ViewTicket: FunctionComponent<Props> = (props) => {
     useState<boolean>(false);
   const [updateMaintanance] = useUpdateMaintananceMutation();
   const [refresh, setRefresh] = useContext(RefetchContext);
-
+  const [spareRequest, setSpareRequest] = useState<boolean>(false);
   return (
     <ScrollView>
       <Spinner
@@ -44,6 +44,34 @@ const ViewTicket: FunctionComponent<Props> = (props) => {
         textContent={"Loading..."}
       />
       <Text style={style.title}>{data?.maintenance.name}</Text>
+      <RequestSpares
+        isVisible={spareRequest}
+        setIsVisible={setSpareRequest}
+        submit={async (data) => {
+          axios
+            .post("/requestSpare", {
+              maintenance_id: route.params.MaintenanceId,
+              bom: data,
+            })
+            .then((dt) => {
+              setRefresh((prev) => !prev);
+              if (dt.data) {
+                toast.show("Spare request sent", {
+                  position: toast.positions.TOP + 50,
+                });
+                props.navigation.goBack();
+              }
+            })
+            .catch((err) => {
+              if (err) {
+                console.log(err);
+                toast.show("Something went wrong", {
+                  position: toast.positions.TOP + 50,
+                });
+              }
+            });
+        }}
+      />
       <CompleteMaintenance
         setIsVisible={SetShowSubmit}
         isVisible={ShowSubmit}
@@ -146,22 +174,50 @@ const ViewTicket: FunctionComponent<Props> = (props) => {
             ]}
           />
         </Table>
-
-        <Button
-          buttonStyle={{
-            backgroundColor: "green",
-            paddingHorizontal: 10,
-            marginTop: 20,
-            marginBottom: 50,
-            borderRadius: 5,
-          }}
-          style={{ marginTop: "5%" }}
-          onPress={async () => {
-            SetShowSubmit(true);
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
           }}
         >
-          complete task
-        </Button>
+          <Button
+            containerStyle={{
+              width: "49%",
+            }}
+            buttonStyle={{
+              backgroundColor: "purple",
+              paddingHorizontal: 10,
+              marginTop: 20,
+              marginBottom: 50,
+              borderRadius: 5,
+            }}
+            style={{ marginTop: "5%" }}
+            onPress={async () => {
+              setSpareRequest(true);
+            }}
+          >
+            replace spare
+          </Button>
+          <Button
+            containerStyle={{
+              width: "49%",
+            }}
+            buttonStyle={{
+              backgroundColor: "green",
+              paddingHorizontal: 10,
+              marginTop: 20,
+              marginBottom: 50,
+              borderRadius: 5,
+            }}
+            style={{ marginTop: "5%" }}
+            onPress={async () => {
+              SetShowSubmit(true);
+            }}
+          >
+            complete task
+          </Button>
+        </View>
       </View>
     </ScrollView>
   );

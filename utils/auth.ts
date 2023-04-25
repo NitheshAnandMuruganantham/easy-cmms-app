@@ -13,6 +13,7 @@ export const checkProfileStatus = async (
       `${network.server}/me/profile/status`
     );
     console.info("fetching profile exists status");
+    console.log(profileExists);
     if (profileExists?.data && setUser) {
       setUser(profileExists.data);
       return "SESSION_CREATED";
