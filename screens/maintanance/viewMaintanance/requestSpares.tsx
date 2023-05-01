@@ -126,7 +126,7 @@ const RequestSpares: FunctionComponent<Props> = (props) => {
                       .map((item) => {
                         return (
                           <Picker.Item
-                            label={`${item.id} (${item.code})`}
+                            label={`${item.name} (${item.code})`}
                             value={item.id}
                             key={item.id}
                           />
