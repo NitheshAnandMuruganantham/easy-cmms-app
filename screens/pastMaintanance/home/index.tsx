@@ -16,7 +16,7 @@ interface MaintanceHomeProps {
 const MaintenanceHome: React.FunctionComponent<MaintanceHomeProps> = (
   props
 ) => {
-  const user = React.useContext(UserContext);
+  const [user] = React.useContext(UserContext);
   const [refetch, setRefresh] = React.useContext(RefetchContext);
 
   const [loading, setLoading] = React.useState(false);

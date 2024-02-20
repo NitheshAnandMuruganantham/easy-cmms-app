@@ -35,7 +35,7 @@ const RaiseMaintenance: FunctionComponent<Props> = (props) => {
   const { data: machines, loading: MachineLoading } =
     useGetAllMachinesDropdownQuery();
   const [image, setImage] = useState<any>();
-  const user = useContext(UserContext);
+  const [user] = useContext(UserContext);
   const [create, { loading, error }] = useCreateMaintananceMutation();
   const [refresh, setRefresh] = useContext(RefetchContext);
 

@@ -44,7 +44,7 @@ const NewWorkOrder: FunctionComponent<Props> = (props) => {
       },
     },
   });
-  const user = useContext(UserContext);
+  const [user] = useContext(UserContext);
   const [create, { loading, error }] = useCreateMaintananceMutation();
   const [refresh, setRefresh] = useContext(RefetchContext);
 

@@ -13,17 +13,19 @@ import constants from "expo-constants";
 import RaiseTicket from "../../../screens/tickets/raise-ticket";
 import client from "../../../utils/apollo";
 import UserContext from "../../../context/userContext";
-import Supertokens from "supertokens-react-native";
 import RefetchContext from "../../../context/refetchContext";
 import RaiseMaintenance from "../../../screens/maintanance/raise-maintanance";
 import NewWorkOrder from "../../../screens/home/newWorkOrder/newWorkOrder";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import AuthContext from "../../../context/authContext";
 
 interface HomeHeaderProps {}
 
 const HomeHeader: FunctionComponent<HomeHeaderProps> = () => {
   const [showRaiseTicket, SetShowRaiseTicket] = useState(false);
   const [showRaiseMaintenance, setShowRaiseMaintenance] = useState(false);
-  const userData = useContext(UserContext);
+  const [userData] = useContext(UserContext);
+  const [authStatus, SetAuthStatus] = useContext(AuthContext);
   const [showNewWorkOrder, SetShowNewWorkOrder] = useState(false);
   const [refetch, SetRefetch] = useContext(RefetchContext);
   const refetchData = () => {
@@ -45,10 +47,12 @@ const HomeHeader: FunctionComponent<HomeHeaderProps> = () => {
         justifyContent: "space-between",
       }}
     >
-      {userData?.role === "SUPERVISOR" ? (
+      {userData?.role === "SUPERVISOR" ||
+      userData?.extra_roles.indexOf("SUPERVISOR") !== -1 ? (
         <Button
           onPress={() => SetShowRaiseTicket(true)}
           type="solid"
+          //  @ts-ignore
           icon={<EntoDesign name="plus" size={20} color="white" />}
           titleStyle={{
             fontFamily: "Poppins-Medium",
@@ -64,13 +68,19 @@ const HomeHeader: FunctionComponent<HomeHeaderProps> = () => {
       ) : (
         <Button
           onPress={() => {
-            if (userData?.role === "ADMIN" || userData?.role === "MANAGER") {
+            if (
+              userData?.role === "ADMIN" ||
+              userData?.role === "MANAGER" ||
+              userData?.extra_roles.indexOf("MANAGER") !== -1 ||
+              userData?.extra_roles.indexOf("ADMIN") !== -1
+            ) {
               SetShowNewWorkOrder(true);
             } else {
               setShowRaiseMaintenance(true);
             }
           }}
           type="solid"
+          // @ts-ignore
           icon={<EntoDesign name="plus" size={20} color="white" />}
           titleStyle={{
             fontFamily: "Poppins-Medium",
@@ -89,6 +99,7 @@ const HomeHeader: FunctionComponent<HomeHeaderProps> = () => {
           <Button
             onPress={() => SetShowRaiseTicket(true)}
             type="solid"
+            // @ts-ignore
             icon={<EntoDesign name="ticket" size={30} color="white" />}
             titleStyle={{
               fontFamily: "Poppins-Medium",
@@ -113,13 +124,15 @@ const HomeHeader: FunctionComponent<HomeHeaderProps> = () => {
           }}
           buttonStyle={{ borderRadius: 50 }}
         >
+          {/* @ts-ignore */}
           <IoniconsDesign name="refresh" size={28} color="white" />
         </Button>
 
         <Button
           type="solid"
-          onPress={() => {
-            Supertokens.signOut();
+          onPress={async () => {
+            await AsyncStorage.clear();
+            SetAuthStatus("UNAUTHORISED");
           }}
           buttonStyle={{
             borderRadius: 50,
@@ -127,6 +140,7 @@ const HomeHeader: FunctionComponent<HomeHeaderProps> = () => {
             backgroundColor: "#8B008B",
           }}
         >
+          {/* @ts-ignore */}
           <IoniconsDesign name="log-out" size={28} color="white" />
         </Button>
       </View>

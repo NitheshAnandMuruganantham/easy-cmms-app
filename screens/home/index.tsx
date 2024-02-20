@@ -32,8 +32,9 @@ const Home = (props) => {
   const [data, SetData] = React.useState<any>({});
   const [loading, SetLoading] = useState(true);
   const [refetchApi, setRefetchApi] = React.useContext(RefetchContext);
-  const refetch = () => {
-    SetLoading(true);
+
+  const refetch = (show_loading: boolean = true) => {
+    if (show_loading) SetLoading(true);
     axios
       .get("/dashboard/mobileDashboard")
       .then((resp) => {
@@ -42,24 +43,18 @@ const Home = (props) => {
       })
       .catch(() => {
         SetLoading(false);
-        alert("something went wrong !");
       });
   };
 
   useInterval(() => {
-    axios
-      .get("/dashboard/mobileDashboard")
-      .then((resp) => {
-        SetData(resp.data);
-      })
-      .catch(() => {});
+    refetch(false);
   }, 10000);
 
   React.useEffect(() => {
     console.log("refetching home");
-    refetch();
+    refetch(false);
   }, [refetchApi]);
-  const user = useContext(UserContext);
+  const [user] = useContext(UserContext);
   return (
     <View
       style={{
@@ -85,11 +80,28 @@ const Home = (props) => {
         >
           <Card.Title
             style={{
-              fontSize: 15,
+              fontSize: 20,
               color: "white",
             }}
           >
-            WELCOME {user?.name} ({user?.id})
+            {user?.block?.name}
+          </Card.Title>
+          <Card.Divider />
+          <Card.Title
+            style={{
+              fontSize: 20,
+              color: "white",
+            }}
+          >
+            welcome {user?.name}
+          </Card.Title>
+          <Card.Title
+            style={{
+              fontSize: 20,
+              color: "white",
+            }}
+          >
+            {user?.role}
           </Card.Title>
         </Card>
         <View

@@ -63,19 +63,16 @@ const PhoneInput: React.FunctionComponent<PhoneInputProps> = ({
             log.debug(`sending otp for phone number: ${formattedValue}`);
             const dt = await axios({
               method: "POST",
-              url: `/auth/signinup/code`,
+              url: `auth/phone/code/get`,
               data: {
-                phoneNumber: formattedValue,
-              },
-              headers: {
-                rid: "passwordless",
-                "Content-Type": "application/json",
+                phone: formattedValue.replace(/\s/g, ""),
               },
             });
             log.debug(`sending otp for phone number: ${formattedValue}`);
             SetLoading(false);
             navigation.navigate("OtpInput", {
               ...dt.data,
+              phone: formattedValue.replace(/\s/g, ""),
             });
           } catch (e) {
             log.error(`sending otp for phone number: ${e}`);

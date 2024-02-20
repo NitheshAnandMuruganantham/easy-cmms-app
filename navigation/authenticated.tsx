@@ -10,13 +10,12 @@ import Home from "../screens/home";
 import Spinner from "react-native-loading-spinner-overlay/lib";
 import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
 import PastMaintenance from "../screens/pastMaintanance";
-import InputProductionData from "../screens/production";
 import ReplacementRequests from "../screens/replacementRequests";
 
 const Tab = createMaterialBottomTabNavigator();
 
 function Authenticated() {
-  const userData = useContext(UserContext);
+  const [userData] = useContext(UserContext);
   const [loading, SetLoading] = useState(true);
   useEffect(() => {
     if (userData?.role) {
@@ -62,7 +61,8 @@ function Authenticated() {
             }}
           />
         )}
-        {userData?.role === "FITTER" && (
+        {(userData?.role === "FITTER" ||
+          userData?.extra_roles.indexOf("FITTER") !== 1) && (
           <Tab.Screen
             name="maintenance"
             component={Maintenance}
@@ -74,7 +74,8 @@ function Authenticated() {
             }}
           />
         )}
-        {userData?.role === "FITTER" && (
+        {(userData?.role === "FITTER" ||
+          userData?.extra_roles.indexOf("FITTER") !== 1) && (
           <Tab.Screen
             name="replacementRequests"
             component={ReplacementRequests}
@@ -100,23 +101,6 @@ function Authenticated() {
             }}
           />
         )}
-        {userData?.extra_roles &&
-          userData?.extra_roles.indexOf("PRODUCTION_CONTROLLER") !== -1 && (
-            <Tab.Screen
-              name="InputProduction"
-              component={InputProductionData}
-              options={{
-                tabBarLabel: "production",
-                tabBarIcon: ({ color }) => (
-                  <MaterialCommunityIcons
-                    name="factory"
-                    size={26}
-                    color={color}
-                  />
-                ),
-              }}
-            />
-          )}
       </Tab.Navigator>
     </>
   );

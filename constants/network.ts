@@ -1,4 +1,4 @@
 const network = {
-  server: "http://10.0.2.2:8000",
+  server: "https://server.easycmms.infraweigh.co",
 };
 export default network;
