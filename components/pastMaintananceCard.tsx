@@ -1,14 +1,15 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { RneFunctionComponent, Text } from "@rneui/base";
-import { Button, Card, Badge } from "@rneui/themed";
+import { Button, Card, Icon } from "@rneui/themed";
 import React from "react";
 
 interface MaintenanceCardProps {
   data: any;
-  viewMaintenance: (id: number) => void;
 }
 
-const MaintenanceCard: RneFunctionComponent<MaintenanceCardProps> = (props) => {
+const PastMaintenanceCard: RneFunctionComponent<MaintenanceCardProps> = (
+  props
+) => {
   return (
     <Card
       containerStyle={{
@@ -46,22 +47,11 @@ const MaintenanceCard: RneFunctionComponent<MaintenanceCardProps> = (props) => {
           props.data.to
         ).toLocaleTimeString("en-US")}`}
       </Text>
-      <Button
-        onPress={() => props.viewMaintenance(props.data.id)}
-        type="outline"
-        buttonStyle={{
-          borderRadius: 0,
-          marginLeft: 0,
-          marginRight: 0,
-          marginBottom: 0,
-        }}
-        title="view now"
-      />
     </Card>
   );
 };
 
-export default MaintenanceCard;
+export default PastMaintenanceCard;
 
 const styles = StyleSheet.create({
   fonts: {

@@ -13,6 +13,7 @@ import axios from "../../../utils/axios";
 import toast from "react-native-root-toast";
 import {
   Ticket_Status,
+  useCreateMaintananceMutation,
   useCreateTicketsMutation,
   useGetAllMachinesDropdownQuery,
 } from "../../../generated/generated";
@@ -22,6 +23,7 @@ import Toast from "react-native-root-toast";
 import Capture from "../../../components/capture";
 import RefetchContext from "../../../context/refetchContext";
 import * as Yup from "yup";
+import UserContext from "../../../context/userContext";
 interface Props {
   isVisible: boolean;
   setIsVisible: (isVisible: boolean) => void;
@@ -29,11 +31,14 @@ interface Props {
 
 const log = new Logger("RaiseTicket");
 
-const RaiseTicket: FunctionComponent<Props> = (props) => {
-  const { data: machines, loading } = useGetAllMachinesDropdownQuery();
+const RaiseMaintenance: FunctionComponent<Props> = (props) => {
+  const { data: machines, loading: MachineLoading } =
+    useGetAllMachinesDropdownQuery();
   const [image, setImage] = useState<any>();
-  const [uploadLoading, SetUploadLoading] = useState<boolean>(false);
+  const [user] = useContext(UserContext);
+  const [create, { loading, error }] = useCreateMaintananceMutation();
   const [refresh, setRefresh] = useContext(RefetchContext);
+
   return (
     <BottomSheet
       onBackdropPress={() => props.setIsVisible(false)}
@@ -42,38 +47,39 @@ const RaiseTicket: FunctionComponent<Props> = (props) => {
       <Formik
         initialValues={{
           title: "",
+          duration: 30,
           machine: undefined,
           description: "",
         }}
         validationSchema={Yup.object().shape({
           title: Yup.string().required("Title is required"),
           machine: Yup.number().required("Machine is required"),
+          duration: Yup.number().required(),
           description: Yup.string().required("Description is required"),
         })}
         onSubmit={async (values) => {
-          await axios({
-            url: "raiseTicket",
-            method: "POST",
-            data: {
+          axios
+            .post("inputPastMaintenance", {
               name: values.title,
               description: values.description,
               machine_id: values.machine,
-              photos: image,
-            },
-          })
+              photo: image,
+              from: new Date(),
+              to: new Date(
+                new Date().setMinutes(new Date().getMinutes() + values.duration)
+              ),
+            })
             .then((res) => {
               if (res?.data) {
-                Toast.show("Ticket raised successfully", {
+                Toast.show("Work raised successfully", {
                   position: Toast.positions.TOP + 50,
                   duration: Toast.durations.SHORT,
                 });
               }
             })
             .catch((e) => {
-              console.log(e);
               toast.show("Something went wrong", {
                 position: toast.positions.TOP + 50,
-                duration: toast.durations.SHORT,
               });
             });
           setRefresh((prev) => !prev);
@@ -111,7 +117,7 @@ const RaiseTicket: FunctionComponent<Props> = (props) => {
                 marginBottom: 20,
               }}
             >
-              Raise Ticket
+              Raise Work
             </Text>
             <Input
               errorMessage={errors.title}
@@ -126,6 +132,16 @@ const RaiseTicket: FunctionComponent<Props> = (props) => {
               onChangeText={handleChange("description")}
               onBlur={handleBlur("description")}
               value={values.description}
+            />
+            <Input
+              keyboardType="numeric"
+              errorMessage={errors.duration}
+              placeholder="duration"
+              onChangeText={(text) => {
+                setFieldValue("duration", text);
+              }}
+              onBlur={handleBlur("duration")}
+              value={`${values.duration}`}
             />
             <Picker
               selectedValue={values.machine}
@@ -175,7 +191,7 @@ const RaiseTicket: FunctionComponent<Props> = (props) => {
               buttonStyle={{
                 backgroundColor: "black",
                 borderRadius: 20,
-                marginTop: 5,
+                marginTop: 20,
                 marginBottom: 20,
               }}
               style={{
@@ -184,7 +200,7 @@ const RaiseTicket: FunctionComponent<Props> = (props) => {
                 marginRight: "auto",
                 width: "100%",
               }}
-              title="Raise Ticket"
+              title="Raise Work"
             />
           </View>
         )}
@@ -193,4 +209,4 @@ const RaiseTicket: FunctionComponent<Props> = (props) => {
   );
 };
 
-export default RaiseTicket;
+export default RaiseMaintenance;

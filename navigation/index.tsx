@@ -6,6 +6,7 @@ import AuthContext from "../context/authContext";
 import SignUp from "../screens/signInUp";
 import { RootStackParamList } from "../types";
 import Authenticated from "./authenticated";
+import { SafeAreaView } from "react-native";
 
 export default function Navigation() {
   return (
@@ -18,7 +19,7 @@ export default function Navigation() {
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
-  const AuthState = React.useContext(AuthContext);
+  const [AuthState] = React.useContext(AuthContext);
   let Component: React.FunctionComponent<any>;
   if (AuthState === "UNAUTHORISED" || AuthState === "SIGN_OUT") {
     Component = SignUp;

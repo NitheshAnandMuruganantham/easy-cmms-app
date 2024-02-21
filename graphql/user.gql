@@ -1,0 +1,8 @@
+
+query usersDropDown($where: UsersWhereInput, $orderBy: UsersOrderByWithRelationInput, $limit: Int, $offset: Int) {
+    users(where: $where,orderBy: $orderBy,limit: $limit,offset: $offset) {
+        value:id
+        name
+        phone
+    }
+}

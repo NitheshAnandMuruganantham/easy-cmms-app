@@ -8,6 +8,8 @@ import UserContext from "../../../context/userContext";
 import axios from "../../../utils/axios";
 import { useInterval } from "../../../utils/interval";
 import RefetchContext from "../../../context/refetchContext";
+import PastMaintenanceCard from "../../../components/pastMaintananceCard";
+import ReplacementCard from "../../../components/replacementCard";
 interface MaintanceHomeProps {
   navigation: any;
 }
@@ -22,7 +24,7 @@ const MaintenanceHome: React.FunctionComponent<MaintanceHomeProps> = (
   const [data, setData] = React.useState<any[]>([]);
   React.useEffect(() => {
     setLoading(true);
-    axios.post("maintenance").then((res) => {
+    axios.get("getAllReplacementsRequests").then((res) => {
       setData(res.data);
       setLoading(false);
     });
@@ -30,15 +32,15 @@ const MaintenanceHome: React.FunctionComponent<MaintanceHomeProps> = (
 
   React.useEffect(() => {
     setLoading(true);
-    console.log("refetching maintenance");
-    axios.post("maintenance").then((res) => {
+    console.log("refetching past maintenance");
+    axios.get("getAllReplacementsRequests").then((res) => {
       setData(res.data);
       setLoading(false);
     });
   }, [refetch]);
 
   useInterval(() => {
-    axios.post("maintenance").then((res) => {
+    axios.get("getAllReplacementsRequests").then((res) => {
       setData(res.data);
     });
   }, 10000);
@@ -47,25 +49,15 @@ const MaintenanceHome: React.FunctionComponent<MaintanceHomeProps> = (
     <ScrollView style={style.container}>
       <Spinner visible={loading} textContent={"Loading..."} />
       <BodyHead
-        text1="Ongoing"
-        text2="raised"
-        text3="Maintenances"
-        style={{ marginLeft: 10 }}
+        text1="replacement"
+        text2="requests"
+        text3="made by you"
+        style={{ marginLeft: 20 }}
       />
       <Spinner visible={loading} textContent={"Loading..."} />
       {!loading &&
         data.map((data, index) => {
-          return (
-            <MaintenanceCard
-              data={data}
-              key={index}
-              viewMaintenance={(id) => {
-                props.navigation.navigate("ViewMaintenance", {
-                  MaintenanceId: id,
-                });
-              }}
-            />
-          );
+          return <ReplacementCard data={data} key={index} />;
         })}
     </ScrollView>
   );

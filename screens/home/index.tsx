@@ -1,84 +1,131 @@
 import React, { FunctionComponent, useContext, useState } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
-import { Card } from "@rneui/base";
+import { View, Text, TouchableOpacity, ScrollView } from "react-native";
+import { Button, Card } from "@rneui/base";
 import axios from "../../utils/axios";
 import Spinner from "react-native-loading-spinner-overlay/lib";
 import RefetchContext from "../../context/refetchContext";
 import { useInterval } from "../../utils/interval";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
+import HomeHeader from "../../components/navigationHeaders/home";
+import NewWorkOrder from "./newWorkOrder/newWorkOrder";
+import UserContext from "../../context/userContext";
+
+const colors = [
+  "#6A0DAD",
+  "#8B008B",
+  "#C54B8C",
+  "#C70039",
+  "#900C3F",
+  "#FF5733",
+  "#FFC300",
+  "#DAF7A6",
+  "#FFC300",
+  "#FF5733",
+  "#900C3F",
+  "#C70039",
+  "#C54B8C",
+  "#8B008B",
+  "#6A0DAD",
+];
+
 const Home = (props) => {
   const [data, SetData] = React.useState<any>({});
   const [loading, SetLoading] = useState(true);
   const [refetchApi, setRefetchApi] = React.useContext(RefetchContext);
 
-  const refetch = () => {
-    SetLoading(true);
+  const refetch = (show_loading: boolean = true) => {
+    if (show_loading) SetLoading(true);
     axios
       .get("/dashboard/mobileDashboard")
       .then((resp) => {
         SetData(resp.data);
         SetLoading(false);
-        setRefetchApi(false);
       })
       .catch(() => {
         SetLoading(false);
-        setRefetchApi(false);
-        alert("something went wrong !");
       });
   };
 
-  // useInterval(() => {
-  //   axios
-  //     .get("/dashboard/mobileDashboard")
-  //     .then((resp) => {
-  //       SetData(resp.data);
-  //       setRefetchApi(false);
-  //     })
-  //     .catch(() => {});
-  // }, 10000);
+  useInterval(() => {
+    refetch(false);
+  }, 10000);
 
   React.useEffect(() => {
-    refetch();
+    console.log("refetching home");
+    refetch(false);
   }, [refetchApi]);
-
+  const [user] = useContext(UserContext);
   return (
     <View
       style={{
-        marginTop: "auto",
-        marginBottom: "auto",
+        flex: 1,
+        backgroundColor: "white",
       }}
     >
-      <Spinner visible={loading} textContent={"Loading..."} />
-      <DisplayCard
-        textColor="white"
-        bgColor="red"
-        name="PENDING MAINTENANCES"
-        value={
-          typeof data?.openMaintenanceCount === "number"
-            ? data?.openMaintenanceCount
-            : "--"
-        }
-      />
-      <DisplayCard
-        textColor="white"
-        bgColor="green"
-        name="ACTIVE TICKETS"
-        value={
-          typeof data?.openTicketCount === "number"
-            ? data?.openTicketCount
-            : "--"
-        }
-      />
+      <HomeHeader />
 
-      <DisplayCard
-        bgColor="yellow"
-        textColor="black"
-        textStyle={{
-          fontSize: 20,
-          textAlign: "center",
+      <ScrollView
+        style={{
+          backgroundColor: "white",
+          marginTop: "auto",
+          marginBottom: "auto",
         }}
-        name="UPCOMING TASK"
-        value={data?.nextMaintenance ? data?.nextMaintenance.name : "--"}
-      />
+      >
+        <Spinner visible={loading} textContent={"Loading..."} />
+        <Card
+          containerStyle={{
+            borderRadius: 10,
+            backgroundColor: "#FF5733",
+          }}
+        >
+          <Card.Title
+            style={{
+              fontSize: 20,
+              color: "white",
+            }}
+          >
+            {user?.block?.name}
+          </Card.Title>
+          <Card.Divider />
+          <Card.Title
+            style={{
+              fontSize: 20,
+              color: "white",
+            }}
+          >
+            welcome {user?.name}
+          </Card.Title>
+          <Card.Title
+            style={{
+              fontSize: 20,
+              color: "white",
+            }}
+          >
+            {user?.role}
+          </Card.Title>
+        </Card>
+        <View
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            width: "100%",
+            justifyContent: "space-evenly",
+          }}
+        >
+          {data &&
+            Object.keys(data).map((key, i) => {
+              return (
+                <DisplayCard
+                  key={key}
+                  name={key.replace(/_/g, " ")}
+                  value={data[key]}
+                  textColor={"white"}
+                  bgColor={i + 1 > colors.length ? colors[0] : colors[i]}
+                />
+              );
+            })}
+        </View>
+      </ScrollView>
     </View>
   );
 };
@@ -96,12 +143,15 @@ const DisplayCard: FunctionComponent<{
     <Card
       containerStyle={{
         borderRadius: 10,
+        width: "42%",
         backgroundColor: props.bgColor,
       }}
       wrapperStyle={{}}
     >
       <Card.Title
         style={{
+          fontSize: 15,
+          fontStyle: "italic",
           color: props.textColor,
         }}
       >
@@ -115,7 +165,7 @@ const DisplayCard: FunctionComponent<{
       >
         <Text
           style={{
-            fontSize: 50,
+            fontSize: 60,
             color: props.textColor,
             ...props.textStyle,
           }}

@@ -1,7 +1,8 @@
-import { ActivityIndicator, StyleSheet } from "react-native";
+import { ActivityIndicator, StyleSheet, TouchableOpacity } from "react-native";
 import { RneFunctionComponent, Text } from "@rneui/base";
-import { Ticket } from "../generated/generated";
-import { Button, Card, Icon, Image } from "@rneui/themed";
+import { Button, Card, Image } from "@rneui/themed";
+import CachedImage from "expo-cached-image";
+
 import React from "react";
 
 interface TicketCardProps {
@@ -11,41 +12,39 @@ interface TicketCardProps {
 
 const TicketCard: RneFunctionComponent<TicketCardProps> = (props) => {
   return (
-    <Card>
-      <Card.Title>{props.data.name}</Card.Title>
-      <Card.Divider />
-      <Image
-        style={{
-          padding: 0,
-          width: "100%",
-          aspectRatio: 1,
-          resizeMode: "contain",
+    <TouchableOpacity
+      onPress={() => {
+        props.viewTicket(props.data.id);
+      }}
+    >
+      <Card
+        containerStyle={{
+          borderRadius: 20,
+          shadowColor: "black",
+          shadowOpacity: 0.2,
+          paddingBottom: 10,
+          shadowOffset: { width: 0, height: 2 },
+          shadowRadius: 8,
+          elevation: 5,
+          backgroundColor: "#fff",
         }}
-        PlaceholderContent={<ActivityIndicator color={"#000"} size="large" />}
-        source={{
-          uri: props.data.photos,
-          cache: "default",
-        }}
-      />
-      <Text style={{ marginBottom: 10 }}>{props.data.description}</Text>
-      <Text style={{ marginBottom: 10 }}>
-        machine : {props.data.machines.id} ({props.data.machines.name})
-      </Text>
-      <Text style={{ marginBottom: 10 }}>status : {props.data.status}</Text>
-      <Text style={{ marginBottom: 10 }}>
-        raised by : {props.data.user.name} ({props.data.user.id})
-      </Text>
-      <Button
-        onPress={() => props.viewTicket(props.data.id)}
-        buttonStyle={{
-          borderRadius: 0,
-          marginLeft: 0,
-          marginRight: 0,
-          marginBottom: 0,
-        }}
-        title="VIEW NOW"
-      />
-    </Card>
+      >
+        <Card.Title style={{ fontSize: 25 }}>{props.data.name}</Card.Title>
+        <Card.Divider />
+        <Text style={{ marginBottom: 10, fontSize: 20, fontWeight: "500" }}>
+          {props.data.description}
+        </Text>
+        <Text style={{ marginBottom: 10, fontSize: 15 }}>
+          machine : {props.data.machines.id} ({props.data.machines.name})
+        </Text>
+        <Text style={{ marginBottom: 10, fontSize: 15 }}>
+          status : {props.data.status}
+        </Text>
+        <Text style={{ marginBottom: 10, fontSize: 15 }}>
+          raised by : {props.data.user.name} ({props.data.user.id})
+        </Text>
+      </Card>
+    </TouchableOpacity>
   );
 };
 

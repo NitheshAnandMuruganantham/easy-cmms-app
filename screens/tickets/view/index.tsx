@@ -40,11 +40,20 @@ const ViewTicket: FunctionComponent<Props> = (props) => {
           cache: "default",
         }}
       />
-      <Text style={style.time}>
+      <Text style={{ ...style.time, display: data ? "flex" : "none" }}>
         {new Date(data?.ticket.created_at).toLocaleString()}
       </Text>
-      <Text style={style.description}>{data?.ticket.description}</Text>
-      <View style={{ width: "80%", marginLeft: "10%", marginTop: "5%" }}>
+      <Text style={{ ...style.description, display: data ? "flex" : "none" }}>
+        {data?.ticket.description}
+      </Text>
+      <View
+        style={{
+          width: "80%",
+          marginLeft: "10%",
+          marginTop: "5%",
+          display: data ? "flex" : "none",
+        }}
+      >
         <Table
           borderStyle={{
             borderBottomWidth: 3,

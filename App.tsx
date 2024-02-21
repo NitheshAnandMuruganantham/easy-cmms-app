@@ -1,24 +1,17 @@
-import { checkProfileStatus } from "./utils/auth";
-import { StatusBar } from "expo-status-bar";
-import axios from "axios";
 import React, { useEffect } from "react";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import SuperTokens from "supertokens-react-native";
 import { RootSiblingParent } from "react-native-root-siblings";
-
-import { Text, Image, ThemeProvider } from "@rneui/themed";
-import network from "./constants/network";
-import Theme from "./constants/theme";
+import { Provider as PaperProvider } from "react-native-paper";
+import { Image } from "@rneui/themed";
 import AuthContext from "./context/authContext";
 import useCachedResources from "./hooks/useCachedResources";
 import Navigation from "./navigation";
 import { ApolloProvider } from "@apollo/client";
 import client from "./utils/apollo";
-import { View } from "react-native";
 import UserContext from "./context/userContext";
 import RefetchContext from "./context/refetchContext";
-
-SuperTokens.addAxiosInterceptors(axios);
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import StatusBar from "./components/statusBar";
 
 export default function App() {
   const [authStatus, SetAuthStatus] = React.useState<
@@ -31,26 +24,15 @@ export default function App() {
     | "REFRESH_SESSION"
   >("LOADING");
   const [userData, SetUserData] = React.useState<any>(null);
-  SuperTokens.init({
-    apiDomain: network.server,
-    apiBasePath: "/auth",
-    autoAddCredentials: true,
-    onHandleEvent: async (context) => {
-      if (context.action === "SESSION_CREATED") {
-        const status = await checkProfileStatus(axios, SetUserData);
-        SetAuthStatus(status);
-      } else {
-        SetAuthStatus(context.action);
-      }
-    },
-  });
 
   useEffect(() => {
     const CheckLoggedIn = async () => {
-      const loggedIn = await SuperTokens.doesSessionExist();
-      if (loggedIn) {
-        const status = await checkProfileStatus(axios, SetUserData);
-        SetAuthStatus(status);
+      const acc = await AsyncStorage.getItem("accessToken");
+      const ref = await AsyncStorage.getItem("refreshToken");
+      const profile = (await AsyncStorage.getItem("profile")) || "{}";
+      if (acc && ref) {
+        SetAuthStatus("SESSION_CREATED");
+        SetUserData(JSON.parse(profile));
       } else {
         SetAuthStatus("UNAUTHORISED");
       }
@@ -76,20 +58,18 @@ export default function App() {
   } else {
     return (
       <ApolloProvider client={client}>
-        <ThemeProvider theme={Theme}>
+        <PaperProvider>
           <RootSiblingParent>
-            <AuthContext.Provider value={authStatus}>
-              <UserContext.Provider value={userData}>
+            <AuthContext.Provider value={[authStatus, SetAuthStatus]}>
+              <UserContext.Provider value={[userData, SetUserData]}>
                 <RefetchContext.Provider value={[refetch, setRefetch]}>
-                  <SafeAreaProvider>
-                    <Navigation />
-                    <StatusBar />
-                  </SafeAreaProvider>
+                  <StatusBar />
+                  <Navigation />
                 </RefetchContext.Provider>
               </UserContext.Provider>
             </AuthContext.Provider>
           </RootSiblingParent>
-        </ThemeProvider>
+        </PaperProvider>
       </ApolloProvider>
     );
   }

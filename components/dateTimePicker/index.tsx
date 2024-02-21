@@ -1,39 +1,50 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { View } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
-
-import { Input } from "@rneui/themed";
+import { TextInput } from "react-native-paper";
 
 interface DatePickerProps {
-  value: Date;
+  value: number;
   setValue: (date: Date) => void;
   maxDate?: Date;
 }
 
 const DatePicker: React.FunctionComponent<DatePickerProps> = (props) => {
-  const [isVisible, setVisible] = useState(false);
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+
+  const inputRef = useRef<any>(null);
+
+  const showDatePicker = () => {
+    setDatePickerVisibility(true);
+  };
+
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
+  };
+
+  const handleConfirm = (date: Date) => {
+    props.setValue(date);
+    hideDatePicker();
+  };
 
   return (
-    <View style={{ display: "flex", width: "100%" }}>
-      <TouchableOpacity onPress={() => setVisible(true)}>
-        <Input
-          leftIcon={{
-            name: "birthday-cake",
-            type: "font-awesome",
-          }}
-          value={props.value.toLocaleDateString()}
-          editable={false}
-        />
-      </TouchableOpacity>
-      <DateTimePickerModal
-        maximumDate={props.maxDate}
-        isVisible={isVisible}
-        onConfirm={(date) => {
-          setVisible(false);
-          props.setValue(new Date(date));
+    <View>
+      <TextInput
+        style={{
+          marginTop: 10,
         }}
-        onCancel={() => setVisible(false)}
+        ref={inputRef}
+        showSoftInputOnFocus={false}
+        onPressIn={() => {
+          showDatePicker();
+        }}
+        value={new Date(props.value).toLocaleDateString() || "select a date"}
+      />
+      <DateTimePickerModal
+        isVisible={isDatePickerVisible}
+        mode="date"
+        onConfirm={handleConfirm}
+        onCancel={() => hideDatePicker()}
       />
     </View>
   );

@@ -1,24 +1,29 @@
 import React, { useContext, useEffect, useState } from "react";
 import AntDesign from "react-native-vector-icons/AntDesign";
-import FontAwsDesign from "react-native-vector-icons/FontAwesome";
 import MatDesignCommunity from "react-native-vector-icons/MaterialCommunityIcons";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
+import FontAwesomeVectorIcons from "react-native-vector-icons/FontAwesome";
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import Tickets from "../screens/tickets";
 import Maintenance from "../screens/maintanance";
 import UserContext from "../context/userContext";
 import Home from "../screens/home";
-import HomeHeader from "../components/navigationHeaders/home";
 import Spinner from "react-native-loading-spinner-overlay/lib";
-const Tab = createBottomTabNavigator();
+import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
+import PastMaintenance from "../screens/pastMaintanance";
+import ReplacementRequests from "../screens/replacementRequests";
+
+const Tab = createMaterialBottomTabNavigator();
 
 function Authenticated() {
-  const userData = useContext(UserContext);
+  const [userData] = useContext(UserContext);
   const [loading, SetLoading] = useState(true);
   useEffect(() => {
     if (userData?.role) {
       SetLoading(false);
     }
+    setTimeout(() => {
+      SetLoading(false);
+    }, 5000);
   }, [userData]);
 
   return (
@@ -31,51 +36,69 @@ function Authenticated() {
           color: "#FFF",
         }}
       />
-      <Tab.Navigator
-        screenOptions={{
-          unmountOnBlur: true,
-          header: () => {
-            return <HomeHeader />;
-          },
-        }}
-      >
+      <Tab.Navigator activeColor="#2196f3">
         <Tab.Screen
           name="Home"
-          options={{
-            tabBarIcon: ({ color, size, focused }) => {
-              return <AntDesign color={color} size={size} name="home" />;
-            },
-          }}
           component={Home}
+          options={{
+            tabBarLabel: "Home",
+            tabBarIcon: ({ color }) => (
+              <AntDesign name="home" color={color} size={26} />
+            ),
+          }}
         />
-        {userData?.role === "SUPERVISOR" && (
+        {(userData?.role === "SUPERVISOR" ||
+          (userData?.extra_roles &&
+            userData?.extra_roles.indexOf("SUPERVISOR") !== -1)) && (
           <Tab.Screen
             name="tickets"
-            options={{
-              headerShown: false,
-              tabBarIcon: ({ color, size, focused }) => {
-                return <AntDesign color={color} size={size} name="find" />;
-              },
-            }}
             component={Tickets}
+            options={{
+              tabBarLabel: "Tickets",
+              tabBarIcon: ({ color }) => (
+                <MatDesignCommunity name="ticket" color={color} size={26} />
+              ),
+            }}
           />
         )}
-        {userData?.role === "FITTER" && (
+        {(userData?.role === "FITTER" ||
+          userData?.extra_roles.indexOf("FITTER") !== 1) && (
           <Tab.Screen
             name="maintenance"
-            options={{
-              headerShown: false,
-              tabBarIcon: ({ color, size, focused }) => {
-                return (
-                  <MatDesignCommunity
-                    color={color}
-                    size={size + 2}
-                    name="wrench"
-                  />
-                );
-              },
-            }}
             component={Maintenance}
+            options={{
+              tabBarLabel: "Work",
+              tabBarIcon: ({ color }) => (
+                <MatDesignCommunity name="wrench" color={color} size={26} />
+              ),
+            }}
+          />
+        )}
+        {(userData?.role === "FITTER" ||
+          userData?.extra_roles.indexOf("FITTER") !== 1) && (
+          <Tab.Screen
+            name="replacementRequests"
+            component={ReplacementRequests}
+            options={{
+              tabBarLabel: "Spares",
+              tabBarIcon: ({ color }) => (
+                <FontAwesomeVectorIcons name="gear" color={color} size={26} />
+              ),
+            }}
+          />
+        )}
+        {(userData?.role === "FITTER" ||
+          userData?.role === "MANAGER" ||
+          userData?.role === "ADMIN") && (
+          <Tab.Screen
+            name="PastMaintenance"
+            component={PastMaintenance}
+            options={{
+              tabBarLabel: "past work",
+              tabBarIcon: ({ color }) => (
+                <FontAwesome name="history" size={26} color={color} />
+              ),
+            }}
           />
         )}
       </Tab.Navigator>

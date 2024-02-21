@@ -1,0 +1,7 @@
+query itemsDropDown{
+  items {
+    id
+    name
+    code
+  }
+}
